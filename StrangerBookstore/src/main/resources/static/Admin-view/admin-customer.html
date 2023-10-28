@@ -1,0 +1,324 @@
+        <div class="main-content">
+            <div class="section__content section__content--p30">
+                <div class="container-fluid">
+                    <!--FORM-->
+                    <div class="card">
+                        <div class="card-header">
+                            <strong>Customer</strong> Form
+                        </div>
+                        <div class="card-body card-block">
+                            <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
+                                <div class="row form-group">
+                                    <div class="col col-md-3">
+                                        <label for="disabled-input" class=" form-control-label">Customer ID</label>
+                                    </div>
+                                    <div class="col-12 col-md-9">
+                                        <input type="text" id="disabled-input" name="disabled-input"
+                                               placeholder="Customer ID" disabled="" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="row form-group">
+                                    <div class="col col-md-3">
+                                        <label for="fullName" class=" form-control-label">Full name</label>
+                                    </div>
+                                    <div class="col-12 col-md-9">
+                                        <input type="text" id="fullName" name="text-input" placeholder="Full Name"
+                                               class="form-control">
+<!--                                        <small class="form-text text-muted">This is a help text</small>-->
+                                    </div>
+                                </div>
+                                <div class="row form-group">
+                                    <div class="col col-md-3">
+                                        <label for="email" class=" form-control-label">Email</label>
+                                    </div>
+                                    <div class="col-12 col-md-9">
+                                        <input type="text" id="email" name="text-input" placeholder="Email"
+                                               class="form-control">
+                                        <!--                                        <small class="form-text text-muted">This is a help text</small>-->
+                                    </div>
+                                </div>
+                                <div class="row form-group">
+                                    <div class="col col-md-3">
+                                        <label for="phoneNumber" class=" form-control-label">Phone Number</label>
+                                    </div>
+                                    <div class="col-12 col-md-9">
+                                        <input type="text" id="phoneNumber" name="text-input" placeholder="Phone Number"
+                                               class="form-control">
+                                        <!--                                        <small class="form-text text-muted">This is a help text</small>-->
+                                    </div>
+                                </div>
+                                <div class="row form-group">
+                                    <div class="col col-md-3">
+                                        <label for="birthday" class=" form-control-label">Birthday</label>
+                                    </div>
+                                    <div class="col-12 col-md-9">
+                                        <input type="date" id="birthday" name="text-input"
+                                               class="form-control">
+                                        <!--                                        <small class="form-text text-muted">This is a help text</small>-->
+                                    </div>
+                                </div>
+                                <div class="row form-group">
+                                    <div class="col col-md-3">
+                                        <label class=" form-control-label">Gender</label>
+                                    </div>
+                                    <div class="col col-md-9">
+                                        <div class="form-check">
+                                            <div class="radio">
+                                                <label for="male" class="form-check-label ">
+                                                    <input type="radio" id="male" name="radios" value="male"
+                                                           class="form-check-input">Male
+                                                </label>
+                                            </div>
+                                            <div class="radio">
+                                                <label for="female" class="form-check-label ">
+                                                    <input type="radio" id="female" name="radios" value="female"
+                                                           class="form-check-input">Female
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row form-group">
+                                    <div class="col col-md-3">
+                                        <label class=" form-control-label">Status</label>
+                                    </div>
+                                    <div class="col col-md-9">
+                                        <div class="form-check">
+                                            <div class="radio">
+                                                <label for="enable" class="form-check-label ">
+                                                    <input type="radio" id="enable" name="radios" value="enable"
+                                                           class="form-check-input">Enable
+                                                </label>
+                                            </div>
+                                            <div class="radio">
+                                                <label for="disable" class="form-check-label ">
+                                                    <input type="radio" id="disable" name="radios" value="disable"
+                                                           class="form-check-input">Disable
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row form-group">
+                                    <div class="col col-md-3">
+                                        <label for="select" class=" form-control-label">Role</label>
+                                    </div>
+                                    <div class="col-12 col-md-9">
+                                        <select name="select" id="select" class="form-control">
+                                            <option value="0">Please select</option>
+                                            <option value="1">Option #1</option>
+                                            <option value="2">Option #2</option>
+                                            <option value="3">Option #3</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="row form-group">
+                                    <div class="col col-md-3">
+                                        <label for="file-input" class=" form-control-label">Picture</label>
+                                    </div>
+                                    <div class="col-12 col-md-9">
+                                        <input type="file" id="file-input" name="file-input"
+                                               class="form-control-file">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="card-footer">
+                            <button type="submit" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#scrollmodal">
+                                Add User
+                            </button>
+                            <button type="submit" class="btn btn-primary btn-sm">
+                                Update
+                            </button>
+                            <button type="submit" class="btn btn-primary btn-sm">
+                                Reset
+                            </button>
+                            <button type="reset" class="btn btn-danger btn-sm">
+                                Delete
+                            </button>
+                        </div>
+                    </div>
+                    <!--TABLE-->
+                    <div class="row">
+                        <div class="col-md-12">
+                            <!-- DATA TABLE -->
+                            <h3 class="title-5 m-b-35">Customer Table</h3>
+                            <div class="table-data__tool">
+                                <div class="table-data__tool-left">
+                                    <div class="row form-group">
+                                        <div class="col col-md-10">
+                                            <input type="text" id="search" name="text-input" placeholder="Search"
+                                                   class="form-control">
+                                        </div>
+                                        <div class="col-12 col-md-2 mt-1">
+                                            <button type="submit" class="btn btn-primary btn-sm">
+                                                Search
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="table-responsive">
+                                <table class="table table-data2">
+                                    <thead>
+                                    <tr>
+                                        <th>Customer Full Name</th>
+                                        <th>Email</th>
+                                        <th>Phone Number</th>
+                                        <th>Birthday</th>
+                                        <th>Gender</th>
+                                        <th>Status</th>
+                                        <th>Role</th>
+                                        <th>Picture</th>
+                                        <th></th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr class="tr-shadow">
+                                        <td>Lori Lynch</td>
+                                        <td>Lori Lynch</td>
+                                        <td>Lori Lynch</td>
+                                        <td>Lori Lynch</td>
+                                        <td>Lori Lynch</td>
+                                        <td>Lori Lynch</td>
+                                        <td>Lori Lynch</td>
+                                        <td>Lori Lynch</td>
+                                        <td>
+                                            <div class="table-data-feature">
+                                                <button class="item" data-toggle="tooltip" data-placement="top" title="Edit">
+                                                    <i class="zmdi zmdi-edit"></i>
+                                                </button>
+                                                <button class="item" data-toggle="tooltip" data-placement="top" title="Delete">
+                                                    <i class="zmdi zmdi-delete"></i>
+                                                </button>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr class="spacer"></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- END DATA TABLE -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- modal scroll -->
+        <div class="modal fade" id="scrollmodal" tabindex="-1" role="dialog" aria-labelledby="scrollmodalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="scrollmodalLabel">Scrolling Long Content Modal</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
+                            <div class="row form-group">
+                                <div class="col col-md-3">
+                                    <label for="fullName1" class=" form-control-label">Full name</label>
+                                </div>
+                                <div class="col-12 col-md-9">
+                                    <input type="text" id="fullName1" name="text-input" placeholder="Full Name"
+                                           class="form-control">
+                                    <!--                                        <small class="form-text text-muted">This is a help text</small>-->
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col col-md-3">
+                                    <label for="password" class=" form-control-label">Password</label>
+                                </div>
+                                <div class="col-12 col-md-9">
+                                    <input type="password" id="password" name="text-input" placeholder="Password"
+                                           class="form-control">
+                                    <!--                                        <small class="form-text text-muted">This is a help text</small>-->
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col col-md-3">
+                                    <label for="email1" class=" form-control-label">Email</label>
+                                </div>
+                                <div class="col-12 col-md-9">
+                                    <input type="text" id="email1" name="text-input" placeholder="Email"
+                                           class="form-control">
+                                    <!--                                        <small class="form-text text-muted">This is a help text</small>-->
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col col-md-3">
+                                    <label for="phoneNumber1" class=" form-control-label">Phone Number</label>
+                                </div>
+                                <div class="col-12 col-md-9">
+                                    <input type="text" id="phoneNumber1" name="text-input" placeholder="Phone Number"
+                                           class="form-control">
+                                    <!--                                        <small class="form-text text-muted">This is a help text</small>-->
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col col-md-3">
+                                    <label for="birthday1" class=" form-control-label">Birthday</label>
+                                </div>
+                                <div class="col-12 col-md-9">
+                                    <input type="date" id="birthday1" name="text-input"
+                                           class="form-control">
+                                    <!--                                        <small class="form-text text-muted">This is a help text</small>-->
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col col-md-3">
+                                    <label class=" form-control-label">Gender</label>
+                                </div>
+                                <div class="col col-md-9">
+                                    <div class="form-check">
+                                        <div class="radio">
+                                            <label for="male1" class="form-check-label ">
+                                                <input type="radio" id="male1" name="radios" value="male"
+                                                       class="form-check-input">Male
+                                            </label>
+                                        </div>
+                                        <div class="radio">
+                                            <label for="female1" class="form-check-label ">
+                                                <input type="radio" id="female1" name="radios" value="female"
+                                                       class="form-check-input">Female
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col col-md-3">
+                                    <label for="select1" class=" form-control-label">Role</label>
+                                </div>
+                                <div class="col-12 col-md-9">
+                                    <select name="select" id="select1" class="form-control">
+                                        <option value="0">Please select</option>
+                                        <option value="1">Option #1</option>
+                                        <option value="2">Option #2</option>
+                                        <option value="3">Option #3</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col col-md-3">
+                                    <label for="file-input1" class=" form-control-label">Picture</label>
+                                </div>
+                                <div class="col-12 col-md-9">
+                                    <input type="file" id="file-input1" name="file-input"
+                                           class="form-control-file">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-success btn-sm">
+                            Create
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end modal scroll -->

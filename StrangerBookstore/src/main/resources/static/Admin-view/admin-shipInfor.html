@@ -1,0 +1,145 @@
+<div class="main-content">
+    <div class="section__content section__content--p30">
+        <div class="container-fluid">
+            <!--FORM-->
+            <div class="card">
+                <div class="card-header">
+                    <strong>Ship Information</strong> Form
+                </div>
+                <div class="card-body card-block">
+                    <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
+                        <div class="row form-group">
+                            <div class="col col-md-3">
+                                <label for="reviewId" class=" form-control-label">Ship ID</label>
+                            </div>
+                            <div class="col-12 col-md-9">
+                                <input type="text" id="reviewId" name="disabled-input" disabled="" class="form-control">
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <div class="col col-md-3">
+                                <label for="customerName" class=" form-control-label">Customer Name</label>
+                            </div>
+                            <div class="col-12 col-md-9">
+                                <input type="text" id="customerName" name="disabled-input" disabled="" class="form-control">
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <div class="col col-md-3">
+                                <label for="statusOrder" class=" form-control-label">Status Order</label>
+                            </div>
+                            <div class="col-12 col-md-9">
+                                <input type="text" id="statusOrder" name="disabled-input" disabled="" class="form-control">
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <div class="col col-md-3">
+                                <label for="paymentMethod" class=" form-control-label">Payment Method</label>
+                            </div>
+                            <div class="col-12 col-md-9">
+                                <input type="text" id="paymentMethod" name="disabled-input" disabled="" class="form-control">
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <div class="col col-md-3">
+                                <label for="totalAmount" class=" form-control-label">Total Amount</label>
+                            </div>
+                            <div class="col-12 col-md-9">
+                                <input type="text" id="totalAmount" name="disabled-input" disabled="" class="form-control">
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <div class="col col-md-3">
+                                <label class=" form-control-label">Status Ship</label>
+                            </div>
+                            <div class="col col-md-9">
+                                <div class="form-check">
+                                    <div class="radio">
+                                        <label for="male" class="form-check-label ">
+                                            <input type="radio" id="male" name="radios" value="male"
+                                                   class="form-check-input">Success
+                                        </label>
+                                    </div>
+                                    <div class="radio">
+                                        <label for="female" class="form-check-label ">
+                                            <input type="radio" id="female" name="radios" value="female"
+                                                   class="form-check-input">Fail
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <div class="col col-md-3">
+                                <label for="description" class=" form-control-label">Note</label>
+                            </div>
+                            <div class="col-12 col-md-9">
+                                            <textarea name="textarea-input" id="description" rows="9"
+                                                      placeholder="Note..." class="form-control"></textarea>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="card-footer">
+                    <button type="submit" class="btn btn-primary btn-sm">
+                        Update
+                    </button>
+                </div>
+            </div>
+            <!--TABLE-->
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- DATA TABLE -->
+                    <h3 class="title-5 m-b-35">Ship Information Table</h3>
+                    <div class="table-data__tool">
+                        <div class="table-data__tool-left">
+                            <div class="row form-group">
+                                <div class="col col-md-10">
+                                    <input type="text" id="search" name="text-input" placeholder="Search"
+                                           class="form-control">
+                                </div>
+                                <div class="col-12 col-md-2 mt-1">
+                                    <button type="submit" class="btn btn-primary btn-sm">
+                                        Search
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="table-responsive table-responsive-data2">
+                        <table class="table table-data2">
+                            <thead>
+                            <tr>
+                                <th>Ship ID</th>
+                                <th>Order ID</th>
+                                <th>Address Id</th>
+                                <th>Status</th>
+                                <th></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr class="tr-shadow">
+                                <td>Lori Lynch</td>
+                                <td>Lori Lynch</td>
+                                <td>Lori Lynch</td>
+                                <td>Lori Lynch</td>
+                                <td>
+                                    <div class="table-data-feature">
+                                        <button class="item" data-placement="top" title="Edit">
+                                            <i class="zmdi zmdi-edit"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="spacer"></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- END DATA TABLE -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>

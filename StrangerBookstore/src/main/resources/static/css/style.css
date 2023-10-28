@@ -28,6 +28,8 @@
   top: 0;
   left: 0;
   background-color: #dbd5c6;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
   /* background-color: transparent; */
 }
 
