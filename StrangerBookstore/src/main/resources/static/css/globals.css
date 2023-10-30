@@ -1,19 +1,33 @@
-@import url("https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css");
-* {
-  -webkit-font-smoothing: antialiased;
-  box-sizing: border-box;
-}
-html,
 body {
-  margin: 0px;
-  height: 100%;
+  margin: 0;
+  line-height: normal;
 }
-/* a blue color as a generic focus style */
-button:focus-visible {
-  outline: 2px solid #4a90e2 !important;
-  outline: -webkit-focus-ring-color auto 5px !important;
+
+:root {
+  /* fonts */
+  --font-kanit: Kanit;
+  --font-inter: Inter;
+
+  /* font sizes */
+  --font-size-xl: 20px;
+  --font-size-6xl: 25px;
+  --font-size-21xl: 40px;
+  --font-size-16xl: 35px;
+  --font-size-11xl: 30px;
+
+  /* Colors */
+  --color-dimgray: #4b3029;
+  --color-black: #000;
+  --color-tan: #cca98d;
+  --color-gainsboro: #d9d9d9;
+  --color-gray-200: rgba(0, 0, 0, 0.53);
+  --color-gray-100: rgba(0, 0, 0, 0.51);
+  --color-lightgray: #dbd5c6;
+  --color-white: #fff;
+
+  /* Border radiuses */
+  --br-5xs: 8px;
+  --br-11xl: 30px;
+  --br-xl: 20px;
+  --br-3xs: 10px;
 }
-a {
-  text-decoration: none;
-}
-@import url("https://fonts.googleapis.com/css?family=Kanit:400,200");

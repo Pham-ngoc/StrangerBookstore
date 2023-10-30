@@ -2,13 +2,150 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Stranger Bookstore</title>
   <th:block th:replace="~{User-view/style/user-css :: html}"></th:block>
 </head>
 <body>
-<div th:replace="~{User-view/fragment/header.html :: div}"></div>
+<div class="home-after-login">
+    <div class="home-after-login-child"></div>
+    <div th:replace="~{User-view/fragment/header.html :: div}"></div>
+
+    <!--START "INFOR WEBSITE" -->
+    <div class="infor">
+        <div class="description-of-stranger">
+            (Description of Stranger Bookstore)
+        </div>
+        <div class="book-introduce">
+            <div class="infor-child2">
+                <img width="396" height="626px" src="/img/product_img/cay-cam-ngot-cua-toi-bia-truoc.jpg" alt="">
+            </div>
+        </div>
+        <div class="book-introduce1">
+            <div class="infor-child2">
+                <img width="396" height="626px" src="/img/product_img/nhung-giac-mo-o-tiem-sach-bia-truoc.jpg" alt="">
+            </div>
+        </div>
+        <div class="book-introduce2">
+            <div class="infor-child2">
+                <img width="396" height="626px" src="/img/product_img/thien-tai-ben-trai-ke-dien-ben-phai-bia-truoc.jpg" alt="">
+            </div>
+        </div>
+        <div class="welcome-to-stranger">Welcome to Stranger Bookstore</div>
+        <a href="" class="rectangle-icon">
+            Show more
+        </a>
+    </div>
+    <!--END "INFOR WEBSITE" -->
+    <!--START "THE BEST SELLER BOOK" -->
+    <div class="best-seller">
+        <div class="the-best-seller">THE BEST SELLER BOOKS</div>
+        <div  class="best-seller-child">
+            <a href="">
+                <img width="330" height="560px" src="/img/product_img/cay-cam-ngot-cua-toi-bia-truoc.jpg" alt="">
+            </a>
+        </div>
+        <div  class="best-seller-item">
+            <a href="">
+                <img width="330" height="560px" src="/img/product_img//de-men-phieu-luu-ky-bia-truoc.jpg" alt="">
+            </a>
+        </div>
+        <div  class="best-seller-inner">
+            <a href="">
+                <img width="330" height="560px" src="/img/product_img/Doi-Gio-Hu-bia-truoc.jpg" alt="">
+            </a>
+        </div>
+        <a href="" class="name-of-book">Name of Book</a>
+        <a href="" class="name-of-book1">Name of Book</a>
+        <a href="" class="name-of-book2">Name of Book</a>
+        <div  class="rectangle-div">
+            <a href="">
+                <img width="330" height="560px" src="/img/product_img/kieu-hanh-va-dinh-kien-bia-truoc.jpg" alt="">
+            </a>
+        </div>
+        <div  class="best-seller-child1">
+            <a href="">
+                <img width="330" height="560px" src="/img/product_img/nhung-dem-trang-bia-truoc.jpg" alt="">
+            </a>
+        </div>
+        <div  class="best-seller-child2">
+            <a href="">
+                <img width="330" height="560px" src="/img/product_img/nhung-giac-mo-o-tiem-sach-bia-truoc.jpg" alt="">
+            </a>
+        </div>
+        <a href="" class="name-of-book3">Name of Book</a>
+        <a href="" class="name-of-book4">Name of Book</a>
+        <a href="" class="name-of-book5">Name of Book</a>
+    </div>
+    <!--END "THE BEST SELLER BOOK" -->
+    <!--START "ABOUT US" -->
+    <div class="about-us1">
+        <div class="about-us-child"></div>
+        <div class="information-of-website1">(Information of Website)</div>
+        <div class="about-us2">ABOUT US</div>
+        <a href="" class="about-us-item">
+            Show more
+        </a>
+        <div class="about-us-inner">
+            <a href="">
+                <img width="582px" height="496px" src="/img/Read the book😉.gif" alt="">
+            </a>
+        </div>
+    </div>
+    <!--END "ABOUT US" -->
+    <!--START "NEWS" -->
+    <div class="news1">
+        <div class="news2">NEWS</div>
+        <div class="news-child">
+            <a href="">
+                <img width="400px" height="400px" src="/img/Logo Templates from GraphicRiver.jpg" alt="">
+                <div class="overlay">
+                    <div class="title">Your Text Here</div>
+                </div>
+            </a>
+        </div>
+        <div class="news-item">
+            <a href="">
+                <img width="400px" height="400px" src="/img/Logo Templates from GraphicRiver.jpg" alt="">
+                <div class="overlay">
+                    <div class="title">Your Text Here</div>
+                </div>
+            </a>
+        </div>
+        <div class="news-inner">
+            <a href="">
+                <img width="400px" height="400px" src="/img/Logo Templates from GraphicRiver.jpg" alt="">
+                <div class="overlay">
+                    <div class="title">Your Text Here</div>
+                </div>
+            </a>
+        </div>
+    </div>
+    <!--END "NEWS" -->
 
 
+    <div th:replace="~{User-view/fragment/footer.html :: div}"></div>
+</div>
 <th:block th:replace="~{User-view/style/user-scr :: html}"></th:block>
+<script>
+    $(document).ready(function() {
+          var slides = $(".book-introduce, .book-introduce1, .book-introduce2");
+          var currentIndex = 0;
+
+          // Hiển thị lớp đầu tiên
+          showSlide(currentIndex);
+
+          // Hàm hiển thị lớp
+          function showSlide(index) {
+              slides.eq(index).animate({ opacity: 1 }, 500, function() {
+                  setTimeout(function() {
+                      slides.eq(index).animate({ opacity: 0 }, 500, function() {
+                          currentIndex = (currentIndex + 1) % slides.length;
+                          showSlide(currentIndex);
+                      });
+                  }, 5000); // Thời gian hiển thị mỗi lớp (10 giây)
+              });
+          }
+      });
+</script>
 </body>
 </html>
