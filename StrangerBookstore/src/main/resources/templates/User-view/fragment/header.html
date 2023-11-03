@@ -3,17 +3,17 @@
 <div class="header">
     <div class="home-after-login-child-header"></div>
     <div class="stranger-bookstore"><a href="" class="stranger-title">Stranger Bookstore</a></div>
-    <a href=""><img class="header-child" alt="" src="./public/ellipse-1@2x.png" /></a>
+    <a href=""><img class="header-child" alt="" src="/public/ellipse-1@2x.png" /></a>
 
-    <div class="news3"><a href="" class="title">News</a></div>
+    <div class="news3"><a th:href="@{/new}" class="title">News</a></div>
     <div class="about-us3" id="aboutUsText1">
         <div class="dropdown-about-us">
-            <a href="#" class="title">
+            <a th:href="@{/aboutus/about}" class="title">
                 <span>About us</span>
             </a>
             <div class="dropdown-content-about-us" id="dropdown-about-us">
                 <div>
-                    <a href="#" class="content">
+                    <a th:href="@{/aboutus/contact}" class="content">
                         Contact us
                     </a>
                 </div>
@@ -70,15 +70,15 @@
     <div class="header-item">
         <div class="dropdown-laguage">
             <a href="#" onclick="dropdownLanguage()">
-                <img class="flag-um" src="./public/flagum4x3.svg" />
+                <img class="flag-um" src="/public/flagum4x3.svg" />
             </a>
             <div class="dropdown-content-laguage" id="myDropdown">
                 <div>
                     <a href="#" class="link-with-image-english">
-                        <img src="./public/flagum4x3.svg" alt="English" />
+                        <img src="/public/flagum4x3.svg" alt="English" />
                     </a>
                     <a href="#" class="link-with-image">
-                        <img src="./public/flagum4x3.svg" alt="Vietnamese" />
+                        <img src="/public/flagum4x3.svg" alt="Vietnamese" />
                     </a>
                 </div>
             </div>
