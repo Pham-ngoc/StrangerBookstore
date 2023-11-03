@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://wwww.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <th:block th:replace="~{User-view/style/user-css :: html}"></th:block>
+<body style="background-color: #4B3029;">
+<div th:replace="~{User-view/fragment/header.html :: div}"></div>
+<div class="container" style="margin-top: 200px">
+    <div class=" col-sm-12">
+            <div class="col-sm-12" style="background-color: #dbd5c6;height: auto;border-radius: 7px;">
+                <div class="row ms-4 me-4" >
+                    <div class="mt-5  ">
+                        <input type="text" name="" id="" placeholder="Full name" style="border: none; border-radius: 10px; height: 40px;width: 100%;">
+                    </div>
+                    <div class="mt-4  ">
+                        <input type="text" name="" id="" placeholder="Phone number" style="border: none; border-radius: 10px; height: 40px;width: 100%;">
+                    </div>
+                    <div class="mt-4 ">
+                        <input type="text" name="" id="" placeholder="Email" style="border: none; border-radius: 10px; height: 40px;width: 100%;">
+                    </div>
+                    <div class="mt-4  ">
+                        <textarea placeholder="Message" style="border: none; border-radius: 10px; height: 150px;width: 100%;"></textarea>
+                    </div>
+                    <div class="mt-4  ">
+                        <button style="border-bottom: 3px solid #5e5a5b;; border-radius: 10px;height: 50px; background-color: #CCA98D; "> <strong style="color: #4B3029;font-family: Kanit-Regular, Helvetica">Send Message</strong></button>
+                    </div>
+                </div>
+                <div class="row mt-4 ms-4">
+                    <div class="col-sm-3">
+                        <div class="row">
+                            <div class="col-sm-1" style="color: #4B3029; ">
+                                <img  th:src="@{|/img/phone.png|}"  alt="">
+                            </div>
+                            <div class="col-sm-2" style="margin-top: 10px;margin-left: 15px;font-family: Kanit-Regular, Helvetica">
+                                (+84)964645135
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="row justify-content-center " >
+                            <div class="col-sm-1" style="color: #4B3029; ">
+                                <img  th:src="@{|/img/mail.png|}"  alt="">
+                            </div>
+                            <div class="col-sm-2" style="margin-top: 10px;margin-left: 15px;font-family: Kanit-Regular, Helvetica">
+                                strangerbook@gmail.com
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 ">
+                        <div class="row justify-content-center" style="margin-left: 90px">
+                            <div class="col-sm-1" style="color: #4B3029; ">
+                                <img  th:src="@{|/img/location.png|}"  alt="">
+                            </div>
+                            <div class="col-sm-5" style="margin-top: 10px; width: 300px;font-family: Kanit-Regular, Helvetica;">
+                                12 District, Ho Chi Minh City, VietNam
+                            </div>
+                        </div>
+                    </div>
+                    <div style="background-color:#dbd5c6;height: 20px; width: 500px "></div>
+                </div>
+            </div>
+    </div>
+</div>
+<div th:replace="~{User-view/fragment/footer.html :: div}"></div>
+<th:block th:replace="~{User-view/style/user-scr :: html}"></th:block>
+</body>
+</html>

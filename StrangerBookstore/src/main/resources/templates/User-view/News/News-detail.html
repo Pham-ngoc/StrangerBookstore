@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://wwww.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <th:block th:replace="~{User-view/style/user-css :: html}"></th:block>
+<body style="background-color: #4B3029;">
+<div th:replace="~{User-view/fragment/header.html :: div}"></div>
+<div class="container" style="margin-top: 200px;width: 100%">
+    <div class=" col-sm-12">
+        <div class="row">
+            <div class="col-sm-6">
+                <div> <p style="font-size: 25px; color: whitesmoke;font-family: Kanit-Regular, Helvetica"><span><Strong>Nhà văn Haruki Murakami nhận giải
+                    thưởng danh giá của Tây Ban Nha</Strong></span></p>
+                </div>
+                <div  style="margin-top: 20px">
+                    <p style="font-size: 15px; color: lightgray;font-family: Kanit-Regular, Helvetica;line-height: 25px"><span><Strong>Nhà văn Haruki Murakami được vinh danh tại lễ trao giải của Premios Princesa de Asturias
+                    (tạm dịch: Giải thưởng Công chúa xứ Asturias) năm 2023 diễn ra vào ngày 20/10 vừa qua tại Oviedo, Tây Ban Nha.
+                </Strong></span></p>
+                    <p style="font-size: 15px; color: lightgray;font-family: Kanit-Regular, Helvetica;line-height: 25px"><span><Strong>Cây bút 74 tuổi được trao giải ở hạng mục Văn học cùng giải thưởng trị giá 50.000 euro (khoảng 1,3 tỷ đồng). Tác giả của “Biên niên ký chim vặn dây cót”
+                    đoạt giải bởi tính độc đáo trong các tác phẩm của ông, bao gồm truyện ngắn, tiểu thuyết và tiểu luận.
+                </Strong></span></p>
+                    <p style="font-size: 15px; color: lightgray;font-family: Kanit-Regular, Helvetica;line-height: 25px"><span><Strong>Ban giám khảo đánh giá cao khả năng dung hòa các giá trị truyền thống Nhật Bản với di sản văn hóa phương Tây trong trang viết của Haruki Murakami đồng thời nhấn mạnh rằng các tác phẩm của ông phản ánh rõ nét những xung đột trong xã hội hiện đại như sự cô đơn, nỗi nghi hoặc về sự tồn tại, sự vô cảm ở các thành phố lớn và chủ nghĩa khủng bố.
+                    Ban giám khảo của Premios Princesa de Asturias cũng ca ngợi tính hấp dẫn trong các tác phẩm của Haruki Murakami khi thu hút độc giả ở nhiều thế hệ và gọi ông là một trong những cây bút bền bỉ của văn chương đương đại.
+                </Strong></span></p>
+                    <p style="font-size: 15px; color: lightgray;font-family: Kanit-Regular, Helvetica;line-height: 25px"><span><Strong>Premios Princesa de Asturias là một giải thưởng thường niên của Tây Ban Nha do người thừa kế ngai vàng Tây Ban Nha trao cho các cá nhân hoặc tổ chức trên thế giới có đóng góp to lớn vì sự tiến bộ của khoa học, văn hoá xã hội, thể thao và hợp tác quốc tế.
+
+                    Các tác giả nổi tiếng Mario Vargas Llosa, Camilo José Cela, Günter Grass và Doris Lessing từng giành giải thưởng trên trước khi được trao giải Nobel Văn chương.
+                </Strong></span></p>
+                </div>
+                <div style="margin-top: 25px">
+                    <img th:src="@{|/img/new1.webp|}" class="img-fluid" style="border-radius: 5px">
+                </div>
+            </div>
+
+            <div class="col-sm-1" >
+                <hr class="pagination justify-content-center" style="width: 2px; height: 800px">
+            </div>
+            <div class="col-sm-5" >
+                <div>
+                    <p style="color: lightgray; font-size: 20px;font-family: Kanit-Regular, Helvetica" >Breaking news</p>
+                </div>
+                <hr style="height: 3px;color: white">
+                <div class="row">
+                    <div class="col-sm-1">
+                        <img style="width: 200px;" th:src="@{|/img/new2.webp|}">
+                    </div>
+                    <div class="col-sm-4" style="margin-left: 170px; width: 300px">
+                        <span> <Strong style="font-size: 18px;font-family: Kanit-Regular, Helvetica;"><a class="text-white" style="text-decoration: none" href="">
+                            Tín ngưỡng của sự chết trong "Tang lễ của người An Nam"</a></Strong></span>
+                       <br><span> <Strong style="font-size: 14px;"><a style="color: whitesmoke;font-family: Kanit-Regular, Helvetica;line-height: 25px;text-decoration: none" href="">
+                        Có rất nhiều công trình nghiên cứu những chủ đề về “sự sống”, nhưng công trình khảo cứu về “sự chết” lại không có
+                            nhiều...</a></Strong></span>
+                    </div>
+                </div>
+                <hr style="height: 3px;color: white">
+                <div class="row">
+                    <div class="col-sm-1">
+                        <img style="width: 200px;" th:src="@{|/img/new2.webp|}">
+                    </div>
+                    <div class="col-sm-4" style="margin-left: 170px; width: 300px">
+                        <span> <Strong style="font-size: 18px;font-family: Kanit-Regular, Helvetica;"><a class="text-white" style="text-decoration: none" href="">
+                            Tín ngưỡng của sự chết trong "Tang lễ của người An Nam"</a></Strong></span>
+                        <br>  <span> <Strong style="font-size: 14px;"><a style="color: whitesmoke;font-family: Kanit-Regular, Helvetica;line-height: 25px;text-decoration: none" href="">
+                        Có rất nhiều công trình nghiên cứu những chủ đề về “sự sống”, nhưng công trình khảo cứu về “sự chết” lại không có
+                            nhiều...</a></Strong></span>
+                    </div>
+                </div>
+                <hr style="height: 3px;color: white">
+                <div class="row">
+                    <div class="col-sm-1">
+                        <img style="width: 200px;" th:src="@{|/img/new2.webp|}">
+                    </div>
+                    <div class="col-sm-4" style="margin-left: 170px; width: 300px">
+                        <span> <Strong style="font-size: 18px;font-family: Kanit-Regular, Helvetica;"><a class="text-white" style="text-decoration: none" href="">
+                            Tín ngưỡng của sự chết trong "Tang lễ của người An Nam"</a></Strong></span>
+                        <br>  <span> <Strong style="font-size: 14px;"><a style="color: whitesmoke;font-family: Kanit-Regular, Helvetica;line-height: 25px;text-decoration: none" href="">
+                        Có rất nhiều công trình nghiên cứu những chủ đề về “sự sống”, nhưng công trình khảo cứu về “sự chết” lại không có
+                            nhiều...</a></Strong></span>
+                    </div>
+                </div>
+                <hr style="height: 3px;color: white">
+                <div class="row">
+                    <div class="col-sm-1">
+                        <img style="width: 200px;" th:src="@{|/img/new2.webp|}">
+                    </div>
+                    <div class="col-sm-4" style="margin-left: 170px; width: 300px">
+                        <span> <Strong style="font-size: 18px;font-family: Kanit-Regular, Helvetica;"><a class="text-white" style="text-decoration: none" href="">
+                            Tín ngưỡng của sự chết trong "Tang lễ của người An Nam"</a></Strong></span>
+                        <br>  <span> <Strong style="font-size: 14px;"><a style="color: whitesmoke;font-family: Kanit-Regular, Helvetica;line-height: 25px;text-decoration: none" href="">
+                        Có rất nhiều công trình nghiên cứu những chủ đề về “sự sống”, nhưng công trình khảo cứu về “sự chết” lại không có
+                            nhiều...</a></Strong></span>
+                    </div>
+                </div>
+                <hr style="height: 3px;color: white">
+                <div class="row">
+                    <div class="col-sm-1">
+                        <img style="width: 200px;" th:src="@{|/img/new2.webp|}">
+                    </div>
+                    <div class="col-sm-4" style="margin-left: 170px; width: 300px">
+                        <span> <Strong style="font-size: 18px;font-family: Kanit-Regular, Helvetica;"><a class="text-white" style="text-decoration: none" href="">
+                            Tín ngưỡng của sự chết trong "Tang lễ của người An Nam"</a></Strong></span>
+                        <br>  <span> <Strong style="font-size: 14px;"><a style="color: whitesmoke;font-family: Kanit-Regular, Helvetica;line-height: 25px;text-decoration: none" href="">
+                        Có rất nhiều công trình nghiên cứu những chủ đề về “sự sống”, nhưng công trình khảo cứu về “sự chết” lại không có
+                            nhiều...</a></Strong></span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<div th:replace="~{User-view/fragment/footer.html :: div}"></div>
+<th:block th:replace="~{User-view/style/user-scr :: html}"></th:block>
+</body>
+</html>
