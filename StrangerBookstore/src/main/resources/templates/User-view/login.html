@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Sign In</title>
+    <th:block th:replace="~{User-view/style/user-css :: html}"></th:block>
+    <link rel="stylesheet" href="/css/SignInTestSignInWithGoogle.css" type="text/css">
+</head>
+<body>
+    <div class="sign-in-test-sign-in-with-goo1">
+        <div class="sign-in-test-sign-in-with-goo-child1"></div>
+        <div class="sign-in-to1">Sign in to your account</div>
+        <img
+                class="sign-in-test-sign-in-with-goo-child2"
+                alt=""
+                src="/public/Screenshot_2023-10-01_145603-removebg-preview.png"
+        />
+
+        <div class="welcome-back1">Welcome Back!</div>
+        <div class="rectangle-parent2">
+            <a href="" class="group-child1">
+                <span class="sign-in-with2">Sign in with Google</span>
+            </a>
+        </div>
+        <img class="devicongoogle1" alt="" src="/public/devicon_google.svg" />
+
+        <div class="rectangle-parent3">
+            <a href="" class="group-child1">
+                <span class="sign-in-with3">Sign in with Facebook</span>
+            </a>
+        </div>
+        <img
+                class="logosfacebook-icon1"
+                alt=""
+                src="/public/logos_facebook.svg"
+        />
+        <form th:action="@{/login}" method="post" id="loginForm">
+            <span class="error" th:if="${!#strings.isEmpty(message)}" th:text="${message}"></span>
+            <div class="rectangle-parent1">
+                <input name="username" class="email1" placeholder="Email"/>
+                <span class="error" ></span>
+            </div>
+            <div class="rectangle-parent4">
+                <!-- <div class="group-child1"> -->
+                <input name="password" class="password1" id="passwordInput" placeholder="Password" type="password" />
+                <img  class="fluenteye-16-filled-icon1" alt="" src="/public/fluent_eye-16-filled.svg" id="eyeIcon" onclick="togglePasswordVisibility()" />
+                <span class="error"></span>
+                <!-- </div> -->
+            </div>
+            <div class="vector-group">
+                <button type="submit" class="btn login1">Login</button>
+            </div>
+        </form>
+        <div class="forget-your-password-group">
+            <a href="" class="forget-your-password1">Forget your password?</a>
+            <div class="dont-have-an1">Don’t have an account?</div>
+            <a th:href="@{/signup}" class="sign-up1">Sign up</a>
+        </div>
+        <div class="line-div"></div>
+    </div>
+<th:block th:replace="~{User-view/style/user-scr :: html}"></th:block>
+<script>
+</script>
+</body>
+</html>

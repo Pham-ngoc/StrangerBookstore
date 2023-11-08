@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Sign Up</title>
+    <th:block th:replace="~{User-view/style/user-css :: html}"></th:block>
+    <link rel="stylesheet" href="/css/SignUp.css" type="text/css">
+</head>
+<body>
+<div class="sign-up2">
+    <div class="sign-up-child">
+        <img class="sign-up-item" alt="" src="/public/Screenshot_2023-10-01_145603-removebg-preview.png" />
+    </div>
+    <div class="sign-up-for">Sign up for your own account</div>
+    <!-- <img class="sign-up-item" alt="" src="/public/Screenshot_2023-10-01_145603-removebg-preview.png" /> -->
+
+    <div class="rectangle-parent2">
+        <a href="" class="group-child1">
+            <span class="sign-in-with2">Sign up with Google</span>
+        </a>
+    </div>
+    <img class="devicongoogle1" alt="" src="./public/devicon_google.svg" />
+
+    <div class="rectangle-parent3">
+        <a href="" class="group-child1">
+            <span class="sign-in-with3">Sign up with Facebook</span>
+        </a>
+    </div>
+    <img
+            class="logosfacebook-icon1"
+            alt=""
+            src="./public/logos_facebook.svg"
+    />
+
+    <div class="line-div"></div>
+
+    <div class="welcome-to-stranger">Welcome to Stranger Bookstore!</div>
+    <form th:action="@{/doSignup}" method="post" th:object="${customer}">
+        <span class="error" th:if="${!#strings.isEmpty(message)}" th:text="${message}"></span>
+        <div class="rectangle-parent8">
+            <input class="email-confirm" th:field="*{customerName}" type="text" placeholder="Full name"/>
+            <span class="error" th:if="${#fields.hasErrors('customerName')}" th:errors="*{customerName}"></span>
+        </div>
+        <div class="rectangle-parent9">
+            <input class="email-confirm" th:field="*{phoneNumber}" type="text" placeholder="Phone number"/>
+            <span class="error" th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}"></span>
+        </div>
+        <div class="rectangle-parent11">
+            <input class="email-confirm" th:field="*{email}" type="email" placeholder="Email"/>
+            <span class="error" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
+        </div>
+        <div class="rectangle-parent6">
+            <input class="email-confirm" type="email" th:field="*{emailConfirm}" placeholder="Email Confirm"/>
+            <span class="error" th:if="${#fields.hasErrors('emailConfirm')}" th:errors="*{emailConfirm}"></span>
+            <span class="error" th:if="${emailMismatch != null}" th:text="${emailMismatch}"></span>
+        </div>
+        <div class="rectangle-parent12">
+            <input class="email-confirm" id="passwordInput" th:field="*{password}" type="password" placeholder="Password"/>
+            <img class="fluenteye-16-filled-icon2" alt="" src="/public/fluent_eye-16-filled.svg" id="eyeIcon" onclick="togglePasswordVisibility()" />
+            <span class="error" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></span>
+        </div>
+        <div class="rectangle-parent13">
+            <input class="email-confirm" id="passwordInput1" th:field="*{passwordConfirm}" type="password" placeholder="Password Confirm"/>
+            <img class="fluenteye-16-filled-icon2" alt="" src="/public/fluent_eye-16-filled.svg" id="eyeIcon" onclick="togglePasswordVisibility()" />
+            <span class="error" th:if="${#fields.hasErrors('passwordConfirm')}" th:errors="*{passwordConfirm}"></span>
+            <span class="error" th:if="${passwordMismatch != null}" th:text="${passwordMismatch}"></span>
+        </div>
+
+        <button type="submit" class="btn sign-up3">Sign up</button>
+    </form>
+</div>
+</body>
+</html>

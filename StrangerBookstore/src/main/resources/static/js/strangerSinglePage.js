@@ -1,55 +1,55 @@
 var app = angular.module("myApp",["ngRoute"]);
 app.config(function($routeProvider){
     $routeProvider
-    .when("/", {
+    .when("/admin", {
         templateUrl : "Admin-view/admin-dashboard.html",
         controller: "AdminHomeController"
     })
-    .when("/product",{
+    .when("/admin/product",{
         templateUrl: "Admin-view/admin-product.html",
         controller: "AdminProductController"
     })
-    .when("/categories", {
+    .when("/admin/categories", {
         templateUrl: "Admin-view/admin-categories.html",
         controller: "AdminCategoriesController"
     })
-    .when("/customer", {
+    .when("/admin/customer", {
        templateUrl: "Admin-view/admin-customer.html",
        controller: "AdminCustomerController"
     })
-    .when("/order",{
+    .when("/admin/order",{
         templateUrl: "Admin-view/admin-order.html",
         controller : "AdminOrderController"
     })
-    .when("/orderDetail",{
+    .when("/admin/orderDetail",{
         templateUrl: "Admin-view/admin-orderdetail.html",
         controller: "AdminOrderDetailController"
     })
-    .when("/news",{
+    .when("/admin/news",{
         templateUrl: "Admin-view/admin-news.html",
         controller: "AdminNewsController"
     })
-    .when("/pictureProduct",{
+    .when("/admin/pictureProduct",{
         templateUrl: "Admin-view/admin-pictureProduct.html",
         controller: "AdminPicProductController"
     })
-    .when("/shipInformation",{
+    .when("/admin/shipInformation",{
         templateUrl: "Admin-view/admin-shipInfor.html",
         controller: "AdminShipController"
     })
-    .when("/contact",{
+    .when("/admin/contact",{
         templateUrl: "Admin-view/admin-contact.html",
         controller: "AdminContactController"
     })
-    .when("/reviews",{
+    .when("/admin/reviews",{
         templateUrl: "Admin-view/admin-review.html",
         controller: "AdminReviewController"
     })
-    .when("/report",{
+    .when("/admin/report",{
         templateUrl: "Admin-view/admin-report.html",
         controller: "AdminReportController"
     })
     .otherwise({
-        redirectTo: "/"
+        redirectTo: "/admin"
     });
 });

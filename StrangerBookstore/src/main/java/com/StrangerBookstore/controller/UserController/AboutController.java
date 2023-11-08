@@ -6,12 +6,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class AboutController {
-    @RequestMapping ("/aboutus/about")
+    @RequestMapping ("/about")
     public String about(Model model){
         return "User-view/AboutUs/About.html";
     }
 
-    @RequestMapping("/aboutus/contact")
+    @RequestMapping("/about/contact")
     public String contact(){
         return "User-view/AboutUs/Contact.html";
     }

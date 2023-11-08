@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
 <div class="header">
     <div class="home-after-login-child-header"></div>
     <div class="stranger-bookstore"><a href="" class="stranger-title">Stranger Bookstore</a></div>
@@ -22,10 +23,10 @@
     </div>
     <div class="home1"><a href="" class="title">Home</a></div>
     <div class="shop1" id="shopText1"><a href="" class="title">Shop</a></div>
-    <a href="#" class="login">
+    <a th:if="${session.loggingCustomer == null}" th:href="@{/login}" class="login">
         Login
     </a>
-    <!-- <div class="dropdown-account">
+    <div th:if="${session.loggingCustomer != null}" class="dropdown-account">
       <a href="#" class="icon" onclick="dropdownAccount()">
         <img class="line-md-account" src="./public/linemdaccount.svg" />
       </a>
@@ -44,7 +45,7 @@
           </div>
         </div>
         <hr>
-        <div class="customer-list">
+        <div sec:authorize="hasRole('ROLE_USER')" class="customer-list">
           <a href="#" class="content-account">
             Profile
           </a>
@@ -54,22 +55,30 @@
           <a href="#" class="content-account">
             Wish list
           </a>
-          <a href="#" class="content-account">
+          <a th:href="@{/logout}" class="content-account">
             Log out
           </a>
         </div>
+          <div sec:authorize="hasRole('ROLE_ADMIN')" class="customer-list">
+              <a th:href="@{/}" class="content-account">
+                  Admin Manage
+              </a>
+              <a th:href="@{/logout}" class="content-account">
+                  Log out
+              </a>
+          </div>
       </div>
     </div>
 
-    <a href=""><img
+    <a th:if="${session.loggingCustomer != null}" href=""><img
       class="ioncart-outline-icon"
       alt=""
       src="./public/ioncartoutline.svg"
-    /></a> -->
+    /></a>
 
     <div class="header-item">
         <div class="dropdown-laguage">
-            <a href="#" onclick="dropdownLanguage()">
+            <a href="#" th:onclick="dropdownLanguage()">
                 <img class="flag-um" src="/public/flagum4x3.svg" />
             </a>
             <div class="dropdown-content-laguage" id="myDropdown">

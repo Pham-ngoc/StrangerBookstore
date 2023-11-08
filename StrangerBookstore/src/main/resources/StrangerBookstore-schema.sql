@@ -1,16 +1,15 @@
 create database StrangerBookstore;
 use StrangerBookstore;
+-- drop database strangerbookstore;
 -- Tạo bảng Customer
 CREATE TABLE `customer` (
     `customer_id` INT AUTO_INCREMENT PRIMARY KEY,
-    `customer_fullName` VARCHAR(255),
+    `customer_name` VARCHAR(255),
     `password` VARCHAR(255),
     `phone_number` VARCHAR(15),
     `email` VARCHAR(255),
-    `birthday` DATE,
     `status` VARCHAR(15),
-    `gender` VARCHAR(15),
-    `picture` VARCHAR(255), -- Để hình ảnh
+    `picture` TEXT, -- Để hình ảnh
     `role_id` INT,
     `create_at` TIMESTAMP,
     `create_by` VARCHAR(255),
@@ -69,8 +68,8 @@ CREATE TABLE `categories` (
 -- Tạo bảng address
 CREATE TABLE `address` (
     `address_id` INT AUTO_INCREMENT PRIMARY KEY,
-    `recipient_fullName` VARCHAR(255),
-    `recipient_phoneNumber` VARCHAR(15),
+    `recipient_full_name` VARCHAR(255),
+    `recipient_phone_number` VARCHAR(15),
     `address_detail` TEXT,
     `address_type` VARCHAR(255),
     `customer_id` INT,
@@ -89,12 +88,13 @@ CREATE TABLE `news` (
     `news_id` INT AUTO_INCREMENT PRIMARY KEY,
     `news_title` VARCHAR(255),
     `news_content` TEXT,
-    `news_picture` BLOB, -- Để hình ảnh
+    `news_picture` TEXT, -- Để hình ảnh
     `create_at` TIMESTAMP,
     `create_by` VARCHAR(255),
     `update_at` TIMESTAMP,
     `update_by` VARCHAR(255)
 );
+-- drop table news;
 
 -- Tạo bảng contact_us
 CREATE TABLE `contact_us` (
@@ -105,12 +105,11 @@ CREATE TABLE `contact_us` (
     `subject` VARCHAR(255),
     `message` TEXT,
     `status` VARCHAR(55),
-    `reate_at` TIMESTAMP,
+    `create_at` TIMESTAMP,
     `create_by` VARCHAR(255),
     `update_at` TIMESTAMP,
     `update_by` VARCHAR(255)
 );
-
 -- Tạo bảng `order`
 CREATE TABLE `order` (
     `order_id` INT AUTO_INCREMENT PRIMARY KEY,
@@ -146,7 +145,7 @@ CREATE TABLE `status_orders` (
 
 -- Tạo bảng order_detail
 CREATE TABLE `order_detail` (
-    `orderDetail_id` INT AUTO_INCREMENT PRIMARY KEY,
+    `order_details_id` INT AUTO_INCREMENT PRIMARY KEY,
     `order_id` INT,
     `product_id` INT,
     `quantity` INT,
@@ -170,7 +169,9 @@ REFERENCES product (product_id);
 CREATE TABLE `ship_infor` (
     `ship_id` INT AUTO_INCREMENT PRIMARY KEY,
     `address_id` INT,
-    `order_id` INT
+    `order_id` INT,
+    `status` varchar(10),
+    `note` varchar(255)
 );
 ALTER TABLE `ship_infor`
 ADD CONSTRAINT fk_shipInfor_order
@@ -178,13 +179,9 @@ FOREIGN KEY (order_id)
 REFERENCES `order` (order_id);
 
 ALTER TABLE `ship_infor`
-ADD CONSTRAINT fk_shipInforl_address
+ADD CONSTRAINT fk_shipInfor_address
 FOREIGN KEY (address_id)
 REFERENCES address (address_id);
-
-alter table `ship_infor`
-add column `status` varchar(10),
-add column `note` varchar(255);
 
 -- Tạo bảng cart
 CREATE TABLE `cart` (
@@ -225,6 +222,7 @@ CREATE TABLE `product_reviews` (
     `customer_id` INT,
     `review_content` TEXT,
     `star_for_product` INT,
+    `product_id` INT,
     `create_at` TIMESTAMP,
     `create_by` VARCHAR(255),
     `update_at` TIMESTAMP,
@@ -240,19 +238,15 @@ ADD CONSTRAINT fk_productReviews_product
 FOREIGN KEY (product_id)
 REFERENCES product (product_id);
 
-ALTER TABLE product_reviews
--- drop `picture_review`;
-ADD `product_id` INT AFTER `star_for_product`;
-
 -- Tạo bảng picture
-CREATE TABLE picture (
-    picture_id INT AUTO_INCREMENT PRIMARY KEY,
-    product_id INT,
-    picture_file BLOB, -- Để hình ảnh
-    create_at TIMESTAMP,
-    create_by VARCHAR(255),
-    update_at TIMESTAMP,
-    update_by VARCHAR(255)
+CREATE TABLE `picture` (
+    `picture_id` INT AUTO_INCREMENT PRIMARY KEY,
+	`product_id` INT,
+    `picture_file` TEXT, -- Để hình ảnh
+    `create_at` TIMESTAMP,
+    `create_by` VARCHAR(255),
+    `update_at` TIMESTAMP,
+    `update_by` VARCHAR(255)
 );
 ALTER TABLE `picture`
 ADD CONSTRAINT fk_picture_product

@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Stranger Bookstore</title>
-  <th:block th:replace="~{User-view/style/user-css :: html}"></th:block>
+    <th:block th:replace="~{User-view/style/user-css.html :: html}"></th:block>
+    <link type="text/css" rel="stylesheet" href="/css/style.css" >
 </head>
 <body>
 <div class="home-after-login">
@@ -46,7 +47,7 @@
         </div>
         <div  class="best-seller-item">
             <a href="">
-                <img width="330" height="560px" src="/img/product_img//de-men-phieu-luu-ky-bia-truoc.jpg" alt="">
+                <img width="330" height="560px" src="/img/product_img/de-men-phieu-luu-ky-bia-truoc.jpg" alt="">
             </a>
         </div>
         <div  class="best-seller-inner">
@@ -125,27 +126,6 @@
 
     <div th:replace="~{User-view/fragment/footer.html :: div}"></div>
 </div>
-<th:block th:replace="~{User-view/style/user-scr :: html}"></th:block>
-<script>
-    $(document).ready(function() {
-          var slides = $(".book-introduce, .book-introduce1, .book-introduce2");
-          var currentIndex = 0;
-
-          // Hiển thị lớp đầu tiên
-          showSlide(currentIndex);
-
-          // Hàm hiển thị lớp
-          function showSlide(index) {
-              slides.eq(index).animate({ opacity: 1 }, 500, function() {
-                  setTimeout(function() {
-                      slides.eq(index).animate({ opacity: 0 }, 500, function() {
-                          currentIndex = (currentIndex + 1) % slides.length;
-                          showSlide(currentIndex);
-                      });
-                  }, 5000); // Thời gian hiển thị mỗi lớp (10 giây)
-              });
-          }
-      });
-</script>
+<th:block th:replace="~{User-view/style/user-scr.html::html}"></th:block>
 </body>
 </html>

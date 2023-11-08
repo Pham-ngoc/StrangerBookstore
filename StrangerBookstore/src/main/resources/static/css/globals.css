@@ -16,14 +16,16 @@ body {
   --font-size-11xl: 30px;
 
   /* Colors */
+  --color-dimgray-100: #765249;
   --color-dimgray: #4b3029;
-  --color-black: #000;
   --color-tan: #cca98d;
-  --color-gainsboro: #d9d9d9;
-  --color-gray-200: rgba(0, 0, 0, 0.53);
-  --color-gray-100: rgba(0, 0, 0, 0.51);
-  --color-lightgray: #dbd5c6;
   --color-white: #fff;
+  --color-black: #000;
+  --color-gray-100: rgba(0, 0, 0, 0.51);
+  --color-gray-300: rgba(0, 0, 0, 0.39);
+  --color-gray-200: rgba(0, 0, 0, 0.53);
+  --color-lightgray: #dbd5c6;
+  --color-gainsboro: #d9d9d9;
 
   /* Border radiuses */
   --br-5xs: 8px;
