@@ -1,16 +1,59 @@
 package com.StrangerBookstore.controller.AdminController;
 
-import org.springframework.stereotype.Controller;
+import com.StrangerBookstore.model.Product;
+import com.StrangerBookstore.service.ProductService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
-@Controller
+import java.util.Collections;
+import java.util.List;
+import java.util.Optional;
+
+@RestController
+@CrossOrigin
 @RequestMapping("/admin")
 public class AdminProductController {
 
+
+    @Autowired
+    ProductService service;
+
     @GetMapping("/product")
-    public String product(Model model){
-        return "Admin-view/admin-product.html";
+    public ResponseEntity<List<Object>> product(Model model){
+        List<Product> pro= service.findAll();
+        return ResponseEntity.ok(Collections.singletonList(pro));
     }
+
+    @GetMapping("/product/{id}")
+    public ResponseEntity<Product> getCategory(@PathVariable Integer id) {
+        Optional<Product> productOptional = service.findbyId(id);
+        return productOptional.map(category -> new ResponseEntity<>(category, HttpStatus.OK))
+                .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
+    }
+
+    @PostMapping("/product")
+    public ResponseEntity<Product> create(@RequestBody Product product) {
+        Product createdproduct = service.create(product);
+        return ResponseEntity.ok(createdproduct);
+    }
+
+    @PutMapping("/product/{id}")
+    public ResponseEntity<Product> updateproduct(@PathVariable("id") Integer id, @RequestBody Product product) {
+        if(service. findbyId (id) == null) {
+            return ResponseEntity.notFound().build();
+        } else {
+            service.update(id, product);
+        }
+        return ResponseEntity.ok(product);
+    }
+
+
+    @DeleteMapping("/product/{id}")
+    public void deleteproduct(@PathVariable("id") Integer id) {
+        service.delete(id);
+    }
+
 }

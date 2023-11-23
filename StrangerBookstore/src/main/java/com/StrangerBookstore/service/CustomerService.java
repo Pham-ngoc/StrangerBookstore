@@ -1,5 +1,6 @@
 package com.StrangerBookstore.service;
 
+
 import com.StrangerBookstore.model.Customer;
 import com.StrangerBookstore.model.Roles;
 import com.StrangerBookstore.repository.CustomerRepository;
@@ -8,7 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDateTime;
+import java.util.List;
+import java.util.Optional;
 
 @Service
 public class CustomerService {
@@ -34,5 +36,30 @@ public class CustomerService {
             isCreate = true;
         }
         return isCreate;
+    }
+
+    public List<Customer> findAll() {
+        return customerRepository.findAll();
+    }
+
+    public Optional<Customer> findbyId(Integer id){
+        return customerRepository.findById(id);
+    }
+
+    public Customer create(Customer customer) {
+
+        return customerRepository.save(customer);
+    }
+
+    public Customer update(Integer id, Customer Customer) {
+        Customer model = customerRepository.findById(id).get();
+        model.setCustomerName(Customer.getCustomerName());
+        model.setPhoneNumber(Customer.getPhoneNumber());
+        model.setEmail(Customer.getEmail());
+        return customerRepository.save(model);
+    }
+
+    public void delete(Integer id) {
+        customerRepository.deleteById(id);
     }
 }

@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <div class="main-content">
             <div class="section__content section__content--p30">
@@ -79,8 +80,8 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr class="tr-shadow">
-                                        <td>Lori Lynch</td>
+                                    <tr class="tr-shadow"  ng-repeat="item in categories track by $index">>
+                                        <td>{{ item.categoryName}}</td>
                                         <td>Lori Lynch</td>
                                         <td>Lori Lynch</td>
                                         <td>Lori Lynch</td>
@@ -109,5 +110,4 @@
                 </div>
             </div>
         </div>
-
 </html>
