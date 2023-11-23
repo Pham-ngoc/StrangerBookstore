@@ -1,6 +1,4 @@
-
-<!DOCTYPE html>
-<div class="main-content">
+<div class="main-content" ng-controller="AdminCategoriesController">
             <div class="section__content section__content--p30">
                 <div class="container-fluid">
                     <!--FORM-->
@@ -26,7 +24,7 @@
                                     <div class="col-12 col-md-9">
                                         <input type="text" id="categoryName" name="text-input" placeholder="Category Name"
                                                class="form-control">
-<!--                                        <small class="form-text text-muted">This is a help text</small>-->
+<!--                                        <small class="form-text" style="color: red;">{{ errorMessage }}</small>-->
                                     </div>
                                 </div>
                             </form>
@@ -38,11 +36,11 @@
                             <button type="submit" class="btn btn-primary btn-sm">
                                 Update
                             </button>
-                            <button type="submit" class="btn btn-primary btn-sm">
-                                Reset
-                            </button>
-                            <button type="reset" class="btn btn-danger btn-sm">
+                            <button type="submit" class="btn btn-danger btn-sm">
                                 Delete
+                            </button>
+                            <button type="submit" class="btn btn-danger btn-sm">
+                                Reset
                             </button>
                         </div>
                     </div>
@@ -80,13 +78,17 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr class="tr-shadow"  ng-repeat="item in categories track by $index">>
-                                        <td>{{ item.categoryName}}</td>
-                                        <td>Lori Lynch</td>
-                                        <td>Lori Lynch</td>
-                                        <td>Lori Lynch</td>
-                                        <td>Lori Lynch</td>
-                                        <td>Lori Lynch</td>
+                                    <tr class="tr-shadow" ng-repeat="item in list">
+                                        <td>
+                                            <span>{{item.categoryId}}</span>
+                                        </td>
+                                        <td>{{item.categoryName}}</td>
+                                        <td>{{item.createBy}}</td>
+                                        <td>
+                                            <span>{{item.createAt}}</span>
+                                        </td>
+                                        <td>{{item.updateBy}}</td>
+                                        <td>{{item.updateAt}}</td>
                                         <td>
                                             <div class="table-data-feature">
                                                 <button class="item" data-toggle="tooltip" data-placement="top" title="Edit">
@@ -94,7 +96,6 @@
                                                 </button>
                                                 <button class="item" data-toggle="tooltip" data-placement="top" title="Delete">
                                                     <i class="zmdi zmdi-delete"></i>
-                                                </button>
                                                 </button>
                                             </div>
                                         </td>
@@ -110,4 +111,3 @@
                 </div>
             </div>
         </div>
-</html>

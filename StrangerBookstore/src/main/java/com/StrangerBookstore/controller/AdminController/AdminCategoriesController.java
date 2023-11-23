@@ -1,27 +1,37 @@
 package com.StrangerBookstore.controller.AdminController;
 
 import com.StrangerBookstore.model.Categories;
+import com.StrangerBookstore.model.Customer;
+import com.StrangerBookstore.repository.CategoriesRepository;
 import com.StrangerBookstore.service.CategoriesService;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 
 
 @RestController
-@CrossOrigin
+@CrossOrigin("*")
 @RequestMapping("/admin")
 public class AdminCategoriesController {
     @Autowired
     CategoriesService service;
 
+    @Autowired
+    CategoriesRepository categoriesRepository;
+
+    @Autowired
+    HttpSession session;
+
     @GetMapping("/categories")
-    public ResponseEntity<List<Object>> categories(Model model){
-        List<Categories> cat= service.findAll();
-        return ResponseEntity.ok(Collections.singletonList(cat));
+    public ResponseEntity<List<Categories>> categories(Model model){
+        return ResponseEntity.ok(categoriesRepository.findAll());
     }
 
     @GetMapping("/categories/{id}")
