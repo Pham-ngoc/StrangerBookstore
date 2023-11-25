@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Profile</title>
+    <th:block th:replace="~{User-view/style/user-css.html :: html}"></th:block>
+    <link type="text/css" rel="stylesheet" href="/css/profile-information.css" >
+</head>
+<body>
+<div class="profile-personal-information">
+    <div th:replace="~{User-view/fragment/header.html :: div}"></div>
+    <div class="row">
+        <div class="col-lg-3">
+            <div class="avata1">
+                <img src="/img/avata.jpg" alt="" class="avata-customer">
+            </div>
+            <div class="customer-full-name5">Customer Full Name</div>
+            <div class="profile-personal-information-child2"></div>
+            <a th:href="@{/profile/personal}" class="personal-information5" onclick="toggleActive(this)">Personal information</a>
+            <a th:href="@{/profile/address}" class="address-information5" onclick="toggleActive(this)">Address information</a>
+            <a th:href="@{/profile/wishlist}" class="my-wish-list5" id="my-wishlist"  onclick="toggleActive(this)">My wish list</a>
+        </div>
+        <div class="col-lg-9">
+            <div class="profile-personal-information-child">
+                <div class="recipients-full-name-3-parent">
+                    <b class="recipients-full-name3">RECIPIENT’S FULL NAME 3</b>
+                    <div class="address-detail-address">
+                        Address Detail: <span>Address Detail 3</span>
+                    </div>
+                    <div class="address-type-home">Address Type: <span>Home</span></div>
+                    <div class="recipients-phone-number3">
+                        Recipient’s Phone number: <span>Recipient's phone number 3</span>
+                    </div>
+                    <a href="#" class="edit">Edit</a>
+                    <a href="#" class="delete3">Delete</a>
+                    <div class="group-child31"></div>
+                </div>
+                <div class="recipients-full-name-3-parent">
+                    <b class="recipients-full-name3">RECIPIENT’S FULL NAME 3</b>
+                    <div class="address-detail-address">
+                        Address Detail: <span>Address Detail 3</span>
+                    </div>
+                    <div class="address-type-home">Address Type: <span>Home</span></div>
+                    <div class="recipients-phone-number3">
+                        Recipient’s Phone number: <span>Recipient's phone number 3</span>
+                    </div>
+                    <a href="#" class="edit">Edit</a>
+                    <a href="#" class="delete3">Delete</a>
+                    <div class="group-child31"></div>
+                </div>
+                <div class="recipients-full-name-3-parent">
+                    <b class="recipients-full-name3">RECIPIENT’S FULL NAME 3</b>
+                    <div class="address-detail-address">
+                        Address Detail: <span>Address Detail 3</span>
+                    </div>
+                    <div class="address-type-home">Address Type: <span>Home</span></div>
+                    <div class="recipients-phone-number3">
+                        Recipient’s Phone number: <span>Recipient's phone number 3</span>
+                    </div>
+                    <a href="#" class="edit">Edit</a>
+                    <a href="#" class="delete3">Delete</a>
+                    <div class="group-child31"></div>
+                </div>
+                <div class="pagination">
+                    <a href="#" class="page-button">1</a>
+                    <a href="#" class="page-button">2</a>
+                    <a href="#" class="page-button">3</a>
+                </div>
+                <a th:href="@{/profile/addressEdit}" class="add-other-address">Add other address</a>
+            </div>
+        </div>
+    </div>
+
+    <div th:replace="~{User-view/fragment/footer.html :: div}"></div>
+</div>
+<th:block th:replace="~{User-view/style/user-scr.html::html}"></th:block>
+</body>
+</html>

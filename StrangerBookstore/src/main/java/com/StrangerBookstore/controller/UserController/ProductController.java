@@ -6,8 +6,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class ProductController{
-    @RequestMapping("/ProductDetail")
+    @RequestMapping("/product-detail")
     public String proDetail(Model model){
-        return "User-view/Product/ProductDetail.html";
+        return "User-view/product-detail.html";
     }
+
+
 }

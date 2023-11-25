@@ -1,0 +1,379 @@
+.profile-personal-information-child {
+  border-radius: var(--br-3xs);
+  background-color: var(--color-lightgray);
+  width: 1090px;
+  height: 800px;
+}
+.email-confirm {
+  display: block;
+  padding: 15px 31px 15px 31px;
+  border-radius: 10px;
+  background-color: var(--color-white);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+  width: 683px;
+  font-size: 20px;
+  border-color: transparent;
+  font-family: var(--font-kanit);
+}
+.email-confirm:focus{
+  outline: none;
+}
+.error{
+  display:block;
+  color: red;
+  font-size: 20px;
+  font-family: var(--font-kanit);
+}
+.birthday {
+  display: block;
+  font-size: 25px;
+}
+.recipients-full-name3 {
+  font-size: 30px;
+}
+.address-detail-address,
+.address-type-home,
+.recipients-phone-number3{
+    font-size: 20px;
+}
+.edit {
+  position: absolute;
+  right: 220px;
+  font-size: 20px;
+  font-weight: 600;
+  padding: 20px 40px;
+  background-color: var(--color-dimgray);
+  color: var(--color-lightgray);
+  border-radius: 10px;
+  text-decoration: none;
+  width: 117px;
+}
+.delete3 {
+  position: absolute;
+  right: 60px;
+  font-size: 20px;
+  font-weight: 600;
+  padding: 20px 40px;
+  background-color: var(--color-dimgray);
+  color: var(--color-lightgray);
+  border-radius: 10px;
+  text-decoration: none;
+  width: 140px;
+}
+.add-other-address {
+  margin-top: 20px;
+  margin-left: 34%;
+  padding: 20px 40px;
+  color: var(--color-lightgray);
+  background-color: var(--color-dimgray);
+  text-decoration: none;
+  border-radius: 10px;
+  text-align:center;
+  display: block;
+  width: 330px;
+}
+.add-other-address:hover{
+    color: var(--color-dimgray); ;
+    background: var(--color-lightgray);
+}
+.edit:hover,
+.delete3:hover{
+    color: var(--color-dimgray); ;
+    background: var(--color-lightgray);
+    border: 2px solid var(--color-dimgray);
+}
+.group-child31 {
+  border-top: 1px solid var(--color-black);
+  box-sizing: border-box;
+  width: 1030px;
+  height: 1px;
+}
+.recipients-full-name-3-parent {
+  width: 100%;
+  display: flex;
+  flex-direction: column; /* Hiển thị dưới dạng hàng ngang */
+  color: var(--color-dimgray);
+  padding: 30px;
+}
+.customer-full-name5 {
+  position: absolute;
+  top: 180px;
+  left: 118px;
+  color: var(--color-lightgray);
+  font-size: 25px;
+}
+.profile-personal-information-item {
+  position: absolute;
+  top: 368px;
+  left: 51px;
+  border-radius: var(--br-3xs);
+  background-color: var(--color-lightgray);
+  width: 430px;
+  height: 75px;
+}
+.personal-information5 {
+  position: absolute;
+  color: var(--color-lightgray);
+  text-decoration: none;
+  top: 280px;
+  left: 30px;
+  font-size: 20px;
+  padding: 15px 30px;
+  border-radius: 10px;
+  width: 330px;
+}
+.personal-information5:hover,
+.address-information5:hover,
+.my-wish-list5:hover {
+  background-color: var(--color-lightgray);
+  color: var(--color-dimgray);
+}
+.my-wish-list5.active,
+.address-information5.active,
+.personal-information5.active {
+  background-color: var(--color-lightgray);
+  color: var(--color-dimgray);
+}
+.address-information5,
+.my-wish-list5 {
+  position: absolute;
+  top: 350px;
+  left: 30px;
+  font-size: 20px;
+  color: var(--color-lightgray);
+  text-decoration: none;
+  font-size: 20px;
+  padding: 15px 30px;
+  border-radius: 10px;
+  width: 330px;
+}
+.my-wish-list5 {
+  top: 420px;
+}
+.rectangle-parent37,
+.rectangle-parent36,
+.rectangle-parent35,
+.rectangle-parent34,
+.rectangle-parent33,
+.rectangle-parent32{
+  display: block;
+  width: 785px;
+  height: 139px;
+}
+.profile-personal-information-child2 {
+  position: absolute;
+  top: 257px;
+  left: 30px;
+  border-top: 1px solid var(--color-lightgray);
+  box-sizing: border-box;
+  width: 330px;
+  height: 1px;
+}
+.button{
+    display: flex;
+    margin-top: 100px;
+}
+.update-profile {
+  display: block;
+  font-size: 25px;
+  font-weight: 550;
+  color: var(--color-lightgray);
+  text-align: center;
+  padding: 20px 40px;
+  margin-right: 20px;
+  border-radius: 10px;
+  outline: none;
+  background-color: var(--color-dimgray);
+  cursor: pointer;
+}
+.change-password1 {
+  display: block;
+  font-size: 25px;
+  font-weight: 550;
+  color: var(--color-lightgray);
+  text-align: center;
+  background-color: var(--color-dimgray);
+  padding: 20px 40px;
+  border-radius: 10px;
+  cursor: pointer;
+  text-decoration:none;
+}
+.update-profile:hover,
+.change-password1:hover{
+  border: 1px solid var(--color-dimgray);
+  background-color: var(--color-lightgray);
+  color: var(--color-dimgray);
+}
+.home-after-login-child-header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 0 0 var(--br-11xl) var(--br-11xl);
+  background-color: var(--color-lightgray);
+  width: 100%;
+  height: 135px;
+}
+.avata1 {
+  position: absolute;
+  top: 165px;
+  left: 30px;
+  width: 70px; /* Kích thước hình tròn */
+  height: 70px; /* Kích thước hình tròn */
+  border-radius: 50%; /* Biến hình thành hình tròn */
+  overflow: hidden; /* Ẩn phần ngoài hình tròn */
+  margin-right: 20px; /* Khoảng cách giữa hình ảnh và thông tin */
+}
+form{
+    height:780px;
+}
+.avata1 img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Đảm bảo hình ảnh nằm trong hình tròn */
+}
+
+.avata-form {
+  position: relative;
+  display: inline-block;
+  top: 30px;
+  left: 30px;
+  width: 130px;
+  height: 130px; /* Kích thước hình tròn */
+  border-radius: 50%; /* Biến hình thành hình tròn */
+  overflow: hidden; /* Ẩn phần ngoài hình tròn */
+  margin-right: 20px; /* Khoảng cách giữa hình ảnh và thông tin */
+}
+.avata-form img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Đảm bảo hình ảnh nằm trong hình tròn */
+}
+.file-input{
+  display: none;
+}
+.file-label{
+width:100%;
+height:100%;
+}
+.fa-camera{
+  color: var(--color-lightgray);
+  font-size: 46px;
+}
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  display: none;
+}
+.file-label:hover .overlay {
+  display: flex;
+  }
+  .pagination {
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    display: flex;
+    /* height: 200px;
+    gap: 10px; /* Khoảng cách giữa các nút */
+  }
+
+  .page-button {
+    padding: 10px 30px;
+    margin-right: 15px;
+    border-radius: 10px;
+    color: var(--color-dimgray); ;
+    background: var(--color-lightgray); /* Màu chữ trắng */
+    border: none;
+    text-decoration: none;
+    cursor: pointer;
+    display: block;
+  }
+  .page-button:hover{
+    background-color: var(--color-dimgray); /* Màu nền của nút */
+    color: var(--color-lightgray);
+  }
+.col-lg-9{
+    margin-top: 10px;
+}
+.col-lg-8{
+    margin-top: 30px;
+}
+.product-wishlist{
+    padding: 30px 30px;
+    display: block;
+}
+.product-wishlist img{
+    width: 150px;
+    height: 200px;
+}
+.product-wishlist p{
+    margin: 0px;
+    font-size:25px;
+}
+.product-wishlist a{
+    font-size:25px;
+    text-decoration: none;
+    padding: 20px 40px;
+    background-color: var(--color-dimgray);
+    color: var(--color-lightgray);
+    border-radius:10px;
+    display: block;
+    text-align: center;
+}
+.product-wishlist hr{
+    color: var(--color-dimgray);
+}
+.form-changePass,
+.formAddress{
+    padding: 30px 50px;
+}
+.form-changePass .title-form{
+    font-size: 35px;
+}
+.form-changePass .body-formChange{
+    margin-top: 30px;
+}
+.form-changePass .pass-input{
+    position: relative;
+    width: 990px;
+    /* display: flex; */
+}
+.form-changePass .pass-input .fluenteye-16-filled-icon1{
+    position: absolute;
+    top: 13px;
+    right: 20px;
+}
+.form-changePass .password,
+.formAddress .fullName,
+.formAddress .phoneNumber,
+.formAddress .addressDetail{
+    width: 990px;
+}
+.form-changePass .button-changePass,
+.formAddress .button-address{
+    margin-top: 30px;
+}
+.formAddress .addressType{
+    margin-top: 15px;
+    font-size: 20px;
+}
+.formAddress .label-addressType{
+    font-size: 20px;
+}
+.profile-personal-information {
+  position: relative;
+  background-color: var(--color-dimgray);
+  width: 100%;
+  height: 1450px;
+  overflow: hidden;
+  text-align: left;
+  font-size: var(--font-size-11xl);
+  color: var(--color-dimgray);
+  font-family: var(--font-kanit);
+}

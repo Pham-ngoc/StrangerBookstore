@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Check out</title>
+    <th:block th:replace="~{User-view/style/user-css.html :: html}"></th:block>
+    <link type="text/css" rel="stylesheet" href="/css/check-out.css" >
+</head>
+<body>
+    <div class="check-out">
+        <div class="check-out-child">
+            <div th:replace="~{User-view/fragment/header.html :: div}"></div>
+            <div class="check-out1">
+                <span>Check out</span>
+            </div>
+        </div>
+        <div class="about-check-out row">
+            <div class="col-lg-7">
+                <div class="check-out-item">
+                    <span class="my-order">MY ORDER</span>
+                    <div class="infor-product-order row">
+                        <div class="pic-qty-order col-lg-6 row">
+                            <div class="pic-order col-lg-4">
+                                <img src="/img/product_img/cay-cam-ngot-cua-toi-bia-truoc.jpg" alt="">
+                            </div>
+                            <div class="name-qty-order col-lg-8">
+                                <p class="name-order">Name of Book</p>
+                                <p class="qty-order">Qty</p>
+                            </div>
+                        </div>
+                        <div class="price-order col-lg-3">
+                            <p class="price">Price</p>
+                        </div>
+                        <div class="total-order col-lg-3">
+                            <p class="total">Total</p>
+                        </div>
+                        <hr class="hr-order">
+                    </div>
+                    <div class="total-amount-order row">
+                        <div class="amount-order col-lg-6">
+                            <span>TOTAL AMOUNT</span>
+                        </div>
+                        <div class="amount-price-order col-lg-6">
+                            <span>0</span><span>đ</span>
+                        </div>
+                    </div>
+                    <a class="btn-order" href="">Order</a>
+                </div>
+            </div>
+            <div class="address-payment-order col-lg-5">
+                <div class="check-out-child1">
+                    <span class="my-order">DELIVERY ADDRESS</span>
+                    <div class="address-body">
+                        <p class="recipient-name">Recipient's full name</p>
+                        <p class="address-detail">Address Detail eeeeeeeeeeeeeeeeeeee
+                        eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
+                        eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
+                        eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee</p>
+                        <p class="recipient-phone">Recipient's phone number</p>
+                    </div>
+                    <a class="btn-change" data-bs-toggle="modal" data-bs-target="#exampleModal">Change</a>
+                </div>
+                <div class="check-out-inner">
+                    <span class="my-order">PAYMENT METHOD</span>
+                    <div class="payment-body">
+                            <label class="radio-container"> Pay cash
+                                <input type="radio" name="radio">
+                                <span class="checkmark"></span>
+                            </label>
+                            <label class="radio-container"> Pay with Momo wallet
+                                <input type="radio" name="radio">
+                                <span class="checkmark"></span>
+                            </label>
+                            <label class="radio-container"> Pay with Zal wallet
+                                <input type="radio" name="radio">
+                                <span class="checkmark"></span>
+                            </label>
+                            <label class="radio-container"> Pay with Momo wallet
+                                <input type="radio" name="radio">
+                                <span class="checkmark"></span>
+                            </label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">DELIVERY ADDRESS</h1>
+                            <button type="button" class="btn" data-bs-dismiss="modal" aria-label="Close">
+                                <i class="fa fa-close"></i>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="plans">
+                                <label class="plan basic-plan" for="basic">
+                                    <input checked type="radio" name="plan" id="basic" />
+                                    <div class="plan-content">
+                                        <div class="plan-details">
+                                            <span>Basic</span>
+                                            <p>For smaller business, with simple salaries and pay schedules.</p>
+                                            <p>For smaller business, with simple salaries and pay schedules.</p>
+                                        </div>
+                                    </div>
+                                </label>
+                                <label class="plan basic-plan" for="basic1">
+                                    <input checked type="radio" name="plan" id="basic1" />
+                                    <div class="plan-content">
+                                        <div class="plan-details">
+                                            <span>Basic</span>
+                                            <p>For smaller business, with simple salaries and pay schedules.</p>
+                                            <p>For smaller business, with simple salaries and pay schedules.</p>
+                                        </div>
+                                    </div>
+                                </label>
+                                <label class="plan basic-plan" for="basic2">
+                                    <input checked type="radio" name="plan" id="basic2" />
+                                    <div class="plan-content">
+                                        <div class="plan-details">
+                                            <span>Basic</span>
+                                            <p>For smaller business, with simple salaries and pay schedules.</p>
+                                            <p>For smaller business, with simple salaries and pay schedules.</p>
+                                        </div>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-save">Save changes</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div th:replace="~{User-view/fragment/footer.html :: div}"></div>
+    </div>
+<th:block th:replace="~{User-view/style/user-scr.html::html}"></th:block>
+</body>
+</html>

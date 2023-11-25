@@ -36,8 +36,14 @@ public class Product extends BaseEntity{
     @NotBlank(message = "Quantity In Stock must not be blank")
     private String quantityInStock;
 
+    @NotBlank(message = "Quantity In Stock must not be blank")
+    private String isbn;
+
     @NotBlank(message = "Description must not be blank")
     private String description;
+
+    @NotBlank(message = "Description must not be blank")
+    private double price;
 
     @NotBlank(message = "Category must not be blank")
     @ManyToOne(fetch = FetchType.EAGER, optional = true)
@@ -57,6 +63,8 @@ public class Product extends BaseEntity{
                 && Objects.equals(language, product.language)
                 && Objects.equals(condition, product.condition)
                 && Objects.equals(quantityInStock, product.quantityInStock)
+                && Objects.equals(isbn, product.isbn)
+                && Objects.equals(price, product.price)
                 && Objects.equals(description, product.description)
                 && Objects.equals(categories, product.categories);
 
@@ -64,7 +72,7 @@ public class Product extends BaseEntity{
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), productId, productName, author, publisher, language, condition, quantityInStock, description, categories);
+        return Objects.hash(super.hashCode(), productId, productName, author, publisher, language, condition, quantityInStock, isbn, price, description, categories);
     }
 
 }

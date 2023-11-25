@@ -7,13 +7,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class NewsController {
-    @RequestMapping("/new")
+    @RequestMapping("/news")
     public String homeNew(Model model){
-        return ("User-view/News/News.html");
+        return ("User-view/news.html");
     }
-    @RequestMapping("/newdetail")
+    @RequestMapping("/news-detail")
     public String newDetail(Model model){
-        return ("User-view/News/News-detail.html");
+        return ("User-view/news-detail.html");
     }
 
 }

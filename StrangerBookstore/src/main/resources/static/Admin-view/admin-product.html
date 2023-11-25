@@ -1,5 +1,6 @@
-<!DOCTYPE html>
-<div class="main-content">
+<!DOCTYPE html >
+<html xmlns:th="http://www.thymeleaf.org">
+<div class="main-content" ng-controller="AdminProductController">
             <div class="section__content section__content--p30">
                 <div class="container-fluid">
 <!--FORM-->
@@ -14,7 +15,8 @@
                                         <label for="disabled-input" class=" form-control-label">Product ID</label>
                                     </div>
                                     <div class="col-12 col-md-9">
-                                        <input type="text" id="disabled-input" name="disabled-input" disabled="" class="form-control">
+                                        <input type="text"  id="disabled-input" ng-model="form.productId" name="disabled-input" disabled="" class="form-control">
+
                                     </div>
                                 </div>
                                 <div class="row form-group">
@@ -22,7 +24,7 @@
                                         <label for="productName" class=" form-control-label">Product Name</label>
                                     </div>
                                     <div class="col-12 col-md-9">
-                                        <input type="text" id="productName" name="text-input" placeholder="Product Name"
+                                        <input type="text" id="productName" ng-model="form.productName" name="text-input" placeholder="Product Name"
                                                class="form-control">
 <!--                                        <small class="form-text text-muted">This is a help text</small>-->
                                     </div>
@@ -32,7 +34,7 @@
                                         <label for="author" class=" form-control-label">Author</label>
                                     </div>
                                     <div class="col-12 col-md-9">
-                                        <input type="text" id="author" name="text-input" placeholder="Author"
+                                        <input type="text" id="author" ng-model="form.author"  name="text-input" placeholder="Author"
                                                class="form-control">
                                         <!-- <small class="form-text text-muted">This is a help text</small>-->
                                     </div>
@@ -42,7 +44,7 @@
                                         <label for="publisher " class=" form-control-label">Publisher </label>
                                     </div>
                                     <div class="col-12 col-md-9">
-                                        <input type="text" id="publisher " name="text-input" placeholder="Publisher"
+                                        <input type="text" id="publisher " ng-model="form.publisher"  name="text-input" placeholder="Publisher"
                                                class="form-control">
                                         <!-- <small class="form-text text-muted">This is a help text</small>-->
                                     </div>
@@ -52,7 +54,7 @@
                                         <label for="language " class=" form-control-label">Language </label>
                                     </div>
                                     <div class="col-12 col-md-9">
-                                        <input type="text" id="language " name="text-input" placeholder="Language"
+                                        <input type="text" id="language " ng-model="form.language"  name="text-input" placeholder="Language"
                                                class="form-control">
                                         <!-- <small class="form-text text-muted">This is a help text</small>-->
                                     </div>
@@ -62,7 +64,7 @@
                                         <label for="condition " class=" form-control-label">Condition</label>
                                     </div>
                                     <div class="col-12 col-md-9">
-                                        <input type="text" id="condition " name="text-input" placeholder="Condition"
+                                        <input type="text" id="condition " ng-model="form.condition"  name="text-input" placeholder="Condition"
                                                class="form-control">
                                         <!-- <small class="form-text text-muted">This is a help text</small>-->
                                     </div>
@@ -72,7 +74,7 @@
                                         <label for="quantityInStock " class=" form-control-label">Quantity in Stock</label>
                                     </div>
                                     <div class="col-12 col-md-9">
-                                        <input type="text" id="quantityInStock " name="text-input" placeholder="Quantity in Stock"
+                                        <input type="text" id="quantityInStock " ng-model="form.quantityInStock"  name="text-input" placeholder="Quantity in Stock"
                                                class="form-control">
                                         <!-- <small class="form-text text-muted">This is a help text</small>-->
                                     </div>
@@ -82,7 +84,7 @@
                                         <label for="ISBN" class=" form-control-label">ISBN</label>
                                     </div>
                                     <div class="col-12 col-md-9">
-                                        <input type="text" id="ISBN" name="text-input" placeholder="ISBN"
+                                        <input type="text" id="ISBN" ng-model="form.isbn"  name="text-input" placeholder="ISBN"
                                                class="form-control">
                                         <!-- <small class="form-text text-muted">This is a help text</small>-->
                                     </div>
@@ -92,7 +94,7 @@
                                         <label for="description" class=" form-control-label">Description</label>
                                     </div>
                                     <div class="col-12 col-md-9">
-                                            <textarea name="textarea-input" id="description" rows="9"
+                                            <textarea name="textarea-input" ng-model="form.description"  id="description" rows="9"
                                                       placeholder="Description..." class="form-control"></textarea>
                                     </div>
                                 </div>
@@ -101,51 +103,35 @@
                                         <label for="price" class=" form-control-label">Price</label>
                                     </div>
                                     <div class="col-12 col-md-9">
-                                        <input type="text" id="price" name="text-input" placeholder="Price"
+                                        <input type="text" id="price" ng-model="form.price"  name="text-input" placeholder="Price"
                                                class="form-control">
                                         <!-- <small class="form-text text-muted">This is a help text</small>-->
                                     </div>
                                 </div>
                                 <div class="row form-group">
                                     <div class="col col-md-3">
-                                        <label for="categoryId " class=" form-control-label">Category</label>
+                                        <label for="category" class=" form-control-label">Category</label>
                                     </div>
                                     <div class="col-12 col-md-9">
-                                        <select name="select" id="categoryId " class="form-control">
-                                            <option value="0">Please select</option>
-                                            <option value="1">Option #1</option>
-                                            <option value="2">Option #2</option>
-                                            <option value="3">Option #3</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="row form-group">
-                                    <div class="col col-md-3">
-                                        <label for="pictureId " class=" form-control-label">Picture Product</label>
-                                    </div>
-                                    <div class="col-12 col-md-9">
-                                        <select name="select" id="pictureId " class="form-control">
-                                            <option value="0">Please select</option>
-                                            <option value="1">Option #1</option>
-                                            <option value="2">Option #2</option>
-                                            <option value="3">Option #3</option>
+                                        <select ng-model="form.categories.categoryId" name="select" id="category" class="form-control">
+                                            <option ng-repeat="c in categories" ng-value="c.categoryId">{{c.categoryName}}</option>
                                         </select>
                                     </div>
                                 </div>
                             </form>
                         </div>
                         <div class="card-footer">
-                            <button type="submit" class="btn btn-primary btn-sm">
-                                Create
+                            <button type="submit" ng-click="create()" class="btn btn-primary btn-sm">
+                                <i class="fa fa-dot-circle-o"></i> Create
                             </button>
-                            <button type="submit" class="btn btn-primary btn-sm">
-                                Update
+                            <button type="submit" ng-click="update()" class="btn btn-primary btn-sm">
+                                <i class="fa fa-dot-circle-o"></i> Update
                             </button>
-                            <button type="submit" class="btn btn-primary btn-sm">
-                                Reset
+                            <button type="submit" ng-click="delete(form.productId)" class="btn btn-danger btn-sm">
+                                <i class="fa fa-ban"></i> Delete
                             </button>
-                            <button type="reset" class="btn btn-danger btn-sm">
-                                 Delete
+                            <button type="submit" ng-click="reset()" class="btn btn-danger btn-sm">
+                                <i class="fa fa-ban"></i> Reset
                             </button>
                         </div>
                     </div>
@@ -182,29 +168,30 @@
                                         <th>Quantity in Stock</th>
                                         <th>ISBN</th>
                                         <th>Description</th>
+                                        <th>Price</th>
                                         <th>Category</th>
                                         <th></th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr class="tr-shadow">
-                                        <td>Lori Lynch</td>
-                                        <td>Lori Lynch</td>
-                                        <td>Lori Lynch</td>
-                                        <td>Lori Lynch</td>
-                                        <td>Lori Lynch</td>
-                                        <td>Lori Lynch</td>
-                                        <td>Lori Lynch</td>
-                                        <td>Lori Lynch</td>
-                                        <td>Lori Lynch</td>
-                                        <td>Lori Lynch</td>
-
+                                    <tr class="tr-shadow" ng-repeat="item in list">
+                                        <td>{{item.productId}}</td>
+                                        <td>{{item.productName}}</td>
+                                        <td>{{item.author}}</td>
+                                        <td>{{item.publisher}}</td>
+                                        <td>{{item.language}}</td>
+                                        <td>{{item.condition}}</td>
+                                        <td>{{item.quantityInStock}}</td>
+                                        <td>{{item.isbn}}</td>
+                                        <td>{{item.description}}</td>
+                                        <td>{{item.price}}</td>
+                                        <td>{{item.categories.categoryName}}</td>
                                         <td>
                                             <div class="table-data-feature">
-                                                <button class="item" data-toggle="tooltip" data-placement="top" title="Edit">
+                                                <button class="item" ng-click="edit(item.productId)" data-toggle="tooltip" data-placement="top" title="Edit">
                                                     <i class="zmdi zmdi-edit"></i>
                                                 </button>
-                                                <button class="item" data-toggle="tooltip" data-placement="top" title="Delete">
+                                                <button class="item" ng-click="delete(item.productId)" data-toggle="tooltip" data-placement="top" title="Delete">
                                                     <i class="zmdi zmdi-delete"></i>
                                                 </button>
                                             </div>

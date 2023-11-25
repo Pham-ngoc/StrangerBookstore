@@ -8,11 +8,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class AboutController {
     @RequestMapping ("/about")
     public String about(Model model){
-        return "User-view/AboutUs/About.html";
+        return "User-view/about-us.html";
     }
 
-    @RequestMapping("/about/contact")
+    @RequestMapping("/contact")
     public String contact(){
-        return "User-view/AboutUs/Contact.html";
+        return "User-view/contact.html";
     }
 }

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Contact</title>
+  <th:block th:replace="~{User-view/style/user-css.html :: html}"></th:block>
+  <link type="text/css" rel="stylesheet" href="/css/contact.css" >
+</head>
+<body>
+<div class="about-us-contact-us">
+  <div class="about-us-contact-us-child">
+    <div th:replace="~{User-view/fragment/header.html :: div}"></div>
+    <div class="contact-us">
+      <span>Contact us</span>
+    </div>
+  </div>
+
+  <div class="body">
+    <div class="group-child">
+      <form class="form-contact">
+        <div class="rectangle-parent">
+          <input class="email-confirm" type="text" placeholder="Full name"/>
+          <span class="error">Test error</span>
+        </div>
+        <div class="rectangle-parent">
+          <input class="email-confirm" type="text" placeholder="Phone number"/>
+          <span class="error">Test error</span>
+        </div>
+        <div class="rectangle-parent">
+          <input class="email-confirm" type="text" placeholder="Email"/>
+          <span class="error">Test error</span>
+        </div>
+        <div class="rectangle-parent">
+          <textarea class="email-confirm" type="text" placeholder="Message" rows="9"></textarea>
+          <span class="error">Test error</span>
+        </div>
+
+        <button type="submit" class="btn btn-send">Send Message</button>
+      </form>
+
+      <div class="row contact">
+        <div class="col-lg-4 phone">
+          <img class="phone-icon" alt="" src="/public/phphonelight1.svg"/>
+          <div class="phone-detail">(+84) 964645135</div>
+        </div>
+        <div class="col-lg-4 mail">
+          <img class="mail-icon" alt="" src="/public/materialsymbolsmailoutline1.svg"/>
+          <a class="mail-detail" href="mailto:strangerbook@gmail.com" target="_blank">
+            strangerbook@gmail.com
+          </a>
+        </div>
+        <div class="col-lg-4 address">
+          <img class="address-icon" alt="" src="/public/mdiaddressmarker1.svg"/>
+          <div class="address-detail">
+            <p class="district">12 District, Ho Chi Minh City, Viet Nam</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div th:replace="~{User-view/fragment/footer.html :: div}"></div>
+</div>
+<th:block th:replace="~{User-view/style/user-scr.html::html}"></th:block>
+</body>
+</html>

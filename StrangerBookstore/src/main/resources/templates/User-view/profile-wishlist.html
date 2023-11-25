@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Profile</title>
+    <th:block th:replace="~{User-view/style/user-css.html :: html}"></th:block>
+    <link type="text/css" rel="stylesheet" href="/css/profile-information.css" >
+</head>
+<body>
+<div class="profile-personal-information">
+    <div th:replace="~{User-view/fragment/header.html :: div}"></div>
+    <div class="row">
+        <div class="col-lg-3">
+            <div class="avata1">
+                <img src="/img/avata.jpg" alt="" class="avata-customer">
+            </div>
+            <div class="customer-full-name5">Customer Full Name</div>
+            <div class="profile-personal-information-child2"></div>
+            <a th:href="@{/profile/personal}" class="personal-information5" onclick="toggleActive(this)">Personal information</a>
+            <a th:href="@{/profile/address}" class="address-information5" onclick="toggleActive(this)">Address information</a>
+            <a th:href="@{/profile/wishlist}" class="my-wish-list5" id="my-wishlist"  onclick="toggleActive(this)">My wish list</a>
+        </div>
+        <div class="col-lg-9">
+            <div class="profile-personal-information-child">
+                <div class="product-wishlist">
+                    <div class="row">
+                        <div class="col-md-2">
+                            <img src="/img/product_img/thien-tai-ben-trai-ke-dien-ben-phai-bia-truoc.jpg" alt="product-picture">
+                        </div>
+                        <div class="col-md-5">
+                            <p>Name of book</p>
+                            <p>Price</p>
+                        </div>
+                        <div class="col-md-3">
+                            <a href="">Add to cart</a>
+                        </div>
+                        <div class="col-md-2">
+                            <a href="">Delete</a>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-2">
+                            <img src="/img/product_img/thien-tai-ben-trai-ke-dien-ben-phai-bia-truoc.jpg" alt="product-picture">
+                        </div>
+                        <div class="col-md-5">
+                            <p>Name of book</p>
+                            <p>Price</p>
+                        </div>
+                        <div class="col-md-3">
+                            <a href="">Add to cart</a>
+                        </div>
+                        <div class="col-md-2">
+                            <a href="">Delete</a>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-2">
+                            <img src="/img/product_img/thien-tai-ben-trai-ke-dien-ben-phai-bia-truoc.jpg" alt="product-picture">
+                        </div>
+                        <div class="col-md-5">
+                            <p>Name of book</p>
+                            <p>Price</p>
+                        </div>
+                        <div class="col-md-3">
+                            <a href="">Add to cart</a>
+                        </div>
+                        <div class="col-md-2">
+                            <a href="">Delete</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pagination">
+                    <a href="#" class="page-button">1</a>
+                    <a href="#" class="page-button">2</a>
+                    <a href="#" class="page-button">3</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div th:replace="~{User-view/fragment/footer.html :: div}"></div>
+</div>
+<th:block th:replace="~{User-view/style/user-scr.html::html}"></th:block>
+<script>
+    // JavaScript
+      document.getElementById('fileInput').addEventListener('change', handleFileSelect);
+
+        function handleFileSelect() {
+        const fileInput = document.getElementById('fileInput');
+        const avataImage = document.getElementById('avataImage');
+
+        const selectedFile = fileInput.files[0];
+
+        if (selectedFile) {
+            const reader = new FileReader();
+
+            reader.onload = function (e) {
+            avataImage.src = e.target.result;
+            };
+
+            reader.readAsDataURL(selectedFile);
+        }
+      }
+</script>
+</body>
+</html>

@@ -1,125 +1,153 @@
-html{
-  zoom: 75%;
-}
 .footer-child,
 .footer-item {
   position: absolute;
-  top: 0;
-  left: 1px;
+  bottom: 0px;
+  left: 0px;
   background-color: var(--color-black);
   width: 100%;
-  height: 494px;
+  height: 400px;
 }
 .footer-item {
-  top: 457px;
+  bottom: 0;
   left: 0;
   background-color: var(--color-lightgray);
   width: 100%;
   height: 37px;
 }
 .district-ho-chi {
+  font-size: 18px;
   width: 320px;
   margin: 0;
 }
 .district-ho-chi-container {
   position: absolute;
-  top: 278px;
-  left: 1600px;
+  top: 200px;
+  left: 1187px;
 }
 .bn-quyn-thuc,
 .information-of-website {
   position: absolute;
-  top: 158px;
-  left: 103px;
+  top: 135px;
+  left: 40px;
+  font-size: 18px;
+  text-align: justify;
+  width: 500px;
+}
+.more-about-footer{
+  text-decoration: none;
+  color: var(--color-lightgray);
+  font-size: 15px;
+}
+.more-about-footer:hover{
+  color: var(--color-tan);
+
+}
+.more-about-footer{
+  text-decoration: none;
+  color: var(--color-lightgray);
+  font-size: 15px;
 }
 .bn-quyn-thuc {
-  top: 461px;
-  left: 860px;
-  font-size: var(--font-size-xl);
+  top: 5px;
+  left: 605px;
+  font-size: 18px;
   color: var(--color-black);
 }
 .news {
   position: absolute;
-  top: 256px;
-  left: 1050px;
+  top: 188px;
+  left: 760px;
   text-decoration: none;
   color: var(--color-lightgray);
+  font-size: 18px;
 }
 .about-us,
 .quick-links {
   position: absolute;
   top: 63px;
-  left: 106px;
-  font-size: var(--font-size-16xl);
+  left: 40px;
+  font-size: 30px;
   text-decoration: none;
   color: var(--color-lightgray);
 }
 .quick-links {
-  left: 1050px;
+  left: 760px;
 }
 .career,
 .shop {
   position: absolute;
   top: 305px;
-  left: 746px;
+  left: 760px;
   text-decoration: none;
   color: var(--color-lightgray);
+  font-size: 18px;
 }
 .shop {
-  top: 207px;
-  left: 1050px;
+  top: 160px;
+  left: 760px;
 }
 .div,
 .home {
   position: absolute;
-  top: 158px;
-  left: 1050px;
+  top: 135px;
+  left: 760px;
   text-decoration: none;
   color: var(--color-lightgray);
+  font-size: 18px;
 }
 .div{
-  left: 1595px;
+  left: 1187px;
+  font-size: 18px;
 }
 .strangerbookgmailcom {
   position: absolute;
-  top: 219px;
-  left: 1599px;
+  top: 168px;
+  left: 1187px;
   color: inherit;
+  font-size: 18px;
   text-decoration: none;
 }
 .icbaseline-facebook-icon {
   position: absolute;
-  top: 335px;
-  left: 106px;
-  width: 36px;
-  height: 36px;
+  bottom: 80px;
+  left: 40px;
+  width: 24px;
+  height: 24px;
+  overflow: hidden;
+}
+.icbaseline-tiktok-icon {
+  position: absolute;
+  bottom: 80px;
+  left: 120px;
+  width: 24px;
+  height: 24px;
   overflow: hidden;
 }
 .bic-circle-icon,
 .material-symbolsmail-outline-icon,
 .mdiinstagram-icon {
   position: absolute;
-  top: 335px;
-  left: 161px;
-  width: 36px;
-  height: 36px;
+  bottom: 80px;
+  left: 82px;
+  width: 24px;
+  height: 24px;
   overflow: hidden;
 }
 .bic-circle-icon,
 .material-symbolsmail-outline-icon {
-  top: 220px;
-  left: 1530px;
+  top: 170px;
+  left: 1148px;
 }
 .bic-circle-icon {
-  top: 466px;
-  left: 825px;
-  width: 20px;
-  height: 20px;
+  top: 12px;
+  left: 579px;
+  width: 15px;
+  height: 15px;
 }
 .footer-inner {
   position: absolute;
-  top: 126px;
-  left: 105.5px;
+  top: 120px;
+  left: 40px;
   border-top: 1px solid var(--color-lightgray);
   box-sizing: border-box;
   width: 148px;
@@ -128,157 +156,127 @@ html{
 .contact-infor {
   position: absolute;
   top: 63px;
-  left: 1530px;
-  font-size: var(--font-size-16xl);
+  left: 1148px;
+  font-size: 30px;
 }
 .footer-child1,
 .line-div {
   position: absolute;
-  top: 126.5px;
-  left: 1530px;
+  top: 120px;
+  left: 1148px;
   border-top: 1px solid var(--color-lightgray);
   box-sizing: border-box;
   width: 148px;
   height: 1px;
 }
 .footer-child1 {
-  left: 1050px;
+  left: 760px;
 }
-.icbaseline-tiktok-icon,
 .mdiaddress-marker-icon,
 .phphone-light-icon {
   position: absolute;
-  top: 158px;
-  left: 1530px;
-  width: 36px;
-  height: 36px;
+  top: 138px;
+  left: 1148px;
+  width: 24px;
+  height: 24px;
   overflow: hidden;
 }
-.icbaseline-tiktok-icon,
 .mdiaddress-marker-icon {
-  top: 282px;
-}
-.icbaseline-tiktok-icon {
-  top: 335px;
-  left: 213px;
+  top: 202px;
 }
 .footer {
-  position: absolute;
-  top: 3863px;
-  left: -1px;
   width: 100%;
-  height: 494px;
+  height: 400px;
   text-align: left;
   color: var(--color-lightgray);
+  display: block;
+  margin-top: 30px;
+}
+.news-list-content{
+    width: max-content;
+    height: max-content;
 }
 .news2 {
-  position: absolute;
-  top: 0;
-  left: 618px;
-  font-size: var(--font-size-21xl);
+  font-size: 30px;
   color: var(--color-white);
+  margin-bottom: 30px;
 }
-.news-child,
-.news-inner,
-.news-item {
-  position: absolute;
-  top: 120px;
-  left: 942px;
-  background-color: var(--color-gainsboro);
-  width: 400px;
-  height: 400px;
-}
-.news-inner,
-.news-item {
-  left: 471px;
-}
-.news-inner {
-  left: 0;
+/* CSS */
+.news-child {
+  display: inline-block;
 }
 
-/* Định dạng hình ảnh */
-.news-child img,
-.news-inner img,
-.news-item img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover; /* Đảm bảo hình ảnh đổ đầy khu vực */
-  transition: transform 0.3s;
+.news-child a {
+  text-decoration: none;
 }
 
-/* Định dạng lớp đen mờ và chữ */
-.news-child .overlay,
-.news-inner .overlay,
-.news-item .overlay  {
-  position: absolute;
-  top: 0;
-  left: 0;
+.news-child img {
+  width: 350px;
+  height: 300px;
+  transition: opacity 0.3s; /* Tạo hiệu ứng mờ mịn khi hover */
+}
+
+.news-child .overlay {
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.6); /* Màu đen mờ với độ trong suốt */
-  opacity: 0;
-  transition: opacity 0.3s;
-  display: flex;
+  background-color: rgba(0, 0, 0, 0.5); /* Màu nền đen với độ mờ */
+  color: white;
+  text-align: center;
+  opacity: 0; /* Ban đầu ẩn overlay */
+  transition: opacity 0.3s; /* Tạo hiệu ứng hiển thị khi hover */
+}
+
+.news-child:hover img {
+  opacity: 0.5; /* Khi hover, làm mờ ảnh */
+}
+
+.news-child:hover .overlay {
+  opacity: 1; /* Khi hover, hiển thị overlay */
+}
+
+.news-child .title {
+}
+.news1 {
+  width: 100%;
+  height: max-content;
+  display: grid;
   align-items: center;
   justify-content: center;
-  text-align: center;
-}
-
-.news-child .overlay .title,
-.news-inner .overlay .title,
-.news-item .overlay .title {
-  color: var(--color-lightgray); /* Màu chữ trắng */
-  font-weight: 500;
-  font-size: 30px;
-}
-
-/* Hiệu ứng khi hover */
-.news-child:hover .overlay,
-.news-inner:hover .overlay,
-.news-item:hover .overlay {
-  opacity: 1; /* Hiển thị lớp đen mờ */
-}
-
-.news1 {
-  position: absolute;
-  top: 3253px;
-  left: 375px;
-  width: 1342px;
-  height: 520px;
+  margin: 30px 0px 30px 0px;
 }
 .about-us-child {
-  top: 0;
-  left: 0;
   background-color: var(--color-lightgray);
-  width: 1440px;
-  height: 774px;
+  width: 1300px;
+  height: max-content;
+  border-radius: 10px;
 }
-.about-us2,
-.information-of-website1 {
-  position: absolute;
-  top: 197px;
-  left: 812px;
+.information-of-website1 p{
+    text-align: justify;
+    font-size: 20px;
+    width: 450px;
 }
 .about-us2 {
-  top: 53px;
-  left: 611px;
-  font-size: var(--font-size-21xl);
+  font-size: 30px;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  height: max-content;
+  padding: 30px 0px;
 }
 .about-us-item {
-  position: absolute;
-  top: calc(50% + 202px);
-  left: calc(50% + 92px);
-  border-radius: var(--br-11xl);
+  border-radius: 25px;
+  width: 200px;
+  height: 60px;
+  font-size: 20px;
   background-color: var(--color-tan);
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25), 0 4px 4px rgba(0, 0, 0, 0.25);
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 214px;
-  height: 62px;
   color: var(--color-dimgray);
   text-decoration: none;
   transition: 0.3s;
+  margin: 50px 0px 50px 0px;
 }
 .about-us-item:hover{
   transition: 0.3s;
@@ -286,9 +284,6 @@ html{
   color: var(--color-lightgray);
 }
 .show-more {
-  position: absolute;
-  top: 604px;
-  left: 847px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -296,165 +291,110 @@ html{
   height: 31px;
 }
 .about-us-inner {
-  position: absolute;
-  top: 155px;
-  left: 98px;
-  background-color: var(--color-gainsboro);
-  width: 582px;
-  height: 496px;
+  background-color: var(--color-dimgray);
+  width: 500px;
+  height: 400px;
+}
+.about-us-inner img{
+    width: 100%;
+    height:100%;
+}
+.infor-about{
+    padding: 0px 0px 60px 0px;
+}
+.about-for-logo{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+.about-summary{
+    display: grid;
+    align-items: center;
+    margin-top: 50px;
 }
 .about-us1 {
-  position: absolute;
-  top: 2419px;
-  left: 330px;
-  width: 1440px;
-  height: 774px;
+  width: 100%;
+  height: max-content;
+  display: flex;
+  margin-top: 30px;
+  align-items: center;
+  justify-content: center;
 }
 .the-best-seller {
-  position: absolute;
-  top: 0;
-  left: 362px;
-  font-size: var(--font-size-21xl);
+  font-size: 30px;
+  margin-top: 30px;
 }
 .best-seller-child,
-.best-seller-inner,
-.best-seller-item {
-  position: absolute;
-  top: 111px;
-  left: 0;
-  background-color: var(--color-gainsboro);
-  width: 330px;
-  height: 560px;
-}
-
-.best-seller-child a img,
-.best-seller-child1 a img,
-.best-seller-child2 a img,
-.best-seller-inner a img,
-.best-seller-item a img,
-.rectangle-div a img {
+.name-of-book{
+  width: 270px;
+  height: 430px;
+  overflow: hidden;
+  display: block;
+ }
+.best-seller-child img{
+  width: 100%;
+  height: 100%;
   -webkit-transform: scale(1);
 	transform: scale(1);
 	-webkit-transition: .3s ease-in-out;
 	transition: .3s ease-in-out;
 }
 
-.best-seller-child a,
-.best-seller-child1 a,
-.best-seller-child2 a,
-.best-seller-inner a,
-.best-seller-item a,
-.rectangle-div a {
-  overflow: hidden;
-  display: inline-block;
-}
-
-.best-seller-child a:hover img,
-.best-seller-child1 a:hover img,
-.best-seller-child2 a:hover img,
-.best-seller-inner a:hover img,
-.best-seller-item a:hover img,
-.rectangle-div a:hover img {
+.best-seller-child:hover img{
+  height: 100%;
   -webkit-transform: scale(1.1);
 	transform: scale(1.1);
 }
-
-.best-seller-inner,
-.best-seller-item {
-  left: 407px;
+.book-seller{
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    width: max-content;
+    margin: 0px 25px;
 }
-.best-seller-inner {
-  left: 814px;
+.seller-list{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 30px;
 }
 .name-of-book {
-  position: absolute;
-  top: 708px;
-  left: 82px;
-}
-.name-of-book1,
-.name-of-book2 {
-  position: absolute;
-  top: 708px;
-  left: 493px;
-}
-.name-of-book2 {
-  left: 899px;
-}
-.best-seller-child1,
-.best-seller-child2,
-.rectangle-div {
-  position: absolute;
-  top: 824px;
-  left: 0;
-  background-color: var(--color-gainsboro);
-  width: 330px;
-  height: 560px;
-}
-
-
-.best-seller-child1,
-.best-seller-child2 {
-  left: 407px;
-}
-.best-seller-child2 {
-  left: 814px;
-}
-.name-of-book3 {
-  position: absolute;
-  top: 1421px;
-  left: 82px;
-}
-.best-seller,
-.name-of-book4,
-.name-of-book5 {
-  position: absolute;
-  top: 1421px;
-  left: 493px;
-}
-.best-seller,
-.name-of-book5 {
-  left: 899px;
-}
-.name-of-book,
-.name-of-book1,
-.name-of-book2,
-.name-of-book3,
-.name-of-book4,
-.name-of-book5 {
+  margin: 20px 0px;
   color: var(--color-lightgray);
   text-decoration: none;
+  height: max-content;
+  display: block;
 }
 .best-seller {
-  top: 882px;
-  left: 460px;
-  width: 1144px;
-  height: 1458px;
+  width: 100%;
+  height: max-content;
   color: var(--color-white);
+  display: block;
 }
 
 .home-after-login-child {
-  position: absolute;
-  top: 0;
-  left: 0;
   border-radius: 0 0 var(--br-11xl) var(--br-11xl);
   background-color: var(--color-lightgray);
   width: 100%;
-  height: 854px;
+  height: 780px;
+  display: block;
 }
 .home-after-login-child-header {
-  position: absolute;
-  top: 0;
-  left: 0;
   border-radius: 0 0 var(--br-11xl) var(--br-11xl);
   background-color: var(--color-lightgray);
   width: 100%;
   height: 135px;
 }
 .description-of-stranger {
-  position: absolute;
-  top: 237px;
-  left: 0;
   font-weight: 200;
+  font-size: 25px;
+}
+.description-of-stranger p{
+    font-size: 20px;
+    text-align: justify;
+    width: 533px;
+    margin: 20px 0px 40px 0px;
 }
 .infor-child,
 .infor-item {
@@ -485,38 +425,31 @@ html{
   box-sizing: border-box;
 }
 .infor-child2 {
-  position: absolute;
-  top: 294px;
-  left: 972px;
-}
-.infor-child2 {
-  top: 0;
-  left: 590px;
+  position: relative;
+  width: 350px;
+  height: 520px;
   background-color: var(--color-gainsboro);
-  width: 396px;
-  height: 626px;
+}
+.infor-child2 img {
+  width: 350px;
+  height: 520px;
 }
 .welcome-to-stranger {
-  position: absolute;
-  top: calc(50% - 234px);
-  left: calc(50% - 630.5px);
-  font-size: var(--font-size-21xl);
+  font-size: 40px;
   text-align: left;
-  display: inline-block;
   width: 358px;
-  height: 139px;
+  font-weight: 400;
 }
 .rectangle-icon {
-  position: absolute;
-  top: calc(50% + 134px);
-  left: calc(50% - 634.5px);
-  border-radius: var(--br-11xl);
-  width: 222px;
-  height: 70px;
+  border-radius: 20px;
+  width: 200px;
+  height: 60px;
   display: flex;
   align-items: center;
   justify-content: center;
   text-decoration: none;
+  font-size: 20px;
+  font-weight: 400;
   background-color: var(--color-tan);
   color: var(--color-dimgray);
   border: 1px var(--color-black);
@@ -528,31 +461,38 @@ html{
   background-color: var(--color-dimgray);
   color: var(--color-lightgray);
 }
+.welcome-infor,
+.intro-book{
+    justify-content: center;
+    text-align: left;
+    display: flex;
+    align-items: center;
+}
 .infor {
-  position: absolute;
-  top: 152px;
-  left: 250px;
-  width: 1261px;
+
+  width: 100%;
   height: 626px;
 }
 .header-child,
 .stranger-bookstore .stranger-title{
   position: absolute;
   top: 53px;
-  left: 133px;
+  left: 105px;
+  font-size: 20px;
   color: var(--color-dimgray);
   text-decoration: none;
 }
 .header-child {
-  top: 0;
-  left: 0;
+  top: 20px;
+  left: 10px;
   border-radius: 50%;
-  width: 150px;
-  height: 150px;
+  width: 100px;
+  height: 100px;
   object-fit: cover;
 }
 .news3 {
-  right: 857px;
+  left: 623px;
+  cursor: pointer;
 }
 .about-us3,
 .home1,
@@ -562,13 +502,15 @@ html{
   top: 53px;
 }
 .about-us3 {
-  right: 685px;
+  left: 895px;
+  cursor: pointer;
 }
 .home1 {
-  left: 753px;
+  left: 480px;
+  cursor: pointer;
 }
 .shop1 {
-  left: 895px;
+  left: 760px;
   cursor: pointer;
 }
 .about-us3 a.title,
@@ -617,7 +559,7 @@ html{
   text-decoration: none;
   color: var(--color-lightgray);
   display: block;
-  padding: 5px 5px;
+  padding: 5px 15px;
   width: 200px;
   border-radius: 6px;
   background-color: var(--color-dimgray);
@@ -630,16 +572,16 @@ html{
 }
 .ioncart-outline-icon {
   position: absolute;
-  top: 53px;
-  left: 1800px;
+  top: 52px;
+  left: 1275px;
   width: 36px;
   height: 36px;
   overflow: hidden;
 }
 .header-item {
   position: absolute;
-  top: calc(50% - 29px);
-  left: calc(50% + 920px);
+  top: 45px;
+  left: 1416px;
   border-radius: var(--br-5xs);
   background-color: var(--color-tan);
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
@@ -647,24 +589,23 @@ html{
   height: 45px;
 }
 .header {
-  position: absolute;
-  top: 0;
-  left: 1px;
   width: 100%;
   height: 150px;
   text-align: left;
   font-size: var(--font-size-xl);
+  display: block;
 }
 .home-after-login {
   position: relative;
   background-color: var(--color-dimgray);
   width: 100%;
-  height: 4357px;
+  height: max-content;
   overflow: hidden;
   text-align: center;
   font-size: var(--font-size-6xl);
   color: var(--color-black);
   font-family: var(--font-kanit);
+  display: block;
 }
 /* dropdown language */
 .dropdown-laguage{
@@ -710,8 +651,8 @@ html{
 /* dropdown account */
 .dropdown-account{
   position: absolute;
-  top: calc(50% - 23px);
-  left: calc(50% + 860px);
+  top: 51px;
+  left: 1350px;
 }
 /* Ẩn dropdown content mặc định */
 .dropdown-account .dropdown-content-account {
@@ -790,8 +731,8 @@ hr{
 /* button Login */
 .login{
   position: absolute;
-  top: 47px;
-  left: 1820px;
+  top: 45px;
+  left: 1300px;
   width: 90px;
   height: 45px;
   background-color: var(--color-tan);
@@ -814,12 +755,8 @@ hr{
 
 /* Định dạng các div chứa nội dung */
 .book-introduce, .book-introduce1, .book-introduce2 {
-  width: 230px;
-  height: 300px; /* Điều chỉnh chiều cao theo mong muốn */
-  position: absolute;
-  top: 0;
-  left: 500px;
+    position: absolute;
   opacity: 0;
-  transition: opacity 0.5s; /* Tạo hiệu ứng hiển thị */
+  transition: opacity 0.5s;
 }
 

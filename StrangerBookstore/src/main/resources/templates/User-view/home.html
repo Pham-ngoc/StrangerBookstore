@@ -4,126 +4,155 @@
     <meta charset="UTF-8">
     <title>Stranger Bookstore</title>
     <th:block th:replace="~{User-view/style/user-css.html :: html}"></th:block>
-    <link type="text/css" rel="stylesheet" href="/css/style.css" >
 </head>
 <body>
 <div class="home-after-login">
-    <div class="home-after-login-child"></div>
-    <div th:replace="~{User-view/fragment/header.html :: div}"></div>
+    <div class="home-after-login-child">
+        <div th:replace="~{User-view/fragment/header.html :: div}"></div>
+        <!--START "INFOR WEBSITE" -->
+        <div class="infor row">
+            <div class="welcome-infor col-lg-6">
+                <div class="description-of-stranger">
+                    <div class="welcome-to-stranger">Welcome to Stranger Bookstore</div>
+                    <p>
+                        Stranger Bookstore is an online book-selling website where you can find thousands of books from different genres.
+                        With a friendly and easy-to-use interface, Stranger Bookstore offers a great online book-shopping experience for readers...
+                    </p>
+                    <a th:href="@{/shop}" class="rectangle-icon">
+                        Show more
+                    </a>
+                </div>
+            </div>
+            <div class="intro-book col-lg-6">
+                <div class="book-introduce">
+                    <div class="infor-child2">
+                        <img src="/img/product_img/cay-cam-ngot-cua-toi-bia-truoc.jpg" alt="">
+                    </div>
+                </div>
+                <div class="book-introduce1">
+                    <div class="infor-child2">
+                        <img src="/img/product_img/nhung-giac-mo-o-tiem-sach-bia-truoc.jpg" alt="">
+                    </div>
+                </div>
+                <div class="book-introduce2">
+                    <div class="infor-child2">
+                        <img src="/img/product_img/thien-tai-ben-trai-ke-dien-ben-phai-bia-truoc.jpg" alt="">
+                    </div>
+                </div>
 
-    <!--START "INFOR WEBSITE" -->
-    <div class="infor">
-        <div class="description-of-stranger">
-            (Description of Stranger Bookstore)
-        </div>
-        <div class="book-introduce">
-            <div class="infor-child2">
-                <img width="396" height="626px" src="/img/product_img/cay-cam-ngot-cua-toi-bia-truoc.jpg" alt="">
             </div>
         </div>
-        <div class="book-introduce1">
-            <div class="infor-child2">
-                <img width="396" height="626px" src="/img/product_img/nhung-giac-mo-o-tiem-sach-bia-truoc.jpg" alt="">
-            </div>
-        </div>
-        <div class="book-introduce2">
-            <div class="infor-child2">
-                <img width="396" height="626px" src="/img/product_img/thien-tai-ben-trai-ke-dien-ben-phai-bia-truoc.jpg" alt="">
-            </div>
-        </div>
-        <div class="welcome-to-stranger">Welcome to Stranger Bookstore</div>
-        <a href="" class="rectangle-icon">
-            Show more
-        </a>
     </div>
+
     <!--END "INFOR WEBSITE" -->
     <!--START "THE BEST SELLER BOOK" -->
     <div class="best-seller">
         <div class="the-best-seller">THE BEST SELLER BOOKS</div>
-        <div  class="best-seller-child">
-            <a href="">
-                <img width="330" height="560px" src="/img/product_img/cay-cam-ngot-cua-toi-bia-truoc.jpg" alt="">
-            </a>
+        <div class="seller-list row">
+            <div class="book-seller col-lg-4">
+                <a href="" class="best-seller-child">
+                    <img src="/img/product_img/cay-cam-ngot-cua-toi-bia-truoc.jpg" alt="">
+                </a>
+                <a href="" class="name-of-book">Name of Book</a>
+
+                <a href="" class="best-seller-child">
+                    <img src="/img/product_img/cay-cam-ngot-cua-toi-bia-truoc.jpg" alt="">
+                </a>
+                <a href="" class="name-of-book">Name of Book</a>
+            </div>
+            <div class=" book-seller col-lg-4">
+                <a href="" class="best-seller-child">
+                    <img src="/img/product_img/cay-cam-ngot-cua-toi-bia-truoc.jpg" alt="">
+                </a>
+                <a href="" class="name-of-book">Name of Book</a>
+
+                <a href="" class="best-seller-child">
+                    <img src="/img/product_img/cay-cam-ngot-cua-toi-bia-truoc.jpg" alt="">
+                </a>
+                <a href="" class="name-of-book">Name of Book</a>
+            </div>
+            <div class="book-seller col-lg-4">
+                <a href="" class="best-seller-child">
+                    <img src="/img/product_img/cay-cam-ngot-cua-toi-bia-truoc.jpg" alt="">
+                </a>
+                <a href="" class="name-of-book">Name of Book</a>
+
+                <a href="" class="best-seller-child">
+                    <img src="/img/product_img/cay-cam-ngot-cua-toi-bia-truoc.jpg" alt="">
+                </a>
+                <a href="" class="name-of-book">Name of Book</a>
+            </div>
         </div>
-        <div  class="best-seller-item">
-            <a href="">
-                <img width="330" height="560px" src="/img/product_img/de-men-phieu-luu-ky-bia-truoc.jpg" alt="">
-            </a>
-        </div>
-        <div  class="best-seller-inner">
-            <a href="">
-                <img width="330" height="560px" src="/img/product_img/Doi-Gio-Hu-bia-truoc.jpg" alt="">
-            </a>
-        </div>
-        <a href="" class="name-of-book">Name of Book</a>
-        <a href="" class="name-of-book1">Name of Book</a>
-        <a href="" class="name-of-book2">Name of Book</a>
-        <div  class="rectangle-div">
-            <a href="">
-                <img width="330" height="560px" src="/img/product_img/kieu-hanh-va-dinh-kien-bia-truoc.jpg" alt="">
-            </a>
-        </div>
-        <div  class="best-seller-child1">
-            <a href="">
-                <img width="330" height="560px" src="/img/product_img/nhung-dem-trang-bia-truoc.jpg" alt="">
-            </a>
-        </div>
-        <div  class="best-seller-child2">
-            <a href="">
-                <img width="330" height="560px" src="/img/product_img/nhung-giac-mo-o-tiem-sach-bia-truoc.jpg" alt="">
-            </a>
-        </div>
-        <a href="" class="name-of-book3">Name of Book</a>
-        <a href="" class="name-of-book4">Name of Book</a>
-        <a href="" class="name-of-book5">Name of Book</a>
     </div>
     <!--END "THE BEST SELLER BOOK" -->
     <!--START "ABOUT US" -->
     <div class="about-us1">
-        <div class="about-us-child"></div>
-        <div class="information-of-website1">(Information of Website)</div>
-        <div class="about-us2">ABOUT US</div>
-        <a href="" class="about-us-item">
-            Show more
-        </a>
-        <div class="about-us-inner">
-            <a href="">
-                <img width="582px" height="496px" src="/img/Read the book😉.gif" alt="">
-            </a>
+        <div class="about-us-child">
+            <div class="about-us2">ABOUT US</div>
+            <div class="infor-about row">
+                <div class="about-for-logo col-lg-6">
+                    <div class="about-us-inner">
+                        <a th:href="@{/about}">
+                            <img src="/images/icon/2.2.png" alt="">
+                        </a>
+                    </div>
+                </div>
+                <div class="about-summary col-lg-6">
+                    <div class="information-of-website1">
+                        <p>
+                            Stranger Bookstore is an online book-selling website where you can find thousands of books from different genres.
+                            With a friendly and easy-to-use interface, Stranger Bookstore offers a great online book-shopping experience for readers.
+                        </p>
+                        <p>
+                            With a founding team passionate about books, Stranger Bookstore always wants to bring convenience and diversity to the reading community.
+                            Having invested a lot of time and effort, Stranger Bookstore built a high-quality online book-shopping platform...
+                        </p>
+                    </div>
+                    <a th:href="@{/about}" class="about-us-item">
+                        Show more
+                    </a>
+                </div>
+            </div>
         </div>
     </div>
     <!--END "ABOUT US" -->
     <!--START "NEWS" -->
     <div class="news1">
         <div class="news2">NEWS</div>
-        <div class="news-child">
-            <a href="">
-                <img width="400px" height="400px" src="/img/Logo Templates from GraphicRiver.jpg" alt="">
-                <div class="overlay">
-                    <div class="title">Your Text Here</div>
+        <div class="news-list row">
+            <div class="news-list-content col-lg-4">
+                <div class="news-child">
+                    <a href="">
+                        <img src="/img/Logo Templates from GraphicRiver.jpg" alt="">
+                        <div class="overlay">
+                            <div class="title">Your Text Here</div>
+                        </div>
+                    </a>
                 </div>
-            </a>
-        </div>
-        <div class="news-item">
-            <a href="">
-                <img width="400px" height="400px" src="/img/Logo Templates from GraphicRiver.jpg" alt="">
-                <div class="overlay">
-                    <div class="title">Your Text Here</div>
+            </div>
+            <div class="news-list-content col-lg-4">
+                <div class="news-child">
+                    <a href="">
+                        <img src="/img/Logo Templates from GraphicRiver.jpg" alt="">
+                        <div class="overlay">
+                            <div class="title">Your Text Here</div>
+                        </div>
+                    </a>
                 </div>
-            </a>
-        </div>
-        <div class="news-inner">
-            <a href="">
-                <img width="400px" height="400px" src="/img/Logo Templates from GraphicRiver.jpg" alt="">
-                <div class="overlay">
-                    <div class="title">Your Text Here</div>
+            </div>
+            <div class="news-list-content col-lg-4">
+                <div class="news-child">
+                    <a href="">
+                        <img src="/img/Logo Templates from GraphicRiver.jpg" alt="">
+                        <div class="overlay">
+                            <div class="title">Your Text Here</div>
+                        </div>
+                    </a>
                 </div>
-            </a>
+            </div>
         </div>
     </div>
     <!--END "NEWS" -->
-
-
     <div th:replace="~{User-view/fragment/footer.html :: div}"></div>
 </div>
 <th:block th:replace="~{User-view/style/user-scr.html::html}"></th:block>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>News Detail</title>
+    <th:block th:replace="~{User-view/style/user-css.html :: html}"></th:block>
+    <link type="text/css" rel="stylesheet" href="/css/news.css" >
+    <link type="text/css" rel="stylesheet" href="/css/news-detail.css" >
+</head>
+<body>
+<div class="news-detail">
+    <div class="news-child1">
+        <div th:replace="~{User-view/fragment/header.html :: div}"></div>
+        <div class="news23">
+            <span>News</span>
+        </div>
+    </div>
+
+    <div class="news-detail-body row">
+        <div class="news-detail-title col-lg-7 ">
+            <p class="news-detail-title1">News Detail Title</p>
+            <p class="news-detail-content">News Detail Content</p>
+            <img class="news-detail-img" src="/images/icon/news.jpg" alt="">
+        </div>
+        <div class="news-detail-hr col-lg-1">
+            <div class="news-detail-inner"></div>
+        </div>
+        <div class="news-detail-list col-lg-4">
+            <div class="row">
+                <div class="news-detail-image col-lg-6">
+                    <a th:href="@{/news-detail}">
+                        <img src="/images/icon/news.jpg">
+                    </a>
+                </div>
+                <div class="col-lg-6">
+                    <a th:href="@{/news-detail}" class="news-detail-list-title">News Title</a>
+                    <p class="news-detail-list-summary">News Summary</p>
+                </div>
+                <hr class="news-detail-list-hr">
+            </div>
+            <div class="row">
+                <div class="news-detail-image col-lg-6">
+                    <a th:href="@{/news-detail}">
+                        <img src="/images/icon/news.jpg">
+                    </a>
+                </div>
+                <div class="col-lg-6">
+                    <a th:href="@{/news-detail}" class="news-detail-list-title">News Title</a>
+                    <p class="news-detail-list-summary">News Summary</p>
+                </div>
+                <hr class="news-detail-list-hr">
+            </div>
+            <div class="row">
+                <div class="news-detail-image col-lg-6">
+                    <a th:href="@{/news-detail}">
+                        <img src="/images/icon/news.jpg">
+                    </a>
+                </div>
+                <div class="col-lg-6">
+                    <a th:href="@{/news-detail}" class="news-detail-list-title">News Title</a>
+                    <p class="news-detail-list-summary">News Summary</p>
+                </div>
+                <hr class="news-detail-list-hr">
+            </div>
+            <div class="row">
+                <div class="news-detail-image col-lg-6">
+                    <a th:href="@{/news-detail}">
+                        <img src="/images/icon/news.jpg">
+                    </a>
+                </div>
+                <div class="col-lg-6">
+                    <a th:href="@{/news-detail}" class="news-detail-list-title">News Title</a>
+                    <p class="news-detail-list-summary">News Summary</p>
+                </div>
+                <hr class="news-detail-list-hr">
+            </div>
+        </div>
+    </div>
+
+    <div th:replace="~{User-view/fragment/footer.html :: div}"></div>
+</div>
+<th:block th:replace="~{User-view/style/user-scr.html::html}"></th:block>
+</body>
+</html>

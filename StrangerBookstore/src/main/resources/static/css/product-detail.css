@@ -1,0 +1,224 @@
+.product-detail-item {
+  background-color: var(--color-lightgray);
+  border-radius: 15px;
+  width: 90%;
+  height: 90%;
+}
+.news-detail-inner {
+  border-right: 3px solid var(--color-dimgray);
+  box-sizing: border-box;
+  width: 2px;
+  height: 560px;
+  border-radius: 50px;
+}
+.news-detail-hr{
+    padding: 0px;
+    width: 10px;
+    margin-top: 65px;
+    height: max-content;
+}
+.product-detail-child {
+  width: 100%;
+  height: 135px;
+  display: block;
+}
+.product-detail1{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align:center;
+    margin-top: 50px;
+    margin-bottom: 80px;
+}
+.product-detail-infor{
+    height: max-content;
+}
+.pic-product{
+    padding: 0px 30px;
+    height: fit-content;
+}
+.back-home{
+    text-align: left;
+}
+.back-home img{
+    width: 24px;
+    height: 24px;
+}
+.back-home a{
+    font-size: 20px;
+    text-decoration: none;
+    color: var(--color-dimgray);
+}
+.pic{
+    margin: 20px;
+    background: white;
+    padding: 20px;
+    border-radius:10px;
+}
+.pic img{
+    width: 310px;
+    height: 500px;
+}
+.list-pic{
+    display: flex;
+    margin: 20px;
+}
+.list-pic img{
+    width: 100px;
+    height: 150px;
+    margin-right: 5px;
+    background: white;
+    padding: 10px;
+    border-radius: 5px;
+}
+.infor-product{
+    margin-top: 65px;
+    text-align: left;
+    color: var(--color-dimgray);
+}
+.cate{
+    font-size: 20px;
+}
+.name,
+.product-detail-price{
+    font-size: 30px;
+    font-weight: 400;
+}
+.author,
+.publisher,
+.language,
+.condition,
+.stock{
+    font-size: 15px;
+}
+.button-add-like{
+    margin-top: 130px;
+}
+.descripton-detail{
+    text-align: justify;
+    font-size: 20px;
+}
+.user-review-pic{
+    overflow: hidden; /* Ẩn phần ngoài hình tròn */
+    width: 100px;
+    padding-right: 0px;
+}
+.user-review-pic img {
+    vertical-align: middle;
+    width: 70px; /* Kích thước hình tròn */
+    height: 70px; /* Kích thước hình tròn */
+    border-radius: 50%; /* Biến hình thành hình tròn */
+    object-fit: cover; /* Đảm bảo hình ảnh nằm trong hình tròn */
+}
+.username-review,
+.review-content{
+    font-size: 20px;
+    color: var(--color-dimgray);
+    margin: 0px;
+    text-align: justify;
+    word-break: break-all;
+}
+.username-review{
+    font-weight: 600;
+}
+.add-cart a,
+.heart a{
+    border-radius: 10px;
+    background-color: transparent;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25), 0 4px 4px rgba(0, 0, 0, 0.25),
+        0 4px 4px rgba(0, 0, 0, 0.25);
+    border: 2px solid var(--color-dimgray);
+    box-sizing: border-box;
+    padding: 20px 40px;
+    color: var(--color-dimgray);
+    text-decoration: none;
+    font-size: 25px;
+}
+.heart a{
+    padding: 20px 30px;
+}
+.add-cart a:hover,
+ .heart a:hover{
+    background: var(--color-dimgray);
+    color: var(--color-lightgray);
+ }
+.heart img{
+    width: 40px;
+    height: 40px;
+}
+.hr-review,
+.product-detail-hr{
+    color: var(--color-dimgray);
+}
+.hr-review{
+    margin: 30px 0px 20px 0px;
+}
+.review-list{
+    margin: 10px 10px;
+    border: 1px solid var(--color-dimgray);
+    padding: 20px 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25), 0 4px 4px rgba(0, 0, 0, 0.25),
+            0 4px 4px rgba(0, 0, 0, 0.25);
+}
+.description-review{
+    text-align: left;
+    margin: 60px 50px;
+}
+.description-text,
+.review-text,
+.recommended-text{
+    font-size: 25px;
+    color: var(--color-dimgray);
+}
+.list-recommended{
+    text-align: left;
+    margin: 60px 30px;
+}
+.product-recommended-pic,
+.product-recommended-infor{
+    width: max-content;
+    height: max-content;
+}
+.product-recommended-infor-price,
+.product-recommended-infor-name{
+    margin-bottom: 5px;
+    font-size: 20px;
+    color: var(--color-dimgray);
+    text-decoration: none;
+}
+.product-recommended{
+    margin-bottom: 30px;
+}
+.product-recommended a img {
+    width: 100px;
+    height: 150px;
+  -webkit-transform: scale(1);
+	transform: scale(1);
+	-webkit-transition: .3s ease-in-out;
+	transition: .3s ease-in-out;
+}
+
+.product-recommended a{
+  height: 100%;
+  overflow: hidden;
+  display: block;
+  width: max-content;
+}
+
+.product-recommended a:hover img{
+  height: fit-content;
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+}
+.product-detail {
+  position: relative;
+  background-color: var(--color-dimgray);
+  width: 100%;
+  height: max-content;
+  text-align: left;
+  font-size: var(--font-size-16xl);
+  color: var(--color-black);
+  font-family: var(--font-kanit);
+  display: block;
+}

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Shop</title>
+    <th:block th:replace="~{User-view/style/user-css.html :: html}"></th:block>
+    <link type="text/css" rel="stylesheet" href="/css/shop-categories-show.css" >
+</head>
+<body>
+    <div class="shop-categories-show">
+        <div class="shop-categories-show-child">
+            <div th:replace="~{User-view/fragment/header.html :: div}"></div>
+            <div class="shop3">
+                <span>Shop</span>
+            </div>
+        </div>
+        <div class="shop-list row">
+            <div class="cate-price col-lg-3">
+                <nav class="navbar-sidebar2">
+                    <ul class="list-unstyled navbar__list">
+                        <li class=" has-sub">
+                            <a class="js-arrow" href="#">
+                                Categories
+                            </a>
+                            <ul class="list-unstyled navbar__sub-list js-sub-list">
+                                <li>
+                                    <a href="#">
+                                        <i class="fas fa-tachometer-alt"></i>Category 1</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="has-sub">
+                            <a class="js-arrow" href="#">
+                                Price
+                            </a>
+                            <ul class="list-unstyled navbar__sub-list js-sub-list">
+                                <li>
+                                    <label class="toggle" for="toggle">
+                                        <input type="checkbox" id="toggle">
+                                        <div class="slider"></div>
+                                    </label>
+                                    <span>Price 1</span>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="shop-hr col-lg-1">
+                <div class="shop-categories-show-child4"></div>
+            </div>
+            <div class="product-list col-lg-8">
+                <div class="search">
+                    <input class="shop-categories-show-child1" placeholder="Search"/>
+                    <a href="">
+                        <img
+                                class="material-symbolssearch-icon"
+                                alt=""
+                                src="./public/materialsymbolssearch.svg"
+                        />
+                    </a>
+                </div>
+                <div class="group-container">
+                    <div class="rectangle-parent3">
+                        <a th:href="@{/product-detail}">
+                            <img src="/img/product_img/cay-cam-ngot-cua-toi-bia-truoc.jpg" alt="">
+                        </a>
+                        <a th:href="@{/product-detail}" class="name-of-book">Name of Book</a>
+                        <div class="price">Price</div>
+                    </div>
+                    <div class="rectangle-parent3">
+                        <a href="">
+                            <img  src="/img/product_img/cay-cam-ngot-cua-toi-bia-truoc.jpg" alt="">
+                        </a>
+                        <a href="#" class="name-of-book">Name of Book</a>
+                        <div class="price">Price</div>
+                    </div>
+                    <div class="rectangle-parent3">
+                        <a href="">
+                            <img src="/img/product_img/cay-cam-ngot-cua-toi-bia-truoc.jpg" alt="">
+                        </a>
+                        <a href="#" class="name-of-book">Name of Book</a>
+                        <div class="price">Price</div>
+                    </div>
+                    <div class="rectangle-parent3">
+                        <a href="">
+                            <img src="/img/product_img/cay-cam-ngot-cua-toi-bia-truoc.jpg" alt="">
+                        </a>
+                        <a href="#" class="name-of-book">Name of Book</a>
+                        <div class="price">Price</div>
+                    </div>
+                    <div class="rectangle-parent3">
+                        <a href="">
+                            <img src="/img/product_img/cay-cam-ngot-cua-toi-bia-truoc.jpg" alt="">
+                        </a>
+                        <a href="#" class="name-of-book">Name of Book</a>
+                        <div class="price">Price</div>
+                    </div>
+                    <div class="rectangle-parent3">
+                        <a href="">
+                            <img src="/img/product_img/cay-cam-ngot-cua-toi-bia-truoc.jpg" alt="">
+                        </a>
+                        <a href="#" class="name-of-book">Name of Book</a>
+                        <div class="price">Price</div>
+                    </div>
+                    <div class="rectangle-parent3">
+                        <a href="">
+                            <img src="/img/product_img/cay-cam-ngot-cua-toi-bia-truoc.jpg" alt="">
+                        </a>
+                        <a href="#" class="name-of-book">Name of Book</a>
+                        <div class="price">Price</div>
+                    </div>
+                    <div class="rectangle-parent3">
+                        <a href="">
+                            <img src="/img/product_img/cay-cam-ngot-cua-toi-bia-truoc.jpg" alt="">
+                        </a>
+                        <a href="#" class="name-of-book">Name of Book</a>
+                        <div class="price">Price</div>
+                    </div>
+                    <div class="rectangle-parent3">
+                        <a href="">
+                            <img src="/img/product_img/cay-cam-ngot-cua-toi-bia-truoc.jpg" alt="">
+                        </a>
+                        <a href="#" class="name-of-book">Name of Book</a>
+                        <div class="price">Price</div>
+                    </div>
+                    <div class="rectangle-parent3">
+                        <a href="">
+                            <img src="/img/product_img/cay-cam-ngot-cua-toi-bia-truoc.jpg" alt="">
+                        </a>
+                        <a href="#" class="name-of-book">Name of Book</a>
+                        <div class="price">Price</div>
+                    </div>
+                    <div class="rectangle-parent3">
+                        <a href="">
+                            <img src="/img/product_img/cay-cam-ngot-cua-toi-bia-truoc.jpg" alt="">
+                        </a>
+                        <a href="#" class="name-of-book">Name of Book</a>
+                        <div class="price">Price</div>
+                    </div>
+                    <div class="rectangle-parent3">
+                        <a href="">
+                            <img src="/img/product_img/cay-cam-ngot-cua-toi-bia-truoc.jpg" alt="">
+                        </a>
+                        <a href="#" class="name-of-book">Name of Book</a>
+                        <div class="price">Price</div>
+                    </div>
+                    <div class="pagination">
+                        <a href="" class="page-button">1</a>
+                        <a href="" class="page-button">2</a>
+                        <a href="" class="page-button">3</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div th:replace="~{User-view/fragment/footer.html :: div}"></div>
+    </div>
+<th:block th:replace="~{User-view/style/user-scr.html::html}"></th:block>
+</body>
+</html>

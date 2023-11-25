@@ -1,3 +1,4 @@
+//HOME.HTML
 function dropdownLanguage() {
   var dropdownContent = document.getElementById("myDropdown");
 
@@ -16,7 +17,6 @@ function dropdownAccount() {
           dropdownContent.style.display = "block";
         }
 }
-// Đảm bảo mã JavaScript được chạy sau khi trang đã tải xong
 $(document).ready(function() {
     var slides = $(".book-introduce, .book-introduce1, .book-introduce2");
     var currentIndex = 0;
@@ -36,6 +36,11 @@ $(document).ready(function() {
         });
     }
 });
+
+
+//END HOME.HTML
+
+//LOGIN.HTML
 // Lắng nghe sự kiện click trên biểu tượng mắt
       function togglePasswordVisibility() {
           const input = document.getElementById('passwordInput');
@@ -49,3 +54,58 @@ $(document).ready(function() {
               eyeIcon.src = './public/fluent_eye-16-filled.svg'; // Thay đổi hình ảnh
           }
       };
+//END LOGIN.HTML
+
+//SHOP.HTML
+$(document).ready(function() {
+        //jquery for toggle sub menus
+        $('.sub-btn').click(function() {
+          $(this).next('.sub-menu').slideToggle();
+          $(this).find('.dropdown').toggleClass('rotate');
+        });
+        //jquery for expand and collapse the sidebar
+        $('.menu-btn').click(function() {
+          $('.side-bar').addClass('active');
+          $('.menu-btn').css("visibility", "hidden");
+        });
+        $('.close-btn').click(function() {
+          $('.side-bar').removeClass('active');
+          $('.menu-btn').css("visibility", "visible");
+        });
+      });
+      try {
+        var arrow = $('.js-arrow');
+        arrow.each(function () {
+          var that = $(this);
+          that.on('click', function (e) {
+            e.preventDefault();
+            that.find(".arrow").toggleClass("up");
+            that.toggleClass("open");
+            that.parent().find('.js-sub-list').slideToggle("250");
+          });
+        });
+
+      } catch (error) {
+        console.log(error);
+      }
+//END SHOP.HTML
+
+//PROFILE-PERSONAL.HTML
+// JavaScript
+        function handleFileSelect() {
+        const fileInput = document.getElementById('fileInput');
+        const avataImage = document.getElementById('avataImage');
+
+        const selectedFile = fileInput.files[0];
+
+        if (selectedFile) {
+            const reader = new FileReader();
+
+            reader.onload = function (e) {
+            avataImage.src = e.target.result;
+            };
+
+            reader.readAsDataURL(selectedFile);
+        }
+      }
+//END PERSONAL.HTML
