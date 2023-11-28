@@ -94,25 +94,21 @@
 .button-add-like{
     margin-top: 130px;
 }
-.descripton-detail{
-    text-align: justify;
-    font-size: 20px;
-}
 .user-review-pic{
     overflow: hidden; /* Ẩn phần ngoài hình tròn */
-    width: 100px;
+    width: max-content;
     padding-right: 0px;
 }
 .user-review-pic img {
     vertical-align: middle;
-    width: 70px; /* Kích thước hình tròn */
-    height: 70px; /* Kích thước hình tròn */
+    width: 50px; /* Kích thước hình tròn */
+    height: 50px; /* Kích thước hình tròn */
     border-radius: 50%; /* Biến hình thành hình tròn */
     object-fit: cover; /* Đảm bảo hình ảnh nằm trong hình tròn */
 }
 .username-review,
 .review-content{
-    font-size: 20px;
+    font-size: 15px;
     color: var(--color-dimgray);
     margin: 0px;
     text-align: justify;
@@ -161,6 +157,17 @@
     box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25), 0 4px 4px rgba(0, 0, 0, 0.25),
             0 4px 4px rgba(0, 0, 0, 0.25);
 }
+.description{
+    max-height: max-content; /* Số px bạn muốn hiển thị ban đầu */
+}
+.description-detail{
+    text-align: justify;
+    font-size: 15px;
+    margin-bottom: 10px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space-collapse: preserve-breaks;
+}
 .description-review{
     text-align: left;
     margin: 60px 50px;
@@ -170,6 +177,7 @@
 .recommended-text{
     font-size: 25px;
     color: var(--color-dimgray);
+    margin-bottom: 0;
 }
 .list-recommended{
     text-align: left;

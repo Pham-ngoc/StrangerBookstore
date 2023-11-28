@@ -109,3 +109,22 @@ $(document).ready(function() {
         }
       }
 //END PERSONAL.HTML
+
+// START PRODUCT DETAIL
+//function toggleReadMore() {
+//    var descriptionContainer = document.querySelector('.description-container');
+//    var detail = document.getElementById('description-detail');
+//    var readMoreButton = document.querySelector('.read-more-button');
+//
+//    if (descriptionContainer.style.maxHeight) {
+//        descriptionContainer.style.maxHeight = null;
+//        detail..style.textOverflow = "ellipsis";
+//        readMoreButton.textContent = 'Thu gọn';
+//    } else {
+//        descriptionContainer.style.maxHeight = 'fix-content';
+//        .style.textOverflow = "visible";
+//        readMoreButton.textContent = 'Xem thêm';
+//    }
+//}
+
+// END PRODUCT DETAIL

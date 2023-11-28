@@ -192,6 +192,9 @@
   display: block;
   margin-top: 30px;
 }
+
+/* END CSS FOOTER*/
+
 .news-list-content{
     width: max-content;
     height: max-content;
@@ -244,6 +247,9 @@
   justify-content: center;
   margin: 30px 0px 30px 0px;
 }
+
+/* END CSS NEWS */
+
 .about-us-child {
   background-color: var(--color-lightgray);
   width: 1300px;
@@ -321,6 +327,9 @@
   align-items: center;
   justify-content: center;
 }
+
+/* END CSS ABOUT US */
+
 .the-best-seller {
   font-size: 30px;
   margin-top: 30px;
