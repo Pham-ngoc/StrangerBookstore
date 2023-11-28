@@ -1,5 +1,4 @@
 <!DOCTYPE html >
-<html xmlns:th="http://www.thymeleaf.org">
 <div class="main-content" ng-controller="AdminProductController">
             <div class="section__content section__content--p30">
                 <div class="container-fluid">
@@ -118,6 +117,14 @@
                                         </select>
                                     </div>
                                 </div>
+                                <div class="row form-group">
+                                    <div class="col col-md-3">
+                                        <label for="category" class=" form-control-label">Picture</label>
+                                    </div>
+                                    <div class="col-12 col-md-9">
+                                        <input type="file" id="imageInput" ng-model="form.product_img">
+                                    </div>
+                                </div>
                             </form>
                         </div>
                         <div class="card-footer">
@@ -159,7 +166,6 @@
                                 <table class="table table-data2">
                                     <thead>
                                     <tr>
-                                        <th>Product ID</th>
                                         <th>Product Name</th>
                                         <th>Author</th>
                                         <th>Publisher</th>
@@ -169,35 +175,36 @@
                                         <th>ISBN</th>
                                         <th>Description</th>
                                         <th>Price</th>
+                                        <th>Product Picture</th>
                                         <th>Category</th>
                                         <th></th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr class="tr-shadow" ng-repeat="item in list">
-                                        <td>{{item.productId}}</td>
-                                        <td>{{item.productName}}</td>
-                                        <td>{{item.author}}</td>
-                                        <td>{{item.publisher}}</td>
-                                        <td>{{item.language}}</td>
-                                        <td>{{item.condition}}</td>
-                                        <td>{{item.quantityInStock}}</td>
-                                        <td>{{item.isbn}}</td>
-                                        <td>{{item.description}}</td>
-                                        <td>{{item.price}}</td>
-                                        <td>{{item.categories.categoryName}}</td>
-                                        <td>
-                                            <div class="table-data-feature">
-                                                <button class="item" ng-click="edit(item.productId)" data-toggle="tooltip" data-placement="top" title="Edit">
-                                                    <i class="zmdi zmdi-edit"></i>
-                                                </button>
-                                                <button class="item" ng-click="delete(item.productId)" data-toggle="tooltip" data-placement="top" title="Delete">
-                                                    <i class="zmdi zmdi-delete"></i>
-                                                </button>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr class="spacer"></tr>
+                                        <tr class="tr-shadow" ng-repeat="item in productList">
+                                            <td>{{item.productName}}</td>
+                                            <td>{{item.author}}</td>
+                                            <td>{{item.publisher}}</td>
+                                            <td>{{item.language}}</td>
+                                            <td>{{item.condition}}</td>
+                                            <td>{{item.quantityInStock}}</td>
+                                            <td>{{item.isbn}}</td>
+                                            <td>{{item.description}}</td>
+                                            <td>{{item.price}}</td>
+                                            <td>{{item.product_img}}</td>
+                                            <td>{{item.categories.categoryName}}</td>
+                                            <td>
+                                                <div class="table-data-feature">
+                                                    <button class="item" ng-click="edit(item.productId)" data-toggle="tooltip" data-placement="top" title="Edit">
+                                                        <i class="zmdi zmdi-edit"></i>
+                                                    </button>
+                                                    <button class="item" ng-click="delete(item.productId)" data-toggle="tooltip" data-placement="top" title="Delete">
+                                                        <i class="zmdi zmdi-delete"></i>
+                                                    </button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr class="spacer"></tr>
                                     </tbody>
                                 </table>
                             </div>

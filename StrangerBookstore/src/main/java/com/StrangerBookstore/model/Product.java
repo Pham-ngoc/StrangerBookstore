@@ -2,6 +2,7 @@ package com.StrangerBookstore.model;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
@@ -50,6 +51,9 @@ public class Product extends BaseEntity{
     @JoinColumn(name="category_id", referencedColumnName = "categoryId", nullable = true)
     private Categories categories;
 
+    @NotNull(message = "Product image number must not be blank")
+    private String product_img;
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -66,13 +70,14 @@ public class Product extends BaseEntity{
                 && Objects.equals(isbn, product.isbn)
                 && Objects.equals(price, product.price)
                 && Objects.equals(description, product.description)
+                && Objects.equals(product_img, product.product_img)
                 && Objects.equals(categories, product.categories);
 
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), productId, productName, author, publisher, language, condition, quantityInStock, isbn, price, description, categories);
+        return Objects.hash(super.hashCode(), productId, productName, author, publisher, language, condition, quantityInStock, isbn, price, description, product_img, categories);
     }
 
 }
