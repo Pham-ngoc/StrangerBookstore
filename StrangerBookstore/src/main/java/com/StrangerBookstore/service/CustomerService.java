@@ -23,16 +23,17 @@ public class CustomerService {
 
     public boolean createNewCustomer(Customer customer) {
         boolean isCreate = false;
-        Roles roles = roleRepository.getByRoleName("USER");
-        customer.setRoles(roles);
-        customer.setStatus("Open");
-        customer.setPassword(passwordEncoder.encode(customer.getPassword()));
-//        customer.setCreatedAt(LocalDateTime.now());
-//        customer.setCreatedBy("anonymousUser");
-        Customer createCustomer = customerRepository.save(customer);
-        if(createCustomer != null && createCustomer.getCustomerId() >= 0 ) {
-            isCreate = true;
-        }
+            Roles roles = roleRepository.getByRoleName("USER");
+            System.out.println(roles);
+            customer.setRoles(roles);
+            customer.setStatus("Open");
+            customer.setPassword(passwordEncoder.encode(customer.getPassword()));
+            customer.setCreateAt(LocalDateTime.now());
+            customer.setCreateBy("anonymousUser");
+            Customer createCustomer = customerRepository.save(customer);
+            if (createCustomer != null && createCustomer.getCustomerId() >= 0) {
+                isCreate = true;
+            }
         return isCreate;
     }
 }

@@ -22,10 +22,11 @@
                             <a class="js-arrow" href="#">
                                 Categories
                             </a>
-                            <ul class="list-unstyled navbar__sub-list js-sub-list">
+                            <ul class="list-unstyled navbar__sub-list js-sub-list" th:each=" cate : ${listCate}">
                                 <li>
                                     <a href="#">
-                                        <i class="fas fa-tachometer-alt"></i>Category 1</a>
+                                        <i class="fas fa-tachometer-alt"></i><span th:text="${cate.categoryName}"></span>
+                                    </a>
                                 </li>
                             </ul>
                         </li>

@@ -55,6 +55,47 @@ $(document).ready(function() {
           }
       };
 //END LOGIN.HTML
+//HOME.HTML
+function dropdownLanguage() {
+  var dropdownContent = document.getElementById("myDropdown");
+
+  if (dropdownContent.style.display === "block") {
+    dropdownContent.style.display = "none";
+  } else {
+    dropdownContent.style.display = "block";
+  }
+}
+function dropdownAccount() {
+        var dropdownContent = document.getElementById("dropdown-account");
+
+        if (dropdownContent.style.display === "block") {
+          dropdownContent.style.display = "none";
+        } else {
+          dropdownContent.style.display = "block";
+        }
+}
+$(document).ready(function() {
+    var slides = $(".book-introduce, .book-introduce1, .book-introduce2");
+    var currentIndex = 0;
+
+    // Hiển thị lớp đầu tiên
+    showSlide(currentIndex);
+
+    // Hàm hiển thị lớp
+    function showSlide(index) {
+        slides.eq(index).animate({ opacity: 1 }, 500, function() {
+            setTimeout(function() {
+                slides.eq(index).animate({ opacity: 0 }, 500, function() {
+                    currentIndex = (currentIndex + 1) % slides.length;
+                    showSlide(currentIndex);
+                });
+            }, 5000); // Thời gian hiển thị mỗi lớp (10 giây)
+        });
+    }
+});
+
+
+//END HOME.HTML
 
 //SHOP.HTML
 $(document).ready(function() {

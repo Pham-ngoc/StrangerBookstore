@@ -1,13 +1,11 @@
 package com.StrangerBookstore.model;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.*;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
-import org.springframework.format.annotation.DateTimeFormat;
 
-import java.util.Date;
 import java.util.Objects;
 
 @Entity
@@ -38,17 +36,13 @@ public class Customer extends BaseEntity{
     @NotBlank(message = "Email Confirm must not be blank")
     @Transient
     private String emailConfirm;
-
-    @NotBlank(message = "Status must not be blank")
     private String status;
-
-    @NotBlank(message = "Picture must not be blank")
     private String picture;
 
-    @NotBlank(message = "Role must not be blank")
     @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST, targetEntity = Roles.class)
     @JoinColumn(name="role_id", referencedColumnName = "roleId", nullable = true)
     private Roles roles;
+
 
     @Override
     public boolean equals(Object o) {

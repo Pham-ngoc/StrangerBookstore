@@ -46,7 +46,6 @@ public class Product extends BaseEntity{
     @NotBlank(message = "Description must not be blank")
     private double price;
 
-    @NotBlank(message = "Category must not be blank")
     @ManyToOne(fetch = FetchType.EAGER, optional = true)
     @JoinColumn(name="category_id", referencedColumnName = "categoryId", nullable = true)
     private Categories categories;
