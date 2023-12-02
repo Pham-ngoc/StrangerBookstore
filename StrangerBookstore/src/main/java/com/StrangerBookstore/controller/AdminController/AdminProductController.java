@@ -1,6 +1,6 @@
 package com.StrangerBookstore.controller.AdminController;
 
-import com.StrangerBookstore.model.Product;
+import com.StrangerBookstore.model.Products;
 import com.StrangerBookstore.repository.ProductRepository;
 import com.StrangerBookstore.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,25 +25,25 @@ public class AdminProductController {
     ProductRepository productRepository;
 
     @GetMapping("/product")
-    public ResponseEntity<List<Product>> categories(Model model){
+    public ResponseEntity<List<Products>> categories(Model model){
         return ResponseEntity.ok(productRepository.findAll());
     }
 
     @GetMapping("/product/{id}")
-    public ResponseEntity<Product> getCategory(@PathVariable Integer id) {
-        Optional<Product> productOptional = service.findbyId(id);
+    public ResponseEntity<Products> getCategory(@PathVariable Integer id) {
+        Optional<Products> productOptional = service.findbyId(id);
         return productOptional.map(category -> new ResponseEntity<>(category, HttpStatus.OK))
                 .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
     @PostMapping("/product")
-    public ResponseEntity<Product> create(@RequestBody Product product) {
-        Product createdproduct = service.create(product);
+    public ResponseEntity<Products> create(@RequestBody Products product) {
+        Products createdproduct = service.create(product);
         return ResponseEntity.ok(createdproduct);
     }
 
     @PutMapping("/product/{id}")
-    public ResponseEntity<Product> updateproduct(@PathVariable("id") Integer id, @RequestBody Product product) {
+    public ResponseEntity<Products> updateproduct(@PathVariable("id") Integer id, @RequestBody Products product) {
         if(service. findbyId (id) == null) {
             return ResponseEntity.notFound().build();
         } else {

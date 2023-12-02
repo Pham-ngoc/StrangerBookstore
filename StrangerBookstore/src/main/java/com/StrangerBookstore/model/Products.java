@@ -6,13 +6,12 @@ import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
 
-import java.util.List;
 import java.util.Objects;
 
 @Entity
 @Setter
 @Getter
-public class Product extends BaseEntity{
+public class Products extends BaseEntity{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
     @GenericGenerator(name = "native", strategy = "native")
@@ -51,7 +50,7 @@ public class Product extends BaseEntity{
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         if (!super.equals(o)) return false;
-        Product product = (Product) o;
+        Products product = (Products) o;
         return productId == product.productId
                 && Objects.equals(productName, product.productName)
                 && Objects.equals(author, product.author)

@@ -1,6 +1,6 @@
 package com.StrangerBookstore.controller.AdminController;
 
-import com.StrangerBookstore.model.Order;
+import com.StrangerBookstore.model.Orders;
 import com.StrangerBookstore.repository.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -20,7 +20,7 @@ public class AdminOrderController {
     OrderRepository orderRepository;
 
     @GetMapping("/order")
-    public ResponseEntity<List<Order>> order(Model model){
-        return ResponseEntity.ok(orderRepository.newFindAll());
+    public ResponseEntity<List<Orders>> order(Model model){
+        return ResponseEntity.ok(orderRepository.orderFindAll());
     }
 }

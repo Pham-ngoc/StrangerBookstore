@@ -18,11 +18,11 @@ public class OrderDetail extends BaseEntity{
 
     @ManyToOne(fetch = FetchType.EAGER, optional = true)
     @JoinColumn(name = "order_id", referencedColumnName = "orderId", nullable = true)
-    private Order order;
+    private Orders order;
 
     @ManyToOne(fetch = FetchType.EAGER, optional = true)
     @JoinColumn(name = "product_id", referencedColumnName = "productId", nullable = true)
-    private Product product;
+    private Products product;
 
     private int quantity;
 

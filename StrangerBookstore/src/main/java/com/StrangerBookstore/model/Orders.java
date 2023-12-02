@@ -10,7 +10,7 @@ import java.util.Objects;
 @Entity
 @Setter
 @Getter
-public class Order extends BaseEntity{
+public class Orders extends BaseEntity{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
     @GenericGenerator(name = "native", strategy = "native")
@@ -32,7 +32,7 @@ public class Order extends BaseEntity{
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         if (!super.equals(o)) return false;
-        Order order = (Order) o;
+        Orders order = (Orders) o;
         return orderId == order.orderId
                 && Objects.equals(customer, order.customer)
                 && Objects.equals(statusOrders, order.statusOrders)

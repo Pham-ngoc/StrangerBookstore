@@ -1,7 +1,7 @@
 package com.StrangerBookstore.service;
 
 
-import com.StrangerBookstore.model.Product;
+import com.StrangerBookstore.model.Products;
 import com.StrangerBookstore.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,21 +14,21 @@ public class ProductService {
     @Autowired
     ProductRepository productRepository;
 
-    public List<Product> findAll() {
+    public List<Products> findAll() {
         return productRepository.findAll();
     }
 
-    public Optional<Product> findbyId(Integer id){
+    public Optional<Products> findbyId(Integer id){
         return productRepository.findById(id);
     }
 
-    public Product create(Product Product) {
+    public Products create(Products Product) {
 
         return productRepository.save(Product);
     }
 
-    public Product update(Integer id, Product product) {
-        Product model =productRepository.findById(id).get();
+    public Products update(Integer id, Products product) {
+        Products model =productRepository.findById(id).get();
         model.setProductName(product.getProductName());
         model.setAuthor(product.getAuthor());
         model.setPublisher(product.getPublisher());

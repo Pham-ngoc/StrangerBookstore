@@ -3,9 +3,7 @@
     $scope.list = [];
     $scope.form = {};
     $scope.load = function(){
-    $http
-            .get(url)
-            .then(response=> {
+            $http.get(url).then(response=> {
                 $scope.list = response.data;
                 console.log(response.data);
             })

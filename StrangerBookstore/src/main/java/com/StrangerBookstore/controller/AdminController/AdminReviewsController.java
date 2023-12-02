@@ -1,6 +1,5 @@
 package com.StrangerBookstore.controller.AdminController;
 
-import com.StrangerBookstore.model.Product;
 import com.StrangerBookstore.model.ProductReviews;
 import com.StrangerBookstore.repository.ProductReviewsReposity;
 import com.StrangerBookstore.service.ProductReviewsService;
@@ -10,7 +9,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 

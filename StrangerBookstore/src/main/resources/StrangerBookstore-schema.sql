@@ -32,7 +32,7 @@ CREATE TABLE `roles` (
 );
 
 -- Tạo bảng product
-CREATE TABLE `product` (
+CREATE TABLE `products` (
     `product_id` INT AUTO_INCREMENT PRIMARY KEY,
     `product_name` VARCHAR(255),
     `author` VARCHAR(255),
@@ -43,14 +43,14 @@ CREATE TABLE `product` (
     `isbn` VARCHAR(255),
     `description` TEXT,
     `price` DECIMAL(10, 2),
+    `product_img` VARCHAR(255),
     `category_id` INT,
-    `picture_id` INT,
     `create_at` TIMESTAMP,
     `create_by` VARCHAR(255),
     `update_at` TIMESTAMP,
     `update_by` VARCHAR(255)
 );
-ALTER TABLE `product`
+ALTER TABLE `products`
 ADD CONSTRAINT fk_product_category
 FOREIGN KEY (category_id)
 REFERENCES categories (category_id);
@@ -95,7 +95,6 @@ CREATE TABLE `news` (
     `update_by` VARCHAR(255)
 );
 -- drop table news;
-
 -- Tạo bảng contact_us
 CREATE TABLE `contact_us` (
     `contact_id` INT AUTO_INCREMENT PRIMARY KEY,
@@ -111,7 +110,7 @@ CREATE TABLE `contact_us` (
     `update_by` VARCHAR(255)
 );
 -- Tạo bảng `order`
-CREATE TABLE `order` (
+CREATE TABLE `orders` (
     `order_id` INT AUTO_INCREMENT PRIMARY KEY,
     `customer_id` INT,
     `status_id` INT,
@@ -122,12 +121,12 @@ CREATE TABLE `order` (
     `update_at` TIMESTAMP,
     `update_by` VARCHAR(255)
 );
-ALTER TABLE `order`
+ALTER TABLE `orders`
 ADD CONSTRAINT fk_order_customer
 FOREIGN KEY (customer_id)
 REFERENCES customer (customer_id);
 
-ALTER TABLE `order`
+ALTER TABLE `orders`
 ADD CONSTRAINT fk_order_statusOrder
 FOREIGN KEY (status_id)
 REFERENCES status_orders (status_id);
@@ -158,12 +157,12 @@ CREATE TABLE `order_detail` (
 ALTER TABLE `order_detail`
 ADD CONSTRAINT fk_orderDetail_order
 FOREIGN KEY (order_id)
-REFERENCES `order` (order_id);
+REFERENCES `orders` (order_id);
 
 ALTER TABLE `order_detail`
 ADD CONSTRAINT fk_orderDetail_product
 FOREIGN KEY (product_id)
-REFERENCES product (product_id);
+REFERENCES products (product_id);
 
 -- Tạo bảng ship_infor
 CREATE TABLE `ship_infor` (
@@ -176,7 +175,7 @@ CREATE TABLE `ship_infor` (
 ALTER TABLE `ship_infor`
 ADD CONSTRAINT fk_shipInfor_order
 FOREIGN KEY (order_id)
-REFERENCES `order` (order_id);
+REFERENCES `orders` (order_id);
 
 ALTER TABLE `ship_infor`
 ADD CONSTRAINT fk_shipInfor_address
@@ -198,7 +197,7 @@ REFERENCES `customer` (customer_id);
 ALTER TABLE `cart`
 ADD CONSTRAINT fk_cart_product
 FOREIGN KEY (product_id)
-REFERENCES product (product_id);
+REFERENCES products (product_id);
 
 -- Tạo bảng wishlist
 CREATE TABLE `wishlist` (
@@ -214,7 +213,7 @@ REFERENCES `customer` (customer_id);
 ALTER TABLE `wishlist`
 ADD CONSTRAINT fk_wishlist_product
 FOREIGN KEY (product_id)
-REFERENCES product (product_id);
+REFERENCES products (product_id);
 
 -- Tạo bảng product_reviews
 CREATE TABLE `product_reviews` (
@@ -236,19 +235,6 @@ REFERENCES `customer` (customer_id);
 ALTER TABLE `product_reviews`
 ADD CONSTRAINT fk_productReviews_product
 FOREIGN KEY (product_id)
-REFERENCES product (product_id);
+REFERENCES products (product_id);
 
--- Tạo bảng picture
-CREATE TABLE `picture` (
-    `picture_id` INT AUTO_INCREMENT PRIMARY KEY,
-	`product_id` INT,
-    `picture_file` TEXT, -- Để hình ảnh
-    `create_at` TIMESTAMP,
-    `create_by` VARCHAR(255),
-    `update_at` TIMESTAMP,
-    `update_by` VARCHAR(255)
-);
-ALTER TABLE `picture`
-ADD CONSTRAINT fk_picture_product
-FOREIGN KEY (product_id)
-REFERENCES `product` (product_id);
+
