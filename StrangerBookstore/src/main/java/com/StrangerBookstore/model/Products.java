@@ -2,6 +2,7 @@ package com.StrangerBookstore.model;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
@@ -16,8 +17,6 @@ public class Products extends BaseEntity{
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
     @GenericGenerator(name = "native", strategy = "native")
     private int productId;
-
-
 
     @NotBlank(message = "Product Name must not be blank")
     private String productName;
@@ -37,13 +36,21 @@ public class Products extends BaseEntity{
     @NotBlank(message = "Quantity In Stock must not be blank")
     private int quantityInStock;
 
+    @NotBlank(message = "Quantity In Stock must not be blank")
+    private String isbn;
+
     @NotBlank(message = "Description must not be blank")
     private String description;
 
-    @NotBlank(message = "Category must not be blank")
+    @NotBlank(message = "Description must not be blank")
+    private double price;
+
     @ManyToOne(fetch = FetchType.EAGER, optional = true)
     @JoinColumn(name="category_id", referencedColumnName = "categoryId", nullable = true)
     private Categories categories;
+
+    @NotNull(message = "Product image number must not be blank")
+    private String product_img;
 
     @Override
     public boolean equals(Object o) {
@@ -58,14 +65,17 @@ public class Products extends BaseEntity{
                 && Objects.equals(language, product.language)
                 && Objects.equals(condition, product.condition)
                 && Objects.equals(quantityInStock, product.quantityInStock)
+                && Objects.equals(isbn, product.isbn)
+                && Objects.equals(price, product.price)
                 && Objects.equals(description, product.description)
+                && Objects.equals(product_img, product.product_img)
                 && Objects.equals(categories, product.categories);
 
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), productId, productName, author, publisher, language, condition, quantityInStock, description, categories);
+        return Objects.hash(super.hashCode(), productId, productName, author, publisher, language, condition, quantityInStock, isbn, price, description, product_img, categories);
     }
 
 }
