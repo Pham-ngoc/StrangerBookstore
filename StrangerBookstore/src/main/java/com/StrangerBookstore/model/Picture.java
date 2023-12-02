@@ -20,7 +20,7 @@ public class Picture extends BaseEntity{
     @NotBlank(message = "Product must not be blank")
     @ManyToOne(fetch = FetchType.EAGER, optional = true)
     @JoinColumn(name="product_id", referencedColumnName = "productId", nullable = true)
-    private Product product;
+    private Products product;
 
     @NotBlank(message = "Picture File must not be blank")
     private String pictureFile;

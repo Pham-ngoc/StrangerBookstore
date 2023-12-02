@@ -2,12 +2,14 @@ package com.StrangerBookstore.controller.AdminController;
 
 import com.StrangerBookstore.model.Categories;
 import com.StrangerBookstore.model.Customer;
-import com.StrangerBookstore.model.Product;
+import com.StrangerBookstore.model.Products;
 import com.StrangerBookstore.repository.CategoryRepository;
 import com.StrangerBookstore.repository.ProductRepository;
 import com.StrangerBookstore.service.ProductService;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -32,25 +34,27 @@ public class AdminProductController {
     @Autowired
     CategoryRepository categoryRepository;
 
+
     @GetMapping("/products")
-    public ResponseEntity<List<Product>> findAll(){
-        return ResponseEntity.ok(productRepository.findAll());
+    public ResponseEntity<Page<Products>> getAllProducts(@RequestParam(defaultValue = "1", required = false) int page) {
+        Page<Products> products = productService.findAllProduct(page);
+        return new ResponseEntity<>(products, HttpStatus.OK);
     }
 
     @GetMapping("/products/{productId}")
-    public ResponseEntity<Product> getByProductId(@PathVariable("productId") int productId){
+    public ResponseEntity<Products> getByProductId(@PathVariable("productId") int productId){
         return ResponseEntity.ok(productRepository.findByProductId(productId));
     }
 
     @PostMapping("/products")
-    public ResponseEntity<Product> createProduct(@RequestParam("imageFile") MultipartFile imageFile,
+    public ResponseEntity<Products> createProduct(@RequestParam("imageFile") MultipartFile imageFile,
                                                   @RequestParam("productName") String productName,
-                                                 @RequestParam("author") String author,
-                                                 @RequestParam("publisher") String publisher,
-                                                 @RequestParam("language") String language,
-                                                 @RequestParam("condition") String condition,
-                                                 @RequestParam("quantityInStock") String quantityInStock,
-                                                 @RequestParam("isbn") String isbn,
+                                                  @RequestParam("author") String author,
+                                                  @RequestParam("publisher") String publisher,
+                                                  @RequestParam("language") String language,
+                                                  @RequestParam("condition") String condition,
+                                                  @RequestParam("quantityInStock") int quantityInStock,
+                                                  @RequestParam("isbn") String isbn,
                                                   @RequestParam("description") String description,
                                                   @RequestParam("price") long price,
                                                   @RequestParam("category") int categoryId) {
@@ -62,7 +66,7 @@ public class AdminProductController {
                 categories = category;
             }
         }
-        Product product = new Product();
+        Products product = new Products();
         product.setProductName(productName);
         product.setAuthor(author);
         product.setPublisher(publisher);
@@ -82,20 +86,20 @@ public class AdminProductController {
     }
 
     @PutMapping("/products/{productId}")
-    public ResponseEntity<Product> updateProduct(@PathVariable("productId") int productId,
+    public ResponseEntity<Products> updateProduct(@PathVariable("productId") int productId,
                                                   @RequestParam("imageFile") MultipartFile imageFile,
                                                   @RequestParam("productName") String productName,
-                                                 @RequestParam("author") String author,
-                                                 @RequestParam("publisher") String publisher,
-                                                 @RequestParam("language") String language,
-                                                 @RequestParam("condition") String condition,
-                                                 @RequestParam("quantityInStock") String quantityInStock,
-                                                 @RequestParam("isbn") String isbn,
+                                                  @RequestParam("author") String author,
+                                                  @RequestParam("publisher") String publisher,
+                                                  @RequestParam("language") String language,
+                                                  @RequestParam("condition") String condition,
+                                                  @RequestParam("quantityInStock") int quantityInStock,
+                                                  @RequestParam("isbn") String isbn,
                                                   @RequestParam("description") String description,
                                                   @RequestParam("price") long price,
                                                   @RequestParam("category") int categoryId) {
         // Find the existing product entity
-        Product product = productRepository.findByProductId(productId);
+        Products product = productRepository.findByProductId(productId);
         if (product == null) {
             return ResponseEntity.notFound().build();
         }

@@ -112,7 +112,7 @@
   border-radius: 10px;
   background-color: var(--color-white);
   text-align: center;
-  padding: 10px 207px;
+  padding: 10px 212px;
   text-decoration: none;
 }
 .group-child1:hover {
@@ -164,5 +164,4 @@
   box-sizing: border-box;
   width: 700px;
   height: 2px;
-  margin: 0 0 30px 0;
 }

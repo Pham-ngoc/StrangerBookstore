@@ -181,7 +181,7 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                        <tr class="tr-shadow" ng-repeat="item in productList">
+                                        <tr class="tr-shadow" ng-repeat="item in productList.content">
                                             <td>{{item.productName}}</td>
                                             <td>{{item.author}}</td>
                                             <td>{{item.publisher}}</td>
@@ -207,6 +207,11 @@
                                         <tr class="spacer"></tr>
                                     </tbody>
                                 </table>
+                                <div>
+                                    <button ng-click="previous()" ng-disabled="currentPage === 0">Previous</button>
+                                    Page {{ currentPage + 1 }} of {{ productList.totalPages }}
+                                    <button  ng-click="next()" ng-disabled="currentPage === productList.totalPages - 1">Next</button>
+                                </div>
                             </div>
                             <!-- END DATA TABLE -->
                         </div>

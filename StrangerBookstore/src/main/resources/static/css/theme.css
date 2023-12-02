@@ -4521,9 +4521,6 @@ section {
 }
 
 @media (max-width: 1199px) {
-    .table-data2.table tbody tr td:first-child {
-        vertical-align: middle;
-    }
 
     .table-data2.table tbody tr td:first-child .au-checkbox {
         margin-top: 0;
@@ -4543,10 +4540,10 @@ section {
 .table-data2.table tbody td {
     font-size: 14px;
     color: #808080;
-    vertical-align: middle;
     padding: 25px 40px;
     padding-right: 10px;
     border: none;
+    text-align: justify;
 }
 
 .table-data2.table tbody td.desc {

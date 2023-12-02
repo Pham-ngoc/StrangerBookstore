@@ -17,6 +17,8 @@ public class AuthConfig {
                 .requestMatchers("/home").permitAll()
                 .requestMatchers("/error").permitAll()
                 .requestMatchers("/").authenticated()
+                .requestMatchers("/myOrder").authenticated()
+                .requestMatchers("/cart").authenticated()
                 .requestMatchers("/login").permitAll()
                 .requestMatchers("/logout").permitAll()
                 .requestMatchers("/signup").permitAll()

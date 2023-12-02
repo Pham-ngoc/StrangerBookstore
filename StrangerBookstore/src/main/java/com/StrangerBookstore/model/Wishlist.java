@@ -22,7 +22,7 @@ public class Wishlist {
 
     @ManyToOne(fetch = FetchType.EAGER, optional = true)
     @JoinColumn(name="product_id", referencedColumnName = "productId", nullable = true)
-    private Product product;
+    private Products product;
 
     @Override
     public boolean equals(Object o) {

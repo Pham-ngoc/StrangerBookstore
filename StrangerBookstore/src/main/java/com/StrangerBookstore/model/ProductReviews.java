@@ -22,7 +22,7 @@ public class ProductReviews extends BaseEntity{
 
     @ManyToOne(fetch = FetchType.EAGER, optional = true)
     @JoinColumn(name = "product_id", referencedColumnName = "productId", nullable = true)
-    private Product product;
+    private Products product;
 
     private String reviewContent;
 

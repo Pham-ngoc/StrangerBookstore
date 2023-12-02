@@ -3,30 +3,28 @@ app.controller("AdminProductController", function($scope, $http) {
         var categoryUrl = 'http://localhost:8080/categories';
 
         $scope.form = {};
-        $scope.productList = [];
+        $scope.productList = {};
+        $scope.currentPage = 0;
         $scope.categories = [];
 
+        $scope.load = function(pageNumber) {
+                $http.get(productUrl, { params: { pageNumber: pageNumber } }).then(resp => {
+                    console.log(resp.data);
+                    $scope.productList = resp.data;
+                    console.log("After API Call - Updated Page:", pageNumber);
+                });
+                $http.get(categoryUrl).then(resp => {
+                    $scope.categories = resp.data;
+                });
+            };
 
-        $scope.loadTable = function() {
-            $http.get(productUrl).then(resp => {
-                console.log(resp.data);
-                $scope.productList = resp.data;
-            });
-        };
+        $scope.next = function(){
+            $scope.load(++$scope.currentPage);
+        }
 
-        $scope.refreshTable = function() {
-            $scope.loadTable();
-        };
-
-        $scope.load = function() {
-            $http.get(productUrl).then(resp => {
-                console.log(resp.data);
-                $scope.productList = resp.data;
-            });
-            $http.get(categoryUrl).then(resp => {
-                $scope.categories = resp.data;
-            });
-        };
+        $scope.previous = function(){
+            $scope.load(--$scope.currentPage);
+        }
 
         $scope.edit = function(id) {
             $http.get(`${productUrl}/${id}`).then(resp => {
@@ -76,7 +74,7 @@ app.controller("AdminProductController", function($scope, $http) {
                                           timer: 1500
                                         });
                                         $scope.reset();
-                                        $scope.refreshTable();
+                                        $scope.load();
                                     }).catch(error => {
                                         Swal.fire({
                                           icon: "error",
@@ -129,5 +127,5 @@ app.controller("AdminProductController", function($scope, $http) {
             });
         };
 
-        $scope.load();
+       $scope.load(0);
 });

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>My Order</title>
+    <th:block th:replace="~{User-view/style/user-css.html :: html}"></th:block>
+    <link type="text/css" rel="stylesheet" href="/css/my-order.css" >
+</head>
+<body>
+<div class="my-order">
+    <div class="my-order-show-child">
+        <div th:replace="~{User-view/fragment/header.html :: div}"></div>
+        <div class="my-order-text">
+            <span>My Order</span>
+        </div>
+    </div>
+    <div class="my-order-list row">
+        <div class="status-order col-lg-3">
+            <nav class="navbar-sidebar2">
+                <ul class="list-unstyled navbar__list">
+                    <li class=" has-sub">
+                        <a class="js-arrow" href="#">
+                            All Order
+                        </a>
+                    </li>
+                    <li class=" has-sub" th:each="status : ${listStatus}">
+                        <a class="js-arrow" href="#">
+                            <span th:text="${status.statusName}"></span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <div class="order-hr col-lg-1">
+            <div class="shop-categories-show-child4"></div>
+        </div>
+        <div class="order-list col-lg-8">
+            <div class="group-container">
+                <div class="customer-order-list">
+                    <div class="customer-order-status-order">
+                        <span>Order Status: </span><span></span>
+                    </div>
+                    <hr class="customer-order-hr">
+                    <div class="customer-order-product-list row">
+                        <div class="customer-order-pic col-lg-2">
+                            <img  src="/img/product_img/cay-cam-ngot-cua-toi-bia-truoc.jpg" alt="">
+                        </div>
+                        <div class="customer-order-name-qty col-lg-5">
+                            <p class="customer-order-name">Name of Book</p>
+                            <p class="customer-order-qty">Qty</p>
+                        </div>
+                        <div class="customer-order-price col-lg-2">
+                            <span>Price</span>
+                        </div>
+                        <div class="customer-order-total col-lg-2">
+                            <span>Total</span>
+                        </div>
+                    </div>
+                    <hr class="customer-order-hr">
+                    <div class="customer-order-btn">
+                        <div class="customer-order-total-amount row">
+                            <div class="customer-order-total-amount-text col-lg-8">
+                                <span>TOTAL AMOUNT</span>
+                            </div>
+                            <div class="customer-order-total-amount-price col-lg-4">
+                                <span></span><span>đ</span>
+                            </div>
+                        </div>
+                        <div class="customer-order-order-detail row">
+                            <a class="customer-order-repurchase col-lg-8">
+                                Repurchase
+                            </a>
+                            <a th:href="@{/getOrderDetail}" class="customer-order-detail col-lg-4">
+                                See Order Detail
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="pagination">
+                    <a href="" class="page-button">1</a>
+                    <a href="" class="page-button">2</a>
+                    <a href="" class="page-button">3</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div th:replace="~{User-view/fragment/footer.html :: div}"></div>
+</div>
+<th:block th:replace="~{User-view/style/user-scr.html::html}"></th:block>
+</body>
+</html>

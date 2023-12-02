@@ -1,0 +1,190 @@
+.group-container{
+  width: 100%;
+  align-items: center;
+  display: grid;
+  flex-wrap: wrap;
+}
+.my-order-show-child {
+  border-radius: 0 0 var(--br-11xl) var(--br-11xl);
+  background-color: var(--color-lightgray);
+  width: 100%;
+  height: 550px;
+  display: block;
+}
+.my-order-text {
+  font-size: 30px;
+  color: var(--color-dimgray);
+  height: 300px;
+  display: grid;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
+.sub-btn {
+  top: 604px;
+  left: 58px;
+  font-size: 25px;
+  text-decoration: none;
+  color: var(--color-lightgray);
+}
+
+/* navbar Category */
+
+.navbar-sidebar2 .navbar__list li {
+  list-style-type: none;
+  position: relative;
+  cursor: pointer;
+  border-bottom: var(--color-lightgray);
+}
+
+.navbar-sidebar2 .navbar__list li:hover > a {
+  color: var(--color-tan);
+}
+
+.navbar-sidebar2 .navbar__list li a {
+  color: var(--color-lightgray);
+  display: block;
+  padding: 10px 0px;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+.navbar-sidebar2 .navbar__list li.active > a {
+  text-decoration: none;
+  color: var(--color-lightgray);
+}
+
+.navbar-sidebar2 .navbar__sub-list {
+    padding-left: 5px;
+    display: none;
+}
+
+.navbar-sidebar2 .navbar__sub-list li {
+  background: var(--color-dimgray)
+}
+
+.navbar-sidebar2 .navbar__sub-list li a:hover {
+  background: var(--color-lightgray);
+  border-radius: 7px;
+}
+
+.navbar-sidebar2 .navbar__sub-list li a:hover span{
+  color: var(--color-dimgray);
+}
+
+.navbar-sidebar2 .navbar__sub-list li span {
+  color: var(--color-lightgray);
+  padding-left: 10px;
+  font-size: 18px;
+}
+
+
+.customer-order-hr{
+    color: var(--color-dimgray);
+}
+.shop-categories-show-child4 {
+  background: var(--color-lightgray);
+  box-sizing: border-box;
+  width: 3px;
+  height: 100%;
+  border-radius: 50px;
+}
+/* CSS */
+.pagination {
+  width: max-content;
+  display: flex;
+  gap: 10px; /* Khoảng cách giữa các nút */
+  margin: 0 auto;
+}
+
+.page-button {
+  padding: 10px 30px;
+  border-radius: 10px;
+  background-color: var(--color-dimgray); /* Màu nền của nút */
+      color: var(--color-lightgray);  /* Màu chữ trắng */
+  border: none;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.page-button:hover {
+  color: var(--color-dimgray); ;
+  background: var(--color-lightgray);
+}
+.order-list{
+    margin: 50px;
+    height: max-content;
+}
+.order-hr{
+   width: 10px;
+   margin-top: 50px;
+   display: block;
+}
+.status-order{
+    display: grid;
+    margin-top: 50px;
+    text-align: left;
+    padding-left: 70px;
+}
+.customer-order-list{
+    padding: 50px;
+    background: var(--color-lightgray);
+    border-radius: 10px;
+    margin-bottom: 50px;
+}
+.customer-order-status-order,
+.customer-order-product-list{
+    color: var(--color-dimgray);
+}
+.customer-order-pic img{
+    width: 100px;
+    height: 150px;
+}
+.customer-order-name{
+    margin: 0px;
+}
+.customer-order-qty {
+    font-weight: 300;
+    font-size: 20px;
+}
+.customer-order-price,
+.customer-order-total{
+    text-align: center;
+}
+.customer-order-btn{
+    text-align: right;
+}
+.customer-order-total-amount{
+    margin-bottom: 30px;
+    color: var(--color-dimgray);
+}
+.customer-order-order-detail{
+    display: flex;
+    justify-content: flex-end;
+}
+.customer-order-detail,
+.customer-order-repurchase{
+    padding: 20px 40px;
+    text-decoration: none;
+    background: var(--color-dimgray);
+    color: var(--color-lightgray);
+    border-radius: 10px;
+    width: max-content;
+    margin-left: 30px;
+}
+.customer-order-detail:hover ,
+.customer-order-repurchase:hover {
+    background: var(--color-tan);
+    color: var(--color-dimgray);
+}
+.my-order {
+  position: relative;
+  background-color: var(--color-dimgray);
+  width: 100%;
+  height: max-content;
+  overflow: hidden;
+  text-align: left;
+  font-size: var(--font-size-6xl);
+  color: var(--color-white);
+  font-family: var(--font-kanit);
+}
