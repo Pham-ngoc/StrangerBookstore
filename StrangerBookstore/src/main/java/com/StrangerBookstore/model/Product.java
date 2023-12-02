@@ -18,6 +18,8 @@ public class Product extends BaseEntity{
     @GenericGenerator(name = "native", strategy = "native")
     private int productId;
 
+
+
     @NotBlank(message = "Product Name must not be blank")
     private String productName;
 
@@ -34,7 +36,7 @@ public class Product extends BaseEntity{
     private String condition; //Tình trạng
 
     @NotBlank(message = "Quantity In Stock must not be blank")
-    private String quantityInStock;
+    private int quantityInStock;
 
     @NotBlank(message = "Description must not be blank")
     private String description;

@@ -95,20 +95,23 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr class="tr-shadow">
-                                        <td>Lori Lynch</td>
-                                        <td>Lori Lynch</td>
-                                        <td>Lori Lynch</td>
-                                        <td>Lori Lynch</td>
-                                        <td>Lori Lynch</td>
-                                        <td>
-                                            <div class="table-data-feature">
-                                                <button class="item"  data-placement="top" title="Edit">
-                                                    <i class="zmdi zmdi-edit"></i>
-                                                </button>
-                                            </div>
-                                        </td>
-                                    </tr>
+                                        <tr class="tr-shadow"  ng-repeat="item in list">
+                                            <td> <span>{{item.orderId}} </span></td>
+                                            <td>{{item.customer.customerName}}</td>
+                                            <td>{{item.statusOrders.statusName}}</td>
+                                            <td>{{item.paymentMethod}}</td>
+                                            <td>{{item.totalAmount}}</td>
+                                            <td>
+                                                <div class="table-data-feature">
+                                                    <button class="item" data-toggle="tooltip" data-placement="top" title="Edit">
+                                                        <i class="zmdi zmdi-edit"></i>
+                                                    </button>
+                                                    <button class="item" data-toggle="tooltip" data-placement="top" title="Delete" ng-click="deleteCategory(item.productId)">
+                                                        <i class="zmdi zmdi-delete"></i>
+                                                    </button>
+                                                </div>
+                                            </td>
+                                        </tr>
                                     <tr class="spacer"></tr>
                                     </tbody>
                                 </table>

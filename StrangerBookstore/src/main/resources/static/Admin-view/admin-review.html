@@ -1,4 +1,4 @@
-        <div class="main-content">
+        <div class="main-content" ng-controller="AdminReviewController">
             <div class="section__content section__content--p30">
                 <div class="container-fluid">
                     <!--TABLE-->
@@ -34,12 +34,12 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr class="tr-shadow">
-                                        <td>Lori Lynch</td>
-                                        <td>Lori Lynch</td>
-                                        <td>Lori Lynch</td>
-                                        <td>Lori Lynch</td>
-                                        <td>Lori Lynch</td>
+                                    <tr ng-repeat="item in list">
+                                        <td>{{item.reviewsId}}</td>
+                                        <td>{{item.customer.customerName}}</td>
+                                        <td>{{item.customer.email}}</td>
+                                        <td>{{item.reviewContent}}</td>
+                                        <td>{{item.starForProduct}}</td>
                                         <td>
                                             <div class="table-data-feature">
                                                 <button class="item" data-toggle="modal" data-target="#scrollmodal" data-placement="top" title="Edit">
