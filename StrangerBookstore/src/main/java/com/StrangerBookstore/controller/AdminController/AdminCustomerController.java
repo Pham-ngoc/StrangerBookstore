@@ -12,17 +12,20 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@CrossOrigin
+@CrossOrigin("*")
 @RequestMapping("/admin")
 public class AdminCustomerController {
 
     @Autowired
     CustomerService service;
 
+
+    @Autowired
+    CustomerRepository customerRepository;
+
     @GetMapping("/customer")
-    public ResponseEntity<List<Object>> customer(Model model){
-        List<Customer> cus= service.findAll();
-        return ResponseEntity.ok(Collections.singletonList(cus));
+    public ResponseEntity<List<Customer>> categories(Model model){
+        return ResponseEntity.ok(customerRepository.findAll());
     }
 
     @GetMapping("/customer/{id}")

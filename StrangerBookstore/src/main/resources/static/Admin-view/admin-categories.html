@@ -1,113 +1,117 @@
 <div class="main-content" ng-controller="AdminCategoriesController">
-            <div class="section__content section__content--p30">
-                <div class="container-fluid">
-                    <!--FORM-->
-                    <div class="card">
-                        <div class="card-header">
-                            <strong>Categories</strong> Form
+    <div class="section__content section__content--p30">
+        <div class="container-fluid">
+            <!--FORM-->
+            <div class="card">
+                <div class="card-header">
+                    <strong>Categories</strong> Form
+                </div>
+                <div class="card-body card-block">
+                    <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
+                        <div class="row form-group">
+                            <div class="col col-md-3">
+                                <label for="categoryId" class=" form-control-label">Category ID</label>
+                            </div>
+                            <div class="col-12 col-md-9">
+                                <input type="text" id="categoryId" name="disabled-input"
+                                       disabled="" class="form-control" ng-model="category_Id">
+                            </div>
                         </div>
-                        <div class="card-body card-block">
-                            <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
-                                <div class="row form-group">
-                                    <div class="col col-md-3">
-                                        <label for="categoryId" class=" form-control-label">Category ID</label>
-                                    </div>
-                                    <div class="col-12 col-md-9">
-                                        <input type="text" id="categoryId" name="disabled-input"
-                                               disabled="" class="form-control">
-                                    </div>
-                                </div>
-                                <div class="row form-group">
-                                    <div class="col col-md-3">
-                                        <label for="categoryName" class=" form-control-label">Category Name</label>
-                                    </div>
-                                    <div class="col-12 col-md-9">
-                                        <input type="text" id="categoryName" name="text-input" placeholder="Category Name"
-                                               class="form-control">
-<!--                                        <small class="form-text" style="color: red;">{{ errorMessage }}</small>-->
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                        <div class="card-footer">
-                            <button type="submit" class="btn btn-primary btn-sm">
-                                Create
-                            </button>
-                            <button type="submit" class="btn btn-primary btn-sm">
-                                Update
-                            </button>
-                            <button type="submit" class="btn btn-danger btn-sm">
-                                Delete
-                            </button>
-                            <button type="submit" class="btn btn-danger btn-sm">
-                                Reset
-                            </button>
-                        </div>
-                    </div>
-                    <!--TABLE-->
-                    <div class="row">
-                        <div class="col-md-12">
-                            <!-- DATA TABLE -->
-                            <h3 class="title-5 m-b-35">Categories Table</h3>
-                            <div class="table-data__tool">
-                                <div class="table-data__tool-left">
-                                    <div class="row form-group">
-                                        <div class="col col-md-10">
-                                            <input type="text" id="search" name="text-input" placeholder="Search"
-                                                   class="form-control">
-                                        </div>
-                                        <div class="col-12 col-md-2 mt-1">
-                                            <button type="submit" class="btn btn-primary btn-sm">
-                                                Search
-                                            </button>
-                                        </div>
-                                    </div>
+                        <div class="row form-group">
+                            <div class="col col-md-3">
+                                <label for="categoryName" class=" form-control-label">Category Name</label>
+                            </div>
+                            <div class="col-12 col-md-9">
+                                <input type="text" id="categoryName" name="text-input" placeholder="Category Name"
+                                       class="form-control" ng-model="newcategoryName">
+                                <!--                                        <small class="form-text" style="color: red;">{{ errorMessage }}</small>-->
+                                <div class="alert alert-success" ng-show="successMessage" role="alert">
+                                    {{ successMessage }}
                                 </div>
                             </div>
-                            <div class="table-responsive table-responsive-data2">
-                                <table class="table table-data2">
-                                    <thead>
-                                    <tr>
-                                        <th>Category ID</th>
-                                        <th>Category Name</th>
-                                        <th>Create At</th>
-                                        <th>Create By</th>
-                                        <th>Update At</th>
-                                        <th>Update By</th>
-                                        <th></th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <tr class="tr-shadow" ng-repeat="item in list">
-                                        <td>
-                                            <span>{{item.categoryId}}</span>
-                                        </td>
-                                        <td>{{item.categoryName}}</td>
-                                        <td>{{item.createBy}}</td>
-                                        <td>
-                                            <span>{{item.createAt}}</span>
-                                        </td>
-                                        <td>{{item.updateBy}}</td>
-                                        <td>{{item.updateAt}}</td>
-                                        <td>
-                                            <div class="table-data-feature">
-                                                <button class="item" data-toggle="tooltip" data-placement="top" title="Edit">
-                                                    <i class="zmdi zmdi-edit"></i>
-                                                </button>
-                                                <button class="item" data-toggle="tooltip" data-placement="top" title="Delete">
-                                                    <i class="zmdi zmdi-delete"></i>
-                                                </button>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr class="spacer"></tr>
+                        </div>
+                    </form>
+                </div>
+                <div class="card-footer">
+                    <button type="submit" class="btn btn-primary btn-sm" ng-click="createCategory()">
+                        Create
+                    </button>
+                    <button type="submit" class="btn btn-primary btn-sm">
+                        Update
+                    </button>
+                    <button type="submit" class="btn btn-danger btn-sm">
+                        Delete
+                    </button>
+                    <button type="submit" class="btn btn-danger btn-sm" ng-click="resetForm()">
+                        Reset
+                    </button>
+                </div>
 
-                                    </tbody>
-                                </table>
+            </div>
+            <!--TABLE-->
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- DATA TABLE -->
+                    <h3 class="title-5 m-b-35">Categories Table</h3>
+                    <div class="table-data__tool">
+                        <div class="table-data__tool-left">
+                            <div class="row form-group">
+                                <div class="col col-md-10">
+                                    <input type="text" id="search" name="text-input" placeholder="Search"
+                                           class="form-control">
+                                </div>
+                                <div class="col-12 col-md-2 mt-1">
+                                    <button type="submit" class="btn btn-primary btn-sm">
+                                        Search
+                                    </button>
+                                </div>
                             </div>
-                            <!-- END DATA TABLE -->
                         </div>
                     </div>
+                    <div class="table-responsive table-responsive-data2">
+                        <table class="table table-data2">
+                            <thead>
+                            <tr>
+                                <th>Category ID</th>
+                                <th>Category Name</th>
+                                <th>Create At</th>
+                                <th>Create By</th>
+                                <th>Update At</th>
+                                <th>Update By</th>
+                                <th></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr class="tr-shadow" ng-repeat="item in list">
+                                <td>
+                                    <span>{{item.categoryId}}</span>
+                                </td>
+                                <td>{{item.categoryName}}</td>
+                                <td>{{item.createBy}}</td>
+                                <td>
+                                    <span>{{item.createAt}}</span>
+                                </td>
+                                <td>{{item.updateBy}}</td>
+                                <td>{{item.updateAt}}</td>
+                                <td>
+                                    <div class="table-data-feature">
+                                        <button class="item" data-toggle="tooltip" data-placement="top" title="Edit" ng-click="editCategory(item.categoryId)">
+                                            <i class="zmdi zmdi-edit"></i>
+                                        </button>
+                                        <button class="item" data-toggle="tooltip" data-placement="top" title="Delete" ng-click="deleteCategory(item.categoryId)">
+                                            <i class="zmdi zmdi-delete"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="spacer"></tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- END DATA TABLE -->
                 </div>
             </div>
         </div>
+    </div>
+</div>

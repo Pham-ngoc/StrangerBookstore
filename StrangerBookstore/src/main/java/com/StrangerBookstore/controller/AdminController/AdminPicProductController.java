@@ -13,16 +13,15 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@CrossOrigin
+@CrossOrigin("*")
 @RequestMapping("/admin")
 public class AdminPicProductController {
     @Autowired
     PictureService service;
 
     @GetMapping("/picProduct")
-    public ResponseEntity<List<Object>> picture(org.springframework.ui.Model model){
-        List<Picture> pro= service.findAll();
-        return ResponseEntity.ok(Collections.singletonList(pro));
+    public ResponseEntity<List<Picture>> categories(Model model){
+        return ResponseEntity.ok(service.findAll());
     }
 
     @GetMapping("/picProduct/{id}")
@@ -52,5 +51,4 @@ public class AdminPicProductController {
     @DeleteMapping("/picProduct/{id}")
     public void deletepicture(@PathVariable("id") Integer id) {
         service.delete(id);
-    }
 }

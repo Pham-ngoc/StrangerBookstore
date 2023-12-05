@@ -5,12 +5,17 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-@Controller
+@RestController
+@CrossOrigin("*")
 @RequestMapping("/admin")
 public class AdminContactController {
 
+    @Autowired
+    Contactservice contactservice;
+
     @GetMapping("/contact")
-    public String contact(Model model){
-        return "Admin-view/index.html";
+    public ResponseEntity<List<ContactUs>> categories(Model model){
+        return ResponseEntity.ok(contactservice.findAll());
     }
+}
 }
