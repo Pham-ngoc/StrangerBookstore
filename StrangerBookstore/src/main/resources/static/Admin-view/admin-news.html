@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<div class="main-content">
+<div class="main-content" ng-controller="AdminNewsController">
     <div class="section__content section__content--p30">
         <div class="container-fluid">
             <!--FORM-->
@@ -46,21 +46,21 @@
                                        class="form-control-file">
                             </div>
                         </div>
+                        <div class="card-footer">
+                            <button type="submit" class="btn btn-primary btn-sm">
+                                Create
+                            </button>
+                            <button type="submit" class="btn btn-primary btn-sm">
+                                Update
+                            </button>
+                            <button type="submit" class="btn btn-primary btn-sm">
+                                Reset
+                            </button>
+                            <button type="reset" class="btn btn-danger btn-sm">
+                                Delete
+                            </button>
+                        </div>
                     </form>
-                </div>
-                <div class="card-footer">
-                    <button type="submit" class="btn btn-primary btn-sm">
-                        Create
-                    </button>
-                    <button type="submit" class="btn btn-primary btn-sm">
-                        Update
-                    </button>
-                    <button type="submit" class="btn btn-primary btn-sm">
-                        Reset
-                    </button>
-                    <button type="reset" class="btn btn-danger btn-sm">
-                        Delete
-                    </button>
                 </div>
             </div>
             <!--TABLE-->
@@ -99,15 +99,15 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tr class="tr-shadow">
-                                <td>Lori Lynch</td>
-                                <td>Lori Lynch</td>
-                                <td>Lori Lynch</td>
-                                <td>Lori Lynch</td>
-                                <td>Lori Lynch</td>
-                                <td>Lori Lynch</td>
-                                <td>Lori Lynch</td>
-                                <td>Lori Lynch</td>
+                            <tr class="tr-shadow" ng-repeat="item in list">
+                                <td>{{item.newsId}}</td>
+                                <td>{{item.newsTitle}}</td>
+                                <td>{{item.newsContent}}</td>
+                                <td>{{item.newsPicture}}</td>
+                                <td>{{item.createBy}}</td>
+                                <td>{{item.createAt}}</td>
+                                <td>{{item.updateBy}}</td>
+                                <td>{{item.updateAt}}</td>
                                 <td>
                                     <div class="table-data-feature">
                                         <button class="item" data-toggle="tooltip" data-placement="top" title="Edit">

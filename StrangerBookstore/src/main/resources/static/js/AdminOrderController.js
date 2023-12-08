@@ -1,9 +1,9 @@
  app.controller("AdminOrderController", function ($scope, $http) {
- var url = 'http://localhost:8080/admin/order';
+ var orderUrl = 'http://localhost:8080/admin/order';
     $scope.list = [];
     $scope.form = {};
     $scope.load = function(){
-            $http.get(url).then(response=> {
+            $http.get(orderUrl).then(response=> {
                 $scope.list = response.data;
                 console.log(response.data);
             })

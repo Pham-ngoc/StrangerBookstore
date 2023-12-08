@@ -13,7 +13,7 @@ public class NewsService {
     NewsRepository newsRepository;
 
     public List<News> findAll() {
-        return  newsRepository.newFindAll();
-    }
+        return  newsRepository.findAll();
+    };
 
 }

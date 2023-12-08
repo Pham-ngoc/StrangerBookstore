@@ -23,7 +23,7 @@ public class AdminReviewsController {
     ProductReviewsReposity productReviewsReposity;
 
     @GetMapping("/reviews")
-    public ResponseEntity<List<ProductReviews>> categories(Model model){
+    public ResponseEntity<List<ProductReviews>> reviews(Model model){
         return ResponseEntity.ok(productReviewsReposity.findAll());
     }
 

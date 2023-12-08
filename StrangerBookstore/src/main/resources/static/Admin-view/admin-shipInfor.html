@@ -1,4 +1,4 @@
-<div class="main-content">
+<div class="main-content" ng-controller="AdminShipController">
     <div class="section__content section__content--p30">
         <div class="container-fluid">
             <!--FORM-->
@@ -139,15 +139,17 @@
                                 <th>Order ID</th>
                                 <th>Address Detail</th>
                                 <th>Status</th>
+                                <th>Note</th>
                                 <th></th>
                             </tr>
                             </thead>
                             <tbody>
-                            <tr class="tr-shadow">
-                                <td>Lori Lynch</td>
-                                <td>Lori Lynch</td>
-                                <td>Lori Lynch</td>
-                                <td>Lori Lynch</td>
+                            <tr class="tr-shadow" ng-repeat="item in list">
+                                <td>{{item.shipId}}</td>
+                                <td>{{item.order.orderId}}</td>
+                                <td>{{item.address.addressDetail}}</td>
+                                <td>{{item.status}}</td>
+                                <td>{{item.note}}</td>
                                 <td>
                                     <div class="table-data-feature">
                                         <button class="item" data-placement="top" title="Edit">

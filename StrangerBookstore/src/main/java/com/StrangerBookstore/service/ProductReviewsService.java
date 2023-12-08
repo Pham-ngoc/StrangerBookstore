@@ -14,6 +14,7 @@ public class ProductReviewsService {
     ProductReviewsReposity productReviewsReposity;
 
     public List<ProductReviews> findAll() {
+
         return productReviewsReposity.findAll();
     }
 

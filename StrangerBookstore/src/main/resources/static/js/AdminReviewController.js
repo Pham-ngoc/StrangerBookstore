@@ -1,8 +1,10 @@
 app.controller("AdminReviewController", function ($scope, $http) {
-    var url = 'http://localhost:8080/admin/reviews';
+    var reviewsUrl = 'http://localhost:8080/admin/reviews';
     $scope.list = [];
+    $scope.form = {};
+
        $http
-           .get(url)
+           .get(reviewsUrl)
            .then(response=> {
                $scope.list = response.data;
                console.log(response.data);

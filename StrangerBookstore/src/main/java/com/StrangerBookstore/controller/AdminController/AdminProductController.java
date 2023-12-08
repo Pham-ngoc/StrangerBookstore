@@ -25,7 +25,7 @@ public class AdminProductController {
     ProductRepository productRepository;
 
     @GetMapping("/product")
-    public ResponseEntity<List<Products>> categories(Model model){
+    public ResponseEntity<List<Products>> product(Model model){
         return ResponseEntity.ok(productRepository.findAll());
     }
 

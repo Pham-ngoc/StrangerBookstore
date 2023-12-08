@@ -8,7 +8,7 @@
                             <strong>Product</strong> Form
                         </div>
                         <div class="card-body card-block">
-                            <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
+                            <form action="" method="post" enctype="multipart/form-data" class="form-horizontal" >
                                 <div class="row form-group">
                                     <div class="col col-md-3">
                                         <label for="disabled-input" class=" form-control-label">Product ID</label>
@@ -23,7 +23,7 @@
                                     </div>
                                     <div class="col-12 col-md-9">
                                         <input type="text" id="productName" name="text-input" placeholder="Product Name"
-                                               class="form-control"  ng-model="form.product_name">
+                                               class="form-control"  ng-model="form.productName">
 <!--                                        <small class="form-text text-muted">This is a help text</small>-->
                                     </div>
                                 </div>
@@ -39,20 +39,20 @@
                                 </div>
                                 <div class="row form-group">
                                     <div class="col col-md-3">
-                                        <label for="publisher " class=" form-control-label">Publisher </label>
+                                        <label for="publisher" class=" form-control-label">Publisher </label>
                                     </div>
                                     <div class="col-12 col-md-9">
-                                        <input type="text" id="publisher " name="text-input" placeholder="Publisher"
+                                        <input type="text" id="publisher" name="text-input" placeholder="Publisher"
                                                class="form-control"  ng-model="form.publisher">
                                         <!-- <small class="form-text text-muted">This is a help text</small>-->
                                     </div>
                                 </div>
                                 <div class="row form-group">
                                     <div class="col col-md-3">
-                                        <label for="language " class=" form-control-label">Language </label>
+                                        <label for="language" class=" form-control-label">Language </label>
                                     </div>
                                     <div class="col-12 col-md-9">
-                                        <input type="text" id="language " name="text-input" placeholder="Language"
+                                        <input type="text" id="language" name="text-input" placeholder="Language"
                                                class="form-control"  ng-model="form.language">
                                         <!-- <small class="form-text text-muted">This is a help text</small>-->
                                     </div>
@@ -79,11 +79,11 @@
                                 </div>
                                 <div class="row form-group">
                                     <div class="col col-md-3">
-                                        <label for="ISBN" class=" form-control-label">ISBN</label>
+                                        <label for="isbn" class=" form-control-label">ISBN</label>
                                     </div>
                                     <div class="col-12 col-md-9">
-                                        <input type="text" id="ISBN" name="text-input" placeholder="ISBN"
-                                               class="form-control"  ng-model="ISBN">
+                                        <input type="text" id="isbn" name="text-input" placeholder="ISBN"
+                                               class="form-control"  ng-model="form.isbn">
                                         <!-- <small class="form-text text-muted">This is a help text</small>-->
                                     </div>
                                 </div>
@@ -112,36 +112,35 @@
                                     </div>
                                     <div class="col-12 col-md-9">
                                         <select name="select" id="categoryId " class="form-control"  >
-                                            <option value="0" ng-repeat="item in list">{{item.categories.categoryName}}</option>
-                                            <option value="0" ng-repeat="item in list">{{item.categories.categoryName}}</option>
-                                            <option value="0" ng-repeat="item in list">{{item.categories.categoryName}}</option>
+                                            <option value="0" ng-repeat="item in category">{{item.categoryName}}</option>
                                         </select>
                                     </div>
                                 </div>
                                 <div class="row form-group">
                                     <div class="col col-md-3">
-                                        <label  class=" form-control-label">Picture Product</label>
+                                        <label  for="product_img" class=" form-control-label">Picture Product</label>
                                     </div>
                                    <div class="col-12 col-md-9">
-                                       <input type="file"
+                                       <input type="file" id="product_img" ng-model="form.product_img">
                                     </div>
+                                </div>
+                                <div class="card-footer">
+                                    <button ng-click="create()" type="button" class="btn btn-primary btn-sm" >
+                                        Create
+                                    </button>
+                                    <button type="submit" class="btn btn-primary btn-sm">
+                                        Update
+                                    </button>
+                                    <button type="submit" class="btn btn-primary btn-sm">
+                                        Reset
+                                    </button>
+                                    <button type="reset" class="btn btn-danger btn-sm">
+                                        Delete
+                                    </button>
                                 </div>
                             </form>
                         </div>
-                        <div class="card-footer">
-                            <button type="submit" class="btn btn-primary btn-sm"ng-click="createproduct()">
-                                Create
-                            </button>
-                            <button type="submit" class="btn btn-primary btn-sm">
-                                Update
-                            </button>
-                            <button type="submit" class="btn btn-primary btn-sm">
-                                Reset
-                            </button>
-                            <button type="reset" class="btn btn-danger btn-sm">
-                                 Delete
-                            </button>
-                        </div>
+
                     </div>
 <!--TABLE-->
                     <div class="row">
@@ -189,7 +188,7 @@
                                         <td>{{item.language}}</td>
                                         <td>{{item.condition}}</td>
                                         <td>{{item.quantityInStock}}</td>
-                                        <td>ISBN</td>
+                                        <td>{{item.isbn}}</td>
                                         <td>{{item.description}}</td>
                                         <td>{{item.categories.categoryName}}</td>
 

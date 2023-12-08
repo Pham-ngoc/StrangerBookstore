@@ -17,13 +17,13 @@ public class ShipInfor {
     @GenericGenerator(name = "native", strategy = "native")
     private int shipId;
 
-    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST, targetEntity = Address.class)
-    @JoinColumn(name="address_id", referencedColumnName = "addressId", nullable = true)
-    private Address address;
-
     @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST, targetEntity = Orders.class)
     @JoinColumn(name="order_id", referencedColumnName = "orderId", nullable = true)
     private Orders order;
+
+    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST, targetEntity = Address.class)
+    @JoinColumn(name="address_id", referencedColumnName = "addressId", nullable = true)
+    private Address address;
 
     private String status;
 
@@ -35,14 +35,14 @@ public class ShipInfor {
         if (!super.equals(o)) return false;
         ShipInfor shipInfor = (ShipInfor) o;
         return shipId == shipInfor.shipId
-                && Objects.equals(address, shipInfor.address)
                 && Objects.equals(order, shipInfor.order)
+                && Objects.equals(address, shipInfor.address)
                 && Objects.equals(status, shipInfor.status)
                 && Objects.equals(note, shipInfor.note);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), shipId, address, order, status, note);
+        return Objects.hash(super.hashCode(), shipId,order,address, status, note);
     }
 }
