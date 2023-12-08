@@ -25,6 +25,7 @@ app.controller("AdminProductController", function ($scope, $http) {
                     console.error("Error fetching categories:", error);
                 });
 
+
     $scope.create=function(){
             var item=angular.copy($scope.form);
             $http.post(productUrl,list).then(resp=>{
