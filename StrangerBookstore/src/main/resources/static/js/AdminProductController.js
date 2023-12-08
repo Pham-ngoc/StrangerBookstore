@@ -45,7 +45,6 @@ app.controller("AdminProductController", function ($scope, $http) {
                 publisher: $scope.newpublisher
                 // Add other properties as needed
             };
-
             $http.post(url, productData)
                 .then(function(response) {
                     $scope.products.push(response.data); // Assuming you have a products array
