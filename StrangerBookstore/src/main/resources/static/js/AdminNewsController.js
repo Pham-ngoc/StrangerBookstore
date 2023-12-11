@@ -3,6 +3,8 @@ app.controller("AdminNewsController", function ($scope, $http) {
     $scope.list = [];
     $scope.form = {};
     $scope.searchKeyword = '';
+    $scope.filteredNews = [];
+    $scope.isEditing = false;
 
     $http
         .get(newsUrl)
@@ -53,6 +55,8 @@ app.controller("AdminNewsController", function ($scope, $http) {
             $scope.form.newsTitle = item.newsTitle;
             $scope.form.newsContent = item.newsContent;
             $scope.form.newsPicture = item.newsPicture;
+            $scope.isEditing = true;
+            $scope.updateFileName();
             // Các trường dữ liệu khác nếu cần
         };
 
@@ -125,19 +129,43 @@ app.controller("AdminNewsController", function ($scope, $http) {
               event.preventDefault();
              // Đặt lại giá trị của $scope.form về trạng thái ban đầu hoặc giá trị mặc định
              $scope.form = {};
+             $scope.isEditing = false;
+             $scope.searchKeyword = '';
          };
 
 
-      $scope.searchNews = function () {
-          $http.get(newsUrl + '?keyword=' + $scope.searchKeyword)
-              .then(function (response) {
-                  console.log('News fetched successfully:', response.data);
-                  $scope.list = response.data;
-              })
-              .catch(function (error) {
-                  console.error('Error fetching news:', error);
-              });
-      };
+
+      $scope.updateFileName = function () {
+              var fileInput = document.getElementById('file-input');
+              if (fileInput.files.length > 0) {
+                  $scope.form.newsPicture = fileInput.files[0].name;
+              } else if (!$scope.isEditing) { // Thêm điều kiện kiểm tra isEditing
+                  $scope.form.newsPicture = ''; // Đặt lại giá trị nếu không có tệp nào được chọn
+              }
+          };
+
+       $scope.searchNews = function () {
+           if (!$scope.searchKeyword || $scope.searchKeyword.trim() === '') {
+               // Nếu ô tìm kiếm trống, hiển thị toàn bộ dữ liệu
+               $http.get(newsUrl)
+                   .then(function (response) {
+                       $scope.list = response.data;
+                   })
+                   .catch(function (error) {
+                       console.error("Error fetching news:", error);
+                   });
+           } else {
+               // Ngược lại, lọc theo từ khóa tìm kiếm
+               $scope.list = $scope.list.filter(function (news) {
+                   return news.newsId.toString().includes($scope.searchKeyword) ||
+                       news.newsTitle.toLowerCase().includes($scope.searchKeyword.toLowerCase()) ||
+                       news.newsContent.toLowerCase().includes($scope.searchKeyword.toLowerCase())||
+                       (news.newsPicture && news.newsPicture.toLowerCase().includes($scope.searchKeyword.toLowerCase()));
+
+               });
+           }
+       };
+
 
 
 

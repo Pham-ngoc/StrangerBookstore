@@ -23,4 +23,6 @@ public class AdminOrderController {
     public ResponseEntity<List<Orders>> order(Model model){
         return ResponseEntity.ok(orderRepository.orderFindAll());
     }
+
+
 }
