@@ -26,60 +26,51 @@ app.controller("AdminProductController", function ($scope, $http) {
                 });
 
 
-    $scope.create=function(){
-            var item=angular.copy($scope.form);
-            $http.post(productUrl,list).then(resp=>{
 
-                $scope.list.push(resp.data);
-
-                alert("Thêm mới thành công!");
-            }).catch(error=>{
-                alert("Thêm mới không thành công");
-                console.log("Error",error);
-            });
-        }
-        /*if ($scope.newproductname && $scope.newauthor && $scope.newpublisher) {
-            // Assuming you have the correct properties for the product
-            var productData = {
-                productName: $scope.newproductname,
-                author: $scope.newauthor,
-                publisher: $scope.newpublisher
-                // Add other properties as needed
-            };
-            $http.post(url, productData)
-                .then(function(response) {
-                    $scope.products.push(response.data); // Assuming you have a products array
-                    // Reset input fields after successful creation
-                    $scope.newproductname = '';
-                    $scope.newauthor = '';
-                    $scope.newpublisher = '';
+    $scope.createProduct = function () {
+            // Gửi dữ liệu sản phẩm lên server để tạo sản phẩm
+            $http.post('http://localhost:8080/admin/product', $scope.form)
+                .then(function (response) {
+                    // Xử lý kết quả từ server nếu cần
+                    console.log('Product created successfully:', response.data);
+                    // Có thể thực hiện các bước khác như làm mới danh sách sản phẩm, hiển thị thông báo, vv.
                 })
-                .catch(function(error) {
-                    console.error("Error creating product:", error);
+                .catch(function (error) {
+                    // Xử lý lỗi nếu có
+                    console.error('Error creating product:', error);
                 });
-        } else {
-            console.error("Incomplete information for creating a product");
-        }*/
+        };
 
-//        var item = angular.copy($scope.form);
-//                $http.post(productUrl,item).then(resp => {
-//                    resp.data.create_at='';
-//                    resp.data.create_by='';
+//    $scope.create=function(){
+//            var item=angular.copy($scope.form);
+//            $http.post(productUrl,list).then(resp=>{
 //
-//                    $scope.items.push(resp.data);
+//                $scope.list.push(resp.data);
 //
-//                    alert("Thêm mới thành công!");
-//                }).catch(error => {
-//                    alert("Lỗi thêm mới sản phẩm!");
-//                    console.log("Error",error);
-//                });
+//                alert("Thêm mới thành công!");
+//            }).catch(error=>{
+//                alert("Thêm mới không thành công");
+//                console.log("Error",error);
+//            });
+//        }
 
 
-
-
-
-
-
+$scope.editNews = function (item) {
+            // Gán dữ liệu từ hàng đã click vào biến $scope.form
+            $scope.form.productId = item.productId;
+            $scope.form.productName = item.productName;
+            $scope.form.author = item.author;
+            $scope.form.publisher = item.publisher;
+            $scope.form.language = item.language;
+            $scope.form.condition = item.condition;
+            $scope.form.quantityInStock = item.quantityInStock;
+            $scope.form.isbn = item.isbn;
+            $scope.form.price = item.price;
+            $scope.form.description = item.description;
+            $scope.form.product_img = item.product_img;
+            $scope.form.categories = item.categories;
+            // Các trường dữ liệu khác nếu cần
+        };
 
 ////////////////////////////////////////////////////////////////////////
           $scope.updateproduct = function(category) {
@@ -99,28 +90,23 @@ app.controller("AdminProductController", function ($scope, $http) {
                   });
           }
 
-           $scope.deleteCategory = function(productId) {
-                  console.log('Deleting category with ID:', productId);
+           $scope.deleteProduct = function (item) {
+                        // Gửi yêu cầu DELETE tới server để xóa tin tức
+                        $http.delete('http://localhost:8080/admin/product/' + item.productId)
+                            .then(function (response) {
+                                console.log('News deleted successfully:', response.data);
 
-                  if (confirm("Bạn có muốn xóa loại sản phẩm này không?")) {
-                      $http.delete("http://localhost:8080/admin/product/"+ productId)
-                          .then(function(response) {
-                              console.log('Category deleted successfully:', response);
-                              if ($scope.product) {
-                                  $scope.product = $scope.product.filter(function(pro) {
-                                      return pro.id !== productId;
-                                  });
-                                  console.log('Updated categories:', $scope.pro);
-                                  alert("Bạn đã xóa thành công?");
-                              } else {
-                                  console.warn('$scope.categories is undefined.');
-                              }
-                          })
-                          .catch(function(error) {
-                              console.error("Error deleting category:", error);
-                          });
-                  }
-              };
+                                // Cập nhật danh sách tin tức sau khi xóa
+                                $scope.list = $scope.list.filter(function (news) {
+                                    return product.productId !== item.productId;
+                                });
+
+                                // Các bước khác sau khi xóa tin tức
+                            })
+                            .catch(function (error) {
+                                console.error('Error deleting news:', error);
+                            });
+                    };
 
 
          });

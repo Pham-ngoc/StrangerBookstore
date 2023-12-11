@@ -66,16 +66,17 @@ public class Products extends BaseEntity{
                 && Objects.equals(condition, product.condition)
                 && Objects.equals(quantityInStock, product.quantityInStock)
                 && Objects.equals(isbn, product.isbn)
-                && Objects.equals(price, product.price)
                 && Objects.equals(description, product.description)
+                && Objects.equals(price, product.price)
+                && Objects.equals(categories, product.categories)
                 && Objects.equals(product_img, product.product_img)
-                && Objects.equals(categories, product.categories);
+                ;
 
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), productId, productName, author, publisher, language, condition, quantityInStock, isbn, price, description, product_img, categories);
+        return Objects.hash(super.hashCode(), productId, productName, author, publisher, language, condition, quantityInStock, isbn, description, price, categories, product_img);
     }
 
 }

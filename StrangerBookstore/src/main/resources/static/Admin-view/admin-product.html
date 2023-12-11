@@ -14,7 +14,7 @@
                                         <label for="disabled-input" class=" form-control-label">Product ID</label>
                                     </div>
                                     <div class="col-12 col-md-9">
-                                        <input type="text" id="disabled-input" name="disabled-input" disabled="" class="form-control">
+                                        <input type="text" id="disabled-input" name="disabled-input" disabled="" class="form-control" ng-model="form.productId">
                                     </div>
                                 </div>
                                 <div class="row form-group">
@@ -111,7 +111,7 @@
                                         <label for="categoryId " class=" form-control-label">Category</label>
                                     </div>
                                     <div class="col-12 col-md-9">
-                                        <select name="select" id="categoryId " class="form-control"  >
+                                        <select name="select" id="categoryId " class="form-control"  ng-model="">
                                             <option value="0" ng-repeat="item in category">{{item.categoryName}}</option>
                                         </select>
                                     </div>
@@ -125,7 +125,7 @@
                                     </div>
                                 </div>
                                 <div class="card-footer">
-                                    <button ng-click="create()" type="button" class="btn btn-primary btn-sm" >
+                                    <button ng-click="createProduct()" type="button" class="btn btn-primary btn-sm" >
                                         Create
                                     </button>
                                     <button type="submit" class="btn btn-primary btn-sm">
@@ -194,10 +194,10 @@
 
                                         <td>
                                             <div class="table-data-feature">
-                                                <button class="item" data-toggle="tooltip" data-placement="top" title="Edit">
+                                                <button class="item" data-toggle="tooltip" data-placement="top" title="Edit" ng-click="editProduct(item)">
                                                     <i class="zmdi zmdi-edit"></i>
                                                 </button>
-                                                <button class="item" data-toggle="tooltip" data-placement="top" title="Delete" ng-click="deleteCategory(item.productId)">
+                                                <button class="item" data-toggle="tooltip" data-placement="top" title="Delete" ng-click="deleteProduct(item)">
                                                     <i class="zmdi zmdi-delete"></i>
                                                 </button>
                                             </div>

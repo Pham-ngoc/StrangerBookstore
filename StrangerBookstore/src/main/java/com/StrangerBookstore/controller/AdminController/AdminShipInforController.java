@@ -27,7 +27,7 @@ public class AdminShipInforController {
 
     @Autowired
     ShipReponsitory shipReponsitory;
-    @GetMapping("/shipInfor")
+    @GetMapping("/shipInformation")
     public ResponseEntity<List<ShipInfor>> ship(Model model){
         return ResponseEntity.ok(shipReponsitory.shipFindAll());
     }

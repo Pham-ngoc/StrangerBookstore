@@ -8,14 +8,14 @@
                     <strong>News</strong> Table
                 </div>
                 <div class="card-body card-block">
-                    <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
+                    <form action="" method="put" enctype="multipart/form-data" class="form-horizontal">
                         <div class="row form-group">
                             <div class="col col-md-3">
                                 <label for="newsId" class=" form-control-label">News ID</label>
                             </div>
                             <div class="col-12 col-md-9">
                                 <input type="text" id="newsId" name="disabled-input"
-                                       disabled="" class="form-control">
+                                       disabled="" class="form-control" ng-model="form.newsId">
                             </div>
                         </div>
                         <div class="row form-group">
@@ -24,7 +24,7 @@
                             </div>
                             <div class="col-12 col-md-9">
                                 <input type="text" id="newsTitle" name="text-input" placeholder="News Title"
-                                       class="form-control">
+                                       class="form-control" ng-model="form.newsTitle">
                                 <!--                                        <small class="form-text text-muted">This is a help text</small>-->
                             </div>
                         </div>
@@ -34,7 +34,7 @@
                             </div>
                             <div class="col-12 col-md-9">
                                             <textarea name="textarea-input" id="textarea-input" rows="9"
-                                                      placeholder="News Content..." class="form-control"></textarea>
+                                                      placeholder="News Content..." class="form-control" ng-model="form.newsContent"></textarea>
                             </div>
                         </div>
                         <div class="row form-group">
@@ -43,20 +43,20 @@
                             </div>
                             <div class="col-12 col-md-9">
                                 <input type="file" id="file-input" name="file-input"
-                                       class="form-control-file">
+                                       class="form-control-file" ng-model="form.newsPicture">
                             </div>
                         </div>
                         <div class="card-footer">
-                            <button type="submit" class="btn btn-primary btn-sm">
+                            <button ng-click="createNews()" type="submit" class="btn btn-primary btn-sm">
                                 Create
                             </button>
-                            <button type="submit" class="btn btn-primary btn-sm">
+                            <button type="submit" class="btn btn-primary btn-sm" ng-click="updateNews()">
                                 Update
                             </button>
-                            <button type="submit" class="btn btn-primary btn-sm">
+                            <button type="submit" class="btn btn-primary btn-sm" ng-click="resetForm($event)">
                                 Reset
                             </button>
-                            <button type="reset" class="btn btn-danger btn-sm">
+                            <button type="reset" class="btn btn-danger btn-sm" ng-click="deleteNews($event)">
                                 Delete
                             </button>
                         </div>
@@ -72,13 +72,14 @@
                         <div class="table-data__tool-left">
                             <div class="row form-group">
                                 <div class="col col-md-10">
-                                    <input type="text" id="search" name="text-input" placeholder="Search"
-                                           class="form-control">
+                                    <input type="text" id="search" name="text-input" placeholder="Search" class="form-control" ng-model="searchKeyword">
+
                                 </div>
                                 <div class="col-12 col-md-2 mt-1">
-                                    <button type="submit" class="btn btn-primary btn-sm">
+                                    <button type="submit" class="btn btn-primary btn-sm" ng-click="searchNews()">
                                         Search
                                     </button>
+
                                 </div>
                             </div>
                         </div>
@@ -110,10 +111,10 @@
                                 <td>{{item.updateAt}}</td>
                                 <td>
                                     <div class="table-data-feature">
-                                        <button class="item" data-toggle="tooltip" data-placement="top" title="Edit">
+                                        <button class="item" data-toggle="tooltip" data-placement="top" title="Edit" ng-click="editNews(item)">
                                             <i class="zmdi zmdi-edit"></i>
                                         </button>
-                                        <button class="item" data-toggle="tooltip" data-placement="top" title="Delete">
+                                        <button class="item" data-toggle="tooltip" data-placement="top" title="Delete" ng-click="deleteNews($event, item)">
                                             <i class="zmdi zmdi-delete"></i>
                                         </button>
                                     </div>
