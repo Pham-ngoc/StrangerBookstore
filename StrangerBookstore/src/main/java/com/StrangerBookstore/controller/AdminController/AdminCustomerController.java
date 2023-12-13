@@ -23,6 +23,8 @@ public class AdminCustomerController {
     @Autowired
     CustomerRepository customerRepository;
 
+    public static String UPLOAD_DIRECTORY = System.getProperty("user.dir") + "/StrangerBookstore/src/main/resources/static/images";
+
     @GetMapping("/customer")
     public ResponseEntity<List<Customer>> categories(Model model){
         return ResponseEntity.ok(customerRepository.findAll());
@@ -35,8 +37,12 @@ public class AdminCustomerController {
                 .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
-    @PostMapping("/customer")
-    public ResponseEntity<Customer> create(@RequestBody Customer customer) {
+    @PostMapping(value ="/customer",  consumes = {"multipart/form-data"})
+    public ResponseEntity<Customer> create(@RequestBody Customer customer, @RequestPart("picture") MultipartFile file) throws IOException {
+        String fileName = file.getOriginalFilename();
+        Path fileNameAndPath = Paths.get(UPLOAD_DIRECTORY, fileName);
+        Files.write(fileNameAndPath, file.getBytes());
+        customer.setPicture(fileName);
         Customer createdCustormer = service.create(customer);
         return ResponseEntity.ok(createdCustormer);
     }

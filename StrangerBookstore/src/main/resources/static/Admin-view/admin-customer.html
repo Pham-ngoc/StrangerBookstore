@@ -220,70 +220,50 @@
                         <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
                             <div class="row form-group">
                                 <div class="col col-md-3">
-                                    <label for="fullName1" class=" form-control-label">Full name</label>
+                                    <label for="fullName" class=" form-control-label">Full name</label>
                                 </div>
                                 <div class="col-12 col-md-9">
                                     <input type="text" id="fullName1" name="text-input" placeholder="Full Name"
-                                           class="form-control">
+                                           class="form-control" ng-model="fullname">
                                     <!--                                        <small class="form-text text-muted">This is a help text</small>-->
                                 </div>
                             </div>
                             <div class="row form-group">
                                 <div class="col col-md-3">
-                                    <label for="password" class=" form-control-label">Password</label>
-                                </div>
-                                <div class="col-12 col-md-9">
-                                    <input type="password" id="password" name="text-input" placeholder="Password"
-                                           class="form-control">
-                                    <!--                                        <small class="form-text text-muted">This is a help text</small>-->
-                                </div>
-                            </div>
-                            <div class="row form-group">
-                                <div class="col col-md-3">
-                                    <label for="email1" class=" form-control-label">Email</label>
+                                    <label for="email" class=" form-control-label">Email</label>
                                 </div>
                                 <div class="col-12 col-md-9">
                                     <input type="text" id="email1" name="text-input" placeholder="Email"
-                                           class="form-control">
+                                           class="form-control" ng-model="email">
                                     <!--                                        <small class="form-text text-muted">This is a help text</small>-->
                                 </div>
                             </div>
                             <div class="row form-group">
                                 <div class="col col-md-3">
-                                    <label for="phoneNumber1" class=" form-control-label">Phone Number</label>
+                                    <label for="phoneNumber" class=" form-control-label" >Phone Number</label>
                                 </div>
                                 <div class="col-12 col-md-9">
                                     <input type="text" id="phoneNumber1" name="text-input" placeholder="Phone Number"
-                                           class="form-control">
+                                           class="form-control" ng-model="phonenumber">
                                     <!--                                        <small class="form-text text-muted">This is a help text</small>-->
                                 </div>
                             </div>
                             <div class="row form-group">
                                 <div class="col col-md-3">
-                                    <label for="birthday1" class=" form-control-label">Birthday</label>
-                                </div>
-                                <div class="col-12 col-md-9">
-                                    <input type="date" id="birthday1" name="text-input"
-                                           class="form-control">
-                                    <!--                                        <small class="form-text text-muted">This is a help text</small>-->
-                                </div>
-                            </div>
-                            <div class="row form-group">
-                                <div class="col col-md-3">
-                                    <label class=" form-control-label">Gender</label>
+                                    <label class=" form-control-label">Status</label>
                                 </div>
                                 <div class="col col-md-9">
                                     <div class="form-check">
                                         <div class="radio">
-                                            <label for="male1" class="form-check-label ">
-                                                <input type="radio" id="male1" name="radios" value="male"
-                                                       class="form-check-input">Male
+                                            <label for="enable" class="form-check-label ">
+                                                <input type="radio" id="enable1" name="radios" value="open" ng-model="selectedOption" value="enable"
+                                                       class="form-check-input">Enable
                                             </label>
                                         </div>
                                         <div class="radio">
-                                            <label for="female1" class="form-check-label ">
-                                                <input type="radio" id="female1" name="radios" value="female"
-                                                       class="form-check-input">Female
+                                            <label for="disable" class="form-check-label ">
+                                                <input type="radio" id="disable1" name="radios" value="close"  ng-model="selectedOption" value="disable"
+                                                       class="form-check-input">Disable
                                             </label>
                                         </div>
                                     </div>
@@ -291,30 +271,28 @@
                             </div>
                             <div class="row form-group">
                                 <div class="col col-md-3">
-                                    <label for="select1" class=" form-control-label">Role</label>
+                                    <label for="select" class=" form-control-label">Role</label>
                                 </div>
                                 <div class="col-12 col-md-9">
-                                    <select name="select" id="select1" class="form-control">
-                                        <option value="0">Please select</option>
-                                        <option value="1">Option #1</option>
-                                        <option value="2">Option #2</option>
-                                        <option value="3">Option #3</option>
+                                    <select name="select" id="select1" class="form-control" ng-model="selectedRole"
+                                            ng-options="item.roles.roleName for item in list">
+                                        <option value=""></option>
                                     </select>
                                 </div>
                             </div>
                             <div class="row form-group">
                                 <div class="col col-md-3">
-                                    <label for="file-input1" class=" form-control-label">Picture</label>
+                                    <label for="file-input" class="form-control-label">Picture</label>
                                 </div>
                                 <div class="col-12 col-md-9">
-                                    <input type="file" id="file-input1" name="file-input"
+                                    <input type="file" id="file-input1" name="file-input" ng-model="file" accept="image/*"
                                            class="form-control-file">
                                 </div>
                             </div>
                         </form>
                     </div>
                     <div class="modal-footer">
-                        <button type="submit" class="btn btn-success btn-sm">
+                        <button type="submit" class="btn btn-success btn-sm"  ng-click="createCustomer()">
                             Create
                         </button>
                     </div>
