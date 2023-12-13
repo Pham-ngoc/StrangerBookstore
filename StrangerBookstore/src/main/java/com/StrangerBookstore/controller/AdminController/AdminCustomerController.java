@@ -1,5 +1,6 @@
 package com.StrangerBookstore.controller.AdminController;
 import com.StrangerBookstore.model.Customer;
+import com.StrangerBookstore.repository.CustomerRepository;
 import com.StrangerBookstore.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
