@@ -1,11 +1,12 @@
 package com.StrangerBookstore.controller.AdminController;
 
-import ch.qos.logback.core.model.Model;
+import com.StrangerBookstore.model.Categories;
 import com.StrangerBookstore.model.Picture;
 import com.StrangerBookstore.service.PictureService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collections;
@@ -13,16 +14,15 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@CrossOrigin
+@CrossOrigin("*")
 @RequestMapping("/admin")
 public class AdminPicProductController {
     @Autowired
     PictureService service;
 
     @GetMapping("/picProduct")
-    public ResponseEntity<List<Object>> picture(org.springframework.ui.Model model){
-        List<Picture> pro= service.findAll();
-        return ResponseEntity.ok(Collections.singletonList(pro));
+    public ResponseEntity<List<Picture>> categories(Model model){
+        return ResponseEntity.ok(service.findAll());
     }
 
     @GetMapping("/picProduct/{id}")

@@ -1,4 +1,4 @@
-        <div class="main-content">
+        <div class="main-content" ng-controller="AdminContactController">
             <div class="section__content section__content--p30">
                 <div class="container-fluid">
                     <!--FORM-->
@@ -128,14 +128,14 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr class="tr-shadow">
-                                        <td>Lori Lynch</td>
-                                        <td>Lori Lynch</td>
-                                        <td>Lori Lynch</td>
-                                        <td>Lori Lynch</td>
-                                        <td>Lori Lynch</td>
-                                        <td>Lori Lynch</td>
-                                        <td>Lori Lynch</td>
+                                    <tr class="tr-shadow" ng-repeat="item in list">
+                                        <td>{{item.contactId}}</td>
+                                        <td>{{item.fullName}}</td>
+                                        <td>{{item.email}}</td>
+                                        <td>{{item.phoneNumber}}</td>
+                                        <td>{{item.subject}}</td>
+                                        <td>{{item.message}}</td>
+                                        <td>{{item.status}}</td>
                                         <td>
                                             <div class="table-data-feature">
                                                 <button class="item" data-toggle="tooltip" data-placement="top" title="Edit">

@@ -36,4 +36,9 @@ public class CategoriesService {
     public void delete(Integer id) {
         categoriesRepository.deleteById(id);
     }
+
+    public List<Categories> sreachCategories(String query){
+        List<Categories> categories = categoriesRepository.findByCategoryName(query);
+            return categories;
+    }
 }

@@ -1,28 +1,41 @@
 package com.StrangerBookstore.controller.AdminController;
+import com.StrangerBookstore.model.Categories;
 import com.StrangerBookstore.model.Customer;
+import com.StrangerBookstore.repository.CustomerRepository;
 import com.StrangerBookstore.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
+import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.text.AttributedString;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
 @RestController
-@CrossOrigin
+@CrossOrigin("*")
 @RequestMapping("/admin")
 public class AdminCustomerController {
 
     @Autowired
     CustomerService service;
 
+    @Autowired
+    CustomerRepository customerRepository;
+
+    public static String UPLOAD_DIRECTORY = System.getProperty("user.dir") + "/StrangerBookstore/src/main/resources/static/images";
     @GetMapping("/customer")
-    public ResponseEntity<List<Object>> customer(Model model){
-        List<Customer> cus= service.findAll();
-        return ResponseEntity.ok(Collections.singletonList(cus));
+    public ResponseEntity<List<Customer>> categories(Model model){
+        return ResponseEntity.ok(customerRepository.findAll());
     }
 
     @GetMapping("/customer/{id}")
@@ -32,8 +45,12 @@ public class AdminCustomerController {
                 .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
-    @PostMapping("/customer")
-    public ResponseEntity<Customer> create(@RequestBody Customer customer) {
+    @PostMapping(value ="/customer",  consumes = {"multipart/form-data"})
+    public ResponseEntity<Customer> create(@RequestBody Customer customer, @RequestPart("picture") MultipartFile file) throws IOException {
+       String fileName = file.getOriginalFilename();
+        Path fileNameAndPath = Paths.get(UPLOAD_DIRECTORY, fileName);
+        Files.write(fileNameAndPath, file.getBytes());
+        customer.setPicture(fileName);
         Customer createdCustormer = service.create(customer);
         return ResponseEntity.ok(createdCustormer);
     }

@@ -29,6 +29,7 @@ public class AdminCategoriesController {
     @Autowired
     HttpSession session;
 
+
     @GetMapping("/categories")
     public ResponseEntity<List<Categories>> categories(Model model){
         return ResponseEntity.ok(categoriesRepository.findAll());
@@ -62,5 +63,11 @@ public class AdminCategoriesController {
     public void deletecategory(@PathVariable("id") Integer id) {
         service.delete(id);
     }
+
+    @GetMapping("/categories/sreach")
+    public ResponseEntity<List<?>> sreachcategoryname(@RequestParam(value = "query", required = false) String query){
+        return ResponseEntity.ok(service.sreachCategories(query));
+    }
+
 }
 

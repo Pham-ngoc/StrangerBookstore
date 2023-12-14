@@ -2,6 +2,7 @@ package com.StrangerBookstore.model;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
@@ -11,6 +12,7 @@ import java.util.Objects;
 @Entity
 @Setter
 @Getter
+@Builder
 public class Picture extends BaseEntity{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
@@ -24,6 +26,7 @@ public class Picture extends BaseEntity{
 
     @NotBlank(message = "Picture File must not be blank")
     private String pictureFile;
+
 
     @Override
     public boolean equals(Object o) {

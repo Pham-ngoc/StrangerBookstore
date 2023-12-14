@@ -47,7 +47,6 @@ public class CustomerService {
     }
 
     public Customer create(Customer customer) {
-
         return customerRepository.save(customer);
     }
 
