@@ -14,7 +14,7 @@
                                         <label for="orderID" class=" form-control-label">Order ID</label>
                                     </div>
                                     <div class="col-12 col-md-9">
-                                        <input type="text" id="orderID" name="disabled-input" disabled="" class="form-control">
+                                        <input type="text" id="orderID" name="disabled-input" disabled="" class="form-control" ng-model="form.orderId">
                                     </div>
                                 </div>
                                 <div class="row form-group">
@@ -22,7 +22,7 @@
                                         <label for="customerName" class=" form-control-label">Customer Email</label>
                                     </div>
                                     <div class="col-12 col-md-9">
-                                        <input type="text" id="customerName" name="disabled-input" disabled="" class="form-control">
+                                        <input type="text" id="customerName" name="disabled-input" disabled="" class="form-control" ng-model="">
                                     </div>
                                 </div>
                                 <div class="row form-group">
@@ -30,8 +30,8 @@
                                         <label for="statusId " class=" form-control-label">Status Order</label>
                                     </div>
                                     <div class="col-12 col-md-9">
-                                        <select name="select" id="statusId " class="form-control">
-                                            <option value="0" ng-repeat="item in category">{{item.customer.email}}</option>
+                                        <select name="select" id="statusId " class="form-control" ng-model="form.statusOrders.statusId">
+                                            <option ng-repeat="s in statusOrders" value="s.statusId">{{s.statusName}}</option>
                                         </select>
                                     </div>
                                 </div>
@@ -40,7 +40,7 @@
                                         <label for="paymentMethod" class=" form-control-label">Payment Method</label>
                                     </div>
                                     <div class="col-12 col-md-9">
-                                        <input type="text" id="paymentMethod" name="disabled-input" disabled="" class="form-control">
+                                        <input type="text" id="paymentMethod" name="disabled-input" disabled="" class="form-control" ng-model="form.paymentMethod">
                                     </div>
                                 </div>
                                 <div class="row form-group">
@@ -48,13 +48,13 @@
                                         <label for="totalAmount" class=" form-control-label">Total Amount</label>
                                     </div>
                                     <div class="col-12 col-md-9">
-                                        <input type="text" id="totalAmount" name="disabled-input" disabled="" class="form-control">
+                                        <input type="text" id="totalAmount" name="disabled-input" disabled="" class="form-control" ng-model="form.totalAmount">
                                     </div>
                                 </div>
                             </form>
                         </div>
                         <div class="card-footer">
-                            <button type="submit" class="btn btn-primary btn-sm">
+                            <button type="submit" class="btn btn-primary btn-sm" ng-click="updateOrder()">
                                 Update
                             </button>
                         </div>
@@ -69,10 +69,10 @@
                                     <div class="row form-group">
                                         <div class="col col-md-10">
                                             <input type="text" id="search" name="text-input" placeholder="Search"
-                                                   class="form-control">
+                                                   class="form-control" ng-model="searchKeyword">
                                         </div>
                                         <div class="col-12 col-md-2 mt-1">
-                                            <button type="submit" class="btn btn-primary btn-sm">
+                                            <button type="submit" class="btn btn-primary btn-sm" ng-click="searchOrders()">
                                                 Search
                                             </button>
                                         </div>
@@ -100,10 +100,10 @@
                                             <td>{{item.totalAmount}}</td>
                                             <td>
                                                 <div class="table-data-feature">
-                                                    <button class="item" data-toggle="tooltip" data-placement="top" title="Edit">
+                                                    <button class="item" data-toggle="tooltip" data-placement="top" title="Edit" ng-click="editOrders(item)">
                                                         <i class="zmdi zmdi-edit"></i>
                                                     </button>
-                                                    <button class="item" data-toggle="tooltip" data-placement="top" title="Delete" ng-click="deleteCategory(item.productId)">
+                                                    <button class="item" data-toggle="tooltip" data-placement="top" title="Delete" ng-click="deleteOrders(item)">
                                                         <i class="zmdi zmdi-delete"></i>
                                                     </button>
                                                 </div>

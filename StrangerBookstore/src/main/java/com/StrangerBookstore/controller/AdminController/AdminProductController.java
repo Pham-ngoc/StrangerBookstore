@@ -32,29 +32,31 @@ public class AdminProductController {
     @GetMapping("/product/{id}")
     public ResponseEntity<Products> getCategory(@PathVariable Integer id) {
         Optional<Products> productOptional = service.findbyId(id);
-        return productOptional.map(category -> new ResponseEntity<>(category, HttpStatus.OK))
+        return productOptional.map(product -> new ResponseEntity<>(product, HttpStatus.OK))
                 .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
     @PostMapping("/product")
-    public ResponseEntity<Products> create(@RequestBody Products product) {
-        Products createdproduct = service.create(product);
-        return ResponseEntity.ok(createdproduct);
+    public ResponseEntity<Object> create(@RequestBody Products product) throws Exception {
+        ResponseEntity<Object> response = service.create(product);
+        return response;
     }
 
+
+
     @PutMapping("/product/{id}")
-    public ResponseEntity<Products> updateproduct(@PathVariable("id") Integer id, @RequestBody Products product) {
-        if(service. findbyId (id) == null) {
-            return ResponseEntity.notFound().build();
+    public ResponseEntity<Products> update(@PathVariable("id") Integer id, @RequestBody Products product) {
+        Products updatedProduct = service.update(id, product);
+        if (updatedProduct != null) {
+            return ResponseEntity.ok(updatedProduct);
         } else {
-            service.update(id, product);
+            return ResponseEntity.notFound().build();
         }
-        return ResponseEntity.ok(product);
     }
 
 
     @DeleteMapping("/product/{id}")
-    public void deleteproduct(@PathVariable("id") Integer id) {
+    public void delete(@PathVariable("id") Integer id) {
         service.delete(id);
     }
 

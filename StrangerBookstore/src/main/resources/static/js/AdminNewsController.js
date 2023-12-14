@@ -60,23 +60,7 @@ app.controller("AdminNewsController", function ($scope, $http) {
             // Các trường dữ liệu khác nếu cần
         };
 
-//     $scope.deleteNews = function (item) {
-//             // Gửi yêu cầu DELETE tới server để xóa tin tức
-//             $http.delete('http://localhost:8080/admin/news/' + item.newsId)
-//                 .then(function (response) {
-//                     console.log('News deleted successfully:', response.data);
-//
-//                     // Cập nhật danh sách tin tức sau khi xóa
-//                     $scope.list = $scope.list.filter(function (news) {
-//                         return news.newsId !== item.newsId;
-//                     });
-////                     $scope.resetForm();
-//                     // Các bước khác sau khi xóa tin tức
-//                 })
-//                 .catch(function (error) {
-//                     console.error('Error deleting news:', error);
-//                 });
-//         };
+
 
         $scope.deleteNews = function (event, item) {
             event.stopPropagation(); // Ngăn chặn sự kiện click từ lan ra các phần tử cha

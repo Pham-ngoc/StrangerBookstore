@@ -8,7 +8,7 @@
                             <strong>Product</strong> Form
                         </div>
                         <div class="card-body card-block">
-                            <form action="" method="post" enctype="multipart/form-data" class="form-horizontal" >
+                            <form action="" method="put" enctype="multipart/form-data" class="form-horizontal" >
                                 <div class="row form-group">
                                     <div class="col col-md-3">
                                         <label for="disabled-input" class=" form-control-label">Product ID</label>
@@ -108,33 +108,46 @@
                                 </div>
                                 <div class="row form-group">
                                     <div class="col col-md-3">
-                                        <label for="categoryId " class=" form-control-label">Category</label>
+                                        <label for="categoryId" class=" form-control-label">Category</label>
                                     </div>
                                     <div class="col-12 col-md-9">
-                                        <select name="select" id="categoryId " class="form-control"  ng-model="">
-                                            <option value="0" ng-repeat="item in category">{{item.categoryName}}</option>
+<!--                                        <select name="select" id="categoryId " class="form-control"  ng-model="form.categories.categoryId">-->
+<!--                                            <option ng-repeat="c in categories" value="c.categoryId" >{{c.categoryName}}</option>-->
+<!--                                        </select>-->
+<!--                                        <select name="select" id="categoryId " class="form-control"  ng-model="form.categories">-->
+<!--                                            <option ng-repeat="c in categories" value="{{c.categoryId}}">{{c.categoryName}}</option>-->
+<!--                                        </select>-->
+                                        <select name="select" id="categoryId" class="form-control" ng-model="form.categories"
+                                                ng-options="c as c.categoryName for c in categories track by c.categoryId">
                                         </select>
+<!--                                        <select name="select" id="categoryId " class="form-control" ng-model="form.categories">-->
+<!--                                            <option ng-repeat="c in categories" value="{{c}}">{{c.categoryName}}</option>-->
+<!--                                        </select>-->
                                     </div>
                                 </div>
                                 <div class="row form-group">
                                     <div class="col col-md-3">
                                         <label  for="product_img" class=" form-control-label">Picture Product</label>
                                     </div>
-                                   <div class="col-12 col-md-9">
-                                       <input type="file" id="product_img" ng-model="form.product_img">
+                                   <div class="col-12 col-md-6">
+                                       <input type="file" id="product_img" ng-model="form.product_img" ng-change="updateFileName()">
+                                   </div>
+                                    <div class="col-12 col-md-3">
+                                        <!-- Hiển thị tên tệp đã chọn -->
+                                        <span ng-if="form.product_img">{{form.product_img}}</span>
                                     </div>
                                 </div>
                                 <div class="card-footer">
-                                    <button ng-click="createProduct()" type="button" class="btn btn-primary btn-sm" >
+                                    <button type="button" class="btn btn-primary btn-sm" ng-click="createProduct()" >
                                         Create
                                     </button>
-                                    <button type="submit" class="btn btn-primary btn-sm">
+                                    <button type="submit" class="btn btn-primary btn-sm" ng-click="updateProduct()">
                                         Update
                                     </button>
-                                    <button type="submit" class="btn btn-primary btn-sm">
+                                    <button type="submit" class="btn btn-primary btn-sm" ng-click="resetForm()">
                                         Reset
                                     </button>
-                                    <button type="reset" class="btn btn-danger btn-sm">
+                                    <button type="reset" class="btn btn-danger btn-sm" ng-click="deleteProduct($event)">
                                         Delete
                                     </button>
                                 </div>
@@ -152,10 +165,10 @@
                                     <div class="row form-group">
                                         <div class="col col-md-10">
                                             <input type="text" id="search" name="text-input" placeholder="Search"
-                                                   class="form-control">
+                                                   class="form-control" ng-model="searchKeyword">
                                         </div>
                                         <div class="col-12 col-md-2 mt-1">
-                                            <button type="submit" class="btn btn-primary btn-sm">
+                                            <button type="submit" class="btn btn-primary btn-sm" ng-click="searchProduct()">
                                                 Search
                                             </button>
                                         </div>
@@ -176,11 +189,12 @@
                                         <th>ISBN</th>
                                         <th>Description</th>
                                         <th>Category</th>
+                                        <th>Picture Product</th>
                                         <th></th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr class="tr-shadow"  ng-repeat="item in list">
+                                    <tr class="tr-shadow"  ng-repeat="item in list" >
                                         <td> <span>{{item.productId}} </span></td>
                                         <td>{{item.productName}}</td>
                                         <td>{{item.author}}</td>
@@ -191,13 +205,13 @@
                                         <td>{{item.isbn}}</td>
                                         <td>{{item.description}}</td>
                                         <td>{{item.categories.categoryName}}</td>
-
+                                        <td>{{item.product_img}}</td>
                                         <td>
                                             <div class="table-data-feature">
                                                 <button class="item" data-toggle="tooltip" data-placement="top" title="Edit" ng-click="editProduct(item)">
                                                     <i class="zmdi zmdi-edit"></i>
                                                 </button>
-                                                <button class="item" data-toggle="tooltip" data-placement="top" title="Delete" ng-click="deleteProduct(item)">
+                                                <button class="item" data-toggle="tooltip" data-placement="top" title="Delete" ng-click="deleteProduct($event, item)">
                                                     <i class="zmdi zmdi-delete"></i>
                                                 </button>
                                             </div>

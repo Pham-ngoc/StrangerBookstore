@@ -31,6 +31,7 @@ public class Products extends BaseEntity{
     private String language;
 
     @NotBlank(message = "Condition must not be blank")
+    @Column(name = "`condition`")
     private String condition; //Tình trạng
 
     @NotBlank(message = "Quantity In Stock must not be blank")
@@ -51,6 +52,7 @@ public class Products extends BaseEntity{
 
     @NotNull(message = "Product image number must not be blank")
     private String product_img;
+
 
     @Override
     public boolean equals(Object o) {
