@@ -14,7 +14,7 @@
                                     </div>
                                     <div class="col-12 col-md-9">
                                         <input type="text" id="categoryId" name="disabled-input"
-                                               disabled="" class="form-control" ng-model="category_Id">
+                                               disabled="" class="form-control">
                                     </div>
                                 </div>
                                 <div class="row form-group">
@@ -23,17 +23,14 @@
                                     </div>
                                     <div class="col-12 col-md-9">
                                         <input type="text" id="categoryName" name="text-input" placeholder="Category Name"
-                                               class="form-control" ng-model="newcategoryName">
+                                               class="form-control">
 <!--                                        <small class="form-text" style="color: red;">{{ errorMessage }}</small>-->
-                                        <div class="alert alert-success" ng-show="successMessage" role="alert">
-                                            {{ successMessage }}
-                                        </div>
                                     </div>
                                 </div>
                             </form>
                         </div>
                         <div class="card-footer">
-                            <button type="submit" class="btn btn-primary btn-sm" ng-click="createCategory()">
+                            <button type="submit" class="btn btn-primary btn-sm">
                                 Create
                             </button>
                             <button type="submit" class="btn btn-primary btn-sm">
@@ -42,11 +39,10 @@
                             <button type="submit" class="btn btn-danger btn-sm">
                                 Delete
                             </button>
-                            <button type="submit" class="btn btn-danger btn-sm" ng-click="resetForm()">
+                            <button type="submit" class="btn btn-danger btn-sm">
                                 Reset
                             </button>
                         </div>
-
                     </div>
                     <!--TABLE-->
                     <div class="row">
@@ -58,10 +54,10 @@
                                     <div class="row form-group">
                                         <div class="col col-md-10">
                                             <input type="text" id="search" name="text-input" placeholder="Search"
-                                                   class="form-control" ng-model="query">
+                                                   class="form-control">
                                         </div>
                                         <div class="col-12 col-md-2 mt-1">
-                                            <button type="submit" class="btn btn-primary btn-sm" ng-click="searchCategories()">
+                                            <button type="submit" class="btn btn-primary btn-sm">
                                                 Search
                                             </button>
                                         </div>
@@ -82,7 +78,7 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr class="tr-shadow" ng-repeat="item in list| filter:query">
+                                    <tr class="tr-shadow" ng-repeat="item in list">
                                         <td>
                                             <span>{{item.categoryId}}</span>
                                         </td>
@@ -95,10 +91,10 @@
                                         <td>{{item.updateAt}}</td>
                                         <td>
                                             <div class="table-data-feature">
-                                                <button class="item" data-toggle="tooltip" data-placement="top" title="Edit" ng-click="editCategory(item.categoryId)">
+                                                <button class="item" data-toggle="tooltip" data-placement="top" title="Edit">
                                                     <i class="zmdi zmdi-edit"></i>
                                                 </button>
-                                                <button class="item" data-toggle="tooltip" data-placement="top" title="Delete" ng-click="deleteCategory(item.categoryId)">
+                                                <button class="item" data-toggle="tooltip" data-placement="top" title="Delete">
                                                     <i class="zmdi zmdi-delete"></i>
                                                 </button>
                                             </div>

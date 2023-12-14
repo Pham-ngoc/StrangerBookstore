@@ -52,5 +52,4 @@ public class AdminPicProductController {
     @DeleteMapping("/picProduct/{id}")
     public void deletepicture(@PathVariable("id") Integer id) {
         service.delete(id);
-    }
 }
