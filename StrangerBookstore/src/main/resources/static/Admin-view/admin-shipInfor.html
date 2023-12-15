@@ -13,7 +13,7 @@
                                 <label for="reviewId" class=" form-control-label">Ship ID</label>
                             </div>
                             <div class="col-12 col-md-9">
-                                <input type="text" id="reviewId" name="disabled-input" disabled="" class="form-control">
+                                <input type="text" id="reviewId" name="disabled-input" disabled="" class="form-control" ng-model="form.shipId">
                             </div>
                         </div>
                         <div class="row form-group">
@@ -21,7 +21,7 @@
                                 <label for="customerName" class=" form-control-label">Customer Email</label>
                             </div>
                             <div class="col-12 col-md-9">
-                                <input type="text" id="customerName" name="disabled-input" disabled="" class="form-control">
+                                <input type="text" id="customerName" name="disabled-input" disabled="" class="form-control" ng-model="form.orders.customer.email">
                             </div>
                         </div>
                         <div class="row form-group">
@@ -29,7 +29,7 @@
                                 <label for="statusOrder" class=" form-control-label">Status Order</label>
                             </div>
                             <div class="col-12 col-md-9">
-                                <input type="text" id="statusOrder" name="disabled-input" disabled="" class="form-control">
+                                <input type="text" id="statusOrder" name="disabled-input" disabled="" class="form-control" >
                             </div>
                         </div>
                         <div class="row form-group">
@@ -61,7 +61,7 @@
                                 <label for="recipient_phoneNumber" class=" form-control-label">Recipient PhoneNumber</label>
                             </div>
                             <div class="col-12 col-md-9">
-                                <input type="text" id="recipient_phoneNumber" name="disabled-input" disabled="" class="form-control">
+                                <input type="text" id="recipient_phoneNumber" name="disabled-input" disabled="" class="form-control" ng-model="form.address.recipientPhoneNumber">
                             </div>
                         </div>
                         <div class="row form-group">
@@ -70,7 +70,7 @@
                             </div>
                             <div class="col-12 col-md-9">
                                             <textarea name="textarea-input" id="addressDetail" rows="4"
-                                            placeholder="Address Detail..." class="form-control" disabled></textarea>
+                                            placeholder="Address Detail..." class="form-control" disabled ng-model="form.address.addressDetail"></textarea>
                             </div>
                         </div>
                         <div class="row form-group">
@@ -82,7 +82,7 @@
                                     <div class="radio">
                                         <label for="male" class="form-check-label ">
                                             <input type="radio" id="male" name="radios" value="male"
-                                                   class="form-check-input">Success
+                                                   class="form-check-input" >Success
                                         </label>
                                     </div>
                                     <div class="radio">
@@ -100,7 +100,7 @@
                             </div>
                             <div class="col-12 col-md-9">
                                             <textarea name="textarea-input" id="description" rows="9"
-                                                      placeholder="Note..." class="form-control"></textarea>
+                                                      placeholder="Note..." class="form-control" ng-model="form.note"></textarea>
                             </div>
                         </div>
                     </form>
@@ -121,10 +121,10 @@
                             <div class="row form-group">
                                 <div class="col col-md-10">
                                     <input type="text" id="search" name="text-input" placeholder="Search"
-                                           class="form-control">
+                                           class="form-control" ng-model="searchKeyword">
                                 </div>
                                 <div class="col-12 col-md-2 mt-1">
-                                    <button type="submit" class="btn btn-primary btn-sm">
+                                    <button type="submit" class="btn btn-primary btn-sm" ng-click="searchShip()">
                                         Search
                                     </button>
                                 </div>

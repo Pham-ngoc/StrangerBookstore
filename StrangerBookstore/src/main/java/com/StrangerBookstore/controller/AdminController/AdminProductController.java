@@ -3,18 +3,22 @@ package com.StrangerBookstore.controller.AdminController;
 import com.StrangerBookstore.model.Products;
 import com.StrangerBookstore.repository.ProductRepository;
 import com.StrangerBookstore.service.ProductService;
+import jakarta.servlet.annotation.MultipartConfig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.nio.charset.StandardCharsets;
 import java.util.List;
 import java.util.Optional;
 
 @RestController
 @CrossOrigin("*")
 @RequestMapping("/admin")
+@MultipartConfig
 public class AdminProductController {
 
 
@@ -37,11 +41,10 @@ public class AdminProductController {
     }
 
     @PostMapping("/product")
-    public ResponseEntity<Object> create(@RequestBody Products product) throws Exception {
-        ResponseEntity<Object> response = service.create(product);
-        return response;
+    public ResponseEntity<Products> create(@RequestBody Products product ) throws Exception {
+        Products createProduct = service.create(product).getBody();
+        return ResponseEntity.ok(createProduct);
     }
-
 
 
     @PutMapping("/product/{id}")

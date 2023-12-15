@@ -17,13 +17,10 @@ app.controller("AdminNewsController", function ($scope, $http) {
         });
 
     $scope.createNews = function () {
-            // Gửi dữ liệu tin tức lên server để tạo mới
             $http.post(newsUrl, $scope.form)
                 .then(function (response) {
                     console.log('News created successfully:', response.data);
-                    // Gán giá trị newsId từ server response cho $scope.form.newsId
-                    $scope.form.newsId = response.data.newsId;
-                    // Các bước khác sau khi tạo tin tức
+//                    console.log($scope.form.newsPicture);
                 })
                 .catch(function (error) {
                     console.error('Error creating news:', error);

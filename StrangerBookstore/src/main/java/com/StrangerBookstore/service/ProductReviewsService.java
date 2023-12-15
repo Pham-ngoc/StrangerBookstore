@@ -22,18 +22,5 @@ public class ProductReviewsService {
         return productReviewsReposity.findById(id);
     }
 
-    public ProductReviews create(ProductReviews productReviews) {
 
-        return productReviewsReposity.save(productReviews);
-    }
-
-    public ProductReviews update(Integer id, ProductReviews productReviews) {
-        ProductReviews model = productReviewsReposity.findById(id).get();
-        model.setReviewContent(productReviews.getReviewContent());
-        return productReviewsReposity.save(model);
-    }
-
-    public void delete(Integer id) {
-        productReviewsReposity.deleteById(id);
-    }
 }

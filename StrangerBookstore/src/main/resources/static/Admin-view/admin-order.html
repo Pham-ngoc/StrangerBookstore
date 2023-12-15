@@ -8,7 +8,7 @@
                             <strong>Order</strong> Form
                         </div>
                         <div class="card-body card-block">
-                            <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
+                            <form action="" method="put" enctype="multipart/form-data" class="form-horizontal">
                                 <div class="row form-group">
                                     <div class="col col-md-3">
                                         <label for="orderID" class=" form-control-label">Order ID</label>
@@ -22,16 +22,16 @@
                                         <label for="customerName" class=" form-control-label">Customer Email</label>
                                     </div>
                                     <div class="col-12 col-md-9">
-                                        <input type="text" id="customerName" name="disabled-input" disabled="" class="form-control" ng-model="">
+                                        <input type="text" id="customerName" name="disabled-input" disabled="" class="form-control" ng-model="form.customer.email">
                                     </div>
                                 </div>
                                 <div class="row form-group">
                                     <div class="col col-md-3">
-                                        <label for="statusId " class=" form-control-label">Status Order</label>
+                                        <label for="statusId" class=" form-control-label">Status Order</label>
                                     </div>
                                     <div class="col-12 col-md-9">
-                                        <select name="select" id="statusId " class="form-control" ng-model="form.statusOrders.statusId">
-                                            <option ng-repeat="s in statusOrders" value="s.statusId">{{s.statusName}}</option>
+                                        <select name="select" id="statusId" class="form-control" ng-model="form.statusOrders"
+                                                ng-options="s as s.statusName for s in status track by s.statusId">
                                         </select>
                                     </div>
                                 </div>
@@ -54,7 +54,7 @@
                             </form>
                         </div>
                         <div class="card-footer">
-                            <button type="submit" class="btn btn-primary btn-sm" ng-click="updateOrder()">
+                            <button type="submit" class="btn btn-primary btn-sm" ng-click="updateOrders()">
                                 Update
                             </button>
                         </div>
@@ -103,7 +103,7 @@
                                                     <button class="item" data-toggle="tooltip" data-placement="top" title="Edit" ng-click="editOrders(item)">
                                                         <i class="zmdi zmdi-edit"></i>
                                                     </button>
-                                                    <button class="item" data-toggle="tooltip" data-placement="top" title="Delete" ng-click="deleteOrders(item)">
+                                                    <button class="item" data-toggle="tooltip" data-placement="top" title="Delete" ng-click="deleteOrders(item.orderId)">
                                                         <i class="zmdi zmdi-delete"></i>
                                                     </button>
                                                 </div>

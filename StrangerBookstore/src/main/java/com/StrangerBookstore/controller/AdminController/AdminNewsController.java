@@ -36,7 +36,7 @@ public class AdminNewsController {
     }
 
     @PutMapping("/news/{id}")
-    public ResponseEntity<News> updatenews(@PathVariable("id") Integer id, @RequestBody News news) {
+    public ResponseEntity<News> update(@PathVariable("id") Integer id, @RequestBody News news) {
         Optional<News> existingNewsOptional = service.findbyId(id);
 
         if (existingNewsOptional.isPresent()) {
@@ -49,7 +49,7 @@ public class AdminNewsController {
     }
 
     @DeleteMapping("/news/{id}")
-    public void deletenews(@PathVariable("id") Integer id) {
+    public void delete(@PathVariable("id") Integer id) {
         service.delete(id);
     }
 

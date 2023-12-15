@@ -8,6 +8,8 @@ app.controller("AdminProductController", function ($scope, $http, $window) {
     $scope.searchKeyword = '';
     $scope.isEditing = false;
 
+
+
     // Fetch danh sách sản phẩm và danh mục từ server khi trang được load
     $http.get(productUrl)
         .then(function (response) {
@@ -26,8 +28,6 @@ app.controller("AdminProductController", function ($scope, $http, $window) {
         });
 
     $scope.createProduct = function () {
-        var fileInput = document.getElementById('product_img');
-        var fileName = fileInput ? fileInput.value : '';
         $http.post(productUrl, $scope.form)
             .then(function (response) {
                 console.log('Product created successfully:', response.data);
@@ -68,10 +68,10 @@ app.controller("AdminProductController", function ($scope, $http, $window) {
                     $scope.list = $scope.list.map(function (product) {
                         if (product.productId === $scope.form.productId) {
                             return $scope.form;
+
                         }
                         return product;
                     });
-                    $scope.resetForm();
                 })
                 .catch(function (error) {
                     console.error('Error updating product:', error);
@@ -158,15 +158,14 @@ app.controller("AdminProductController", function ($scope, $http, $window) {
     };
 
 
-
     $scope.updateFileName = function () {
-        var fileInput = document.getElementById('product_img');
-        if (fileInput && fileInput.files.length > 0) {
-            $scope.form.product_img = fileInput.files[0].name;
-        } else if (!$scope.isEditing) {
-            $scope.form.product_img = '';
-        }
-    };
+            var fileInput = document.getElementById('product_img');
+            if (fileInput && fileInput.files.length > 0) {
+                $scope.form.product_img = fileInput.files[0].name;
+            } else if (!$scope.isEditing) {
+                $scope.form.product_img = '';
+            }
+        };
 
 
 

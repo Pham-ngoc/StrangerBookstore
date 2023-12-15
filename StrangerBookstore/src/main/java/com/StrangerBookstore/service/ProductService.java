@@ -34,13 +34,11 @@ public class ProductService {
 //        return productRepository.save(Product);
 //    }
 
-    public ResponseEntity<Object> create(Products product) throws Exception     {
-
+    public ResponseEntity<Products> create(Products product) throws Exception{
         if (product == null){
-            return new ResponseEntity<>("Cannot product because error product please try again", null, HttpStatus.BAD_REQUEST);
+            return null;
         }
-        productRepository.save(product);
-        return ResponseEntity.ok().build();
+        return ResponseEntity.ok(productRepository.save(product));
     }
 
 
