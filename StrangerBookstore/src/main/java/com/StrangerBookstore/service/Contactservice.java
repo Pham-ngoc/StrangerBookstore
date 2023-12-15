@@ -1,5 +1,6 @@
 package com.StrangerBookstore.service;
 
+import com.StrangerBookstore.model.Categories;
 import com.StrangerBookstore.model.ContactUs;
 
 import com.StrangerBookstore.repository.contactReponsitory;
@@ -15,5 +16,15 @@ public class Contactservice {
 
     public List<ContactUs> findAll() {
         return contactReponsitory.findAll();
+    }
+    public ContactUs update(Integer id, ContactUs contactUs) {
+        ContactUs model = contactReponsitory.findById(id).get();
+        model.setMessage(contactUs.getMessage());
+        model.setStatus(contactUs.getStatus());
+        return contactReponsitory.save(model);
+    }
+
+    public ContactUs findbyId(Integer id){
+        return contactReponsitory.findById(id).get();
     }
 }

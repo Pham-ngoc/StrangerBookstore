@@ -7,14 +7,14 @@
                             <strong>Customer</strong> Form
                         </div>
                         <div class="card-body card-block">
-                            <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
+                            <form action="" method="put" enctype="multipart/form-data" class="form-horizontal">
                                 <div class="row form-group">
                                     <div class="col col-md-3">
                                         <label for="disabled-input" class=" form-control-label" >Customer ID</label>
                                     </div>
                                     <div class="col-12 col-md-9">
                                         <input type="text" id="disabled-input" name="disabled-input"
-                                               placeholder="Customer ID" disabled="" class="form-control" ng-model="customerID">
+                                               placeholder="Customer ID" disabled="" class="form-control" ng-model="form.customerId">
                                     </div>
                                 </div>
                                 <div class="row form-group">
@@ -23,7 +23,7 @@
                                     </div>
                                     <div class="col-12 col-md-9">
                                         <input type="text" id="fullName" name="text-input" placeholder="Full Name"
-                                               class="form-control" ng-model="fullname">
+                                               class="form-control" ng-model="form.customerName">
 <!--                                        <small class="form-text text-muted">This is a help text</small>-->
                                     </div>
                                 </div>
@@ -33,7 +33,7 @@
                                     </div>
                                     <div class="col-12 col-md-9">
                                         <input type="text" id="email" name="text-input" placeholder="Email"
-                                               class="form-control" ng-model="email">
+                                               class="form-control" ng-model="form.email">
                                         <!--                                        <small class="form-text text-muted">This is a help text</small>-->
                                     </div>
                                 </div>
@@ -43,7 +43,7 @@
                                     </div>
                                     <div class="col-12 col-md-9">
                                         <input type="text" id="phoneNumber" name="text-input" placeholder="Phone Number"
-                                               class="form-control" ng-model="phonenumber">
+                                               class="form-control" ng-model="form.phoneNumber">
                                         <!--                                        <small class="form-text text-muted">This is a help text</small>-->
                                     </div>
                                 </div>
@@ -55,13 +55,13 @@
                                         <div class="form-check">
                                             <div class="radio">
                                                 <label for="enable" class="form-check-label ">
-                                                    <input type="radio" id="enable" name="radios" ng-model="selectedOption" value="enable"
+                                                    <input type="radio" id="enable" name="radios" ng-model="form.status" value="Open"
                                                            class="form-check-input">Enable
                                                 </label>
                                             </div>
                                             <div class="radio">
                                                 <label for="disable" class="form-check-label ">
-                                                    <input type="radio" id="disable" name="radios"  ng-model="selectedOption" value="disable"
+                                                    <input type="radio" id="disable" name="radios"  ng-model="form.status" value="Close"
                                                            class="form-check-input">Disable
                                                 </label>
                                             </div>
@@ -73,10 +73,15 @@
                                         <label for="select" class=" form-control-label">Role</label>
                                     </div>
                                     <div class="col-12 col-md-9">
-                                        <select name="select" id="select" class="form-control" ng-model="selectedRole"
-                                                ng-options="item.roles.roleName for item in list">
-                                            <option value=""></option>
+                                        <select name="select" id="select" class="form-control" ng-model="form.roles"  ng-options="c as c.roleName for c in roles track by c. roleId">
+                                            <option  ng-repeat="item in list " value="{item.roles.roleId}"> {{item.roles.roleName}}</option>
                                         </select>
+                                        <select name="select" id="select" class="form-control" ng-model="form.roles">
+                                            <option ng-repeat="item in list" ng-value="item.roles ? item.roles.roleId : null">
+                                                {{item.roles ? item.roles.roleName : 'Unknown Role'}}
+                                            </option>
+                                        </select>
+
                                     </div>
                                 </div>
                                 <div class="row form-group">
@@ -84,26 +89,34 @@
                                         <label for="file-input" class=" form-control-label" >Picture</label>
                                     </div>
                                     <div class="col-12 col-md-9">
-                                        <input type="file" id="file-input" name="file-input" ng-model="file" accept="images/*"
-                                               class="form-control-file">
+                                        <div class="col-6 col-md-3">
+                                            <input type="file" id="file-input" name="file-input" ng-model="form.picture"
+                                                   class="form-control-file">
+                                        </div>
+                                        <div class="col-6 col-md-3">
+                                            <!-- Hiển thị tên tệp đã chọn -->
+                                            <span ng-if="form.picture">{{form.picture}}</span>
+                                        </div>
                                     </div>
+
+                                </div>
+                                <div class="card-footer">
+                                    <button type="submit" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#scrollmodal" >
+                                        Add User
+                                    </button>
+                                    <button type="submit" class="btn btn-primary btn-sm" ng-click="updatecustormer()">
+                                        Update
+                                    </button>
+                                    <button type="submit" class="btn btn-primary btn-sm" ng-click="resetform()">
+                                        Reset
+                                    </button>
+                                    <button type="reset" class="btn btn-danger btn-sm" ng-click="deleteCusstormer($event)">
+                                        Delete
+                                    </button>
                                 </div>
                             </form>
                         </div>
-                        <div class="card-footer">
-                            <button type="submit" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#scrollmodal" >
-                                Add User
-                            </button>
-                            <button type="submit" class="btn btn-primary btn-sm">
-                                Update
-                            </button>
-                            <button type="submit" class="btn btn-primary btn-sm">
-                                Reset
-                            </button>
-                            <button type="reset" class="btn btn-danger btn-sm">
-                                Delete
-                            </button>
-                        </div>
+
                     </div>
                     <!--TABLE-->
                     <div class="row">
@@ -145,13 +158,13 @@
                                         <td>{{item.phoneNumber}}</td>
                                         <td>{{item.status}}</td>
                                         <td>{{item.roles.roleName}}</td>
-                                        <td>Lori Lynch</td>
+                                        <td>{{item.picture}}</td>
                                         <td>
                                             <div class="table-data-feature">
-                                                <button class="item" data-toggle="tooltip" data-placement="top" title="Edit">
+                                                <button class="item" data-toggle="tooltip" data-placement="top" title="Edit" ng-click="editNews(item)">
                                                     <i class="zmdi zmdi-edit"></i>
                                                 </button>
-                                                <button class="item" data-toggle="tooltip" data-placement="top" title="Delete">
+                                                <button class="item" data-toggle="tooltip" data-placement="top" title="Delete" ng-click="deleteCusstormer($event, item)">
                                                     <i class="zmdi zmdi-delete"></i>
                                                 </button>
                                                 </button>
@@ -180,14 +193,14 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
+                        <form action="" method="put" enctype="multipart/form-data" class="form-horizontal">
                             <div class="row form-group">
                                 <div class="col col-md-3">
                                     <label for="fullName" class=" form-control-label">Full name</label>
                                 </div>
                                 <div class="col-12 col-md-9">
                                     <input type="text" id="fullName1" name="text-input" placeholder="Full Name"
-                                           class="form-control" ng-model="fullname">
+                                           class="form-control" ng-model="form.customerName">
                                     <!--                                        <small class="form-text text-muted">This is a help text</small>-->
                                 </div>
                             </div>
@@ -197,7 +210,7 @@
                                 </div>
                                 <div class="col-12 col-md-9">
                                     <input type="text" id="email1" name="text-input" placeholder="Email"
-                                           class="form-control" ng-model="email">
+                                           class="form-control" ng-model="form.email">
                                     <!--                                        <small class="form-text text-muted">This is a help text</small>-->
                                 </div>
                             </div>
@@ -207,7 +220,7 @@
                                 </div>
                                 <div class="col-12 col-md-9">
                                     <input type="text" id="phoneNumber1" name="text-input" placeholder="Phone Number"
-                                           class="form-control" ng-model="phonenumber">
+                                           class="form-control" ng-model="form.phoneNumber">
                                     <!--                                        <small class="form-text text-muted">This is a help text</small>-->
                                 </div>
                             </div>
@@ -219,13 +232,13 @@
                                     <div class="form-check">
                                         <div class="radio">
                                             <label for="enable" class="form-check-label ">
-                                                <input type="radio" id="enable1" name="radios" value="open" ng-model="selectedOption" value="enable"
+                                                <input type="radio" id="enable1" name="radios" value="Open" ng-model="form.status" value="enable"
                                                        class="form-check-input">Enable
                                             </label>
                                         </div>
                                         <div class="radio">
                                             <label for="disable" class="form-check-label ">
-                                                <input type="radio" id="disable1" name="radios" value="close"  ng-model="selectedOption" value="disable"
+                                                <input type="radio" id="disable1" name="radios" value="Close"  ng-model="form.status" value="disable"
                                                        class="form-check-input">Disable
                                             </label>
                                         </div>
@@ -237,27 +250,32 @@
                                     <label for="select" class=" form-control-label">Role</label>
                                 </div>
                                 <div class="col-12 col-md-9">
-                                    <select name="select" id="select1" class="form-control" ng-model="selectedRole"
-                                            ng-options="item.roles.roleName for item in list">
-                                        <option value=""></option>
+                                    <select name="select" id="select1" class="form-control" >
+                                        <option ng-repeat="item in list" ng-value="item.roles.roleId">{{item.roles.roleName}}</option>
                                     </select>
+
                                 </div>
                             </div>
                             <div class="row form-group">
                                 <div class="col col-md-3">
-                                    <label for="file-input" class="form-control-label">Picture</label>
+                                    <label for="file-input" class=" form-control-label" >Picture</label>
                                 </div>
                                 <div class="col-12 col-md-9">
-                                    <input type="file" id="file-input1" name="file-input" ng-model="file" accept="image/*"
+                                    <input type="file" id="file-input1" name="file-input" ng-model="form.picture"
                                            class="form-control-file">
                                 </div>
+                                <div class="col-12 col-md-3">
+                                    <!-- Hiển thị tên tệp đã chọn -->
+                                    <span ng-if="form.picture">{{form.picture}}</span>
+                                </div>
                             </div>
+                            <div class="modal-footer">
+                                <button type="submit" class="btn btn-success btn-sm"  ng-click="createCustormer(); updateFileName()">
+                                    Create
+                                </button>
+                            </div>
+
                         </form>
-                        <div class="modal-footer">
-                            <button type="submit" class="btn btn-success btn-sm"  ng-click="createCustomer()">
-                                Create
-                            </button>
-                        </div>
                     </div>
                 </div>
             </div>

@@ -21,7 +21,7 @@ public class AdminPicProductController {
     PictureService service;
 
     @GetMapping("/picProduct")
-    public ResponseEntity<List<Picture>> categories(Model model){
+    public ResponseEntity<List<Picture>> categories(Model model) {
         return ResponseEntity.ok(service.findAll());
     }
 
@@ -40,7 +40,7 @@ public class AdminPicProductController {
 
     @PutMapping("/picProduct/{id}")
     public ResponseEntity<Picture> updatepicture(@PathVariable("id") Integer id, @RequestBody Picture picture) {
-        if(service. findbyId (id) == null) {
+        if (service.findbyId(id) == null) {
             return ResponseEntity.notFound().build();
         } else {
             service.update(id, picture);
@@ -52,4 +52,5 @@ public class AdminPicProductController {
     @DeleteMapping("/picProduct/{id}")
     public void deletepicture(@PathVariable("id") Integer id) {
         service.delete(id);
+    }
 }

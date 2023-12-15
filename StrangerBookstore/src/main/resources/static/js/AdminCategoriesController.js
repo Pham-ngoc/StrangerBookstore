@@ -3,11 +3,8 @@
 app.controller("AdminCategoriesController", function ($scope, $route, $timeout, $http) {
     var url = 'http://localhost:8080/admin/categories';
     $scope.list = [];
-    var key = null;
-    $scope.editMode = false;
-    $scope.selectedItem = null;
-    $scope.query = '';
-    $scope.categories = [];
+    $scope.form = { };
+    $scope.isEditing = false;
     $http
         .get(url)
         .then(response => {
@@ -18,107 +15,74 @@ app.controller("AdminCategoriesController", function ($scope, $route, $timeout, 
             console.error("Error fetching categories:", error);
         });
     $scope.createCategory = function() {
-        if ($scope.newcategoryName) {
-            $http.post(url, { categoryName: $scope.newcategoryName })
+            $http.post(url, $scope.form)
                 .then(function(response) {
-                    if (!$scope.categories) {
-                        $scope.categories = [];
-                    }
-                    $scope.categories.push(response.data);
+                    console.log('News created successfully:', response.data);
                     $scope.newcategoryName = '';
                     $scope.successMessage = 'Thêm mới thành công!';
                     $timeout(function() {
                         $route.reload();
                     }, 1000);
-
                 })
                 .catch(function(error) {
                     console.error("Lỗi khi tạo mới danh mục:", error);
                 });
-        }
     };
-    $scope.updateCategory = function(category) {
-        $http.put("http://localhost:8080/admin/categories/" + category.id, category)
+    $scope.updatecategory = function () {
+        $http.put(url + '/' + $scope.form.categoryId, $scope.form)
             .then(function (response) {
-                // Update the category in the local array
-                var index = $scope.categories.findIndex(function (cat) {
-                    return cat.id === category.id;
+                console.log('News updated successfully:', response.data);
+                $scope.list = $scope.list.map(function (news) {
+                    if (news.categoryId === $scope.form.categoryId) {
+                        return $scope.form;
+                    }
+                    return news;
                 });
-
-                if (index !== -1) {
-                    $scope.categories[index] = response.data;
-                }
             })
             .catch(function (error) {
-                console.error("Error updating category:", error);
+                console.error('Error updating news:', error);
             });
-    }
-    $scope.deleteCategory = function(categoryId) {
-        console.log('Deleting category with ID:', categoryId);
+    };
 
-        if (confirm("Bạn có muốn xóa loại sản phẩm này không?")) {
-            $http.delete("http://localhost:8080/admin/categories/"+ categoryId)
+    $scope.deleteCategory = function(event, item) {
+
+
+        if (item && item.categoryId) {
+            $http.delete("http://localhost:8080/admin/categories/"+ item.categoryId)
                 .then(function(response) {
                     console.log('Category deleted successfully:', response);
 
                     // Check if $scope.categories is defined before using filter
-                    if ($scope.categories) {
-                        $scope.categories = $scope.categories.filter(function(cat) {
-                            return cat.id !== categoryId;
-
-                        });
-
-                    } else {
-                        console.warn('$scope.categories is undefined.');
-                    }
-                    $timeout(function() {
-                        $route.reload();
-                        alert('Xóa thành công loại sản phẩm!');
-                    }, 1000);
+                    $scope.list = $scope.list.filter(function (news) {
+                        return news.categoryId !== item.categoryId;
+                    });
+                        alert('Xóa thành công loại sản phẩm!')
+                    $scope.resetForm();
                 })
                 .catch(function(error) {
                     console.error("Error deleting category:", error);
                 });
+        }else{
+            if (!$scope.form.categoryId) {
+                console.error('Cannot delete. No newsId specified.');
+                return;
+            }
+
+            $http.delete(url + '/' + $scope.form.categoryId)
+                .then(function (response) {
+                    console.log('Category deleted successfully:', response.data);
+                    $scope.list = $scope.list.filter(function (news) {
+                        return news.categoryId !== $scope.form.categoryId;
+                    });
+
+
+                    $scope.resetForm();
+                })
+                .catch(function (error) {
+                    console.error('Error deleting news:', error);
+                });
         }
     };
-
-
-
-    $scope.editCategory = function(categoryId) {
-        $http.get("http://localhost:8080/admin/categories/" + categoryId, {
-            transformResponse: function(data, headersGetter, status) {
-                try {
-                    return JSON.parse(data);
-                } catch (error) {
-                    console.error('Error parsing JSON:', error);
-                    return { error: 'Invalid JSON response' };
-                }
-            }
-        })
-            .then(function(response) {
-                // Check for an error in the response
-                if (response && response.data && response.data.error) {
-                    console.error('Error in server response:', response.data.error);
-                    return;
-                }
-
-                // Continue processing the response as needed
-                console.log('Response:', response);
-
-                if (response && response.data) {
-                    $scope.category_Id = response.data.id;
-                    $scope.newcategoryName = response.data.categoryName;
-                    // Add more assignments for other properties if needed
-                } else {
-                    console.error('Invalid response or missing data:', response);
-                }
-            })
-            .catch(function(error) {
-                console.error('Error loading category:', error);
-            });
-    };
-
-
 
     $scope.resetForm = function(){
         $scope.newcategoryName=null;
@@ -135,5 +99,15 @@ app.controller("AdminCategoriesController", function ($scope, $route, $timeout, 
             .catch(function(error) {
                 console.error('Error searching categories:', error);
             });
+    };
+    $scope.editCategory = function (item) {
+        $scope.form.categoryId = item.categoryId ;
+        $scope.form.categoryName = item.categoryName;
+        $scope.isEditing = true;
+    };
+    $scope.resetForm = function () {
+        event.preventDefault();
+        $scope.form = {};
+        $scope.isEditing = false;
     };
 })

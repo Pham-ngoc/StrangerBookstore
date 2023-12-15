@@ -3,6 +3,8 @@
 app.controller("AdminCustomerController", function ($scope, $http) {
     var url = 'http://localhost:8080/admin/customer';
     $scope.list = [];
+    $scope.form = {};
+    $scope.isEditing = false;
     $http
         .get(url)
         .then(response => {
@@ -12,70 +14,101 @@ app.controller("AdminCustomerController", function ($scope, $http) {
         .catch(function (error) {
             console.error("Error fetching categories:", error);
         });
-    $scope.createCustomer = function () {
-        var file = $scope.file;
-
-        if (!file) {
-            alert('Please choose a file.');
-            return;
-        }
-
-        var formData = new FormData();
-        formData.append('file', file);
-
-        var customerData = {
-            customerName: $scope.fullname,
-            email: $scope.email,
-            phoneNumber: $scope.phonenumber,
-            status: $scope.selectedOption,
-            roles: $scope.selectedRole,
-            picture:file,
-        };
-
-        // Append the customer data to the FormData
-        formData.append('customerData', JSON.stringify(customerData));
-
-        $http.post("http://localhost:8080/admin/customer", formData, {
-            transformRequest: angular.identity,
-            headers: {
-                'Content-Type': undefined,
-                'Accept': 'application/json'
-            }
-        })
+    $scope.createCustormer = function () {
+        $http.post(url, $scope.form)
             .then(function (response) {
-                console.log('Customer created successfully:', response.data);
+                console.log('Custormer created successfully:', response.data);
             })
             .catch(function (error) {
-                console.error('Error creating customer:', error);
+                console.error('Error creating custormer:', error);
             });
     };
 
-    $scope.deletecustormer = function(customerId) {
-        console.log('Deleting category with ID:',customerId);
 
-        if (confirm("Bạn có muốn xóa người  này không?")) {
-            $http.delete("http://localhost:8080/admin/customer/"+ customerId)
+    $scope.deleteCusstormer= function(event, item) {
+
+
+        if (item && item.customerId) {
+            $http.delete(url + '/'+ item.customerId)
                 .then(function(response) {
                     console.log('Category deleted successfully:', response);
 
                     // Check if $scope.categories is defined before using filter
-                    if ($scope.customer) {
-                        $scope.customer= $scope.customer.filter(function(cat) {
-                            return cat.id !==  customerId;
-
-                        });
-
-                    } else {
-                        console.warn('$scope.categories is undefined.');
-                    }
-                    $timeout(function() {
-                        $route.reload();
-                        alert('Xóa thành công người!');
-                    }, 1000);
+                    $scope.list = $scope.list.filter(function (news) {
+                        return news.customerId !== item.customerId;
+                    });
+                    $scope.resetForm();
                 })
                 .catch(function(error) {
                     console.error("Error deleting category:", error);
                 });
+        }else{
+            if (!$scope.form.customerId) {
+                console.error('Cannot delete. No newsId specified.');
+                return;
+            }
+
+            $http.delete(url + '/' + $scope.form.customerId)
+                .then(function (response) {
+                    console.log('Category deleted successfully:', response.data);
+                    $scope.list = $scope.list.filter(function (news) {
+                        return news.customerId !== $scope.form.customerId;
+                    });
+
+
+                    $scope.resetForm();
+                })
+                .catch(function (error) {
+                    console.error('Error deleting news:', error);
+                });
         }
+    };
+
+
+    $scope.updateFileName = function () {
+        var fileInput = document.getElementById('file-input1');
+        if (fileInput.files.length > 0) {
+            $scope.form.picture = fileInput.files[0].name;
+        } else if (!$scope.isEditing) {
+            $scope.form.picture = '';
+        }
+    };
+
+    $scope.editNews = function (item) {
+        // Gán dữ liệu từ hàng đã click vào biến $scope.form
+        $scope.form.customerId = item.customerId;
+        $scope.form.customerName = item.customerName;
+        $scope.form.email = item.email;
+        $scope.form.phoneNumber = item.phoneNumber;
+        $scope.form.status = item.status;
+        $scope.form.roles= {
+            roleId: item.roles.roleId,
+            roleName: item.roles.roleName
+        };
+        $scope.form.picture = item.picture;
+        $scope.isEditing = true;
+        $scope.updateFileName();
+
+    };
+    $scope.resetform = function (item) {
+        $scope.form = {};
+        $scope.isEditing = false;
+
+    };
+
+    $scope.updatecustormer = function () {
+        $http.put(url + '/' + $scope.form.customerId, $scope.form)
+            .then(function (response) {
+                console.log('News updated successfully:', response.data);
+                $scope.list = $scope.list.map(function (news) {
+                    if (news.customerId === $scope.form.customerId) {
+                        return $scope.form;
+                    }
+                    return news;
+                });
+            })
+            .catch(function (error) {
+                console.error('Error updating news:', error);
+            });
     };
 })

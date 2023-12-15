@@ -45,12 +45,8 @@ public class AdminCustomerController {
                 .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
-    @PostMapping(value ="/customer",  consumes = {"multipart/form-data"})
-    public ResponseEntity<Customer> create(@RequestBody Customer customer, @RequestPart("picture") MultipartFile file) throws IOException {
-       String fileName = file.getOriginalFilename();
-        Path fileNameAndPath = Paths.get(UPLOAD_DIRECTORY, fileName);
-        Files.write(fileNameAndPath, file.getBytes());
-        customer.setPicture(fileName);
+    @PostMapping("/customer")
+    public ResponseEntity<Customer> create(@RequestBody Customer customer)  {
         Customer createdCustormer = service.create(customer);
         return ResponseEntity.ok(createdCustormer);
     }

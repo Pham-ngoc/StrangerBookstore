@@ -7,14 +7,14 @@
                             <strong>Message Contact</strong> Form
                         </div>
                         <div class="card-body card-block">
-                            <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
+                            <form action="" method="put" enctype="multipart/form-data" class="form-horizontal">
                                 <div class="row form-group">
                                     <div class="col col-md-3">
                                         <label for="disabled-input" class=" form-control-label">Contact ID</label>
                                     </div>
                                     <div class="col-12 col-md-9">
                                         <input type="text" id="disabled-input" name="disabled-input"
-                                               placeholder="Disabled" disabled="" class="form-control">
+                                               placeholder="Disabled" disabled="" class="form-control" ng-model="form.contactId">
                                     </div>
                                 </div>
                                 <div class="row form-group">
@@ -23,7 +23,7 @@
                                     </div>
                                     <div class="col-12 col-md-9">
                                         <input type="text" id="fullName" name="disabled-input"
-                                               placeholder="Disabled" disabled="" class="form-control">
+                                               placeholder="Disabled" disabled="" class="form-control" ng-model="form.fullName">
                                     </div>
                                 </div>
                                 <div class="row form-group">
@@ -32,7 +32,7 @@
                                     </div>
                                     <div class="col-12 col-md-9">
                                         <input type="text" id="email" name="disabled-input"
-                                               placeholder="Disabled" disabled="" class="form-control">
+                                               placeholder="Disabled" disabled="" class="form-control" ng-model="form.email">
                                     </div>
                                 </div>
                                 <div class="row form-group">
@@ -41,7 +41,7 @@
                                     </div>
                                     <div class="col-12 col-md-9">
                                         <input type="text" id="phoneNumber" name="disabled-input"
-                                               placeholder="Disabled" disabled="" class="form-control">
+                                               placeholder="Disabled" disabled="" class="form-control" ng-model="form.phoneNumber">
                                     </div>
                                 </div>
                                 <div class="row form-group">
@@ -50,7 +50,7 @@
                                     </div>
                                     <div class="col-12 col-md-9">
                                         <input type="text" id="subject" name="disabled-input"
-                                               placeholder="Disabled" disabled="" class="form-control">
+                                               placeholder="Disabled" disabled="" class="form-control" ng-model="form.subject">
                                     </div>
                                 </div>
                                 <div class="row form-group">
@@ -59,7 +59,7 @@
                                     </div>
                                     <div class="col-12 col-md-9">
                                             <textarea name="textarea-input" id="textarea-input" rows="9"
-                                                      placeholder="Content..." class="form-control"></textarea>
+                                                      placeholder="Content..." class="form-control" ng-model="form.message"></textarea>
                                     </div>
                                 </div>
                                 <div class="row form-group">
@@ -69,26 +69,26 @@
                                     <div class="col col-md-9">
                                         <div class="form-check">
                                             <div class="radio">
-                                                <label for="radio1" class="form-check-label ">
-                                                    <input type="radio" id="radio1" name="radios" value="option1"
-                                                           class="form-check-input">Enable
+                                                <label for="radioOpen" class="form-check-label ">
+                                                    <input type="radio" id="radioOpen" name="radios" value="Open"
+                                                           class="form-check-input" ng-model="form.status">Enable
                                                 </label>
                                             </div>
                                             <div class="radio">
-                                                <label for="radio2" class="form-check-label ">
-                                                    <input type="radio" id="radio2" name="radios" value="option2"
-                                                           class="form-check-input">Disable
+                                                <label for="radioClose" class="form-check-label ">
+                                                    <input type="radio" id="radioClose" name="radios" value="Close"
+                                                           class="form-check-input" ng-model="form.status">Disable
                                                 </label>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+                                <div class="card-footer">
+                                    <button type="submit" class="btn btn-primary btn-sm" ng-click="updatecontact()">
+                                        Update
+                                    </button>
+                                </div>
                             </form>
-                        </div>
-                        <div class="card-footer">
-                            <button type="submit" class="btn btn-primary btn-sm">
-                                Update
-                            </button>
                         </div>
                     </div>
                     <!--TABLE-->
@@ -138,7 +138,7 @@
                                         <td>{{item.status}}</td>
                                         <td>
                                             <div class="table-data-feature">
-                                                <button class="item" data-toggle="tooltip" data-placement="top" title="Edit">
+                                                <button class="item" data-toggle="tooltip" data-placement="top" title="Edit" ng-click="editcontact(item)">
                                                     <i class="zmdi zmdi-edit"></i>
                                                 </button>
                                             </div>
