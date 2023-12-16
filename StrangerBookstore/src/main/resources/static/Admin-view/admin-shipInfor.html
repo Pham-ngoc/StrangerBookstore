@@ -21,7 +21,8 @@
                                 <label for="customerName" class=" form-control-label">Customer Email</label>
                             </div>
                             <div class="col-12 col-md-9">
-                                <input type="text" id="customerName" name="disabled-input" disabled="" class="form-control" ng-model="form.orders.customer.email">
+                                <input type="text" id="customerName" name="disabled-input" disabled="" class="form-control"
+                                       ng-model="form.order.customer.email">
                             </div>
                         </div>
                         <div class="row form-group">
@@ -29,7 +30,8 @@
                                 <label for="statusOrder" class=" form-control-label">Status Order</label>
                             </div>
                             <div class="col-12 col-md-9">
-                                <input type="text" id="statusOrder" name="disabled-input" disabled="" class="form-control" >
+                                <input type="text" id="statusOrder" name="disabled-input" disabled="" class="form-control"
+                                       ng-model="form.order.statusOrders.statusName">
                             </div>
                         </div>
                         <div class="row form-group">
@@ -37,7 +39,7 @@
                                 <label for="paymentMethod" class=" form-control-label">Payment Method</label>
                             </div>
                             <div class="col-12 col-md-9">
-                                <input type="text" id="paymentMethod" name="disabled-input" disabled="" class="form-control">
+                                <input type="text" id="paymentMethod" name="disabled-input" disabled="" class="form-control" ng-model="form.order.paymentMethod">
                             </div>
                         </div>
                         <div class="row form-group">
@@ -45,7 +47,7 @@
                                 <label for="totalAmount" class=" form-control-label">Total Amount</label>
                             </div>
                             <div class="col-12 col-md-9">
-                                <input type="text" id="totalAmount" name="disabled-input" disabled="" class="form-control">
+                                <input type="text" id="totalAmount" name="disabled-input" disabled="" class="form-control" ng-model="form.order.totalAmount">
                             </div>
                         </div>
                         <div class="row form-group">
@@ -53,7 +55,7 @@
                                 <label for="recipient_fullName" class=" form-control-label">Recipient Name</label>
                             </div>
                             <div class="col-12 col-md-9">
-                                <input type="text" id="recipient_fullName" name="disabled-input" disabled="" class="form-control">
+                                <input type="text" id="recipient_fullName" name="disabled-input" disabled="" class="form-control" ng-model="form.address.recipientFullName">
                             </div>
                         </div>
                         <div class="row form-group">
@@ -80,15 +82,15 @@
                             <div class="col col-md-9">
                                 <div class="form-check">
                                     <div class="radio">
-                                        <label for="male" class="form-check-label ">
-                                            <input type="radio" id="male" name="radios" value="male"
-                                                   class="form-check-input" >Success
+                                        <label for="success" class="form-check-label ">
+                                            <input type="radio" id="success" name="radios" value="Success"
+                                                   class="form-check-input" ng-model="form.status">Success
                                         </label>
                                     </div>
                                     <div class="radio">
-                                        <label for="female" class="form-check-label ">
-                                            <input type="radio" id="female" name="radios" value="female"
-                                                   class="form-check-input">Fail
+                                        <label for="fail" class="form-check-label ">
+                                            <input type="radio" id="fail" name="radios" value="Fail"
+                                                   class="form-check-input" ng-model="form.status">Fail
                                         </label>
                                     </div>
                                 </div>
@@ -106,7 +108,7 @@
                     </form>
                 </div>
                 <div class="card-footer">
-                    <button type="submit" class="btn btn-primary btn-sm">
+                    <button type="submit" class="btn btn-primary btn-sm" ng-click="updateShip()">
                         Update
                     </button>
                 </div>
@@ -152,7 +154,7 @@
                                 <td>{{item.note}}</td>
                                 <td>
                                     <div class="table-data-feature">
-                                        <button class="item" data-placement="top" title="Edit">
+                                        <button class="item" data-placement="top" title="Edit" ng-click="editShip(item)">
                                             <i class="zmdi zmdi-edit"></i>
                                         </button>
                                     </div>

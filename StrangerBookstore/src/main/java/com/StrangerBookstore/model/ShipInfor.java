@@ -4,12 +4,14 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.DynamicUpdate;
 
 import java.util.Objects;
 
 @Entity
 @Setter
 @Getter
+@DynamicUpdate
 public class ShipInfor {
 
     @Id
@@ -25,8 +27,10 @@ public class ShipInfor {
     @JoinColumn(name="address_id", referencedColumnName = "addressId", nullable = true)
     private Address address;
 
+    @Column(name = "status")
     private String status;
 
+    @Column(name = "note")
     private String note;
     @Override
     public boolean equals(Object o) {

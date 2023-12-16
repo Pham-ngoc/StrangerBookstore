@@ -84,7 +84,7 @@ app.controller("AdminProductController", function ($scope, $http, $window, $time
                     $scope.list = $scope.list.map(function (product) {
                         if (product.productId === $scope.form.productId) {
                             return $scope.form;
-
+                            $window.location.reload();
                         }
                         return product;
                     });

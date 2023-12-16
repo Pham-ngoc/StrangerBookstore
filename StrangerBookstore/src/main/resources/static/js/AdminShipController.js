@@ -1,12 +1,15 @@
  app.controller("AdminShipController", function ($scope, $http) {
  var shipUrl = 'http://localhost:8080/admin/shipInformation';
+ var orderUrl = 'http://localhost:8080/admin/order';
+ var customerUrl = 'http://localhost:8080/admin/customer';
+ var statusOrderUrl = 'http://localhost:8080/admin/status';
+
     $scope.list = [];
     $scope.form = {};
     $scope.searchKeyword = '';
     $scope.isEditing = false;
 
-    $http
-        .get(shipUrl)
+    $http.get(shipUrl)
         .then(response=> {
                     $scope.list = response.data;
                     console.log(response.data);
@@ -14,6 +17,92 @@
                 .catch(function (error) {
                     console.error("Error fetching categories:", error);
                 });
+
+    $http.get(orderUrl)
+            .then(function (response) {
+                $scope.order = response.data;
+            })
+            .catch(function (error) {
+                console.error("Error fetching categories:", error);
+            });
+
+    $http.get(customerUrl)
+                .then(function (response) {
+                    $scope.customer = response.data;
+                })
+                .catch(function (error) {
+                    console.error("Error fetching categories:", error);
+                });
+
+    $http.get(statusOrderUrl)
+                .then(function (response) {
+                    $scope.statusOrders = response.data;
+                })
+                .catch(function (error) {
+                    console.error("Error fetching categories:", error);
+                });
+
+    $scope.updateShip = function () {
+            // Sử dụng dữ liệu từ $scope.form để thực hiện cập nhật
+            $http.put(shipUrl + '/' + $scope.form.shipId, $scope.form)
+                .then(function (response) {
+                    console.log('Ship updated successfully:', response.data);
+
+                    // Cập nhật danh sách vận chuyển sau khi cập nhật
+                    $scope.list = $scope.list.map(function (ship) {
+                        if (ship.shipId === $scope.form.shipId) {
+                            return $scope.form;
+                        }
+                        return ship;
+                    });
+
+                    // Đặt lại giá trị của $scope.form về trạng thái ban đầu
+                    $scope.resetForm();
+                })
+                .catch(function (error) {
+                    console.error('Error updating ship:', error);
+                });
+        };
+
+
+
+
+
+    $scope.editShip = function (item) {
+            // Gán dữ liệu từ hàng đã click vào biến $scope.form
+            $scope.form = {
+                        shipId: item.shipId,
+                        order: {
+                            orderId: item.order.orderId,
+                            customer: {
+                                customerId: item.order.customer.customerId,
+                                email: item.order.customer.email
+                            },
+                            statusOrders: {
+                                statusId: item.order.statusOrders.statusId,
+                                statusName: item.order.statusOrders.statusName
+
+                            },
+                            paymentMethod: item.order.paymentMethod,
+                            totalAmount: item.order.totalAmount
+                        },
+                        address: {
+                            addressId: item.address.addressId,
+                            recipientFullName: item.address.recipientFullName,
+                            recipientPhoneNumber: item.address.recipientPhoneNumber,
+                            addressDetail: item.address.addressDetail,
+//                            addressType: item.address.addressType,
+//                            customer: {
+//                                customerId: item.address.customer.customerId
+//                            }
+                        },
+                        status: item.status,
+                        note: item.note
+                    };
+            $scope.isEditing = true;
+
+        };
+
 
     $scope.searchShip = function () {
                 if (!$scope.searchKeyword || $scope.searchKeyword.trim() === '') {
