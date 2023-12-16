@@ -119,7 +119,6 @@ app.controller("AdminNewsController", function ($scope, $http) {
          };
 
 
-
       $scope.updateFileName = function () {
               var fileInput = document.getElementById('file-input');
               if (fileInput.files.length > 0) {
