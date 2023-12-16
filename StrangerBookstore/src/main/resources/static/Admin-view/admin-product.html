@@ -136,12 +136,15 @@
                                         <!-- Hiển thị tên tệp đã chọn -->
                                         <span ng-if="form.product_img">{{form.product_img}}</span>
                                     </div>
+<!--                                    <div class="alert alert-success" ng-show="successMessage" role="alert">-->
+<!--                                        {{ successMessage }}-->
+<!--                                    </div>-->
                                 </div>
                                 <div class="card-footer">
-                                    <button type="button" class="btn btn-primary btn-sm" ng-click="createProduct()" >
+                                    <button type="button" class="btn btn-primary btn-sm" ng-click="createProduct(); updateFileName();" >
                                         Create
                                     </button>
-                                    <button type="submit" class="btn btn-primary btn-sm" ng-click="updateProduct()">
+                                    <button type="submit" class="btn btn-primary btn-sm" ng-click="updateProduct(); updateFileName();">
                                         Update
                                     </button>
                                     <button type="submit" class="btn btn-primary btn-sm" ng-click="resetForm()">

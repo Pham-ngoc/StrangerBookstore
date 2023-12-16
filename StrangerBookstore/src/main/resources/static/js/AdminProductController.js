@@ -1,4 +1,4 @@
-app.controller("AdminProductController", function ($scope, $http, $window) {
+app.controller("AdminProductController", function ($scope, $http, $window, $timeout) {
     var productUrl = 'http://localhost:8080/admin/product';
     var categoriesUrl = 'http://localhost:8080/admin/categories';
 
@@ -31,10 +31,22 @@ app.controller("AdminProductController", function ($scope, $http, $window) {
         $http.post(productUrl, $scope.form)
             .then(function (response) {
                 console.log('Product created successfully:', response.data);
-                 $window.location.reload();
+                // Thêm sản phẩm mới vào danh sách hiện tại
+//                $scope.list.push(response.data);
+                // Xóa dữ liệu trong form
+//                $scope.resetForm();
+               $window.location.reload();
+//                 $scope.successMessage = 'Create Successfully!';
+//                 $timeout(function () {
+//                                     $scope.successMessage = '';
+//                                 }, 3000);
             })
             .catch(function (error) {
-                console.error('Error creating product:', error);
+                $scope.successMessage = 'Create Fail!';
+//                console.error('Error creating product:', error);
+//                $timeout(function () {
+//                                    $scope.successMessage = '';
+//                                }, 3000);
             });
     };
 
@@ -61,6 +73,10 @@ app.controller("AdminProductController", function ($scope, $http, $window) {
         //
         $scope.updateProduct = function () {
             // Gửi yêu cầu PUT tới server để cập nhật sản phẩm
+//            $scope.successMessage = 'Update Successfully!';
+//                                $timeout(function () {
+//                                                    $scope.successMessage = '';
+//                                                }, 3000);
             $http.put(productUrl + '/' + $scope.form.productId, $scope.form)
                 .then(function (response) {
                     console.log('Product updated successfully:', response.data);
@@ -74,6 +90,10 @@ app.controller("AdminProductController", function ($scope, $http, $window) {
                     });
                 })
                 .catch(function (error) {
+//                    $scope.successMessage = 'Update Fail!';
+//                    $timeout(function () {
+//                                        $scope.successMessage = '';
+//                                    }, 3000);
                     console.error('Error updating product:', error);
                 });
         };
@@ -112,7 +132,10 @@ app.controller("AdminProductController", function ($scope, $http, $window) {
             $http.delete(productUrl + '/' + item.productId)
                 .then(function (response) {
                     console.log('Product deleted successfully:', response.data);
-
+//                    $scope.successMessage = 'Delete Successfully!';
+//                    $timeout(function () {
+//                        $scope.successMessage = '';
+//                        }, 3000);
                     // Cập nhật danh sách sản phẩm sau khi xóa
                     $scope.list = $scope.list.filter(function (product) {
                         return product.productId !== item.productId;
@@ -122,6 +145,10 @@ app.controller("AdminProductController", function ($scope, $http, $window) {
                     $scope.resetForm();
                 })
                 .catch(function (error) {
+//                    $scope.successMessage = 'Delete Fail!';
+//                    $timeout(function () {
+//                    $scope.successMessage = '';
+//                    }, 3000);
                     console.error('Error deleting product:', error);
                 });
         } else {
@@ -134,7 +161,10 @@ app.controller("AdminProductController", function ($scope, $http, $window) {
             $http.delete(productUrl + '/' + $scope.form.productId)
                 .then(function (response) {
                     console.log('Product deleted successfully:', response.data);
-
+//                    $scope.successMessage = 'Delete Successfully!';
+//                    $timeout(function () {
+//                    $scope.successMessage = '';
+//                    }, 3000);
                     // Cập nhật danh sách sản phẩm sau khi xóa
                     $scope.list = $scope.list.filter(function (product) {
                         return product.productId !== $scope.form.productId;
@@ -144,6 +174,10 @@ app.controller("AdminProductController", function ($scope, $http, $window) {
                     $scope.resetForm();
                 })
                 .catch(function (error) {
+//                    $scope.successMessage = 'Delete Fail!';
+//                    $timeout(function () {
+//                    $scope.successMessage = '';
+//                    }, 3000);
                     console.error('Error deleting product:', error);
                 });
         }
@@ -152,6 +186,10 @@ app.controller("AdminProductController", function ($scope, $http, $window) {
     $scope.resetForm = function () {
         event.preventDefault();
         // Đặt lại giá trị của $scope.form về trạng thái ban đầu hoặc giá trị mặc định
+        var fileInput = document.getElementById('product_img');
+            if (fileInput) {
+                fileInput.value = ''; // Xóa giá trị của input file
+            }
         $scope.form = {};
         $scope.isEditing = false;
         $scope.searchKeyword = '';

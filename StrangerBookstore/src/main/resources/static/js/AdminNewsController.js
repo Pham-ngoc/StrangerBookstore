@@ -109,6 +109,10 @@ app.controller("AdminNewsController", function ($scope, $http) {
       $scope.resetForm = function () {
               event.preventDefault();
              // Đặt lại giá trị của $scope.form về trạng thái ban đầu hoặc giá trị mặc định
+             var fileInput = document.getElementById('file-input');
+                         if (fileInput) {
+                             fileInput.value = ''; // Xóa giá trị của input file
+                         }
              $scope.form = {};
              $scope.isEditing = false;
              $scope.searchKeyword = '';
