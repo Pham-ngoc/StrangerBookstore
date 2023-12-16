@@ -102,7 +102,7 @@
                                         <div class="row form-group">
                                             <div class="col col-md-10">
                                                 <input type="text" id="search" name="text-input" placeholder="Search"
-                                                       class="form-control">
+                                                       class="form-control" ng-model="query">
                                             </div>
                                             <div class="col-12 col-md-2 mt-1">
                                                 <button type="submit" class="btn btn-primary btn-sm">
@@ -128,7 +128,7 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr class="tr-shadow" ng-repeat="item in list">
+                                    <tr class="tr-shadow" ng-repeat="item in list | filter:query">
                                         <td>{{item.contactId}}</td>
                                         <td>{{item.fullName}}</td>
                                         <td>{{item.email}}</td>

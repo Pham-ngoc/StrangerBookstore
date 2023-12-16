@@ -18,6 +18,7 @@ app.controller("AdminCustomerController", function ($scope, $http) {
         $http.post(url, $scope.form)
             .then(function (response) {
                 console.log('Custormer created successfully:', response.data);
+                console.log($scope.form);
             })
             .catch(function (error) {
                 console.error('Error creating custormer:', error);
@@ -81,10 +82,7 @@ app.controller("AdminCustomerController", function ($scope, $http) {
         $scope.form.email = item.email;
         $scope.form.phoneNumber = item.phoneNumber;
         $scope.form.status = item.status;
-        $scope.form.roles= {
-            roleId: item.roles.roleId,
-            roleName: item.roles.roleName
-        };
+        $scope.form.roles= item.roles;
         $scope.form.picture = item.picture;
         $scope.isEditing = true;
         $scope.updateFileName();
