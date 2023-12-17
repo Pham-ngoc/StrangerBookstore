@@ -1,6 +1,6 @@
 
 
-app.controller("AdminCustomerController", function ($scope, $http) {
+app.controller("AdminCustomerController", function ($scope, $http, $window) {
     var url = 'http://localhost:8080/admin/customer';
     var roleurl="http://localhost:8080/admin/roles"
     $scope.list = [];
@@ -17,7 +17,7 @@ app.controller("AdminCustomerController", function ($scope, $http) {
         });
     $http.get(roleurl)
         .then(function (response) {
-            $scope.categories = response.data;
+            $scope.roles = response.data;
             console.log(response.data);
         })
         .catch(function (error) {
@@ -28,6 +28,7 @@ app.controller("AdminCustomerController", function ($scope, $http) {
             .then(function (response) {
                 console.log('Custormer created successfully:', response.data);
                 console.log($scope.form);
+                // $window.location.reload();
             })
             .catch(function (error) {
                 console.error('Error creating custormer:', error);
@@ -76,6 +77,15 @@ app.controller("AdminCustomerController", function ($scope, $http) {
 
 
     $scope.updateFileName = function () {
+        var fileInput = document.getElementById('file-input');
+        if (fileInput.files.length > 0) {
+            $scope.form.picture = fileInput.files[0].name;
+        } else if (!$scope.isEditing) {
+            $scope.form.picture = '';
+        }
+    };
+
+    $scope.updateFileName1 = function () {
         var fileInput = document.getElementById('file-input1');
         if (fileInput.files.length > 0) {
             $scope.form.picture = fileInput.files[0].name;
@@ -84,7 +94,7 @@ app.controller("AdminCustomerController", function ($scope, $http) {
         }
     };
 
-    $scope.editNews = function (item) {
+    $scope.editCustomer = function (item) {
         // Gán dữ liệu từ hàng đã click vào biến $scope.form
         $scope.form.customerId = item.customerId;
         $scope.form.customerName = item.customerName;

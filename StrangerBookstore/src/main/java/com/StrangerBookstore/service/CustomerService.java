@@ -60,6 +60,7 @@ public class CustomerService {
             existingCustomer.setCustomerName(customer.getCustomerName());
             existingCustomer.setPhoneNumber(customer.getPhoneNumber());
             existingCustomer.setEmail(customer.getEmail());
+            existingCustomer.setPicture(customer.getPicture());
 
             // Update roles if different
             if (!existingCustomer.getRoles().equals(customer.getRoles())) {
