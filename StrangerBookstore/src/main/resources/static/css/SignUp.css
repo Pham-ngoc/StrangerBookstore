@@ -118,7 +118,7 @@
 .group-child1:hover {
   background-color: var(--color-tan);
   span{
-    color: var(--color-lightgray);
+    color: var(--color-dimgray);
   }
 }
 .rectangle-parent2 {
@@ -158,6 +158,7 @@
     display: grid;
     align-items: center;
     justify-content: center;
+    margin-top: 30px;
 }
 .line-div1 {
   border-top: 2px solid var(--color-tan);

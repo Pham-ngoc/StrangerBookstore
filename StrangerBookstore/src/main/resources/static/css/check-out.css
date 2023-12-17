@@ -33,7 +33,7 @@
 .total-amount-order{
     font-size: 25px;
     color: var(--color-dimgray);
-    margin: 30px 50px 50px 30px;
+    margin: 5px 30px;
 }
 .amount-price-order{
     text-align: right;
@@ -68,7 +68,7 @@
 .name-order,
 .price,
 .total{
-    font-size: 25px;
+    font-size: 20px;
     margin: 0px;
     text-align: center;
 }
@@ -81,7 +81,7 @@
 }
 .hr-order{
     color: var(--color-dimgray);
-    margin: 50px 0px;
+    margin: 30px 0px;
     width: 90%;
 }
 .btn-order,
@@ -100,6 +100,12 @@
 .btn-change{
     font-size: 20px;
     padding: 15px 35px;
+}
+.btn-order:hover,
+.btn-change:hover{
+    color: var(--color-dimgray);
+    background: var(--color-lightgray);
+    border: 1px solid var(--color-dimgray)
 }
 .address-body{
     font-size: 20px;
@@ -347,6 +353,21 @@
     font-size: 20px;
     background: var(--color-tan);
     color: var(--color-lightgray);
+}
+.not-found-list1{
+    display: grid;
+    color: var(--color-dimgray);
+    background: var(--color-lightgray);
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: max-content;
+    padding: 50px;
+    margin: 50px 30px;
+    border-radius: 10px;
+}
+.not-found-list p{
+    margin: 0;
 }
 .check-out {
   position: relative;

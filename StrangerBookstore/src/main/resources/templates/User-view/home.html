@@ -48,39 +48,12 @@
     <!--START "THE BEST SELLER BOOK" -->
     <div class="best-seller">
         <div class="the-best-seller">THE BEST SELLER BOOKS</div>
-        <div class="seller-list row">
-            <div class="book-seller col-lg-4">
-                <a href="" class="best-seller-child">
-                    <img src="/img/product_img/cay-cam-ngot-cua-toi-bia-truoc.jpg" alt="">
+        <div class="container seller-list row">
+            <div class="book-seller col-lg-4 col-md-6 col-sm-6" th:each="product : ${listProduct}">
+                <a th:href="@{/productDetail(productId=${product.productId})}" class="best-seller-child">
+                    <img th:src="@{'/product_img/'+${product.product_img}}" th:alt="${product.productName}">
                 </a>
-                <a href="" class="name-of-book">Name of Book</a>
-
-                <a href="" class="best-seller-child">
-                    <img src="/img/product_img/cay-cam-ngot-cua-toi-bia-truoc.jpg" alt="">
-                </a>
-                <a href="" class="name-of-book">Name of Book</a>
-            </div>
-            <div class=" book-seller col-lg-4">
-                <a href="" class="best-seller-child">
-                    <img src="/img/product_img/cay-cam-ngot-cua-toi-bia-truoc.jpg" alt="">
-                </a>
-                <a href="" class="name-of-book">Name of Book</a>
-
-                <a href="" class="best-seller-child">
-                    <img src="/img/product_img/cay-cam-ngot-cua-toi-bia-truoc.jpg" alt="">
-                </a>
-                <a href="" class="name-of-book">Name of Book</a>
-            </div>
-            <div class="book-seller col-lg-4">
-                <a href="" class="best-seller-child">
-                    <img src="/img/product_img/cay-cam-ngot-cua-toi-bia-truoc.jpg" alt="">
-                </a>
-                <a href="" class="name-of-book">Name of Book</a>
-
-                <a href="" class="best-seller-child">
-                    <img src="/img/product_img/cay-cam-ngot-cua-toi-bia-truoc.jpg" alt="">
-                </a>
-                <a href="" class="name-of-book">Name of Book</a>
+                <a th:href="@{/productDetail(productId=${product.productId})}" class="name-of-book" th:text="${product.productName}"></a>
             </div>
         </div>
     </div>

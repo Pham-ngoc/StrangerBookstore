@@ -19,14 +19,14 @@
             <div class="cart-infor row">
                 <div class="list-product-cart col-lg-8">
                     <div class="back-home">
-                        <a th:href="@{/shop}">
+                        <a th:href="@{/shop/1?CateID=all&searchName=null}">
                             <img src="/public/epback.svg">
                         </a>
-                        <a th:href="@{/shop}">
+                        <a th:href="@{/shop/1?CateID=all&searchName=null}">
                             <span>Back to shop</span>
                         </a>
                     </div>
-                    <div class="table-cart-product">
+                    <div class="table-cart-product" th:if="${cartProducts != null}">
                         <div class="title-table-cart-product row">
                             <div class="all-product-cart-product col-lg-5">
                                 Product
@@ -41,111 +41,49 @@
                                 Total
                             </div>
                         </div>
-                        <div class="body-table-cart-product row">
+                        <div class="body-table-cart-product row" th:each="cart : ${cartProducts}" th:id="'product-' + ${cart.products.productId}">
                             <div class="infor-cart-product col-lg-5 row">
                                 <div class="pic col-lg-4">
-                                    <img src="/img/product_img/cay-cam-ngot-cua-toi-bia-truoc.jpg" alt="">
+                                    <img th:src="@{'/product_img/'+${cart.products.product_img}}"  alt="${cart.products.productName}">
                                 </div>
                                 <div class="name-book col-lg-8">
-                                    <p class="name">Name of book</p>
+                                    <p class="name" th:text="${cart.products.productName}"></p>
                                 </div>
                             </div>
                             <div class="price-product col-lg-1">
-                                Price
+                                <span th:text="${#numbers.formatDecimal(cart.products.price, 0, 'COMMA', 0 , 'POINT')}"></span><span>đ</span>
                             </div>
                             <div class="quantity-product col-lg-2">
                                 <div class="quantity-control" data-quantity="">
-                                    <button class="quantity-btn" data-quantity-minus=""><svg viewBox="0 0 409.6 409.6">
-                                        <g>
+                                    <button class="quantity-btn" th:onclick="'decreaseQuantity(\'' + ${cart.products.productId} + '\')'">
+                                        <svg viewBox="0 0 409.6 409.6">
                                             <g>
-                                                <path d="M392.533,187.733H17.067C7.641,187.733,0,195.374,0,204.8s7.641,17.067,17.067,17.067h375.467 c9.426,0,17.067-7.641,17.067-17.067S401.959,187.733,392.533,187.733z" />
+                                                <g>
+                                                    <path d="M392.533,187.733H17.067C7.641,187.733,0,195.374,0,204.8s7.641,17.067,17.067,17.067h375.467 c9.426,0,17.067-7.641,17.067-17.067S401.959,187.733,392.533,187.733z" />
+                                                </g>
                                             </g>
-                                        </g>
-                                    </svg></button>
-                                    <input type="number" class="quantity-input" data-quantity-target="" value="1" step="1" min="1" max="" name="quantity">
-                                    <button class="quantity-btn" data-quantity-plus=""><svg viewBox="0 0 426.66667 426.66667">
-                                        <path d="m405.332031 192h-170.664062v-170.667969c0-11.773437-9.558594-21.332031-21.335938-21.332031-11.773437 0-21.332031 9.558594-21.332031 21.332031v170.667969h-170.667969c-11.773437 0-21.332031 9.558594-21.332031 21.332031 0 11.777344 9.558594 21.335938 21.332031 21.335938h170.667969v170.664062c0 11.777344 9.558594 21.335938 21.332031 21.335938 11.777344 0 21.335938-9.558594 21.335938-21.335938v-170.664062h170.664062c11.777344 0 21.335938-9.558594 21.335938-21.335938 0-11.773437-9.558594-21.332031-21.335938-21.332031zm0 0" /></svg>
+                                        </svg>
+                                    </button>
+                                    <span type="number" th:id="'quantity-' + ${cart.products.productId}" th:text="${cart.quantity}" class="quantity-input" name="quantity"></span>
+                                    <button class="quantity-btn" th:onclick="'increaseQuantity(\'' + ${cart.products.productId} + '\')'">
+                                        <svg viewBox="0 0 426.66667 426.66667">
+                                            <path d="m405.332031 192h-170.664062v-170.667969c0-11.773437-9.558594-21.332031-21.335938-21.332031-11.773437 0-21.332031 9.558594-21.332031 21.332031v170.667969h-170.667969c-11.773437 0-21.332031 9.558594-21.332031 21.332031 0 11.777344 9.558594 21.335938 21.332031 21.335938h170.667969v170.664062c0 11.777344 9.558594 21.335938 21.332031 21.335938 11.777344 0 21.335938-9.558594 21.335938-21.335938v-170.664062h170.664062c11.777344 0 21.335938-9.558594 21.335938-21.335938 0-11.773437-9.558594-21.332031-21.335938-21.332031zm0 0" />
+                                        </svg>
                                     </button>
                                 </div>
                             </div>
                             <div class="total-product col-lg-2">
-                                Total
+                                <span th:id="'amount-' + ${cart.products.productId}" th:text="${#numbers.formatDecimal(cart.products.price * cart.quantity, 0, 'COMMA', 0 , 'POINT')}"></span><span>đ</span>
                             </div>
                             <div class="delete-product col-lg-1">
-                                <a href=""><i class="fa fa-close"></i></a>
+                                <a type="button" th:onclick="'deleteItemInCard(\'' + ${cart.products.productId} + '\')'"><i class="fa fa-close"></i></a>
                             </div>
                             <hr class="cart-hr">
                         </div>
-                        <div class="body-table-cart-product row">
-                            <div class="infor-cart-product col-lg-5 row">
-                                <div class="pic col-lg-4">
-                                    <img src="/img/product_img/cay-cam-ngot-cua-toi-bia-truoc.jpg" alt="">
-                                </div>
-                                <div class="name-book col-lg-8">
-                                    <p class="name">Name of book</p>
-                                </div>
-                            </div>
-                            <div class="price-product col-lg-1">
-                                Price
-                            </div>
-                            <div class="quantity-product col-lg-2">
-                                <div class="quantity-control" data-quantity="">
-                                    <button class="quantity-btn" data-quantity-minus=""><svg viewBox="0 0 409.6 409.6">
-                                        <g>
-                                            <g>
-                                                <path d="M392.533,187.733H17.067C7.641,187.733,0,195.374,0,204.8s7.641,17.067,17.067,17.067h375.467 c9.426,0,17.067-7.641,17.067-17.067S401.959,187.733,392.533,187.733z" />
-                                            </g>
-                                        </g>
-                                    </svg></button>
-                                    <input type="number" class="quantity-input" data-quantity-target="" value="1" step="1" min="1" max="" name="quantity">
-                                    <button class="quantity-btn" data-quantity-plus=""><svg viewBox="0 0 426.66667 426.66667">
-                                        <path d="m405.332031 192h-170.664062v-170.667969c0-11.773437-9.558594-21.332031-21.335938-21.332031-11.773437 0-21.332031 9.558594-21.332031 21.332031v170.667969h-170.667969c-11.773437 0-21.332031 9.558594-21.332031 21.332031 0 11.777344 9.558594 21.335938 21.332031 21.335938h170.667969v170.664062c0 11.777344 9.558594 21.335938 21.332031 21.335938 11.777344 0 21.335938-9.558594 21.335938-21.335938v-170.664062h170.664062c11.777344 0 21.335938-9.558594 21.335938-21.335938 0-11.773437-9.558594-21.332031-21.335938-21.332031zm0 0" /></svg>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="total-product col-lg-2">
-                                Total
-                            </div>
-                            <div class="delete-product col-lg-1">
-                                <a href=""><i class="fa fa-close"></i></a>
-                            </div>
-                            <hr class="cart-hr">
-                        </div>
-                        <div class="body-table-cart-product row">
-                            <div class="infor-cart-product col-lg-5 row">
-                                <div class="pic col-lg-4">
-                                    <img src="/img/product_img/cay-cam-ngot-cua-toi-bia-truoc.jpg" alt="">
-                                </div>
-                                <div class="name-book col-lg-8">
-                                    <p class="name">Name of book</p>
-                                </div>
-                            </div>
-                            <div class="price-product col-lg-1">
-                                Price
-                            </div>
-                            <div class="quantity-product col-lg-2">
-                                <div class="quantity-control" data-quantity="">
-                                    <button class="quantity-btn" data-quantity-minus=""><svg viewBox="0 0 409.6 409.6">
-                                        <g>
-                                            <g>
-                                                <path d="M392.533,187.733H17.067C7.641,187.733,0,195.374,0,204.8s7.641,17.067,17.067,17.067h375.467 c9.426,0,17.067-7.641,17.067-17.067S401.959,187.733,392.533,187.733z" />
-                                            </g>
-                                        </g>
-                                    </svg></button>
-                                    <input type="number" class="quantity-input" data-quantity-target="" value="1" step="1" min="1" max="" name="quantity">
-                                    <button class="quantity-btn" data-quantity-plus=""><svg viewBox="0 0 426.66667 426.66667">
-                                        <path d="m405.332031 192h-170.664062v-170.667969c0-11.773437-9.558594-21.332031-21.335938-21.332031-11.773437 0-21.332031 9.558594-21.332031 21.332031v170.667969h-170.667969c-11.773437 0-21.332031 9.558594-21.332031 21.332031 0 11.777344 9.558594 21.335938 21.332031 21.335938h170.667969v170.664062c0 11.777344 9.558594 21.335938 21.332031 21.335938 11.777344 0 21.335938-9.558594 21.335938-21.335938v-170.664062h170.664062c11.777344 0 21.335938-9.558594 21.335938-21.335938 0-11.773437-9.558594-21.332031-21.335938-21.332031zm0 0" /></svg>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="total-product col-lg-2">
-                                Total
-                            </div>
-                            <div class="delete-product col-lg-1">
-                                <a href=""><i class="fa fa-close"></i></a>
-                            </div>
-                            <hr class="cart-hr">
-                        </div>
+                    </div>
+                    <div class="not-found-list" th:if="${cartProducts == null}">
+                        <p>Not found list Products</p>
+                        <a class="go-to-shop mx-auto" type="button" th:href=@{/shop/1?CateID=all&searchName=null}>Go to Shop</a>
                     </div>
                 </div>
                 <div class="cart-total col-lg-3">
@@ -156,7 +94,7 @@
                                 Total amount
                             </div>
                             <div class="price-cart-total col-lg-5">
-                                000 đ
+                                <span id="totalAmount" th:text="${#numbers.formatDecimal(totalAmount, 0, 'COMMA', 0 , 'POINT')}"></span><span>đ</span>
                             </div>
                         </div>
                         <a class="btn-checkout" th:href="@{/checkout}">
@@ -170,5 +108,102 @@
     <div th:replace="~{User-view/fragment/footer.html :: div}"></div>
 </div>
 <th:block th:replace="~{User-view/style/user-scr.html::html}"></th:block>
+<script>
+    function deleteItemInCard(productId) {
+        console.log(productId);
+        $.ajax({
+            url : "/deleteItemInCard",
+            type : "GET",
+            data : {
+                productId : productId
+            },
+            success : function(response) {
+                // Xóa hàng chứa sản phẩm khỏi giao diện
+                $("#product-" + productId).remove();
+
+                // Hiển thị thông báo xóa thành công
+                var itemInCart = response.itemInCart;
+                var totalAmount = response.totalAmount;
+                // Hiển thị thông báo thành công
+                Swal.fire({
+                  position: "center",
+                  icon: "success",
+                  title: "Delete Product Successfully!",
+                  showConfirmButton: false,
+                  timer: 1500
+                });
+                // Cập nhật lại số lượng hiển thị trên icon cart (itemInCart)
+                if (itemInCart !== undefined) {
+                    $("#itemInCart").text(itemInCart);
+                }
+                if (totalAmount !== undefined) {
+                    $("#totalAmount").text(totalAmount);
+                }
+
+            },
+            error : function(xhr, status, error) {
+                // Hiển thị thông báo lỗi
+                console.log(error);
+                Swal.fire({
+                  icon: "error",
+                  title: "Delete Failed!"
+                });
+            }
+        });
+    }
+    function decreaseQuantity(productId) {
+        console.log(productId);
+        $.ajax({
+            url : "/decreaseQuantity",
+            type : "POST",
+            data : {
+                productId : productId
+            },
+            success : function(response) {
+                console.log(response);
+                var totalAmount = response.totalAmount;
+                var quantity = response.quantity;
+                var amount = response.amount;
+
+                var totalAmountElement = document.getElementById('totalAmount');
+                var quantityElement = document.getElementById('quantity-'+productId);
+                var amountElement = document.getElementById('amount-'+productId);
+
+                totalAmountElement.textContent = totalAmount;
+                quantityElement.textContent = quantity;
+                amountElement.textContent = amount;
+            },
+            error : function(xhr, status, error) {
+            }
+        });
+    }
+
+    function increaseQuantity(productId) {
+        console.log(productId);
+        $.ajax({
+            url : "/increaseQuantity",
+            type : "POST",
+            data : {
+                productId : productId
+            },
+            success : function(response) {
+                console.log(response);
+                var totalAmount = response.totalAmount;
+                var quantity = response.quantity;
+                var amount = response.amount;
+
+                var totalAmountElement = document.getElementById('totalAmount');
+                var quantityElement = document.getElementById('quantity-'+productId);
+                var amountElement = document.getElementById('amount-'+productId);
+
+                totalAmountElement.textContent = totalAmount;
+                quantityElement.textContent = quantity;
+                amountElement.textContent = amount;
+            },
+            error : function(xhr, status, error) {
+            }
+        });
+    }
+</script>
 </body>
 </html>

@@ -8,14 +8,14 @@
   border-right: 3px solid var(--color-dimgray);
   box-sizing: border-box;
   width: 2px;
-  height: 560px;
+  height: 100%;
   border-radius: 50px;
 }
 .news-detail-hr{
     padding: 0px;
     width: 10px;
     margin-top: 65px;
-    height: max-content;
+    margin-bottom: 35px;
 }
 .product-detail-child {
   width: 100%;
@@ -51,13 +51,12 @@
 }
 .pic{
     margin: 20px;
-    background: white;
     padding: 20px;
     border-radius:10px;
 }
 .pic img{
-    width: 310px;
-    height: 500px;
+    width: 250px;
+    height: 350px;
 }
 .list-pic{
     display: flex;
@@ -91,9 +90,6 @@
 .stock{
     font-size: 15px;
 }
-.button-add-like{
-    margin-top: 130px;
-}
 .user-review-pic{
     overflow: hidden; /* Ẩn phần ngoài hình tròn */
     width: max-content;
@@ -117,8 +113,15 @@
 .username-review{
     font-weight: 600;
 }
-.add-cart a,
-.heart a{
+.fa.fa-heart{
+    font-size: 30px;
+}
+.add-cart,
+.heart{
+    width: max-content;
+}
+.add-cart button,
+.heart button{
     border-radius: 10px;
     background-color: transparent;
     box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25), 0 4px 4px rgba(0, 0, 0, 0.25),
@@ -130,11 +133,8 @@
     text-decoration: none;
     font-size: 25px;
 }
-.heart a{
-    padding: 20px 30px;
-}
-.add-cart a:hover,
- .heart a:hover{
+.add-cart button:hover,
+.heart button:hover{
     background: var(--color-dimgray);
     color: var(--color-lightgray);
  }
@@ -177,7 +177,7 @@
 .recommended-text{
     font-size: 25px;
     color: var(--color-dimgray);
-    margin-bottom: 0;
+    margin-bottom: 30 px;
 }
 .list-recommended{
     text-align: left;
@@ -187,20 +187,28 @@
 .product-recommended-infor{
     width: max-content;
     height: max-content;
+    display: grid;
+}
+.product-recommended-infor{
+    width: 300px;
 }
 .product-recommended-infor-price,
 .product-recommended-infor-name{
     margin-bottom: 5px;
-    font-size: 20px;
+    font-size: 15px;
     color: var(--color-dimgray);
     text-decoration: none;
+    word-break: break-all;
+    width: 100%;
 }
 .product-recommended{
     margin-bottom: 30px;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    display: flex;
 }
 .product-recommended a img {
     width: 100px;
-    height: 150px;
   -webkit-transform: scale(1);
 	transform: scale(1);
 	-webkit-transition: .3s ease-in-out;
@@ -210,8 +218,6 @@
 .product-recommended a{
   height: 100%;
   overflow: hidden;
-  display: block;
-  width: max-content;
 }
 
 .product-recommended a:hover img{

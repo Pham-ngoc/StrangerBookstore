@@ -125,21 +125,21 @@
                                         <input type="file" id="imageInput" ng-model="form.product_img">
                                     </div>
                                 </div>
+                                <div class="card-footer">
+                                    <button type="submit" ng-click="create()" class="btn btn-primary btn-sm">
+                                        <i class="fa fa-dot-circle-o"></i> Create
+                                    </button>
+                                    <button type="submit" ng-click="update()" class="btn btn-primary btn-sm">
+                                        <i class="fa fa-dot-circle-o"></i> Update
+                                    </button>
+                                    <button type="submit" ng-click="delete(form.productId)" class="btn btn-danger btn-sm">
+                                        <i class="fa fa-ban"></i> Delete
+                                    </button>
+                                    <button type="submit" ng-click="reset()" class="btn btn-danger btn-sm">
+                                        <i class="fa fa-ban"></i> Reset
+                                    </button>
+                                </div>
                             </form>
-                        </div>
-                        <div class="card-footer">
-                            <button type="submit" ng-click="create()" class="btn btn-primary btn-sm">
-                                <i class="fa fa-dot-circle-o"></i> Create
-                            </button>
-                            <button type="submit" ng-click="update()" class="btn btn-primary btn-sm">
-                                <i class="fa fa-dot-circle-o"></i> Update
-                            </button>
-                            <button type="submit" ng-click="delete(form.productId)" class="btn btn-danger btn-sm">
-                                <i class="fa fa-ban"></i> Delete
-                            </button>
-                            <button type="submit" ng-click="reset()" class="btn btn-danger btn-sm">
-                                <i class="fa fa-ban"></i> Reset
-                            </button>
                         </div>
                     </div>
 <!--TABLE-->
@@ -181,7 +181,7 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                        <tr class="tr-shadow" ng-repeat="item in productList.content">
+                                        <tr class="tr-shadow" ng-repeat="item in productList">
                                             <td>{{item.productName}}</td>
                                             <td>{{item.author}}</td>
                                             <td>{{item.publisher}}</td>
@@ -207,11 +207,11 @@
                                         <tr class="spacer"></tr>
                                     </tbody>
                                 </table>
-                                <div>
-                                    <button ng-click="previous()" ng-disabled="currentPage === 0">Previous</button>
-                                    Page {{ currentPage + 1 }} of {{ productList.totalPages }}
-                                    <button  ng-click="next()" ng-disabled="currentPage === productList.totalPages - 1">Next</button>
-                                </div>
+<!--                                <div>-->
+<!--                                    <button ng-click="previous()" ng-disabled="currentPage === 0">Previous</button>-->
+<!--                                    Page {{ currentPage + 1 }} of {{ productList.totalPages }}-->
+<!--                                    <button  ng-click="next()" ng-disabled="currentPage === productList.totalPages - 1">Next</button>-->
+<!--                                </div>-->
                             </div>
                             <!-- END DATA TABLE -->
                         </div>

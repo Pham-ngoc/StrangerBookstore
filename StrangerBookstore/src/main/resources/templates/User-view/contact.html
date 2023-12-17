@@ -17,22 +17,27 @@
 
   <div class="body">
     <div class="group-child">
-      <form class="form-contact">
+      <form th:action="@{/saveMsg}" class="form-contact" method="post" th:object="${contact}">
+        <span class="error1" th:if="${!#strings.isEmpty(message)}" th:text="${message}" style="display: none"></span>
         <div class="rectangle-parent">
-          <input class="email-confirm" type="text" placeholder="Full name"/>
-          <span class="error">Test error</span>
+          <input class="email-confirm" th:field="*{fullName}" type="text" placeholder="Full name"/>
+          <span class="error" th:if="${#fields.hasErrors('fullName')}" th:errors="*{fullName}"></span>
         </div>
         <div class="rectangle-parent">
-          <input class="email-confirm" type="text" placeholder="Phone number"/>
-          <span class="error">Test error</span>
+          <input class="email-confirm" type="text" th:field="*{phoneNumber}" placeholder="Phone number"/>
+          <span class="error" th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}"></span>
         </div>
         <div class="rectangle-parent">
-          <input class="email-confirm" type="text" placeholder="Email"/>
-          <span class="error">Test error</span>
+          <input class="email-confirm" type="text" th:field="*{email}" placeholder="Email"/>
+          <span class="error" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
         </div>
         <div class="rectangle-parent">
-          <textarea class="email-confirm" type="text" placeholder="Message" rows="9"></textarea>
-          <span class="error">Test error</span>
+          <input class="email-confirm" type="text" th:field="*{subject}" placeholder="Subject"/>
+          <span class="error" th:if="${#fields.hasErrors('subject')}" th:errors="*{subject}"></span>
+        </div>
+        <div class="rectangle-parent">
+          <textarea class="email-confirm"  th:field="*{message}" placeholder="Message" rows="9"></textarea>
+          <span class="error" th:if="${#fields.hasErrors('message')}" th:errors="*{message}"></span>
         </div>
 
         <button type="submit" class="btn btn-send">Send Message</button>
@@ -62,5 +67,16 @@
   <div th:replace="~{User-view/fragment/footer.html :: div}"></div>
 </div>
 <th:block th:replace="~{User-view/style/user-scr.html::html}"></th:block>
+<script>
+  var notificationSpan = document.querySelector('.error1');
+        var notificationMessage = notificationSpan.textContent ;
+
+        if(notificationMessage.trim() !== '') {
+            Swal.fire({
+                icon: "success",
+                title: notificationMessage
+            });
+        }
+</script>
 </body>
 </html>

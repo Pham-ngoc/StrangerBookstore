@@ -22,7 +22,7 @@
     border-radius: var(--br-3xs);
     background-color: var(--color-lightgray);
     width: 1279px;
-    height: 1000px;
+    height: max-content;
     margin: 50px;
     align-items: center;
     justify-content: left;

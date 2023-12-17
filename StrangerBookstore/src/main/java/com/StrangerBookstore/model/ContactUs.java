@@ -4,6 +4,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.validation.constraints.NotBlank;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
@@ -18,11 +19,23 @@ public class ContactUs extends BaseEntity{
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
     @GenericGenerator(name = "native", strategy = "native")
     private int contactId;
+
+    @NotBlank(message = "Full Name must not be blank")
     private String fullName;
+
+    @NotBlank(message = "Phone Number must not be blank")
     private String phoneNumber;
+
+    @NotBlank(message = "Email must not be blank")
     private String email;
+
+    @NotBlank(message = "Subject must not be blank")
     private String subject;
+
+    @NotBlank(message = "Message must not be blank")
     private String message;
+
+
     private String status;
     @Override
     public boolean equals(Object o) {

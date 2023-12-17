@@ -12,44 +12,39 @@
     <div class="product-detail1">
         <div class="product-detail-item">
             <div class="product-detail-infor row">
-                <div class="pic-product col-lg-6">
+                <div class="pic-product col-lg-4">
                     <div class="back-home">
                         <a th:href="@{/shop}">
                             <img src="/public/epback.svg">
                         </a>
-                        <a th:href="@{/shop}">
+                        <a th:href=@{/shop/1?CateID=all&searchName=null}>
                             <span>Back to shop</span>
                         </a>
                     </div>
                     <div class="pic">
-                        <img src="/img/product_img/cay-cam-ngot-cua-toi-bia-truoc.jpg" alt="">
-                    </div>
-                    <div class="list-pic">
-                        <img src="/img/product_img/cay-cam-ngot-cua-toi-bia-truoc.jpg" alt="">
-                        <img src="/img/product_img/cay-cam-ngot-cua-toi-bia-truoc.jpg" alt="">
-                        <img src="/img/product_img/cay-cam-ngot-cua-toi-bia-truoc.jpg" alt="">
+                        <img th:src="@{'/product_img/'+${product.product_img}}" th:alt="${product.productName}">
                     </div>
                 </div>
                 <div class="news-detail-hr col-lg-1">
                     <div class="news-detail-inner"></div>
                 </div>
-                <div class="infor-product col-lg-5">
-                    <p class="cate">Category</p>
-                    <p class="name">Name of Book</p>
-                    <p class="author">Author: <span></span></p>
-                    <p class="publisher">Publisher: <span></span></p>
-                    <p class="language">Language: <span></span></p>
-                    <p class="condition">Condition: <span></span></p>
-                    <p class="stock">Quantity in Stock: <span></span></p>
-                    <p class="product-detail-price">Price</p>
-                    <div class="button-add-like row">
-                        <div class="add-cart col-lg-6">
-                            <a href="#">ADD TO CART</a>
-                        </div>
-                        <div class="heart col-lg-6">
-                            <a href="#">
-                                <img src="/public/phheart.svg">
-                            </a>
+                <div class="infor-product col-lg-6">
+                    <p class="cate" th:text="${product.categories.categoryName}"></p>
+                    <p class="name" th:text="${product.productName}"></p>
+                    <p class="author">Author: <span th:text="${product.author}"></span></p>
+                    <p class="publisher">Publisher: <span th:text="${product.publisher}"></span></p>
+                    <p class="language">Language: <span th:text="${product.language}"></span></p>
+                    <div class="price-cart-heart">
+                        <p class="product-detail-price"><span th:text="${#numbers.formatDecimal(product.price, 0, 'COMMA', 0 , 'POINT')}"></span><span>đ</span></p>
+                        <div class="button-add-like row">
+                            <div class="add-cart col-lg-6">
+                                <button class="btn" th:onclick="'addToCart(\'' + ${product.productId} + '\')'">ADD TO CART</button>
+                            </div>
+                            <div class="heart col-lg-6">
+                                <button class="btn" th:onclick="'addToWishlist(\'' + ${product.productId} + '\')'">
+                                    <i class="fa fa-heart"></i>
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -58,101 +53,26 @@
                 <div class="description-review col-lg-7">
                     <div class="description">
                         <p class="description-text">Description</p>
-                        <p class="description-detail" id="description-detail">
-                            "Cây cam ngọt của tôi" là câu chuyện về cậu bé Zezé, một cậu bé 5 tuổi thông minh, tinh nghịch và đáng yêu, sinh ra và lớn lên trong một gia đình nghèo đông con ở vùng ngoại ô Rio de Janeiro, Brazil. Cậu bé có ước mơ trở thành một nhà thơ cổ thắt nơ bướm.
+                        <p class="description-detail" id="description-detail" th:text="${product.description}">
 
-                            Cuộc sống của Zezé không hề dễ dàng. Cậu phải chịu đựng sự hắt hủi, đánh mắng của cha mẹ và anh chị em. Cậu cũng phải đối mặt với những khó khăn của cuộc sống nghèo khó. Tuy nhiên, Zezé vẫn giữ được trái tim trong sáng và trí tưởng tượng phong phú.
-
-                            Cậu bé tìm thấy một người bạn đặc biệt, đó là cây cam ngọt trong vườn sau nhà. Cậu bé thường tâm sự với cây cam về những niềm vui, nỗi buồn của mình. Cây cam ngọt cũng trở thành nguồn động viên, khích lệ cậu bé trong cuộc sống.
-
-                            Một ngày kia, Zezé gặp gỡ một người bạn mới, đó là Lọ Lem. Lọ Lem là một cậu bé mồ côi, sống lang thang trên đường phố. Lọ Lem đã giúp Zezé khám phá thế giới bên ngoài và dạy cậu bé cách yêu thương.
-
-                            Cuộc sống của Zezé đã thay đổi mãi mãi sau khi cậu gặp Lọ Lem. Cậu bé học được cách đối mặt với những khó khăn và vượt qua những thử thách trong cuộc sống. Cậu cũng học được cách yêu thương và trân trọng những người xung quanh.
                         </p>
 <!--                        <button id="read-more-btn" onclick="toggleReadMore()">Xem thêm</button>-->
                     </div>
                     <hr class="product-detail-hr">
                     <div class="review">
                         <p class="review-text">Review</p>
-                        <div class="review-list row">
+                        <div class="review-list row" th:if="${listReview != null}" th:each="review : ${listReview}">
                             <div class="user-review-pic col-lg-2">
-                                <img src="/images/icon/avata.jpg">
+                                <img th:src="@{'/customer_pic/'+${review.customer.picture}}">
                             </div>
                             <div class="user-review col-lg-10">
-                                <p class="username-review">Customer name</p>
-                                <p class="review-content">Cuốn sách này rất hay, rất đáng mua</p>
+                                <p class="username-review" th:text="${review.customer.customerName}"></p>
+                                <p class="review-content" th:text="${review.reviewContent}"></p>
                             </div>
                             <hr class="hr-review">
                         </div>
-                        <div class="review-list row">
-                            <div class="user-review-pic col-lg-2">
-                                <img src="/images/icon/avata.jpg">
-                            </div>
-                            <div class="user-review col-lg-10">
-                                <p class="username-review">Customer name</p>
-                                <p class="review-content">Cuốn sách này rất hay, rất đáng mua</p>
-                            </div>
-                            <hr class="hr-review">
-                        </div>
-                        <div class="review-list row">
-                            <div class="user-review-pic col-lg-2">
-                                <img src="/images/icon/avata.jpg">
-                            </div>
-                            <div class="user-review col-lg-10">
-                                <p class="username-review">Customer name</p>
-                                <p class="review-content">Cuốn sách này rất hay, rất đáng mua. eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
-                                eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
-                                eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
-                                eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee</p>
-                            </div>
-<!--                            <div class="review-more col-lg-1">-->
-<!--                                <div class="dropdown-review-more">-->
-<!--                                    <a href="#" onclick="dropdownReview()">-->
-<!--                                        <img src="/images/icon/more.png" width="15" height="15">-->
-<!--                                    </a>-->
-<!--                                    <div class="dropdown-content-review" id="moreDropdown">-->
-<!--                                        <div>-->
-<!--                                            <a href="#" class="">-->
-<!--                                                <a>Edit</a>-->
-<!--                                            </a>-->
-<!--                                            <a href="#" class="">-->
-<!--                                                <a>Remove</a>-->
-<!--                                            </a>-->
-<!--                                        </div>-->
-<!--                                    </div>-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                            <hr class="hr-review">-->
-                        </div>
-                        <div class="review-list row">
-                            <div class="user-review-pic col-lg-2">
-                                <img src="/images/icon/avata.jpg">
-                            </div>
-                            <div class="user-review col-lg-10">
-                                <p class="username-review">Customer name</p>
-                                <p class="review-content">Cuốn sách này rất hay, rất đáng mua</p>
-                            </div>
-<!--                            <hr class="hr-review">-->
-                        </div>
-                        <div class="review-list row">
-                            <div class="user-review-pic col-lg-2">
-                                <img src="/images/icon/avata.jpg">
-                            </div>
-                            <div class="user-review col-lg-10">
-                                <p class="username-review">Customer name</p>
-                                <p class="review-content">Cuốn sách này rất hay, rất đáng mua</p>
-                            </div>
-                            <hr class="hr-review">
-                        </div>
-                        <div class="review-list row">
-                            <div class="user-review-pic col-lg-2">
-                                <img src="/images/icon/avata.jpg">
-                            </div>
-                            <div class="user-review col-lg-10">
-                                <p class="username-review">Customer name</p>
-                                <p class="review-content">Cuốn sách này rất hay, rất đáng mua</p>
-                            </div>
-                            <hr class="hr-review">
+                        <div class="not-found-list" th:unless="${listReview != null}">
+                            <p>Not found review</p>
                         </div>
                     </div>
                 </div>
@@ -161,81 +81,14 @@
                 </div>
                 <div class="list-recommended col-lg-3">
                     <p class="recommended-text">Also Recommended</p>
-                    <div class="product-recommended row">
-                        <a href="" class="product-recommended-pic col-lg-2">
-                            <img src="/img/product_img/cay-cam-ngot-cua-toi-bia-truoc.jpg" alt="">
+                    <div class="product-recommended row" th:each="p : ${listProduct}">
+                        <a th:href="@{/productDetail(productId=${p.productId})}" class="product-recommended-pic col-lg-2">
+                            <img th:src="@{'/product_img/'+${p.product_img}}" th:alt="${p.productName}">
                         </a>
                         <div class="product-recommended-infor col-lg-10">
-                            <a href="" class="product-recommended-infor-name">
-                                Name of book
-                            </a>
+                            <a th:href="@{/productDetail(productId=${p.productId})}" class="product-recommended-infor-name" th:text="${p.productName}"></a>
                             <p class="product-recommended-infor-price">
-                                Price
-                            </p>
-                        </div>
-                    </div>
-                    <div class="product-recommended row">
-                        <a href="" class="product-recommended-pic col-lg-2">
-                            <img src="/img/product_img/cay-cam-ngot-cua-toi-bia-truoc.jpg" alt="">
-                        </a>
-                        <div class="product-recommended-infor col-lg-10">
-                            <a href="" class="product-recommended-infor-name">
-                                Name of book
-                            </a>
-                            <p class="product-recommended-infor-price">
-                                Price
-                            </p>
-                        </div>
-                    </div>
-                    <div class="product-recommended row">
-                        <a href="" class="product-recommended-pic col-lg-2">
-                            <img src="/img/product_img/cay-cam-ngot-cua-toi-bia-truoc.jpg" alt="">
-                        </a>
-                        <div class="product-recommended-infor col-lg-10">
-                            <a href="" class="product-recommended-infor-name">
-                                Name of book
-                            </a>
-                            <p class="product-recommended-infor-price">
-                                Price
-                            </p>
-                        </div>
-                    </div>
-                    <div class="product-recommended row">
-                        <a href="" class="product-recommended-pic col-lg-2">
-                            <img src="/img/product_img/cay-cam-ngot-cua-toi-bia-truoc.jpg" alt="">
-                        </a>
-                        <div class="product-recommended-infor col-lg-10">
-                            <a href="" class="product-recommended-infor-name">
-                                Name of book
-                            </a>
-                            <p class="product-recommended-infor-price">
-                                Price
-                            </p>
-                        </div>
-                    </div>
-                    <div class="product-recommended row">
-                        <a href="" class="product-recommended-pic col-lg-2">
-                            <img src="/img/product_img/cay-cam-ngot-cua-toi-bia-truoc.jpg" alt="">
-                        </a>
-                        <div class="product-recommended-infor col-lg-10">
-                            <a href="" class="product-recommended-infor-name">
-                                Name of book
-                            </a>
-                            <p class="product-recommended-infor-price">
-                                Price
-                            </p>
-                        </div>
-                    </div>
-                    <div class="product-recommended row">
-                        <a href="" class="product-recommended-pic col-lg-2">
-                            <img src="/img/product_img/cay-cam-ngot-cua-toi-bia-truoc.jpg" alt="">
-                        </a>
-                        <div class="product-recommended-infor col-lg-10">
-                            <a href="" class="product-recommended-infor-name">
-                                Name of book
-                            </a>
-                            <p class="product-recommended-infor-price">
-                                Price
+                                <span th:text="${#numbers.formatDecimal(p.price, 0, 'COMMA', 0 , 'POINT')}"></span><span> đ</span>
                             </p>
                         </div>
                     </div>
@@ -246,5 +99,86 @@
     <div th:replace="~{User-view/fragment/footer.html :: div}"></div>
 </div>
 <th:block th:replace="~{User-view/style/user-scr.html::html}"></th:block>
+<script>
+    function addToCart(productId) {
+
+        console.log(productId);
+        $.ajax({
+            url: "/addToCart",
+            type: "GET",
+            data: {
+                productId: productId
+            },
+            success: function(response) {
+                var itemInCart = response.itemInCart;
+                Swal.fire({
+                  position: "center",
+                  icon: "success",
+                  title: "Add To Cart Successfully!",
+                  showConfirmButton: false,
+                  timer: 1500
+                });
+                if (itemInCart >= 1) {
+                    $("#itemInCart").text(itemInCart);
+                }
+            },
+            error: function(xhr, status, error) {
+                console.log(error);
+                Swal.fire({
+                  icon: "error",
+                  title: "Please Sign In!"
+                }).then((result) => {
+                  if (result.isConfirmed) {
+                    window.location.href = "/login";
+                  }
+                });
+            }
+        });
+    };
+
+    function addToWishlist(productId) {
+
+        console.log(productId);
+        $.ajax({
+            url: "/profile/addToWishlist",
+            type: "GET",
+            data: {
+                productId: productId
+            },
+            success: function(response) {
+                if(response == "Add Product To Wishlist Successfully!"){
+                    Swal.fire({
+                      position: "center",
+                      icon: "success",
+                      title: response,
+                      showConfirmButton: false,
+                      timer: 1500
+                    });
+                } else{
+                    if(response == "The Product Already Exists In The Wishlist!"){
+                        Swal.fire({
+                          position: "center",
+                          icon: "warning",
+                          title: response,
+                          showConfirmButton: false,
+                          timer: 1500
+                        });
+                    }
+                }
+            },
+            error: function(xhr, status, error) {
+                console.log(error);
+                Swal.fire({
+                  icon: "error",
+                  title: "Please Sign In!"
+                }).then((result) => {
+                  if (result.isConfirmed) {
+                    window.location.href = "/login";
+                  }
+                });
+            }
+        });
+    }
+</script>
 </body>
 </html>

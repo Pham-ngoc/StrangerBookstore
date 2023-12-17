@@ -9,73 +9,83 @@
 <body>
 <div class="profile-personal-information">
     <div th:replace="~{User-view/fragment/header.html :: div}"></div>
-    <div class="row">
-        <div class="col-lg-3">
-            <div class="avata1">
-                <img src="/img/avata.jpg" alt="" class="avata-customer">
+    <div class="wishlist-infor row">
+        <div class="menu-profile col-lg-3">
+            <div class="pic-name">
+                <div class="pic-profile">
+                    <div class="avata1">
+                        <img th:src="@{'/customer_pic/'+${session.loggingCustomer.picture}}" alt="" class="avata-customer">
+                    </div>
+                </div>
+                <div class="name-profile">
+                    <div class="customer-full-name5" th:text="${session.loggingCustomer.customerName}"></div>
+                </div>
             </div>
-            <div class="customer-full-name5">Customer Full Name</div>
             <div class="profile-personal-information-child2"></div>
-            <a th:href="@{/profile/personal}" class="personal-information5" onclick="toggleActive(this)">Personal information</a>
-            <a th:href="@{/profile/address}" class="address-information5" onclick="toggleActive(this)">Address information</a>
-            <a th:href="@{/profile/wishlist}" class="my-wish-list5" id="my-wishlist"  onclick="toggleActive(this)">My wish list</a>
+            <div class="menu">
+                <a th:href="@{/profile/personal}" class="personal-information5" onclick="toggleActive(this)">Personal information</a>
+                <a th:href="@{/profile/address/1}" class="address-information5" onclick="toggleActive(this)">Address information</a>
+                <a th:href="@{/profile/wishlist/1}" class="my-wish-list5" id="my-wishlist"  onclick="toggleActive(this)">My wish list</a>
+            </div>
         </div>
         <div class="col-lg-9">
             <div class="profile-personal-information-child">
-                <div class="product-wishlist">
-                    <div class="row">
+                <div class="product-wishlist" th:if="${totalPages > 0}">
+                    <div class="row" th:each="wishlist : ${listWishlist}" th:id="'product-' + ${wishlist.products.productId}">
                         <div class="col-md-2">
-                            <img src="/img/product_img/thien-tai-ben-trai-ke-dien-ben-phai-bia-truoc.jpg" alt="product-picture">
+                            <img th:src="@{'/product_img/'+${wishlist.products.product_img}}" th:alt="${wishlist.products.productName}">
                         </div>
                         <div class="col-md-5">
-                            <p>Name of book</p>
-                            <p>Price</p>
+                            <p th:text="${wishlist.products.productName}"></p>
+                            <p th:text="${#numbers.formatDecimal(wishlist.products.price, 0, 'COMMA', 0 , 'POINT')} + ' đ'"></p>
                         </div>
                         <div class="col-md-3">
-                            <a href="">Add to cart</a>
+                            <a type="button" class="edit btn" th:onclick="'addToCart(\'' + ${wishlist.products.productId} + '\')'">Add to cart</a>
                         </div>
                         <div class="col-md-2">
-                            <a href="">Delete</a>
+                            <a type="button" class="delete3 btn" th:onclick="'deleteWishlist(\'' + ${wishlist.products.productId} + '\')'">Delete</a>
                         </div>
-                    </div>
-                    <hr>
-                    <div class="row">
-                        <div class="col-md-2">
-                            <img src="/img/product_img/thien-tai-ben-trai-ke-dien-ben-phai-bia-truoc.jpg" alt="product-picture">
-                        </div>
-                        <div class="col-md-5">
-                            <p>Name of book</p>
-                            <p>Price</p>
-                        </div>
-                        <div class="col-md-3">
-                            <a href="">Add to cart</a>
-                        </div>
-                        <div class="col-md-2">
-                            <a href="">Delete</a>
-                        </div>
-                    </div>
-                    <hr>
-                    <div class="row">
-                        <div class="col-md-2">
-                            <img src="/img/product_img/thien-tai-ben-trai-ke-dien-ben-phai-bia-truoc.jpg" alt="product-picture">
-                        </div>
-                        <div class="col-md-5">
-                            <p>Name of book</p>
-                            <p>Price</p>
-                        </div>
-                        <div class="col-md-3">
-                            <a href="">Add to cart</a>
-                        </div>
-                        <div class="col-md-2">
-                            <a href="">Delete</a>
-                        </div>
+                        <hr class="wishlist-hr">
                     </div>
                 </div>
+                <div class="not-found-list" th:if="${listCart == null}">
+                    <p th:text="${msg}"></p>
+                </div>
+                <div class="pagination" th:if="${totalPages > 1}">
+                    <!-- Nút trang trước -->
+                    <a class="page-button" th:if="${currentPage > 1}"
+                       th:href="@{'/profile/wishlist/' + ${currentPage - 1}}">
+                        <i class="bi bi-chevron-left"></i>
+                    </a>
+                    <a class="page-button" th:unless="${currentPage > 1}">
+                        <i class="bi bi-chevron-left"></i>
+                    </a>
+                    <!-- Hiển thị nút cho trang 1 -->
+                    <a class="page-button" th:href="@{'/profile/wishlist/'+ 1}">[[1]]</a>
 
-                <div class="pagination">
-                    <a href="#" class="page-button">1</a>
-                    <a href="#" class="page-button">2</a>
-                    <a href="#" class="page-button">3</a>
+                    <!-- Hiển thị "..." nếu có nhiều hơn 3 trang và trang hiện tại lớn hơn 3 -->
+                    <span class="more-btn" th:if="${totalPages > 3 && currentPage > 3}">...</span>
+
+                    <!-- Hiển thị nút cho trang trước trang hiện tại và trang hiện tại -->
+                    <th:block th:each="i: ${#numbers.sequence(currentPage - 1, currentPage + 1)}">
+                        <a class="page-button" th:if="${i > 1 && i < totalPages}"
+                           th:href="@{'/profile/wishlist/' + ${i}}">[[${i}]]</a>
+                    </th:block>
+
+                    <!-- Hiển thị "..." nếu có nhiều hơn 3 trang và trang hiện tại nhỏ hơn totalPages - 2 -->
+                    <span class="more-btn" th:if="${totalPages > 3 && currentPage < totalPages - 2}">...</span>
+
+                    <!-- Hiển thị nút cho trang cuối cùng -->
+                    <a class="page-button" th:href="@{'/profile/wishlist/' + ${totalPages}}"
+                       th:if="${totalPages > 1}">[[${totalPages}]]</a>
+                    <!-- Nút trang tiếp theo -->
+                    <a class="page-button" th:if="${currentPage < totalPages}"
+                       th:href="@{'/profile/wishlist/' + ${currentPage + 1}}">
+                        <i class="bi bi-chevron-right"></i>
+                    </a>
+                    <a class="page-button" th:unless="${currentPage < totalPages}">
+                        <i class="bi bi-chevron-right"></i>
+                    </a>
                 </div>
             </div>
         </div>
@@ -85,25 +95,74 @@
 </div>
 <th:block th:replace="~{User-view/style/user-scr.html::html}"></th:block>
 <script>
-    // JavaScript
-      document.getElementById('fileInput').addEventListener('change', handleFileSelect);
+    function addToCart(productId) {
 
-        function handleFileSelect() {
-        const fileInput = document.getElementById('fileInput');
-        const avataImage = document.getElementById('avataImage');
+        console.log(productId);
+        $.ajax({
+            url: "/addToCart",
+            type: "GET",
+            data: {
+                productId: productId
+            },
+            success: function(response) {
+                var itemInCart = response.itemInCart;
+                Swal.fire({
+                  position: "center",
+                  icon: "success",
+                  title: "Add To Cart Successfully!",
+                  showConfirmButton: false,
+                  timer: 1500
+                });
+                // Update the itemInCart value in the UI if needed
+                if (itemInCart !== undefined) {
+                    $("#itemInCart").text(itemInCart);
+                }
+            },
+            error: function(xhr, status, error) {
+                console.log(error);
+                Swal.fire({
+                  icon: "error",
+                  title: "Please Sign In!"
+                }).then((result) => {
+                  // Nếu người dùng nhấn "OK", chuyển hướng đến trang login
+                  if (result.isConfirmed) {
+                    window.location.href = "/login";
+                  }
+                });
+            }
+        });
+    }
 
-        const selectedFile = fileInput.files[0];
+    function deleteWishlist(productId) {
+        console.log(productId);
+        $.ajax({
+            url : "/profile/deleteWishlist",
+            type : "GET",
+            data : {
+                productId : productId
+            },
+            success : function(response) {
+                // Xóa hàng chứa sản phẩm khỏi giao diện
+                $("#product-" + productId).remove();
 
-        if (selectedFile) {
-            const reader = new FileReader();
-
-            reader.onload = function (e) {
-            avataImage.src = e.target.result;
-            };
-
-            reader.readAsDataURL(selectedFile);
-        }
-      }
+                Swal.fire({
+                  position: "center",
+                  icon: "success",
+                  title: response,
+                  showConfirmButton: false,
+                  timer: 1500
+                });
+            },
+            error : function(xhr, status, error) {
+                // Hiển thị thông báo lỗi
+                console.log(error);
+                Swal.fire({
+                  icon: "error",
+                  title: "Delete Failed!"
+                });
+            }
+        });
+    }
 </script>
 </body>
 </html>

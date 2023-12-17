@@ -20,12 +20,12 @@
             <nav class="navbar-sidebar2">
                 <ul class="list-unstyled navbar__list">
                     <li class=" has-sub">
-                        <a class="js-arrow" href="#">
+                        <a class="js-arrow" th:href="@{/myOrder/1?statusId=all}">
                             All Order
                         </a>
                     </li>
                     <li class=" has-sub" th:each="status : ${listStatus}">
-                        <a class="js-arrow" href="#">
+                        <a class="js-arrow" th:onclick="'window.location.href = \'' + @{/getByStatusID(statusId=${status.statusId})} + '\''">
                             <span th:text="${status.statusName}"></span>
                         </a>
                     </li>
@@ -41,39 +41,36 @@
                     <div class="check-out-child1 col-lg-6">
                         <span class="my-order1">DELIVERY ADDRESS</span>
                         <div class="address-body">
-                            <p class="recipient-name">Recipient's full name</p>
-                            <p class="address-detail">Address Detail eeeeeeeeeeeeeeeeeeee
-                                eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
-                                eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
-                                eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee</p>
-                            <p class="recipient-phone">Recipient's phone number</p>
+                            <p class="recipient-name" th:text="${shipInfor.address.recipientFullName}"></p>
+                            <p class="address-detail" th:text="${shipInfor.address.addressDetail}"></p>
+                            <p class="recipient-phone" th:text="${shipInfor.address.recipientPhoneNumber}"></p>
                         </div>
                     </div>
                     <div class="check-out-child1 col-lg-5">
                         <span class="my-order1">PAYMENT METHOD</span>
                         <div class="address-body">
-                            <p class="address-detail">Pay cash</p>
+                            <p class="address-detail" th:text="${shipInfor.orders.paymentMethod}"></p>
                         </div>
                     </div>
                 </div>
                 <div class="customer-order-list">
                     <div class="customer-order-status-order">
-                        <span>Order Status: </span><span></span>
+                        <span>Order Status: </span><span th:text="${orderDetail.orders.statusOrders.statusName}"></span>
                     </div>
                     <hr class="customer-order-hr">
                     <div class="customer-order-product-list row">
                         <div class="customer-order-pic col-lg-2">
-                            <img  src="/img/product_img/cay-cam-ngot-cua-toi-bia-truoc.jpg" alt="">
+                            <img  th:src="@{'/product_img/'+${orderDetail.products.product_img}}" th:alt="${orderDetail.products.productName}">
                         </div>
                         <div class="customer-order-name-qty col-lg-5">
-                            <p class="customer-order-name">Name of Book</p>
-                            <p class="customer-order-qty">Qty</p>
+                            <p class="customer-order-name" th:text="${orderDetail.products.productName}"></p>
+                            <p class="customer-order-qty" th:text="${orderDetail.quantity}"></p>
                         </div>
                         <div class="customer-order-price col-lg-2">
-                            <span>Price</span>
+                            <span th:text="${#numbers.formatDecimal(orderDetail.products.price, 0, 'COMMA', 0 , 'POINT')} + ' đ'"></span>
                         </div>
                         <div class="customer-order-total col-lg-2">
-                            <span>Total</span>
+                            <span th:text="${#numbers.formatDecimal(orderDetail.amount, 0, 'COMMA', 0 , 'POINT')} + ' đ'"></span>
                         </div>
                     </div>
                     <hr class="customer-order-hr">
@@ -83,7 +80,7 @@
                                 <span>TOTAL AMOUNT</span>
                             </div>
                             <div class="customer-order-total-amount-price col-lg-4">
-                                <span></span><span>đ</span>
+                                <span th:text="${#numbers.formatDecimal(orderDetail.amount, 0, 'COMMA', 0 , 'POINT')} + ' đ'"> </span>
                             </div>
                         </div>
                         <div class="customer-order-order-detail row">
@@ -108,35 +105,32 @@
                 <div class="modal-body">
                     <div class="review-infor-book row">
                         <div class="review-pic col-lg-3">
-                            <img  src="/img/product_img/cay-cam-ngot-cua-toi-bia-truoc.jpg" alt="">
+                            <img th:src="@{'/product_img/'+${orderDetail.products.product_img}}" th:alt="${orderDetail.products.productName}">
                         </div>
                         <div class="review-name-star col-7">
-                            <p class="review-name">Name of Book</p>
+                            <p class="review-name" th:text="${orderDetail.products.productName}"></p>
                             <div class="review-star">
                                 <fieldset class="rating">
-                                    <input type="radio" id="star5" name="rating" value="5" /><label class = "full" for="star5" title="Awesome - 5 stars"></label>
-                                    <input type="radio" id="star4half" name="rating" value="4 and a half" /><label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
-                                    <input type="radio" id="star4" name="rating" value="4" /><label class = "full" for="star4" title="Pretty good - 4 stars"></label>
-                                    <input type="radio" id="star3half" name="rating" value="3 and a half" /><label class="half" for="star3half" title="Meh - 3.5 stars"></label>
-                                    <input type="radio" id="star3" name="rating" value="3" /><label class = "full" for="star3" title="Meh - 3 stars"></label>
-                                    <input type="radio" id="star2half" name="rating" value="2 and a half" /><label class="half" for="star2half" title="Kinda bad - 2.5 stars"></label>
-                                    <input type="radio" id="star2" name="rating" value="2" /><label class = "full" for="star2" title="Kinda bad - 2 stars"></label>
-                                    <input type="radio" id="star1half" name="rating" value="1 and a half" /><label class="half" for="star1half" title="Meh - 1.5 stars"></label>
-                                    <input type="radio" id="star1" name="rating" value="1" /><label class = "full" for="star1" title="Sucks big time - 1 star"></label>
-                                    <input type="radio" id="starhalf" name="rating" value="half" /><label class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label>
+                                    <input type="radio" id="star5" name="rating" th:value="5" /><label class = "full" for="star5" title="Awesome - 5 stars"></label>
+<!--                                    <input type="radio" id="star4half" name="rating" th:value="4.5" /><label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>-->
+                                    <input type="radio" id="star4" name="rating" th:value="4" /><label class = "full" for="star4" title="Pretty good - 4 stars"></label>
+<!--                                    <input type="radio" id="star3half" name="rating" th:value="3.5" /><label class="half" for="star3half" title="Meh - 3.5 stars"></label>-->
+                                    <input type="radio" id="star3" name="rating" th:value="3" /><label class = "full" for="star3" title="Meh - 3 stars"></label>
+<!--                                    <input type="radio" id="star2half" name="rating" th:value="2.5" /><label class="half" for="star2half" title="Kinda bad - 2.5 stars"></label>-->
+                                    <input type="radio" id="star2" name="rating" th:value="2" /><label class = "full" for="star2" title="Kinda bad - 2 stars"></label>
+<!--                                    <input type="radio" id="star1half" name="rating" th:value="1.5" /><label class="half" for="star1half" title="Meh - 1.5 stars"></label>-->
+                                    <input type="radio" id="star1" name="rating" th:value="1" /><label class = "full" for="star1" title="Sucks big time - 1 star"></label>
+<!--                                    <input type="radio" id="starhalf" name="rating" th:value="half" /><label class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label>-->
                                 </fieldset>
                             </div>
                         </div>
                     </div>
                     <hr>
                     <p class="review-text">What makes you satisfied?</p>
-                    <div class="form-floating">
-                        <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
-                        <label for="floatingTextarea2">Your answer</label>
-                    </div>
+                    <textarea class="form-control" placeholder="Reviews Content" id="review-content" style="height: 100px"></textarea>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-save">Send review</button>
+                    <button type="button" class="btn btn-save" th:onclick="'writeReview(\'' + ${orderDetail.products.productId} + '\')'">Send review</button>
                 </div>
             </div>
         </div>
@@ -144,5 +138,50 @@
     <div th:replace="~{User-view/fragment/footer.html :: div}"></div>
 </div>
 <th:block th:replace="~{User-view/style/user-scr.html::html}"></th:block>
+<script>
+    const ratingInputs = document.querySelectorAll('input[name="rating"]');
+    var selectedValue = null;
+
+    ratingInputs.forEach(input => {
+        input.addEventListener('click', function() {
+            selectedValue = this.value;
+        });
+    });
+
+    function writeReview(productId) {
+            var textarea = document.getElementById('review-content');
+            var textareaValue = textarea.value;
+            console.log(textareaValue);
+            console.log(selectedValue);
+            console.log(productId);
+
+            $.ajax({
+                url: "/writeReview",
+                type: "GET",
+                data: {
+                    productId: productId,
+                    reviewContent: textareaValue,
+                    starForProduct: selectedValue
+                },
+                success: function(response) {
+                    console.log(response);
+                    Swal.fire({
+                        position: "center",
+                        icon: "success",
+                        title: "Review Product Successfully!",
+                        showConfirmButton: false,
+                        timer: 150000
+                    })
+                },
+                error: function(xhr, status, error) {
+                    console.log(error);
+                    Swal.fire({
+                        icon: "error",
+                        title: "Review Product Failed!"
+                    });
+                }
+            });
+        };
+</script>
 </body>
 </html>

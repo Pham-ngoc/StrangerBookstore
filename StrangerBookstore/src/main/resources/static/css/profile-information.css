@@ -1,8 +1,31 @@
+.menu-profile {
+    height: max-content;
+    display: grid;
+    align-items: center;
+    justify-content: center;
+}
+.pic-name{
+    display: flex;
+    padding: 15px;
+    align-items: center;
+}
+.menu{
+    display: grid;
+    padding: 20px 0;
+}
+.personal-form{
+    height: max-content;
+}
+.profile-personal-form{
+    height: max-content;
+    padding: 30px;
+}
 .profile-personal-information-child {
   border-radius: var(--br-3xs);
   background-color: var(--color-lightgray);
-  width: 1090px;
-  height: 800px;
+  width: 95%;
+  height: 100%;
+  padding: 20px;
 }
 .email-confirm {
   display: block;
@@ -37,28 +60,23 @@
     font-size: 20px;
 }
 .edit {
-  position: absolute;
-  right: 220px;
-  font-size: 20px;
-  font-weight: 600;
+  font-size: 18px;
+  font-weight: 500;
   padding: 20px 40px;
   background-color: var(--color-dimgray);
   color: var(--color-lightgray);
   border-radius: 10px;
   text-decoration: none;
-  width: 117px;
+  margin-right: 10px;
 }
 .delete3 {
-  position: absolute;
-  right: 60px;
-  font-size: 20px;
-  font-weight: 600;
+  font-size: 18px;
+  font-weight: 500;
   padding: 20px 40px;
   background-color: var(--color-dimgray);
   color: var(--color-lightgray);
   border-radius: 10px;
   text-decoration: none;
-  width: 140px;
 }
 .add-other-address {
   margin-top: 20px;
@@ -76,29 +94,31 @@
     color: var(--color-dimgray); ;
     background: var(--color-lightgray);
 }
+.address-delete-edit{
+    display: flex;
+    align-items: flex-start;
+    flex-wrap: nowrap;
+    justify-content: flex-end;
+}
 .edit:hover,
 .delete3:hover{
     color: var(--color-dimgray); ;
     background: var(--color-lightgray);
-    border: 2px solid var(--color-dimgray);
+    border: 1px solid var(--color-dimgray);
 }
 .group-child31 {
   border-top: 1px solid var(--color-black);
   box-sizing: border-box;
-  width: 1030px;
-  height: 1px;
+  width: 90%;
+  height: 3px;
+  margin: 30px auto;
 }
 .recipients-full-name-3-parent {
   width: 100%;
-  display: flex;
-  flex-direction: column; /* Hiển thị dưới dạng hàng ngang */
   color: var(--color-dimgray);
-  padding: 30px;
+  margin: auto;
 }
 .customer-full-name5 {
-  position: absolute;
-  top: 180px;
-  left: 118px;
   color: var(--color-lightgray);
   font-size: 25px;
 }
@@ -112,11 +132,8 @@
   height: 75px;
 }
 .personal-information5 {
-  position: absolute;
   color: var(--color-lightgray);
   text-decoration: none;
-  top: 280px;
-  left: 30px;
   font-size: 20px;
   padding: 15px 30px;
   border-radius: 10px;
@@ -134,11 +151,11 @@
   background-color: var(--color-lightgray);
   color: var(--color-dimgray);
 }
+.button-address{
+    display: flex;
+}
 .address-information5,
 .my-wish-list5 {
-  position: absolute;
-  top: 350px;
-  left: 30px;
   font-size: 20px;
   color: var(--color-lightgray);
   text-decoration: none;
@@ -150,20 +167,15 @@
 .my-wish-list5 {
   top: 420px;
 }
-.rectangle-parent37,
-.rectangle-parent36,
-.rectangle-parent35,
 .rectangle-parent34,
 .rectangle-parent33,
 .rectangle-parent32{
   display: block;
-  width: 785px;
-  height: 139px;
+  width: 100%;
+  height: max-content;
+  padding: 15px 0;
 }
 .profile-personal-information-child2 {
-  position: absolute;
-  top: 257px;
-  left: 30px;
   border-top: 1px solid var(--color-lightgray);
   box-sizing: border-box;
   width: 330px;
@@ -171,7 +183,6 @@
 }
 .button{
     display: flex;
-    margin-top: 100px;
 }
 .update-profile {
   display: block;
@@ -214,17 +225,11 @@
   height: 135px;
 }
 .avata1 {
-  position: absolute;
-  top: 165px;
-  left: 30px;
   width: 70px; /* Kích thước hình tròn */
   height: 70px; /* Kích thước hình tròn */
   border-radius: 50%; /* Biến hình thành hình tròn */
   overflow: hidden; /* Ẩn phần ngoài hình tròn */
   margin-right: 20px; /* Khoảng cách giữa hình ảnh và thông tin */
-}
-form{
-    height:780px;
 }
 .avata1 img {
   width: 100%;
@@ -301,9 +306,6 @@ height:100%;
 .col-lg-9{
     margin-top: 10px;
 }
-.col-lg-8{
-    margin-top: 30px;
-}
 .product-wishlist{
     padding: 30px 30px;
     display: block;
@@ -326,18 +328,25 @@ height:100%;
     display: block;
     text-align: center;
 }
+.wishlist-infor{
+    height: 100%
+}
 .product-wishlist hr{
     color: var(--color-dimgray);
 }
+.wishlist-hr{
+    margin: 30px 0;
+}
 .form-changePass,
 .formAddress{
-    padding: 30px 50px;
+    height: max-content;
 }
 .form-changePass .title-form{
-    font-size: 35px;
+    font-size: 30px;
 }
 .form-changePass .body-formChange{
-    margin-top: 30px;
+    padding: 30px;
+    height: max-content;
 }
 .form-changePass .pass-input{
     position: relative;
@@ -353,7 +362,7 @@ height:100%;
 .formAddress .fullName,
 .formAddress .phoneNumber,
 .formAddress .addressDetail{
-    width: 990px;
+    width: 100%;
 }
 .form-changePass .button-changePass,
 .formAddress .button-address{
@@ -366,11 +375,28 @@ height:100%;
 .formAddress .label-addressType{
     font-size: 20px;
 }
+.body-formAddress{
+    padding: 0 30px;
+}
+.not-found-list{
+    display: grid;
+    color: var(--color-dimgray);
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 100%;
+}
+.not-found-list p{
+    margin: 0;
+}
+.address-text{
+    font-weight: 200;
+}
 .profile-personal-information {
   position: relative;
   background-color: var(--color-dimgray);
   width: 100%;
-  height: 1450px;
+  height: 100%;
   overflow: hidden;
   text-align: left;
   font-size: var(--font-size-11xl);

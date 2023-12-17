@@ -31,9 +31,38 @@ public class ProductService {
         return pageable;
     }
 
-    public Page<Products> findAllProduct(int pageNumber){
-        Pageable pageable = getPageable(pageNumber);
+    private static Pageable getPageableShop(int pageNumber){
+        int pageShow = 12;
+        Pageable pageable = PageRequest.of(pageNumber - 1, pageShow, Sort.by("productName").descending());
+        return pageable;
+    }
+
+    public Page<Products> findAllProductShop(int pageNumber){
+        Pageable pageable = getPageableShop(pageNumber);
         Page<Products> pageProduct = productRepository.findAllProduct(pageable);
+        return pageProduct;
+    }
+
+//    public Page<Products> findAllProduct(int pageNumber){
+//        Pageable pageable = getPageable(pageNumber);
+//        Page<Products> pageProduct = productRepository.findAllProduct(pageable);
+//        return pageProduct;
+//    }
+
+    public Page<Products> findAllByCateID(int pageNumber, int cateID){
+        Pageable pageable = getPageableShop(pageNumber);
+        Page<Products> pageProduct = productRepository.fillAllProductByCateID(pageable, cateID);
+        return pageProduct;
+    }
+
+    public Page<Products> findProductByNameAndCateID(int pageNumber, String cateId, String name){
+        Pageable pageable = getPageableShop(pageNumber);
+        Page<Products> pageProduct = productRepository.fillProductByNameAndCateID(pageable, name, cateId);
+        return pageProduct;
+    }
+    public Page<Products> findProductByPrice(int pageNumber, double minPrice, double maxPrice){
+        Pageable pageable = getPageableShop(pageNumber);
+        Page<Products> pageProduct = productRepository.findProductsByPrice(maxPrice, minPrice, pageable);
         return pageProduct;
     }
 

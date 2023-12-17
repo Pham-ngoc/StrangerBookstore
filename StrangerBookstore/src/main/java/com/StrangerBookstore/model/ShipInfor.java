@@ -23,7 +23,7 @@ public class ShipInfor {
 
     @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST, targetEntity = Orders.class)
     @JoinColumn(name="order_id", referencedColumnName = "orderId", nullable = true)
-    private Orders order;
+    private Orders orders;
 
     private String status;
 
@@ -36,13 +36,13 @@ public class ShipInfor {
         ShipInfor shipInfor = (ShipInfor) o;
         return shipId == shipInfor.shipId
                 && Objects.equals(address, shipInfor.address)
-                && Objects.equals(order, shipInfor.order)
+                && Objects.equals(orders, shipInfor.orders)
                 && Objects.equals(status, shipInfor.status)
                 && Objects.equals(note, shipInfor.note);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), shipId, address, order, status, note);
+        return Objects.hash(super.hashCode(), shipId, address, orders, status, note);
     }
 }

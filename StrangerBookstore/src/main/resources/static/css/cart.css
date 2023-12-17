@@ -172,6 +172,25 @@
 .fa.fa-close{
     color: var(--color-dimgray);
 }
+.not-found-list{
+    display: grid;
+    color: var(--color-dimgray);
+    justify-content: center;
+    align-items: start;
+    height: 100%;
+    align-content: center;
+}
+.not-found-list p{
+    margin: 0;
+    font-size: 20px;
+    text-align: center;
+}
+.go-to-shop{
+    color: var(--color-dimgray);
+    font-size: 20px;
+    text-decoration: none;
+    text-align: center;
+}
 .cart {
   position: relative;
   background-color: var(--color-dimgray);

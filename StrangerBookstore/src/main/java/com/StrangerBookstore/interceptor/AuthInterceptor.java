@@ -32,7 +32,7 @@ public class AuthInterceptor implements AuthenticationProvider {
         String pwd = authentication.getCredentials().toString();
         System.out.println(pwd);
         Customer customer = customerRepository.readByEmail(email);
-        if(customer != null && customer.getCustomerId() > 0 && passwordEncoder.matches(pwd, customer.getPassword())){
+        if(customer != null && customer.getCustomerId() > 0 && passwordEncoder.matches(pwd, customer.getPassword()) && customer.getStatus().equals("Open")){
             return new UsernamePasswordAuthenticationToken(
                     email, null, getGrantedAuthority(customer.getRoles()));
 //            if this one is successful, Spring will erase the pwd credentials ---- Security

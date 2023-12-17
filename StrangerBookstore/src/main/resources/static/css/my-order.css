@@ -177,6 +177,19 @@
     background: var(--color-tan);
     color: var(--color-dimgray);
 }
+.not-found-list{
+    display: grid;
+    color: var(--color-dimgray);
+    background: var(--color-lightgray);
+    justify-content: center;
+    text-align: center;
+    height: fit-content;
+    padding: 50px;
+    border-radius: 10px;
+}
+.not-found-list p{
+    margin: 0;
+}
 .my-order {
   position: relative;
   background-color: var(--color-dimgray);

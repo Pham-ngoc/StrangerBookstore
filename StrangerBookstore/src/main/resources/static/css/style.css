@@ -357,14 +357,13 @@
 }
 .book-seller{
     display: grid;
-    align-items: center;
     justify-content: center;
     width: max-content;
     margin: 0px 25px;
+    height: fit-content;
 }
 .seller-list{
     display: flex;
-    align-items: center;
     justify-content: center;
     margin-top: 30px;
 }
@@ -372,14 +371,15 @@
   margin: 20px 0px;
   color: var(--color-lightgray);
   text-decoration: none;
-  height: max-content;
+  height: fit-content;
   display: block;
 }
 .best-seller {
   width: 100%;
   height: max-content;
   color: var(--color-white);
-  display: block;
+  display: grid;
+  justify-content: center;
 }
 
 .home-after-login-child {
@@ -585,7 +585,6 @@
   left: 1275px;
   width: 36px;
   height: 36px;
-  overflow: hidden;
 }
 .header-item {
   position: absolute;
@@ -594,8 +593,8 @@
   border-radius: var(--br-5xs);
   background-color: var(--color-tan);
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
-  width: 70px;
-  height: 45px;
+  width: 60px;
+  height: 50px;
 }
 .header {
   width: 100%;
@@ -641,8 +640,8 @@
 .dropdown-content-laguage a {
   text-decoration: none;
   color: #333;
-  width: 50px;
-  height: 40px;
+  width: max-content;
+  height: max-content;
   display: block;
   padding: 5px 6px;
 }
@@ -669,12 +668,13 @@
   position: absolute;
   background-color: var(--color-dimgray);
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  padding: 10px;
+  padding: 25px;
   border: 1px solid var(--color-lightgray);
   z-index: 1;
   right: 5px;
   top: 40px;
   border-radius: 10px;
+  width: max-content;
 }
 
 
@@ -682,7 +682,7 @@
 .dropdown-content-account a {
   text-decoration: none;
   color: var(--color-lightgray);
-  width: 350px;
+  width: 100%;
   display: block;
   padding: 5px 6px;
 }
@@ -698,7 +698,7 @@
 .infor-customer {
   display: flex;
   align-items: center;
-  width: 350px;
+  width: 100%;
 }
 
 .avata {
@@ -720,16 +720,18 @@
   flex-direction: column;
   justify-content: center; /* Để dàn trải dọc theo trục Y */
 }
-
+.customer-list{
+    width: 100%;
+}
 .customer-name,
 .customer-email {
   color: var(--color-lightgray);
-  margin: 5px 0; /* Khoảng cách giữa hai dòng thông tin */
+  font-size: 17px;
 }
 
 .customer-name{
   font-weight: bold;
-  font-size: 25px;
+  font-size: 20px;
 }
 
 hr{
@@ -768,4 +770,7 @@ hr{
   opacity: 0;
   transition: opacity 0.5s;
 }
-
+.flag-um{
+    width: 36px;
+    height: 36px;
+}

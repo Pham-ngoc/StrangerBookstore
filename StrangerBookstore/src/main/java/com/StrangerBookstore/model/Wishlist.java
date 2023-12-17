@@ -16,13 +16,13 @@ public class Wishlist {
     @GenericGenerator(name = "native", strategy = "native")
     private int wishlistId;
 
-    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST, targetEntity = Customer.class)
-    @JoinColumn(name="customer_id", referencedColumnName = "customerId", nullable = true)
+    @ManyToOne(fetch = FetchType.LAZY, optional = true)
+    @JoinColumn(name = "customer_id",referencedColumnName = "customerId",nullable = true)
     private Customer customer;
 
-    @ManyToOne(fetch = FetchType.EAGER, optional = true)
+    @ManyToOne(fetch = FetchType.LAZY, optional = true)
     @JoinColumn(name="product_id", referencedColumnName = "productId", nullable = true)
-    private Products product;
+    private Products products;
 
     @Override
     public boolean equals(Object o) {
@@ -32,12 +32,12 @@ public class Wishlist {
         Wishlist wishlist = (Wishlist) o;
         return wishlistId == wishlist.wishlistId
                 && Objects.equals(customer, wishlist.customer)
-                && Objects.equals(product, wishlist.product);
+                && Objects.equals(products, wishlist.products);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), wishlistId, customer, product);
+        return Objects.hash(super.hashCode(), wishlistId, customer, products);
     }
 
 }

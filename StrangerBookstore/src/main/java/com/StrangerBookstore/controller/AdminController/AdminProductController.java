@@ -35,10 +35,15 @@ public class AdminProductController {
     CategoryRepository categoryRepository;
 
 
+//    @GetMapping("/products")
+//    public ResponseEntity<Page<Products>> getAllProducts(@RequestParam(defaultValue = "1", required = false) int page) {
+//        Page<Products> products = productService.findAllProduct(page);
+//        return new ResponseEntity<>(products, HttpStatus.OK);
+//    }
     @GetMapping("/products")
-    public ResponseEntity<Page<Products>> getAllProducts(@RequestParam(defaultValue = "1", required = false) int page) {
-        Page<Products> products = productService.findAllProduct(page);
-        return new ResponseEntity<>(products, HttpStatus.OK);
+    public ResponseEntity<List<Products>> getAllProducts() {
+        List<Products> products = productRepository.findAll();
+        return ResponseEntity.ok(products);
     }
 
     @GetMapping("/products/{productId}")
@@ -47,43 +52,53 @@ public class AdminProductController {
     }
 
     @PostMapping("/products")
-    public ResponseEntity<Products> createProduct(@RequestParam("imageFile") MultipartFile imageFile,
-                                                  @RequestParam("productName") String productName,
-                                                  @RequestParam("author") String author,
-                                                  @RequestParam("publisher") String publisher,
-                                                  @RequestParam("language") String language,
-                                                  @RequestParam("condition") String condition,
-                                                  @RequestParam("quantityInStock") int quantityInStock,
-                                                  @RequestParam("isbn") String isbn,
-                                                  @RequestParam("description") String description,
-                                                  @RequestParam("price") long price,
-                                                  @RequestParam("category") int categoryId) {
-        Customer customer = (Customer) session.getAttribute("loggingCustomer");
-        List<Categories> listCategories = categoryRepository.findAll();
-        Categories categories = null;
-        for (Categories category : listCategories) {
-            if (category.getCategoryId() == categoryId) {
-                categories = category;
-            }
+//    public ResponseEntity<Products> createProduct(@RequestParam("imageFile") MultipartFile imageFile,
+//                                                  @RequestParam("productName") String productName,
+//                                                  @RequestParam("author") String author,
+//                                                  @RequestParam("publisher") String publisher,
+//                                                  @RequestParam("language") String language,
+//                                                  @RequestParam("condition") String condition,
+//                                                  @RequestParam("quantityInStock") int quantityInStock,
+//                                                  @RequestParam("isbn") String isbn,
+//                                                  @RequestParam("description") String description,
+//                                                  @RequestParam("price") long price,
+//                                                  @RequestParam("category") int categoryId) {
+//        Customer customer = (Customer) session.getAttribute("loggingCustomer");
+//        List<Categories> listCategories = categoryRepository.findAll();
+//        Categories categories = null;
+//        for (Categories category : listCategories) {
+//            if (category.getCategoryId() == categoryId) {
+//                categories = category;
+//            }
+//        }
+//        Products product = new Products();
+//        product.setProductName(productName);
+//        product.setAuthor(author);
+//        product.setPublisher(publisher);
+//        product.setLanguage(language);
+//        product.setCondition(condition);
+//        product.setQuantityInStock(quantityInStock);
+//        product.setIsbn(isbn);
+//        product.setDescription(description);
+//        product.setPrice(price);
+//        product.setCategories(categories);
+//        product.setProduct_img(productService.getImageName(imageFile));
+//        product.setCreateBy(customer.getEmail());
+//        product.setCreateAt(LocalDateTime.now());
+//        // Save the product entity
+//        productRepository.save(product);
+//        return ResponseEntity.ok(product);
+//    }
+
+    public ResponseEntity<Products> createProduct(@RequestBody Products products) {
+        try {
+            productRepository.save(products);
+        } catch (Exception e) {
+            System.out.println(e);
         }
-        Products product = new Products();
-        product.setProductName(productName);
-        product.setAuthor(author);
-        product.setPublisher(publisher);
-        product.setLanguage(language);
-        product.setCondition(condition);
-        product.setQuantityInStock(quantityInStock);
-        product.setIsbn(isbn);
-        product.setDescription(description);
-        product.setPrice(price);
-        product.setCategories(categories);
-        product.setProduct_img(productService.getImageName(imageFile));
-        product.setCreateBy(customer.getEmail());
-        product.setCreateAt(LocalDateTime.now());
-        // Save the product entity
-        productRepository.save(product);
-        return ResponseEntity.ok(product);
+        return ResponseEntity.ok(products);
     }
+
 
     @PutMapping("/products/{productId}")
     public ResponseEntity<Products> updateProduct(@PathVariable("productId") int productId,

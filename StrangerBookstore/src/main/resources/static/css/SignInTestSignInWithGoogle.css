@@ -1,55 +1,45 @@
-.sign-in-test-sign-in-with-goo-child1 {
-  position: absolute;
-  top: 50px;
-  left: 275px;
+.sign-in-test-sign-in-with-goo-child1,
+.sign-in-test-sign-in-with-goo-child11{
   background-color: var(--color-gray-300);
-  width: 1002px;
-  height: 700px;
+  width: fit-content;
+  height: fit-content;
+  padding: 50px;
+  margin: 51.5px 0;
+  display: grid;
+  justify-content: center;
+  align-content: center;
+  justify-items: center;
+}
+.sign-in-test-sign-in-with-goo-child11{
+    margin: 164.5px 0;
 }
 .sign-in-to1 {
-  position: absolute;
-  top: 225px;
-  /* left: 640px; */
-  left: 50%; /* Di chuyển hình ảnh sang phía trái */
-  transform: translate(-50%, -50%);
   color: var(--color-lightgray);
   font-size: 25px;
 }
 .sign-in-test-sign-in-with-goo-child2 {
-  position: absolute;
-  top: 0;
-  left: 615px;
-  width: 290px;
-  height: 242px;
+  width: 200px;
+  height: 90px;
   object-fit: cover;
 }
 .welcome-back1 {
-  position: absolute;
-  top: 190px;
-  left: 50%; /* Di chuyển hình ảnh sang phía trái */
-  transform: translate(-50%, -50%);
   font-size: var(--font-size-11xl);
   color: var(--color-lightgray);
 }
 .group-child1 {
-  position: absolute;
-  top: 0;
-  left: 0;
   border-radius: 10px;
   background-color: var(--color-white);
-  width: 700px;
-  height: 50px;
+  padding: 5px 222px;
+  text-decoration: none;
 }
 .group-child1:hover {
   background-color: var(--color-tan);
   span{
-    color: var(--color-lightgray);
+    color: var(--color-dimgray);
   }
 }
 .email1,
 .password1 {
-  position: absolute;
-  top: 17px;
   padding: 15px 60px 15px 31px;
   border-radius: 10px;
   background-color: var(--color-white);
@@ -59,92 +49,58 @@
   border-color: transparent;
   font-family: var(--font-kanit);
 }
-.email1 {
-  position: absolute;
-  top: 17px;
-  padding-right: 31px;
-  width: 700px;
-}
 .password1:focus,
 .email1:focus{
   outline: none;
 }
 .rectangle-parent1 {
-  position: absolute;
-  top: 385px;
-  left: 435px;
-  width: 838px;
-  height: 79px;
+  height: max-content;
   color: var(--color-gray-200);
+  padding: 15px;
 }
 .sign-in-with3,
 .sign-in-with2 {
-  position: absolute;
-  top: 6px;
-  left: 240px;
   font-size: 25px;
   text-decoration: none;
   color: var(--color-dimgray);
 }
 .rectangle-parent2 {
-  position: absolute;
-  top: 250px;
-  left: 435px;
-  width: 838px;
-  height: 79px;
   text-align: center;
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  margin: 15px 0;
 }
 .devicongoogle1 {
-  position: absolute;
-  top: 257px;
-  left: 610px;
   width: 35px;
   height: 35px;
   overflow: hidden;
+  margin-right: 10px;
 }
 .rectangle-parent3 {
-  position: absolute;
-  top: 310px;
-  left: 435px;
   width: 838px;
   height: 79px;
   text-align: center;
 }
-.fluenteye-16-filled-icon1,
-.logosfacebook-icon1 {
-  position: absolute;
-  top: 317px;
-  left: 610px;
+.fluenteye-16-filled-icon1{
   width: 35px;
   height: 35px;
   overflow: hidden;
-}
-.fluenteye-16-filled-icon1 {
-  top: 31px;
-  left: 650px;
-  width: 35px;
-  height: 35px;
+  position: absolute;
+  right: 15px;
+  top: 15px;
 }
 .rectangle-parent4 {
-  position: absolute;
-  top: 490px;
-  left: 435px;
-  width: 838px;
-  height: 79px;
+  height: max-content;
   color: var(--color-gray-200);
+  position: relative;
 }
 .group-child5 {
-  position: absolute;
-  top: calc(50% - 31px);
-  left: calc(50% - 111px);
   border-radius: var(--br-xl);
   width: 222px;
   height: 70px;
 }
 .login1 {
-  position: absolute;
-  top: 9px;
-  left: 70px;
   padding: 8px 40px;
   background-color: var(--color-tan);
   color: var(--color-dimgray);
@@ -160,19 +116,13 @@
   background-color: var(--color-dimgray-100);
 }
 .vector-group {
-  position: absolute;
-  top: 670px;
-  left: 617px;
-  width: 214px;
-  height: 62px;
+    margin: 20px 0;
 }
 .forget-your-password1 {
-  position: absolute;
-  top: 0;
-  left: 57px;
   font-size: 25px;
   color: var(--color-gainsboro);
   text-decoration: none;
+  text-align: center;
 }
 .forget-your-password1:hover,
 .sign-up1:hover{
@@ -180,50 +130,50 @@
 }
 .dont-have-an1,
 .sign-up1 {
-  position: absolute;
-  top: 33px;
-  left: 0;
   font-size: 25px;
 }
 .sign-up1 {
-  left: 270px;
   text-decoration: none;
   color: var(--color-gainsboro);
+  margin-left: 5px;
 }
 .forget-your-password-group {
-  position: absolute;
-  top: 605px;
-  left: 585px;
-  width: 419px;
-  height: 90px;
+  width: 100%;
+  height: max-content;
   color: var(--color-white);
+  display: grid;
+  align-items: center;
+  justify-content: center;
 }
-.line-div {
-  position: absolute;
-  top: 380px;
-  left: 486px;
+.line-div1 {
   border-top: 2px solid var(--color-tan);
   box-sizing: border-box;
-  width: 602px;
+  width: 95%;
   height: 2px;
 }
+.form-login{
+    display: grid;
+    justify-items: center;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}
 .sign-in-test-sign-in-with-goo1 {
-  position: relative;
   background-color: var(--color-dimgray-100);
   width: 100%;
-  height: 803px;
-  /* height: 1900px; */
+  height: max-content;
   overflow: hidden;
   text-align: left;
   font-size: var(--font-size-11xl);
   color: var(--color-black);
   font-family: var(--font-kanit);
+  display: grid;
+  align-items: center;
+  justify-content: center;
 }
 .error{
-  position: absolute;
-  top: 85px;
-  left: 40px;
   color: red;
   font-size: 20px;
   font-family: var(--font-kanit);
+  display: none;
 }
