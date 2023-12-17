@@ -35,14 +35,14 @@ public class ProductReviews extends BaseEntity{
         if (!super.equals(o)) return false;
         ProductReviews productReviews = (ProductReviews) o;
         return reviewsId == productReviews.reviewsId
-                && Objects.equals(customer, productReviews.customer)
                 && Objects.equals(product, productReviews.product)
+                && Objects.equals(customer, productReviews.customer)
                 && Objects.equals(reviewContent, productReviews.reviewContent)
                 && Objects.equals(starForProduct, productReviews.starForProduct);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), reviewsId, customer, product, reviewContent, starForProduct);
+        return Objects.hash(super.hashCode(), reviewsId, product, customer, reviewContent, starForProduct);
     }
 }

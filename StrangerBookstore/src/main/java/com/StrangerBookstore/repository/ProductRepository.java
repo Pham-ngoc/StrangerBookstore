@@ -1,15 +1,25 @@
 package com.StrangerBookstore.repository;
 
 import com.StrangerBookstore.model.Products;
+<<<<<<< HEAD
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+=======
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
+>>>>>>> main
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+<<<<<<< HEAD
+public interface ProductRepository extends JpaRepository <Products, Integer> {
+    @Query("SELECT o FROM Products o")
+    List<Products> productFindAll();
+=======
 @Repository
 public interface ProductRepository extends JpaRepository<Products, Integer> {
 
@@ -31,5 +41,6 @@ public interface ProductRepository extends JpaRepository<Products, Integer> {
     @Query("SELECT p FROM Products p WHERE p.price BETWEEN ?1 AND ?2")
     Page<Products> findProductsByPrice(double minPrice, double maxPrice, Pageable pageable);
 
+>>>>>>> main
 
 }

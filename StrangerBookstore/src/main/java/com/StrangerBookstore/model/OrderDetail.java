@@ -14,15 +14,15 @@ public class OrderDetail extends BaseEntity{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
     @GenericGenerator(name = "native", strategy = "native")
-    private int orderDetailsId;
+    private int orderDetailId;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = true)
+    @ManyToOne(fetch = FetchType.EAGER, optional = true)
     @JoinColumn(name = "order_id", referencedColumnName = "orderId", nullable = true)
-    private Orders orders;
+    private Order order;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = true)
+    @ManyToOne(fetch = FetchType.EAGER, optional = true)
     @JoinColumn(name = "product_id", referencedColumnName = "productId", nullable = true)
-    private Products products;
+    private Product product;
 
     private int quantity;
 
@@ -34,15 +34,15 @@ public class OrderDetail extends BaseEntity{
         if (o == null || getClass() != o.getClass()) return false;
         if (!super.equals(o)) return false;
         OrderDetail orderDetail = (OrderDetail) o;
-        return orderDetailsId == orderDetail.orderDetailsId
-                && Objects.equals(orders, orderDetail.orders)
-                && Objects.equals(products, orderDetail.products)
+        return orderDetailId == orderDetail.orderDetailId
+                && Objects.equals(order, orderDetail.order)
+                && Objects.equals(product, orderDetail.product)
                 && Objects.equals(quantity, orderDetail.quantity)
                 && Objects.equals(amount, orderDetail.amount);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), orderDetailsId, orders, products, quantity, amount);
+        return Objects.hash(super.hashCode(), orderDetailId, order, product, quantity, amount);
     }
 }

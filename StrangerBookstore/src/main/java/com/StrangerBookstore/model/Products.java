@@ -2,17 +2,17 @@ package com.StrangerBookstore.model;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
 
+import java.util.List;
 import java.util.Objects;
 
 @Entity
 @Setter
 @Getter
-public class Products extends BaseEntity{
+public class Product extends BaseEntity{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
     @GenericGenerator(name = "native", strategy = "native")
@@ -34,30 +34,22 @@ public class Products extends BaseEntity{
     private String condition; //Tình trạng
 
     @NotBlank(message = "Quantity In Stock must not be blank")
-    private int quantityInStock;
-
-    @NotBlank(message = "Quantity In Stock must not be blank")
-    private String isbn;
+    private String quantityInStock;
 
     @NotBlank(message = "Description must not be blank")
     private String description;
 
-    @NotBlank(message = "Description must not be blank")
-    private double price;
-
+    @NotBlank(message = "Category must not be blank")
     @ManyToOne(fetch = FetchType.EAGER, optional = true)
     @JoinColumn(name="category_id", referencedColumnName = "categoryId", nullable = true)
     private Categories categories;
-
-    @NotNull(message = "Product image number must not be blank")
-    private String product_img;
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         if (!super.equals(o)) return false;
-        Products product = (Products) o;
+        Product product = (Product) o;
         return productId == product.productId
                 && Objects.equals(productName, product.productName)
                 && Objects.equals(author, product.author)
@@ -65,17 +57,14 @@ public class Products extends BaseEntity{
                 && Objects.equals(language, product.language)
                 && Objects.equals(condition, product.condition)
                 && Objects.equals(quantityInStock, product.quantityInStock)
-                && Objects.equals(isbn, product.isbn)
-                && Objects.equals(price, product.price)
                 && Objects.equals(description, product.description)
-                && Objects.equals(product_img, product.product_img)
                 && Objects.equals(categories, product.categories);
 
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), productId, productName, author, publisher, language, condition, quantityInStock, isbn, price, description, product_img, categories);
+        return Objects.hash(super.hashCode(), productId, productName, author, publisher, language, condition, quantityInStock, description, categories);
     }
 
 }

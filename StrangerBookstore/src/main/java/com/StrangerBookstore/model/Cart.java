@@ -16,13 +16,13 @@ public class Cart {
     @GenericGenerator(name = "native", strategy = "native")
     private int cartId;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = true)
-    @JoinColumn(name = "customer_id",referencedColumnName = "customerId",nullable = true)
+    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST, targetEntity = Customer.class)
+    @JoinColumn(name="customer_id", referencedColumnName = "customerId", nullable = true)
     private Customer customer;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = true)
+    @ManyToOne(fetch = FetchType.EAGER, optional = true)
     @JoinColumn(name="product_id", referencedColumnName = "productId", nullable = true)
-    private Products products;
+    private Product product;
 
     private int quantity;
 
@@ -34,13 +34,13 @@ public class Cart {
         Cart cart = (Cart) o;
         return cartId == cart.cartId
                 && Objects.equals(customer, cart.customer)
-                && Objects.equals(products, cart.products)
+                && Objects.equals(product, cart.product)
                 && Objects.equals(quantity, cart.quantity);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), cartId, customer, products, quantity);
+        return Objects.hash(super.hashCode(), cartId, customer, product, quantity);
     }
 
 }

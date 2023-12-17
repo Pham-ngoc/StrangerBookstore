@@ -1,15 +1,52 @@
 package com.StrangerBookstore.controller.AdminController;
 
-import ch.qos.logback.core.model.Model;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import com.StrangerBookstore.model.Orders;
+import com.StrangerBookstore.model.Products;
+import com.StrangerBookstore.model.StatusOrders;
+import com.StrangerBookstore.repository.OrderRepository;
+import com.StrangerBookstore.repository.StatusOrderRepository;
+import com.StrangerBookstore.service.OrderService;
+import com.StrangerBookstore.service.ProductService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 
-@Controller
+import java.util.List;
+
+@RestController
+@CrossOrigin("*")
 @RequestMapping("/admin")
 public class AdminOrderController {
-    @GetMapping("/order")
-    public String order(Model model){
-        return "Admin-view/admin-order.html";
+
+    @Autowired
+    OrderRepository orderRepository;
+
+    @Autowired
+    OrderService orderService;
+
+    @Autowired
+    StatusOrderRepository statusOrderRepository;
+
+    @GetMapping("/status")
+    public ResponseEntity<List<StatusOrders>> status(Model model){
+        return ResponseEntity.ok(statusOrderRepository.findAll());
     }
+
+    @GetMapping("/order")
+    public ResponseEntity<List<Orders>> order(Model model){
+        return ResponseEntity.ok(orderRepository.orderFindAll());
+    }
+
+    @PutMapping("/order/{id}")
+    public ResponseEntity<Orders> update(@PathVariable("id") Integer id, @RequestBody Orders order) {
+        Orders updateOrder = orderService.update(id, order);
+        if (updateOrder != null) {
+            return ResponseEntity.ok(updateOrder);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+
 }

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-        <div class="main-content">
+        <div class="main-content" ng-controller="AdminOrderController">
             <div class="section__content section__content--p30">
                 <div class="container-fluid">
                     <!--FORM-->
@@ -8,13 +8,13 @@
                             <strong>Order</strong> Form
                         </div>
                         <div class="card-body card-block">
-                            <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
+                            <form action="" method="put" enctype="multipart/form-data" class="form-horizontal">
                                 <div class="row form-group">
                                     <div class="col col-md-3">
                                         <label for="orderID" class=" form-control-label">Order ID</label>
                                     </div>
                                     <div class="col-12 col-md-9">
-                                        <input type="text" id="orderID" name="disabled-input" disabled="" class="form-control">
+                                        <input type="text" id="orderID" name="disabled-input" disabled="" class="form-control" ng-model="form.orderId">
                                     </div>
                                 </div>
                                 <div class="row form-group">
@@ -22,19 +22,16 @@
                                         <label for="customerName" class=" form-control-label">Customer Email</label>
                                     </div>
                                     <div class="col-12 col-md-9">
-                                        <input type="text" id="customerName" name="disabled-input" disabled="" class="form-control">
+                                        <input type="text" id="customerName" name="disabled-input" disabled="" class="form-control" ng-model="form.customer.email">
                                     </div>
                                 </div>
                                 <div class="row form-group">
                                     <div class="col col-md-3">
-                                        <label for="statusId " class=" form-control-label">Status Order</label>
+                                        <label for="statusId" class=" form-control-label">Status Order</label>
                                     </div>
                                     <div class="col-12 col-md-9">
-                                        <select name="select" id="statusId " class="form-control">
-                                            <option value="0">Please select</option>
-                                            <option value="1">Option #1</option>
-                                            <option value="2">Option #2</option>
-                                            <option value="3">Option #3</option>
+                                        <select name="select" id="statusId" class="form-control" ng-model="form.statusOrders"
+                                                ng-options="s as s.statusName for s in status track by s.statusId">
                                         </select>
                                     </div>
                                 </div>
@@ -43,7 +40,7 @@
                                         <label for="paymentMethod" class=" form-control-label">Payment Method</label>
                                     </div>
                                     <div class="col-12 col-md-9">
-                                        <input type="text" id="paymentMethod" name="disabled-input" disabled="" class="form-control">
+                                        <input type="text" id="paymentMethod" name="disabled-input" disabled="" class="form-control" ng-model="form.paymentMethod">
                                     </div>
                                 </div>
                                 <div class="row form-group">
@@ -51,13 +48,13 @@
                                         <label for="totalAmount" class=" form-control-label">Total Amount</label>
                                     </div>
                                     <div class="col-12 col-md-9">
-                                        <input type="text" id="totalAmount" name="disabled-input" disabled="" class="form-control">
+                                        <input type="text" id="totalAmount" name="disabled-input" disabled="" class="form-control" ng-model="form.totalAmount">
                                     </div>
                                 </div>
                             </form>
                         </div>
                         <div class="card-footer">
-                            <button type="submit" class="btn btn-primary btn-sm">
+                            <button type="submit" class="btn btn-primary btn-sm" ng-click="updateOrders()">
                                 Update
                             </button>
                         </div>
@@ -72,10 +69,10 @@
                                     <div class="row form-group">
                                         <div class="col col-md-10">
                                             <input type="text" id="search" name="text-input" placeholder="Search"
-                                                   class="form-control">
+                                                   class="form-control" ng-model="searchKeyword">
                                         </div>
                                         <div class="col-12 col-md-2 mt-1">
-                                            <button type="submit" class="btn btn-primary btn-sm">
+                                            <button type="submit" class="btn btn-primary btn-sm" ng-click="searchOrders()">
                                                 Search
                                             </button>
                                         </div>
@@ -95,20 +92,21 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr class="tr-shadow">
-                                        <td>Lori Lynch</td>
-                                        <td>Lori Lynch</td>
-                                        <td>Lori Lynch</td>
-                                        <td>Lori Lynch</td>
-                                        <td>Lori Lynch</td>
-                                        <td>
-                                            <div class="table-data-feature">
-                                                <button class="item"  data-placement="top" title="Edit">
-                                                    <i class="zmdi zmdi-edit"></i>
-                                                </button>
-                                            </div>
-                                        </td>
-                                    </tr>
+                                        <tr class="tr-shadow"  ng-repeat="item in list">
+                                            <td> <span>{{item.orderId}} </span></td>
+                                            <td>{{item.customer.email}}</td>
+                                            <td>{{item.statusOrders.statusName}}</td>
+                                            <td>{{item.paymentMethod}}</td>
+                                            <td>{{item.totalAmount}}</td>
+                                            <td>
+                                                <div class="table-data-feature">
+                                                    <button class="item" data-toggle="tooltip" data-placement="top" title="Edit" ng-click="editOrders(item)">
+                                                        <i class="zmdi zmdi-edit"></i>
+                                                    </button>
+
+                                                </div>
+                                            </td>
+                                        </tr>
                                     <tr class="spacer"></tr>
                                     </tbody>
                                 </table>

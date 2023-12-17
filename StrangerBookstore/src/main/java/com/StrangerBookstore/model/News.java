@@ -19,7 +19,6 @@ public class News extends BaseEntity{
     @GenericGenerator(name = "native", strategy = "native")
     private int newsId;
     private String newsTitle;
-    private String newsSummary;
     private String newsContent;
     private String newPicture;
 
@@ -31,13 +30,12 @@ public class News extends BaseEntity{
         News news = (News) o;
         return newsId == news.newsId
                 && Objects.equals(newsTitle, news.newsTitle)
-                && Objects.equals(newsSummary, news.newsSummary)
                 && Objects.equals(newsContent, news.newsContent)
                 && Objects.equals(newPicture, news.newPicture);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), newsId, newsSummary, newsTitle, newsContent, newPicture);
+        return Objects.hash(super.hashCode(), newsId, newsTitle, newsContent, newPicture);
     }
 }
