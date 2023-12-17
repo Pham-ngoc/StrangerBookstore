@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Profile</title>
+    <th:block th:replace="~{User-view/style/user-css.html :: html}"></th:block>
+    <link type="text/css" rel="stylesheet" href="/css/profile-information.css" >
+</head>
+<body>
+<div class="profile-personal-information">
+    <div th:replace="~{User-view/fragment/header.html :: div}"></div>
+    <div class="wishlist-infor row">
+        <div class="menu-profile col-lg-3">
+            <div class="pic-name">
+                <div class="pic-profile">
+                    <div class="avata1">
+                        <img th:src="@{'/customer_pic/'+${session.loggingCustomer.picture}}" alt="" class="avata-customer">
+                    </div>
+                </div>
+                <div class="name-profile">
+                    <div class="customer-full-name5" th:text="${session.loggingCustomer.customerName}"></div>
+                </div>
+            </div>
+            <div class="profile-personal-information-child2"></div>
+            <div class="menu">
+                <a th:href="@{/profile/personal}" class="personal-information5" onclick="toggleActive(this)">Personal information</a>
+                <a th:href="@{/profile/address/1}" class="address-information5" onclick="toggleActive(this)">Address information</a>
+                <a th:href="@{/profile/wishlist/1}" class="my-wish-list5" id="my-wishlist"  onclick="toggleActive(this)">My wish list</a>
+            </div>
+        </div>
+        <div class="col-lg-9">
+            <div class="profile-personal-information-child">
+                <form th:object="${profile}" class="profile-personal-form row">
+                    <div class="col-lg-3">
+                        <div class="avata-form" id="avataForm">
+                            <label for="fileInput" class="file-label" id="fileLabel">
+                                <img th:src="@{'/customer_pic/'+${profile.picture}}" th:value="${profile.picture}" alt="" class="avata-customer" id="avataImage">
+                                <div class="overlay">
+                                    <i class="fa fa-camera"></i>
+                                    <input type="file" th:value="*{picture}" id="fileInput" class="file-input">
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="personal-form col-lg-8">
+                        <div class="rectangle-parent32">
+                            <label class="birthday">Full name</label>
+                            <input class="email-confirm" th:field="*{name}" type="text" placeholder="Full name"/>
+                            <span class="error" th:if="${#fields.hasErrors('name')}">Test error</span>
+                        </div>
+                        <div class="rectangle-parent33">
+                            <label class="birthday">Phone Number</label>
+                            <input class="email-confirm" th:field="*{phoneNumber}" type="text" placeholder="Phone Number"/>
+                            <span class="error" th:if="${#fields.hasErrors('phoneNumber')}">Test error</span>
+                        </div>
+                        <div class="rectangle-parent34">
+                            <label class="birthday">Email</label>
+                            <input class="email-confirm" th:field="*{email}" type="text" placeholder="Email"/>
+                            <span class="error" th:if="${#fields.hasErrors('email')}">Test error</span>
+                        </div>
+                        <div class="button">
+                            <button type="submit" th:onclick="updateProfile()" class="update-profile btn">Update Profile</button>
+                            <a th:href="@{/profile/changePass}" type="submit" class="change-password1 btn">Change Password</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div th:replace="~{User-view/fragment/footer.html :: div}"></div>
+</div>
+<th:block th:replace="~{User-view/style/user-scr.html::html}"></th:block>
+<script>
+    let selectedFile;
+    document.getElementById('fileInput').addEventListener('change', handleFileSelect);
+    function handleFileSelect() {
+        const fileInput = document.getElementById('fileInput');
+        const avataImage = document.getElementById('avataImage');
+
+        selectedFile = fileInput.files[0];
+
+        if (selectedFile) {
+            const reader = new FileReader();
+
+            reader.onload = function (e) {
+                avataImage.src = e.target.result;
+            };
+
+            reader.readAsDataURL(selectedFile);
+        }
+        console.log(selectedFile);
+    }
+    function updateProfile() {
+            $('.profile-personal-form').submit(function (e) {
+                e.preventDefault();
+
+                var form = $(".profile-personal-form");
+                var formData = new FormData(form[0]);
+                formData.append('file', selectedFile);
+
+                $.ajax({
+                    type: 'POST',
+                    url: '/profile/updateProfile',
+                    data: formData,
+                    enctype: 'multipart/form-data',
+                    contentType: false,
+                    processData: false,
+                    success: function (response) {
+                        console.log(response);
+                        Swal.fire({
+                          position: "center",
+                          icon: "success",
+                          title: "Update Profile Successfully!",
+                          showConfirmButton: false,
+                          timer: 1500
+                        });
+                    },
+                    error: function (xhr, status, error) {
+                        // Xử lý lỗi
+                        if (xhr.status == 400) {
+                            // Mã HTTP 400 thường được sử dụng để biểu thị lỗi validation
+                            var errors = JSON.parse(xhr.responseText);
+                            // Xử lý danh sách lỗi (errors) ở đây
+                            if (errors && errors.length > 0) {
+                                // Xử lý từng lỗi
+                                errors.forEach(function (error) {
+                                    console.log("Field: " + error.field + ", Message: " + error.defaultMessage);
+                                });
+                            } else {
+                                Swal.fire({
+                                    icon: "error",
+                                    title: "Update Profile Failed!"
+                                });
+                                console.log("Unknown validation error");
+                            }
+                            Swal.fire({
+                                 icon: "error",
+                                 title: "Update Profile Failed!"
+                            });
+                            console.log(errors);
+                        } else {
+                            Swal.fire({
+                               icon: "error",
+                               title: "Update Profile Failed!"
+                            });
+                            console.log("Unexpected error:", status, error);
+                        }
+                    }
+                });
+            });
+    };
+</script>
+</body>
+</html>

@@ -1,0 +1,114 @@
+.about-us-contact-us-child {
+  border-radius: 0 0 var(--br-11xl) var(--br-11xl);
+  background-color: var(--color-lightgray);
+  width: 100%;
+  height: 550px;
+}
+.contact-us {
+  font-size: 30px;
+  color: var(--color-dimgray);
+  height: 300px;
+  display: grid;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
+.body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.group-child{
+    border-radius: var(--br-3xs);
+    background-color: var(--color-lightgray);
+    width: 1279px;
+    height: max-content;
+    margin: 50px;
+    align-items: center;
+    justify-content: left;
+}
+.form-contact{
+    margin: 50px 140px;
+}
+.email-confirm {
+  display: block;
+  padding: 15px 31px 15px 31px;
+  border-radius: 10px;
+  background-color: var(--color-white);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+  width: 1020px;
+  font-size: 20px;
+  border-color: transparent;
+  font-family: var(--font-kanit);
+}
+.email-confirm:focus{
+  outline: none;
+}
+.error{
+  display:block;
+  color: red;
+  font-size: 20px;
+  font-family: var(--font-kanit);
+}
+.rectangle-parent{
+    margin: 20px 0px;
+}
+.btn-send{
+    padding: 20px 40px;
+    background-color: var(--color-tan);
+    color: var(--color-dimgray);
+    border-radius: 15px;
+    font-weight: 600;
+    box-shadow:  0 4px 4px rgba(0, 0, 0, 0.25);
+    font-size: 25px;
+}
+.btn-send:hover{
+    background-color: var(--color-dimgray);
+    color: var(--color-lightgray);
+}
+.mail,
+.phone,
+.address{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-dimgray);
+    font-size: 25px;
+}
+.phone img,
+.mail img,
+.address img{
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+}
+.mail-detail{
+    text-decoration: none;
+    color: var(--color-dimgray);
+}
+.address-detail{
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    width: 280px;
+}
+.address-detail p{
+   padding: 0px;
+   margin: 0px;
+   text-align: left;
+}
+.contact{
+    margin: 50px;
+}
+.about-us-contact-us {
+  position: relative;
+  background-color: var(--color-dimgray);
+  width: 100%;
+  height: max-content;
+  overflow: hidden;
+  text-align: left;
+  font-size: var(--font-size-xl);
+  color: var(--color-black);
+  font-family: var(--font-kanit);
+  display: block;
+}

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Shop</title>
+    <th:block th:replace="~{User-view/style/user-css.html :: html}"></th:block>
+    <link type="text/css" rel="stylesheet" href="/css/shop-categories-show.css" >
+</head>
+<body>
+    <div class="shop-categories-show">
+        <div class="shop-categories-show-child">
+            <div th:replace="~{User-view/fragment/header.html :: div}"></div>
+            <div class="shop3">
+                <span>Shop</span>
+            </div>
+        </div>
+        <div class="shop-list row">
+            <div class="cate-price col-lg-3">
+                <nav class="navbar-sidebar2">
+                    <ul class="list-unstyled navbar__list">
+                        <li class=" has-sub">
+                            <a class="js-arrow">
+                                Categories
+                            </a>
+                            <ul class="list-unstyled navbar__sub-list js-sub-list" th:each=" cate : ${listCate}">
+                                <li>
+                                    <a th:href="@{/getByCateID(CateID=${cate.categoryId})}">
+                                        <i class="fas fa-tachometer-alt"></i><span th:text="${cate.categoryName}"></span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="shop-hr col-lg-1">
+                <div class="shop-categories-show-child4"></div>
+            </div>
+            <div class="product-list col-lg-8">
+                <div class="search">
+                    <form th:action="@{/searchName}" method="get">
+                        <input class="shop-categories-show-child1" th:value="${searchName}" name="searchName" placeholder="Search"/>
+                        <input th:value="${CateID}"  type="hidden" name="CateID"/>
+                        <a href="">
+                            <img
+                                    class="material-symbolssearch-icon"
+                                    alt=""
+                                    src="/public/materialsymbolssearch.svg"
+                            />
+                        </a>
+                    </form>
+                </div>
+                <div class="group-container row" th:if="${totalPages > 0}" th:fragment="productList" id="productList">
+                    <div class="rectangle-parent3 col-lg-3 col-md-6 col-sm-6" th:each="product :${listProduct}">
+                        <a th:href="@{/productDetail(productId=${product.productId})}">
+                            <img th:src="@{'/product_img/'+${product.product_img}}" th:alt="${product.productName}">
+                        </a>
+                        <div >
+                            <a id="name-book" th:href="@{/productDetail(productId=${product.productId})}" th:text="${product.productName}"></a>
+                        </div>
+                        <div class="price">
+                            <span id="price-product" th:text="${#numbers.formatDecimal(product.price, 0, 'COMMA', 0 , 'POINT')}"></span>
+                            <span>đ</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="not-found-list" th:if="${totalPages == 0}">
+                    <p th:text="${message}"></p>
+                    <a class="go-to-shop mx-auto" type="button" th:href=@{/shop/1?CateID=all&searchName=null}>Go to Shop</a>
+                </div>
+                <div class="pagination" th:if="${totalPages > 1}">
+                    <!-- Nút trang trước -->
+                    <a class="page-button" th:if="${currentPage > 1}"
+                       th:href="@{'/shop/' + ${currentPage - 1} + '?CateID=' + ${CateID} + '&searchName=' + ${searchName}}">
+                        <i class="bi bi-chevron-left"></i>
+                    </a>
+                    <a class="page-button" th:unless="${currentPage > 1}">
+                        <i class="bi bi-chevron-left"></i>
+                    </a>
+                        <!-- Hiển thị nút cho trang 1 -->
+                        <a class="page-button" th:href="@{'/shop/'+ 1 + '?CateID=' + ${CateID} + '&searchName=' + ${searchName}}">[[1]]</a>
+
+                        <!-- Hiển thị "..." nếu có nhiều hơn 3 trang và trang hiện tại lớn hơn 3 -->
+                        <span class="more-btn" th:if="${totalPages > 3 && currentPage > 3}">...</span>
+
+                        <!-- Hiển thị nút cho trang trước trang hiện tại và trang hiện tại -->
+                        <th:block th:each="i: ${#numbers.sequence(currentPage - 1, currentPage + 1)}">
+                            <a class="page-button" th:if="${i > 1 && i < totalPages}"
+                               th:href="@{'/shop/' + ${i} + '?CateID=' + ${CateID} + '&searchName=' + ${searchName}}">[[${i}]]</a>
+                        </th:block>
+
+                        <!-- Hiển thị "..." nếu có nhiều hơn 3 trang và trang hiện tại nhỏ hơn totalPages - 2 -->
+                        <span class="more-btn" th:if="${totalPages > 3 && currentPage < totalPages - 2}">...</span>
+
+                        <!-- Hiển thị nút cho trang cuối cùng -->
+                        <a class="page-button" th:href="@{'/shop/' + ${totalPages} + '?CateID=' + ${CateID} + '&searchName=' + ${searchName}}"
+                           th:if="${totalPages > 1}">[[${totalPages}]]</a>
+                    <!-- Nút trang tiếp theo -->
+                    <a class="page-button" th:if="${currentPage < totalPages}"
+                       th:href="@{'/shop/' + ${currentPage + 1} + '?CateID=' + ${CateID} + '&searchName=' + ${searchName}}">
+                        <i class="bi bi-chevron-right"></i>
+                    </a>
+                    <a class="page-button" th:unless="${currentPage < totalPages}">
+                        <i class="bi bi-chevron-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div th:replace="~{User-view/fragment/footer.html :: div}"></div>
+    </div>
+<th:block th:replace="~{User-view/style/user-scr.html::html}"></th:block>
+<script>
+    function updatePrices() {
+        // Lấy mảng các phần tử có lớp là "minPrice"
+        var minPriceElements = document.getElementsByClassName("minPrice");
+
+        // Lấy giá trị th:value từ phần tử đầu tiên có lớp "minPrice"
+        var minPrice = minPriceElements[0].getAttribute("value");
+
+        // Lấy mảng các phần tử có lớp là "maxPrice"
+        var maxPriceElements = document.getElementsByClassName("maxPrice");
+
+        // Lấy giá trị th:value từ phần tử đầu tiên có lớp "maxPrice"
+        var maxPrice = maxPriceElements[0].getAttribute("value");
+
+        console.log("minPrice: " + minPrice);
+        console.log("maxPrice: " + maxPrice);
+
+        var currentPageNumber = window.location.href.match(/\/shop\/(\d+)/)[1];
+        console.log(currentPageNumber)
+        $.ajax({
+            type: "GET",
+            url: "/getByPrice",
+            data: {
+                page: currentPageNumber,
+                minPrice: minPrice,
+                maxPrice: maxPrice
+            },
+            success: function(response) {
+
+            },
+            error: function(error) {
+                console.error("Error: " + error);
+            }
+        });
+    };
+
+</script>
+</body>
+</html>

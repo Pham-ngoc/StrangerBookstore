@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Profile</title>
+    <th:block th:replace="~{User-view/style/user-css.html :: html}"></th:block>
+    <link type="text/css" rel="stylesheet" href="/css/profile-information.css" >
+</head>
+<body>
+<div class="profile-personal-information">
+    <div th:replace="~{User-view/fragment/header.html :: div}"></div>
+    <div class="wishlist-infor row">
+        <div class="menu-profile col-lg-3">
+            <div class="pic-name">
+                <div class="pic-profile">
+                    <div class="avata1">
+                        <img th:src="@{'/customer_pic/'+${session.loggingCustomer.picture}}" alt="" class="avata-customer">
+                    </div>
+                </div>
+                <div class="name-profile">
+                    <div class="customer-full-name5" th:text="${session.loggingCustomer.customerName}"></div>
+                </div>
+            </div>
+            <div class="profile-personal-information-child2"></div>
+            <div class="menu">
+                <a th:href="@{/profile/personal}" class="personal-information5" onclick="toggleActive(this)">Personal information</a>
+                <a th:href="@{/profile/address/1}" class="address-information5" onclick="toggleActive(this)">Address information</a>
+                <a th:href="@{/profile/wishlist/1}" class="my-wish-list5" id="my-wishlist"  onclick="toggleActive(this)">My wish list</a>
+            </div>
+        </div>
+        <div class="col-lg-9">
+            <div class="profile-personal-information-child">
+                <span class="error1" th:if="${!#strings.isEmpty(message)}" th:text="${message}" style="display: none"></span>
+                <div class="recipients-full-name-3-parent row" th:each="address : ${listAddress}">
+                    <div class="address-infor col-lg-8">
+                        <b class="recipients-full-name3" th:text="${address.recipientFullName}"></b>
+                        <div class="address-detail-address">
+                            Address Detail: <span th:text="${address.addressDetail}" class="address-text"></span>
+                        </div>
+                        <div class="address-type-home">Address Type: <span th:text="${address.addressType}" class="address-text"></span></div>
+                        <div class="recipients-phone-number3">
+                            Recipient’s Phone number: <span th:text="${address.recipientPhoneNumber}" class="address-text"></span>
+                        </div>
+                    </div>
+                    <div class="address-delete-edit col-lg-4">
+                        <a th:href="@{/profile/getByAddressID(addressID=${address.addressId})}" type="button" class="edit btn">Edit</a>
+                        <a th:href="@{/profile/deleteByAddressID(addressID=${address.addressId})}" type="button" class="delete3 btn">Delete</a>
+                    </div>
+                    <div class="group-child31"></div>
+                </div>
+                <div class="not-found-list" th:if="${totalPages == 0}">
+                    <p th:text="${msg}"></p>
+                </div>
+                <div class="pagination" th:if="${totalPages > 1}">
+                    <!-- Nút trang trước -->
+                    <a class="page-button" th:if="${currentPage > 1}"
+                       th:href="@{'/profile/address/' + ${currentPage - 1}}">
+                        <i class="bi bi-chevron-left"></i>
+                    </a>
+                    <a class="page-button" th:unless="${currentPage > 1}">
+                        <i class="bi bi-chevron-left"></i>
+                    </a>
+                    <!-- Hiển thị nút cho trang 1 -->
+                    <a class="page-button" th:href="@{'/profile/address/'+ 1}">[[1]]</a>
+
+                    <!-- Hiển thị "..." nếu có nhiều hơn 3 trang và trang hiện tại lớn hơn 3 -->
+                    <span class="more-btn" th:if="${totalPages > 3 && currentPage > 3}">...</span>
+
+                    <!-- Hiển thị nút cho trang trước trang hiện tại và trang hiện tại -->
+                    <th:block th:each="i: ${#numbers.sequence(currentPage - 1, currentPage + 1)}">
+                        <a class="page-button" th:if="${i > 1 && i < totalPages}"
+                           th:href="@{'/profile/address/' + ${i}}">[[${i}]]</a>
+                    </th:block>
+
+                    <!-- Hiển thị "..." nếu có nhiều hơn 3 trang và trang hiện tại nhỏ hơn totalPages - 2 -->
+                    <span class="more-btn" th:if="${totalPages > 3 && currentPage < totalPages - 2}">...</span>
+
+                    <!-- Hiển thị nút cho trang cuối cùng -->
+                    <a class="page-button" th:href="@{'/profile/address/' + ${totalPages}}"
+                       th:if="${totalPages > 1}">[[${totalPages}]]</a>
+                    <!-- Nút trang tiếp theo -->
+                    <a class="page-button" th:if="${currentPage < totalPages}"
+                       th:href="@{'/profile/address/' + ${currentPage + 1}}">
+                        <i class="bi bi-chevron-right"></i>
+                    </a>
+                    <a class="page-button" th:unless="${currentPage < totalPages}">
+                        <i class="bi bi-chevron-right"></i>
+                    </a>
+                </div>
+                <a th:href="@{/profile/addressEdit}" class="add-other-address">Add other address</a>
+            </div>
+        </div>
+    </div>
+
+    <div th:replace="~{User-view/fragment/footer.html :: div}"></div>
+</div>
+<th:block th:replace="~{User-view/style/user-scr.html::html}"></th:block>
+<script>
+    var notificationSpan = document.querySelector('.error1');
+    console.log(notificationSpan);
+        var notificationMessage = notificationSpan.textContent ;
+
+        if(notificationMessage.trim() !== '') {
+            Swal.fire({
+                icon: "success",
+                title: notificationMessage
+            });
+        }
+</script>
+</body>
+</html>

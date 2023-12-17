@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Check out</title>
+    <th:block th:replace="~{User-view/style/user-css.html :: html}"></th:block>
+    <link type="text/css" rel="stylesheet" href="/css/check-out.css" >
+</head>
+<body>
+    <div class="check-out">
+        <div class="check-out-child">
+            <div th:replace="~{User-view/fragment/header.html :: div}"></div>
+            <div class="check-out1">
+                <span>Check out</span>
+            </div>
+        </div>
+        <div class="about-check-out row">
+            <div class="col-lg-7">
+                <div class="check-out-item" th:if="${sizeListCart > 0}">
+                    <span class="my-order">MY ORDER</span>
+                    <div class="infor-product-order row" th:each="checkout : ${listCart}" th:id="${checkout.products.productId}">
+                        <div class="pic-qty-order col-lg-6 row">
+                            <div class="pic-order col-lg-4">
+                                <img th:src="@{'/product_img/'+${checkout.products.product_img}}"  alt="${checkout.products.productName}">
+                            </div>
+                            <div class="name-qty-order col-lg-8">
+                                <p class="name-order" th:text="${checkout.products.productName}"></p>
+                                <p class="qty-order" th:text="'Quantity: '+${checkout.quantity}">Qty</p>
+                            </div>
+                        </div>
+                        <div class="price-order col-lg-3">
+                            <p class="price" th:text="${#numbers.formatDecimal(checkout.products.price, 0, 'COMMA', 0 , 'POINT')} + ' đ'"></p>
+                        </div>
+                        <div class="total-order col-lg-3">
+                            <p class="total" th:text="${#numbers.formatDecimal(checkout.quantity * checkout.products.price, 0, 'COMMA', 0 , 'POINT')} + ' đ'">Total</p>
+                        </div>
+                        <hr class="hr-order">
+                    </div>
+                    <div class="total-amount-order row">
+                        <div class="amount-order col-lg-6">
+                            <span>TOTAL AMOUNT</span>
+                        </div>
+                        <div class="amount-price-order col-lg-6">
+                            <span th:text="${#numbers.formatDecimal(productTotal, 0, 'COMMA', 0 , 'POINT')} + ' đ'"></span>
+                        </div>
+                    </div>
+                    <a class="btn-order btn" th:onclick="placeOrder()">Order</a>
+                </div>
+                <div class="not-found-list1" id="listCart" th:if="${sizeListCart == 0}">
+                    <p th:text="${msg}"></p>
+                </div>
+            </div>
+            <div class="address-payment-order col-lg-5">
+                <div class="check-out-child1">
+                    <span class="my-order">DELIVERY ADDRESS</span>
+                    <div class="address-body">
+                        <p class="recipient-name">Recipient's full name</p>
+                        <p class="address-detail">Address Detail </p>
+                        <p class="recipient-phone">Recipient's phone number</p>
+                    </div>
+                    <a class="btn-change btn" data-bs-toggle="modal" data-bs-target="#exampleModal">Change</a>
+                </div>
+                <div class="check-out-inner">
+                    <span class="my-order">PAYMENT METHOD</span>
+                    <div class="payment-body">
+                        <label class="radio-container"> Pay cash
+                            <input type="radio" name="radio" value="Pay cash">
+                            <span class="checkmark"></span>
+                        </label>
+
+                        <label class="radio-container"> Pay with Momo wallet
+                            <input type="radio" name="radio" onclick="SignUpByGG()" value="Momo wallet">
+                            <span class="checkmark"></span>
+                        </label>
+
+                        <label class="radio-container"> Pay with Zal wallet
+                            <input type="radio" name="radio" onclick="SignUpByGG()" value="Zal wallet">
+                            <span class="checkmark"></span>
+                        </label>
+
+                        <label class="radio-container"> Pay with bank card
+                            <input type="radio" name="radio" onclick="SignUpByGG()" value="Bank card">
+                            <span class="checkmark"></span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">DELIVERY ADDRESS</h1>
+                            <button type="button" class="btn" data-bs-dismiss="modal" aria-label="Close">
+                                <i class="fa fa-close"></i>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="plans">
+                                <label class="plan basic-plan" th:for="'address-' + ${address.addressId}" th:each="address : ${listAddress}">
+                                    <input type="radio" name="plan" th:value="${address.addressId}" th:id="'address-' + ${address.addressId}" th:onclick="'updateSelectedPlanDetails(this, \'' + ${address.addressId} + '\')'" />
+                                    <div class="plan-content">
+                                        <div class="plan-details">
+                                            <span th:text="${address.recipientFullName}"></span>
+                                            <p class="recipient-phone1" th:text="${address.recipientPhoneNumber}"></p>
+                                            <p class="address-detail1" th:text="${address.addressDetail}"></p>
+                                            <p th:text="${address.addressType}"></p>
+                                        </div>
+                                    </div>
+                                </label>
+                                <div class="not-found-list" th:if="${listAddress == null}">
+                                    <p th:text="${msg}"></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-save" th:onclick="saveSelectedPlanDetails()">Save changes</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div th:replace="~{User-view/fragment/footer.html :: div}"></div>
+    </div>
+<th:block th:replace="~{User-view/style/user-scr.html::html}"></th:block>
+<script th:inline="javascript">
+        function SignUpByGG(){
+            Swal.fire({
+              position: "center",
+              icon: "warning",
+              title: "The function is being updated!",
+              showConfirmButton: false,
+              timer: 1500
+            });
+        }
+
+        var selectedPlanDetails = {};
+        var selectedPaymentMethod = null;
+        var productId = null;
+
+        function updateSelectedPlanDetails(radioButton, addressId) {
+            var labelElement = radioButton.closest('.plan');
+            var planDetailsElement = labelElement.querySelector('.plan-details');
+
+            selectedPlanDetails = {
+                addressId: addressId,
+                recipientFullName: planDetailsElement.querySelector('span').innerText,
+                recipientPhoneNumber: planDetailsElement.querySelector('.recipient-phone1').innerText,
+                addressDetail: planDetailsElement.querySelector('.address-detail1').innerText,
+                addressType: planDetailsElement.querySelector('p').innerText
+            };
+
+
+            console.log("Selected Plan Details Updated");
+        }
+
+        function saveSelectedPlanDetails() {
+            // Sử dụng giá trị được lưu trữ trong selectedPlanDetails
+            console.log("Address ID: " + selectedPlanDetails.addressId);
+            console.log("Recipient Full Name: " + selectedPlanDetails.recipientFullName);
+            console.log("Recipient Phone Number: " + selectedPlanDetails.recipientPhoneNumber);
+            console.log("Address Detail: " + selectedPlanDetails.addressDetail);
+            console.log("Address Type: " + selectedPlanDetails.addressType);
+
+            $('.recipient-name').text(selectedPlanDetails.recipientFullName);
+            $('.recipient-phone').text(selectedPlanDetails.recipientPhoneNumber);
+            $('.address-detail').text(selectedPlanDetails.addressDetail);
+
+            $('#exampleModal').modal('hide');
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            var radioButtons = document.getElementsByName('radio');
+
+            for (var i = 0; i < radioButtons.length; i++) {
+                radioButtons[i].addEventListener('change', function () {
+                    console.log("Change event fired!");
+                    selectedPaymentMethod = document.querySelector('input[name="radio"]:checked').value;
+                    console.log("Selected Payment Method: " + selectedPaymentMethod);
+                });
+            }
+        });
+        document.addEventListener('DOMContentLoaded', function () {
+            var productContainers = document.querySelectorAll('.infor-product-order');
+
+            productContainers.forEach(function (container) {
+                productId = container.getAttribute('id');
+                console.log('Product ID:', productId);
+            });
+        });
+
+        function placeOrder() {
+            console.log(selectedPaymentMethod);
+            console.log(selectedPlanDetails.addressId);
+            console.log(productId);
+            $.ajax({
+                url: "/placeOrder",
+                type: "GET",
+                data: {
+                    addressId: selectedPlanDetails.addressId,
+                    paymentMethod: selectedPaymentMethod
+                },
+                success: function(response) {
+                    var itemInCart = response.itemInCart;
+                    Swal.fire({
+                        position: "center",
+                        icon: "success",
+                        title: "Place Order Successfully!",
+                        showConfirmButton: true,
+                        timer: 150000
+                    }).then((result) => {
+                      if (result.isConfirmed) {
+                        window.location.href = "/myOrder/1?statusId=all";
+                      }
+                    });
+                    if (itemInCart !== undefined) {
+                        $("#itemInCart").text(itemInCart);
+                    }
+                },
+                error: function(xhr, status, error) {
+                    console.log(error);
+
+                    if (selectedPlanDetails.addressId === undefined) {
+                        Swal.fire({
+                            position: "center",
+                            icon: "warning",
+                            title: "Please Choose Your Address!",
+                            showConfirmButton: false,
+                            timer: 1500
+                        });
+                    } else {
+                        if (selectedPaymentMethod === null || selectedPaymentMethod === "") {
+                            Swal.fire({
+                                position: "center",
+                                icon: "warning",
+                                title: "Please Select Payment Method!",
+                                showConfirmButton: false,
+                                timer: 1500
+                            });
+                        } else {
+                            Swal.fire({
+                                icon: "error",
+                                title: "Place Order Failed!"
+                            });
+                        }
+                    }
+                }
+            });
+
+        };
+</script>
+</body>
+</html>

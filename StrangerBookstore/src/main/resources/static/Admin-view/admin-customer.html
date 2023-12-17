@@ -1,4 +1,4 @@
-        <div class="main-content">
+        <div class="main-content" ng-controller="AdminCustomerController">
             <div class="section__content section__content--p30">
                 <div class="container-fluid">
                     <!--FORM-->
@@ -14,7 +14,7 @@
                                     </div>
                                     <div class="col-12 col-md-9">
                                         <input type="text" id="disabled-input" name="disabled-input"
-                                               placeholder="Customer ID" disabled="" class="form-control">
+                                               placeholder="Customer ID" readonly ng-model="form.customerId" class="form-control">
                                     </div>
                                 </div>
                                 <div class="row form-group">
@@ -22,7 +22,7 @@
                                         <label for="fullName" class=" form-control-label">Full name</label>
                                     </div>
                                     <div class="col-12 col-md-9">
-                                        <input type="text" id="fullName" name="text-input" placeholder="Full Name"
+                                        <input type="text" id="fullName" ng-model="form.customerName" name="text-input" placeholder="Full Name"
                                                class="form-control">
 <!--                                        <small class="form-text text-muted">This is a help text</small>-->
                                     </div>
@@ -32,7 +32,7 @@
                                         <label for="email" class=" form-control-label">Email</label>
                                     </div>
                                     <div class="col-12 col-md-9">
-                                        <input type="text" id="email" name="text-input" placeholder="Email"
+                                        <input type="text" id="email" ng-model="form.email" name="text-input" placeholder="Email"
                                                class="form-control">
                                         <!--                                        <small class="form-text text-muted">This is a help text</small>-->
                                     </div>
@@ -42,40 +42,9 @@
                                         <label for="phoneNumber" class=" form-control-label">Phone Number</label>
                                     </div>
                                     <div class="col-12 col-md-9">
-                                        <input type="text" id="phoneNumber" name="text-input" placeholder="Phone Number"
+                                        <input type="text" id="phoneNumber" ng-model="form.phoneNumber" name="text-input" placeholder="Phone Number"
                                                class="form-control">
                                         <!--                                        <small class="form-text text-muted">This is a help text</small>-->
-                                    </div>
-                                </div>
-                                <div class="row form-group">
-                                    <div class="col col-md-3">
-                                        <label for="birthday" class=" form-control-label">Birthday</label>
-                                    </div>
-                                    <div class="col-12 col-md-9">
-                                        <input type="date" id="birthday" name="text-input"
-                                               class="form-control">
-                                        <!--                                        <small class="form-text text-muted">This is a help text</small>-->
-                                    </div>
-                                </div>
-                                <div class="row form-group">
-                                    <div class="col col-md-3">
-                                        <label class=" form-control-label">Gender</label>
-                                    </div>
-                                    <div class="col col-md-9">
-                                        <div class="form-check">
-                                            <div class="radio">
-                                                <label for="male" class="form-check-label ">
-                                                    <input type="radio" id="male" name="radios" value="male"
-                                                           class="form-check-input">Male
-                                                </label>
-                                            </div>
-                                            <div class="radio">
-                                                <label for="female" class="form-check-label ">
-                                                    <input type="radio" id="female" name="radios" value="female"
-                                                           class="form-check-input">Female
-                                                </label>
-                                            </div>
-                                        </div>
                                     </div>
                                 </div>
                                 <div class="row form-group">
@@ -86,14 +55,14 @@
                                         <div class="form-check">
                                             <div class="radio">
                                                 <label for="enable" class="form-check-label ">
-                                                    <input type="radio" id="enable" name="radios" value="enable"
-                                                           class="form-check-input">Enable
+                                                    <input type="radio" id="enable" name="radios" ng-model="form.status" value="Open"
+                                                           class="form-check-input">Open
                                                 </label>
                                             </div>
                                             <div class="radio">
                                                 <label for="disable" class="form-check-label ">
-                                                    <input type="radio" id="disable" name="radios" value="disable"
-                                                           class="form-check-input">Disable
+                                                    <input type="radio" id="disable" ng-model="form.status" name="radios" value="Close"
+                                                           class="form-check-input">Close
                                                 </label>
                                             </div>
                                         </div>
@@ -104,11 +73,8 @@
                                         <label for="select" class=" form-control-label">Role</label>
                                     </div>
                                     <div class="col-12 col-md-9">
-                                        <select name="select" id="select" class="form-control">
-                                            <option value="0">Please select</option>
-                                            <option value="1">Option #1</option>
-                                            <option value="2">Option #2</option>
-                                            <option value="3">Option #3</option>
+                                        <select name="select" id="select" ng-model="form.roles.roleId" class="form-control">
+                                            <option ng-repeat="r in roles" ng-value="r.roleId">{{r.roleName}}</option>
                                         </select>
                                     </div>
                                 </div>
@@ -117,7 +83,7 @@
                                         <label for="file-input" class=" form-control-label">Picture</label>
                                     </div>
                                     <div class="col-12 col-md-9">
-                                        <input type="file" id="file-input" name="file-input"
+                                        <input type="file" id="file-input" ng-model="form.picture" name="file-input"
                                                class="form-control-file">
                                     </div>
                                 </div>
@@ -127,14 +93,14 @@
                             <button type="submit" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#scrollmodal">
                                 Add User
                             </button>
-                            <button type="submit" class="btn btn-primary btn-sm">
-                                Update
+                            <button type="submit" ng-click="update()" class="btn btn-primary btn-sm">
+                                <i class="fa fa-dot-circle-o"></i> Update
                             </button>
-                            <button type="submit" class="btn btn-primary btn-sm">
-                                Reset
+                            <button type="submit" ng-click="delete(form.productId)" class="btn btn-danger btn-sm">
+                                <i class="fa fa-ban"></i> Delete
                             </button>
-                            <button type="reset" class="btn btn-danger btn-sm">
-                                Delete
+                            <button type="submit" ng-click="reset()" class="btn btn-danger btn-sm">
+                                <i class="fa fa-ban"></i> Reset
                             </button>
                         </div>
                     </div>
@@ -165,8 +131,6 @@
                                         <th>Customer Full Name</th>
                                         <th>Email</th>
                                         <th>Phone Number</th>
-                                        <th>Birthday</th>
-                                        <th>Gender</th>
                                         <th>Status</th>
                                         <th>Role</th>
                                         <th>Picture</th>
@@ -174,23 +138,20 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr class="tr-shadow">
-                                        <td>Lori Lynch</td>
-                                        <td>Lori Lynch</td>
-                                        <td>Lori Lynch</td>
-                                        <td>Lori Lynch</td>
-                                        <td>Lori Lynch</td>
-                                        <td>Lori Lynch</td>
-                                        <td>Lori Lynch</td>
-                                        <td>Lori Lynch</td>
+                                    <tr class="tr-shadow" ng-repeat="item in displayedItems">
+                                        <td>{{item.customerName}}</td>
+                                        <td>{{item.email}}</td>
+                                        <td>{{item.phoneNumber}}</td>
+                                        <td>{{item.status}}</td>
+                                        <td>{{item.roles.roleName}}</td>
+                                        <td>{{item.picture}}</td>
                                         <td>
                                             <div class="table-data-feature">
-                                                <button class="item" data-toggle="tooltip" data-placement="top" title="Edit">
+                                                <button class="item" ng-click="edit(item.customerId)" data-toggle="tooltip" data-placement="top" title="Edit">
                                                     <i class="zmdi zmdi-edit"></i>
                                                 </button>
-                                                <button class="item" data-toggle="tooltip" data-placement="top" title="Delete">
+                                                <button class="item" ng-click="delete(item.customerId)" data-toggle="tooltip" data-placement="top" title="Delete">
                                                     <i class="zmdi zmdi-delete"></i>
-                                                </button>
                                                 </button>
                                             </div>
                                         </td>
@@ -198,127 +159,98 @@
                                     <tr class="spacer"></tr>
                                     </tbody>
                                 </table>
+                                <div class="pagination" style="margin: 30px;display: flex;align-items: center;justify-content: center;">
+                                    <button style="margin: 0 10px;" ng-disabled="currentPage == 1" ng-click="currentPage=currentPage-1; loadPage(currentPage)">Previous </button>
+                                    <span> Page {{currentPage}} of {{numberOfPages()}} </span>
+                                    <button style="margin: 0 10px;" ng-disabled="currentPage == numberOfPages()" ng-click="currentPage=currentPage+1; loadPage(currentPage)">Next</button>
+                                </div>
                             </div>
                             <!-- END DATA TABLE -->
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-
-        <!-- modal scroll -->
-        <div class="modal fade" id="scrollmodal" tabindex="-1" role="dialog" aria-labelledby="scrollmodalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-lg" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="scrollmodalLabel">Add User/Customer</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
-                            <div class="row form-group">
-                                <div class="col col-md-3">
-                                    <label for="fullName1" class=" form-control-label">Full name</label>
-                                </div>
-                                <div class="col-12 col-md-9">
-                                    <input type="text" id="fullName1" name="text-input" placeholder="Full Name"
-                                           class="form-control">
-                                    <!--                                        <small class="form-text text-muted">This is a help text</small>-->
-                                </div>
-                            </div>
-                            <div class="row form-group">
-                                <div class="col col-md-3">
-                                    <label for="password" class=" form-control-label">Password</label>
-                                </div>
-                                <div class="col-12 col-md-9">
-                                    <input type="password" id="password" name="text-input" placeholder="Password"
-                                           class="form-control">
-                                    <!--                                        <small class="form-text text-muted">This is a help text</small>-->
-                                </div>
-                            </div>
-                            <div class="row form-group">
-                                <div class="col col-md-3">
-                                    <label for="email1" class=" form-control-label">Email</label>
-                                </div>
-                                <div class="col-12 col-md-9">
-                                    <input type="text" id="email1" name="text-input" placeholder="Email"
-                                           class="form-control">
-                                    <!--                                        <small class="form-text text-muted">This is a help text</small>-->
-                                </div>
-                            </div>
-                            <div class="row form-group">
-                                <div class="col col-md-3">
-                                    <label for="phoneNumber1" class=" form-control-label">Phone Number</label>
-                                </div>
-                                <div class="col-12 col-md-9">
-                                    <input type="text" id="phoneNumber1" name="text-input" placeholder="Phone Number"
-                                           class="form-control">
-                                    <!--                                        <small class="form-text text-muted">This is a help text</small>-->
-                                </div>
-                            </div>
-                            <div class="row form-group">
-                                <div class="col col-md-3">
-                                    <label for="birthday1" class=" form-control-label">Birthday</label>
-                                </div>
-                                <div class="col-12 col-md-9">
-                                    <input type="date" id="birthday1" name="text-input"
-                                           class="form-control">
-                                    <!--                                        <small class="form-text text-muted">This is a help text</small>-->
-                                </div>
-                            </div>
-                            <div class="row form-group">
-                                <div class="col col-md-3">
-                                    <label class=" form-control-label">Gender</label>
-                                </div>
-                                <div class="col col-md-9">
-                                    <div class="form-check">
-                                        <div class="radio">
-                                            <label for="male1" class="form-check-label ">
-                                                <input type="radio" id="male1" name="radios" value="male"
-                                                       class="form-check-input">Male
-                                            </label>
-                                        </div>
-                                        <div class="radio">
-                                            <label for="female1" class="form-check-label ">
-                                                <input type="radio" id="female1" name="radios" value="female"
-                                                       class="form-check-input">Female
-                                            </label>
-                                        </div>
+            <!-- modal scroll -->
+            <div class="modal fade" id="scrollmodal" tabindex="-1" role="dialog" aria-labelledby="scrollmodalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="scrollmodalLabel">Add User/Customer</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form action="" method="post" enctype="multipart/form-data"  class="form-horizontal">
+                                <div class="row form-group">
+                                    <div class="col col-md-3">
+                                        <label for="fullName1" class=" form-control-label">Full name</label>
+                                    </div>
+                                    <div class="col-12 col-md-9">
+                                        <input type="text" id="fullName1" ng-model="formCreate.customerName" name="text-input" placeholder="Full Name"
+                                               class="form-control">
+                                        <!--                                        <small class="form-text text-muted">This is a help text</small>-->
                                     </div>
                                 </div>
-                            </div>
-                            <div class="row form-group">
-                                <div class="col col-md-3">
-                                    <label for="select1" class=" form-control-label">Role</label>
+                                <div class="row form-group">
+                                    <div class="col col-md-3">
+                                        <label for="password" class=" form-control-label">Password</label>
+                                    </div>
+                                    <div class="col-12 col-md-9">
+                                        <input type="password" id="password" ng-model="formCreate.password" name="text-input" placeholder="Password"
+                                               class="form-control">
+                                        <!--                                        <small class="form-text text-muted">This is a help text</small>-->
+                                    </div>
                                 </div>
-                                <div class="col-12 col-md-9">
-                                    <select name="select" id="select1" class="form-control">
-                                        <option value="0">Please select</option>
-                                        <option value="1">Option #1</option>
-                                        <option value="2">Option #2</option>
-                                        <option value="3">Option #3</option>
-                                    </select>
+                                <div class="row form-group">
+                                    <div class="col col-md-3">
+                                        <label for="email1" class=" form-control-label">Email</label>
+                                    </div>
+                                    <div class="col-12 col-md-9">
+                                        <input type="text" id="email1" ng-model="formCreate.email" name="text-input" placeholder="Email"
+                                               class="form-control">
+                                        <!--                                        <small class="form-text text-muted">This is a help text</small>-->
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="row form-group">
-                                <div class="col col-md-3">
-                                    <label for="file-input1" class=" form-control-label">Picture</label>
+                                <div class="row form-group">
+                                    <div class="col col-md-3">
+                                        <label for="phoneNumber1" class=" form-control-label">Phone Number</label>
+                                    </div>
+                                    <div class="col-12 col-md-9">
+                                        <input type="text" id="phoneNumber1" ng-model="formCreate.phoneNumber" name="text-input" placeholder="Phone Number"
+                                               class="form-control">
+                                        <!--                                        <small class="form-text text-muted">This is a help text</small>-->
+                                    </div>
                                 </div>
-                                <div class="col-12 col-md-9">
-                                    <input type="file" id="file-input1" name="file-input"
-                                           class="form-control-file">
+                                <div class="row form-group">
+                                    <div class="col col-md-3">
+                                        <label for="select1" class=" form-control-label">Role</label>
+                                    </div>
+                                    <div class="col-12 col-md-9">
+                                        <select ng-model="formCreate.roles.roleId" name="select" id="select1" class="form-control">
+                                            <option ng-repeat="r in roles" ng-value="r.roleId">{{r.roleName}}</option>
+                                        </select>
+                                    </div>
                                 </div>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="submit" class="btn btn-success btn-sm">
-                            Create
-                        </button>
+                                <div class="row form-group">
+                                    <div class="col col-md-3">
+                                        <label for="picture" class=" form-control-label">Picture</label>
+                                    </div>
+                                    <div class="col-12 col-md-9">
+                                        <input type="file" id="picture" ng-model="formCreate.picture" name="file"
+                                               class="form-control-file">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" ng-click="createCustomer(); updateFileName();" class="btn btn-success btn-sm">
+                                Create
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
+            <!-- end modal scroll -->
         </div>
-        <!-- end modal scroll -->
+

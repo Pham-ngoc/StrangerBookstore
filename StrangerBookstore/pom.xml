@@ -94,6 +94,11 @@
 			<version>RELEASE</version>
 			<scope>compile</scope>
 		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>2.12.5</version> <!-- Số phiên bản có thể thay đổi -->
+		</dependency>
 	</dependencies>
 
 	<build>

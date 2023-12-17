@@ -1,0 +1,72 @@
+.information-of-website16 p,
+.information-of-team p{
+  color: var(--color-white);
+  text-align: justify;
+  font-size: 20px;
+  width: 635px;
+}
+.information-of-team {
+  color: var(--color-white);
+}
+.quote-1-meaning p{
+  text-align: center;
+  color: var(--color-white);
+  margin-left: 30px;
+  font-size: 25px;
+  width: 630px;
+}
+.quote-1-meaning i{
+  color: var(--color-white);
+  font-size: 20px;
+}
+
+.infor-web img,
+.quote1 img,
+.infor-team1 img{
+  width: 582px;
+  height: 496px;
+  border-radius: 20px;
+}
+.infor-web1 img{
+    border: 2px solid var(--color-lightgray);
+}
+.quote1,
+.infor-web1,
+.infor-team {
+  text-align: center;
+}
+.infor-web1{
+    background-color: var(--color-dimgray);
+}
+.about-us-child1 {
+  border-radius: 0 0 var(--br-11xl) var(--br-11xl);
+  background-color: var(--color-lightgray);
+  width: 100%;
+  height: 550px;
+}
+.infor-web,
+.quote,
+.infor-team{
+  padding: 50px;
+}
+.about-us34{
+  font-size: 30px;
+  color: var(--color-dimgray);
+  height: 300px;
+  display: grid;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
+.about-us32 {
+  background-color: var(--color-dimgray);
+  width: 100%;
+  height: max-content;
+  overflow: hidden;
+  text-align: left;
+  font-size: var(--font-size-6xl);
+  color: var(--color-black);
+  font-family: var(--font-kanit);
+  display: block;
+  position: relative;
+}

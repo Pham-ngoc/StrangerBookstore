@@ -22,7 +22,7 @@ public class Cart {
 
     @ManyToOne(fetch = FetchType.EAGER, optional = true)
     @JoinColumn(name="product_id", referencedColumnName = "productId", nullable = true)
-    private Products product;
+    private Product product;
 
     private int quantity;
 

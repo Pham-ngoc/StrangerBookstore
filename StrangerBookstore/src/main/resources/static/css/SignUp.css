@@ -1,29 +1,25 @@
 .sign-up-child {
   /* margin: auto; */
-  position: absolute;
-  top: 50px;
-  left: 258px;
   background-color: var(--color-gray-300);
-  width: 1002px;
-  height: 1170px;
+  width: fit-content;
+  height: fit-content;
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  padding: 50px;
+  margin: 50px 0;
 }
 .error{
-  position: absolute;
-  top: 85px;
-  left: 40px;
   color: red;
-  font-size: 20px;
+  font-size: 15px;
   font-family: var(--font-kanit);
 }
 .email-confirm {
-  position: absolute;
-  top: 17px;
-  left: 31px;
   padding: 15px 31px 15px 31px;
   border-radius: 10px;
   background-color: var(--color-white);
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
-  width: 700px;
+  width: 100%;
   font-size: 20px;
   border-color: transparent;
   font-family: var(--font-kanit);
@@ -31,94 +27,53 @@
 .email-confirm:focus{
   outline: none;
 }
-.rectangle-parent6,
-.rectangle-parent7 {
-  position: absolute;
-  top: 770px;
-  left: 405px;
-  width: 838px;
-  height: 79px;
-}
 .sign-up-for {
-  position: absolute;
-  top: 215px;
-  left: 598px;
   color: var(--color-lightgray);
   text-align: center;
   font-size: 25px;
 }
 .sign-up-item {
-  position: absolute;
-  top: 70px; /* Di chuyển hình ảnh lên phía trên */
-  left: 50%; /* Di chuyển hình ảnh sang phía trái */
-  transform: translate(-50%, -50%);
-  width: 290px;
-  height: 242px;
+  width: 200px;
+  height: 90px;
   object-fit: cover;
+  margin: 0 auto;
 }
 .welcome-to-stranger {
-  position: absolute;
-  top: 175px;
-  left: 547px;
-  /* text-align: center; */
   font-size: var(--font-size-11xl);
   color: var(--color-lightgray);
+  width: fit-content;
+  margin: 0 auto;
 }
-.rectangle-parent10,
 .rectangle-parent8,
-.rectangle-parent9 {
-  position: absolute;
-  top: 439px;
-  left: 405px;
-  width: 838px;
-  height: 79px;
+.rectangle-parent9,
+.rectangle-parent10,
+.rectangle-parent11,
+.rectangle-parent12,
+.rectangle-parent13{
+  width: 700px;
+  height: 100%;
 }
-.rectangle-parent9 {
-  top: 550px;
+.input-form-sign-up{
+    padding-bottom: 30px;
+}
+.rectangle-parent12,
+.rectangle-parent13{
+    position: relative;
+    display: flex;
 }
 .formkitdate-icon {
-  position: absolute;
-  top: 726px;
-  left: 1076px;
   width: 36px;
   height: 36px;
   overflow: hidden;
   cursor: pointer;
 }
-.rectangle-parent11 {
-  position: absolute;
-  top: 660px;
-  left: 405px;
-  width: 838px;
-  height: 79px;
-}
-.rectangle-parent12,
-.rectangle-parent13 {
-  position: absolute;
-  top: 880px;
-  left: 405px;
-  width: 838px;
-  height: 79px;
-}
-.rectangle-parent13 {
-  top: 990px;
-}
 .sign-up-inner {
-  position: absolute;
-  top: calc(50% + 596px);
-  left: calc(50% - 112px);
   border-radius: var(--br-xl);
   width: 222px;
   height: 70px;
   cursor: pointer;
 }
 .sign-up3 {
-  position: absolute;
-  top: 1170px;
-  left: 50%; /* Di chuyển hình ảnh sang phía trái */
-  transform: translate(-50%, -50%);
-  color: var(--color-black);
-  text-align: center;
   padding: 8px 40px;
   background-color: var(--color-tan);
   color: var(--color-dimgray);
@@ -126,103 +81,88 @@
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
   font-size: 25px;
   text-decoration: none;
-  /* width: 142px; */
+  width: fit-content;
   transition: 0.3s;
+  margin: 0 auto;
 }
 .sign-up3:hover {
   color: var(--color-lightgray);
   background-color: var(--color-dimgray-100);
 }
 .mingcutedown-line-icon {
-  position: absolute;
-  top: 851px;
-  left: 1076px;
   width: 36px;
   height: 36px;
   overflow: hidden;
   cursor: pointer;
 }
 .sign-up2 {
-  position: relative;
   background-color: var(--color-dimgray-100);
   width: 100%;
-  height: 1270px;
+  height: fit-content;
   overflow: hidden;
-  text-align: left;
   font-size: var(--font-size-11xl);
   color: var(--color-gray-200);
   font-family: var(--font-kanit);
+  display: grid;
+  align-items: center;
+  justify-content: center;
 }
 
 .group-child1 {
-  position: absolute;
-  top: 0;
-  left: 0;
   border-radius: 10px;
   background-color: var(--color-white);
-  width: 700px;
-  height: 50px;
+  text-align: center;
+  padding: 10px 212px;
+  text-decoration: none;
 }
 .group-child1:hover {
   background-color: var(--color-tan);
   span{
-    color: var(--color-lightgray);
+    color: var(--color-dimgray);
   }
 }
 .rectangle-parent2 {
-  position: absolute;
-  top: 270px;
-  left: 435px;
-  width: 838px;
-  height: 79px;
+  width: max-content;
+  height: max-content;
   text-align: center;
+  margin: 30px 0;
+  display: grid;
+  align-items: center;
+  justify-content: center;
 }
 .devicongoogle1 {
-  position: absolute;
-  top: 277px;
-  left: 610px;
   width: 35px;
   height: 35px;
   overflow: hidden;
+  margin-right: 10px;
 }
 .rectangle-parent3 {
-  position: absolute;
-  top: 334px;
-  left: 435px;
   width: 838px;
   height: 79px;
   text-align: center;
 }
 .sign-in-with3,
 .sign-in-with2 {
-  position: absolute;
-  top: 6px;
-  left: 240px;
   font-size: 25px;
-  text-decoration: none;
   color: var(--color-dimgray);
 }
-.fluenteye-16-filled-icon2,
-.logosfacebook-icon1 {
+.fluenteye-16-filled-icon2 {
   position: absolute;
-  top: 341px;
-  left: 610px;
+  top: 15px;
+  right: 15px;
   width: 35px;
   height: 35px;
   overflow: hidden;
 }
-.fluenteye-16-filled-icon2 {
-  top: 32px;
-  left: 662px;
-  width: 35px;
-  height: 35px;
+.sign-up-form{
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    margin-top: 30px;
 }
-.line-div {
-  position: absolute;
-  top: 420px;
-  left: 486px;
+.line-div1 {
   border-top: 2px solid var(--color-tan);
   box-sizing: border-box;
-  width: 602px;
+  width: 700px;
   height: 2px;
 }

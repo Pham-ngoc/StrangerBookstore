@@ -109,6 +109,7 @@ CREATE TABLE `contact_us` (
     `update_at` TIMESTAMP,
     `update_by` VARCHAR(255)
 );
+
 -- Tạo bảng `order`
 CREATE TABLE `orders` (
     `order_id` INT AUTO_INCREMENT PRIMARY KEY,

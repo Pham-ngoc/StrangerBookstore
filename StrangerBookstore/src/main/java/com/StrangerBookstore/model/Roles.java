@@ -17,7 +17,6 @@ public class Roles extends BaseEntity {
     @GenericGenerator(name = "native", strategy = "native")
     private int roleId;
 
-    @NotBlank(message = "Role Name must not be blank")
     private String roleName;
 
     @Override

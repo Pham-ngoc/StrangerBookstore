@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Profile</title>
+    <th:block th:replace="~{User-view/style/user-css.html :: html}"></th:block>
+    <link type="text/css" rel="stylesheet" href="/css/profile-information.css" >
+</head>
+<body>
+<div class="profile-personal-information">
+    <div th:replace="~{User-view/fragment/header.html :: div}"></div>
+    <div class="wishlist-infor row">
+        <div class="menu-profile col-lg-3">
+            <div class="pic-name">
+                <div class="pic-profile">
+                    <div class="avata1">
+                        <img th:src="@{'/customer_pic/'+${session.loggingCustomer.picture}}" alt="" class="avata-customer">
+                    </div>
+                </div>
+                <div class="name-profile">
+                    <div class="customer-full-name5" th:text="${session.loggingCustomer.customerName}"></div>
+                </div>
+            </div>
+            <div class="profile-personal-information-child2"></div>
+            <div class="menu">
+                <a th:href="@{/profile/personal}" class="personal-information5" onclick="toggleActive(this)">Personal information</a>
+                <a th:href="@{/profile/address/1}" class="address-information5" onclick="toggleActive(this)">Address information</a>
+                <a th:href="@{/profile/wishlist/1}" class="my-wish-list5" id="my-wishlist"  onclick="toggleActive(this)">My wish list</a>
+            </div>
+        </div>
+        <div class="col-lg-9">
+            <div class="profile-personal-information-child">
+                <div class="formAddress">
+
+                    <form method="post" class="body-formAddress" th:object="${address}">
+                        <span class="error1" th:if="${!#strings.isEmpty(message)}" th:text="${message}" style="display: none;"></span>
+                        <input th:field="*{addressId}" type="hidden"/>
+                        <div class="rectangle-parent32">
+                            <label class="birthday">Recipient's Full Name</label>
+                            <input class="email-confirm fullName" th:field="*{recipientFullName}" type="text" placeholder="Recipient's Full Name"/>
+                            <span class="error" th:if="${#fields.hasErrors('recipientFullName')}" th:errors="*{recipientFullName}"></span>
+                        </div>
+                        <div class="rectangle-parent33">
+                            <label class="birthday">Recipient's Phone Number</label>
+                            <input class="email-confirm phoneNumber" th:field="*{recipientPhoneNumber}" type="text" placeholder="Recipient's Phone Number"/>
+                            <span class="error" th:if="${#fields.hasErrors('recipientPhoneNumber')}" th:errors="*{recipientPhoneNumber}"></span>
+                        </div>
+                        <div class="rectangle-parent34">
+                            <label class="birthday">Address Detail</label>
+                            <input class="email-confirm addressDetail" th:field="*{addressDetail}" type="text" placeholder="Address Detail"/>
+                            <span class="error" th:if="${#fields.hasErrors('addressDetail')}" th:errors="*{addressDetail}"></span>
+                        </div>
+                        <div class="rectangle-parent35">
+                            <label class="birthday">Address Type</label>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input addressType" th:field="*{addressType}" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="Nhà">
+                                <label class="form-check-label label-addressType" for="inlineRadio1">Home</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input addressType" th:field="*{addressType}" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="Công ty">
+                                <label class="form-check-label label-addressType" for="inlineRadio2">Office</label>
+                            </div>
+                            <span class="error" th:if="${#fields.hasErrors('addressType')}" th:errors="*{addressType}"></span>
+                        </div>
+                        <div class="button-address">
+                            <button type="submit" formaction="/profile/addAddress" class="update-profile btn" th:disabled="${editMode}">Create</button>
+                            <button type="submit" formaction="/profile/updateAddress"  class="update-profile btn">Update</button>
+                            <button type="submit" formaction="/profile/deleteAddress"  class="update-profile btn">Delete</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div th:replace="~{User-view/fragment/footer.html :: div}"></div>
+</div>
+<th:block th:replace="~{User-view/style/user-scr.html::html}"></th:block>
+<script>
+    var notificationSpan = document.querySelector('.error1');
+        var notificationMessage = notificationSpan.textContent ;
+
+        if(notificationMessage.trim() !== '') {
+            Swal.fire({
+               position: "center",
+               icon: "success",
+               title: notificationMessage,
+               showConfirmButton: true,
+               timer: 150000
+            }).then((result) => {
+               if (result.isConfirmed) {
+                  window.location.href = "/profile/address/1";
+               }
+            });
+        }
+</script>
+</body>
+</html>

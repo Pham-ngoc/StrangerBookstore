@@ -1,6 +1,7 @@
 package com.StrangerBookstore.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
@@ -15,9 +16,17 @@ public class Address extends BaseEntity{
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
     @GenericGenerator(name = "native", strategy = "native")
     private int addressId;
+
+    @NotBlank(message = "Recipient Name must not be blank")
     private String recipientFullName;
+
+    @NotBlank(message = "Recipient Phone Number must not be blank")
     private String recipientPhoneNumber;
+
+    @NotBlank(message = "Address Detail must not be blank")
     private String addressDetail;
+
+    @NotBlank(message = "Address Type must not be blank")
     private String addressType;
 
     @ManyToOne(fetch = FetchType.EAGER, optional = true)

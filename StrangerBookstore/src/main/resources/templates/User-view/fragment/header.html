@@ -2,93 +2,95 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
 <div class="header">
-    <div class="home-after-login-child-header"></div>
-    <div class="stranger-bookstore"><a href="" class="stranger-title">Stranger Bookstore</a></div>
-    <a href=""><img class="header-child" alt="" src="/public/ellipse-1@2x.png" /></a>
+    <div class="home-after-login-child-header">
+        <div class="stranger-bookstore">
+            <a href="" class="stranger-title">Stranger Bookstore</a>
+        </div>
+        <a href="">
+            <img class="header-child" alt="" src="/public/Picture12.png" />
+        </a>
 
-    <div class="news3"><a th:href="@{/new}" class="title">News</a></div>
-    <div class="about-us3" id="aboutUsText1">
-        <div class="dropdown-about-us">
-            <a th:href="@{/aboutus/about}" class="title">
-                <span>About us</span>
+        <div class="home1"><a th:href="@{/home}" class="title">Home</a></div>
+        <div class="shop1" id="shopText1"><a th:href=@{/shop/1?CateID=all&searchName=null} class="title">Shop</a></div>
+        <div class="news3"><a th:href="@{/news}" class="title">News</a></div>
+        <div class="about-us3" id="aboutUsText1">
+            <div class="dropdown-about-us">
+                <a th:href="@{/about}" class="title">
+                    <span>About us</span>
+                </a>
+                <div class="dropdown-content-about-us" id="dropdown-about-us">
+                    <div>
+                        <a th:href="@{/contact}" class="content">
+                            Contact us
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <a th:if="${session.loggingCustomer == null}" th:href="@{/login}" class="login">
+            Sign in
+        </a>
+        <div th:if="${session.loggingCustomer != null}" class="dropdown-account">
+            <a href="#" class="icon" onclick="dropdownAccount()">
+                <img class="line-md-account" src="/public/linemdaccount.svg" />
             </a>
-            <div class="dropdown-content-about-us" id="dropdown-about-us">
-                <div>
-                    <a th:href="@{/aboutus/contact}" class="content">
-                        Contact us
+            <div class="dropdown-content-account" id="dropdown-account">
+                <div class="infor-customer">
+                    <div class="avata">
+                        <img th:src="@{'/customer_pic/'+${session.loggingCustomer.picture}}" alt="" width="100" height="100" class="avata-customer">
+                    </div>
+                    <div class="customer-info">
+                    <span class="customer-name" th:text="${session.loggingCustomer.customerName}"></span>
+                    <span class="customer-email" th:text="${session.loggingCustomer.email}"></span>
+                    </div>
+                </div>
+                <hr>
+                <div sec:authorize="hasRole('ROLE_USER')" class="customer-list">
+                    <a th:href=@{/profile/personal} class="content-account">
+                        Profile
+                    </a>
+                    <a th:href="@{/myOrder/1?statusId=all}" class="content-account">
+                        My order
+                    </a>
+                    <a th:href="@{/profile/wishlist/1}" class="content-account">
+                        Wish list
+                    </a>
+                    <a th:href="@{/logout}" class="content-account">
+                        Log out
+                    </a>
+                </div>
+                <div sec:authorize="hasRole('ROLE_ADMIN')" class="customer-list">
+                    <a th:href="@{/}" class="content-account">
+                        Admin Manage
+                    </a>
+                    <a th:href="@{/logout}" class="content-account">
+                        Log out
                     </a>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="home1"><a href="" class="title">Home</a></div>
-    <div class="shop1" id="shopText1"><a href="" class="title">Shop</a></div>
-    <a th:if="${session.loggingCustomer == null}" th:href="@{/login}" class="login">
-        Login
-    </a>
-    <div th:if="${session.loggingCustomer != null}" class="dropdown-account">
-      <a href="#" class="icon" onclick="dropdownAccount()">
-        <img class="line-md-account" src="./public/linemdaccount.svg" />
-      </a>
-      <div class="dropdown-content-account" id="dropdown-account">
-        <div class="infor-customer">
-          <div class="avata">
-            <img src="img/avata.jpg" alt="" width="100" height="100" class="avata-customer">
-          </div>
-          <div class="customer-info">
-            <span class="customer-name">
-              Customer name
-            </span>
-            <span class="customer-email">
-              Customer email
-            </span>
-          </div>
-        </div>
-        <hr>
-        <div sec:authorize="hasRole('ROLE_USER')" class="customer-list">
-          <a href="#" class="content-account">
-            Profile
-          </a>
-          <a href="#" class="content-account">
-            My order
-          </a>
-          <a href="#" class="content-account">
-            Wish list
-          </a>
-          <a th:href="@{/logout}" class="content-account">
-            Log out
-          </a>
-        </div>
-          <div sec:authorize="hasRole('ROLE_ADMIN')" class="customer-list">
-              <a th:href="@{/}" class="content-account">
-                  Admin Manage
-              </a>
-              <a th:href="@{/logout}" class="content-account">
-                  Log out
-              </a>
-          </div>
-      </div>
-    </div>
 
-    <a th:if="${session.loggingCustomer != null}" href=""><img
-      class="ioncart-outline-icon"
-      alt=""
-      src="./public/ioncartoutline.svg"
-    /></a>
-
-    <div class="header-item">
-        <div class="dropdown-laguage">
-            <a href="#" th:onclick="dropdownLanguage()">
-                <img class="flag-um" src="/public/flagum4x3.svg" />
+        <div class="ioncart-outline-icon">
+            <a th:if="${session.loggingCustomer != null}" th:href="@{/cart}" >
+                <img alt="" src="/public/ioncartoutline.svg"/>
+                <span class="badge" style="position:absolute; top:-10px; color:var(--color-lightgray); font-size:14px; background: var(--color-dimgray);" th:id="itemInCart" th:text="${session.itemInCart}"></span>
             </a>
-            <div class="dropdown-content-laguage" id="myDropdown">
-                <div>
-                    <a href="#" class="link-with-image-english">
-                        <img src="/public/flagum4x3.svg" alt="English" />
-                    </a>
-                    <a href="#" class="link-with-image">
-                        <img src="/public/flagum4x3.svg" alt="Vietnamese" />
-                    </a>
+        </div>
+
+        <div class="header-item">
+            <div class="dropdown-laguage">
+                <a href="#" onclick="dropdownLanguage()">
+                    <img class="flag-um" src="/public/united-states.png" />
+                </a>
+                <div class="dropdown-content-laguage" id="myDropdown">
+                    <div>
+                        <a href="#" class="link-with-image-english">
+                            <img class="flag-um" src="/public/united-states.png" alt="English" />
+                        </a>
+                        <a href="#" class="link-with-image">
+                            <img class="flag-um" src="/public/vietnam.png" alt="Vietnamese" />
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>

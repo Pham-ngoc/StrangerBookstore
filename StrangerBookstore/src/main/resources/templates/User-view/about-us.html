@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>About us</title>
+    <th:block th:replace="~{User-view/style/user-css.html :: html}"></th:block>
+    <link type="text/css" rel="stylesheet" href="/css/about-us.css" >
+</head>
+<body>
+<div class="about-us32">
+    <div class="about-us-child1">
+        <div th:replace="~{User-view/fragment/header.html :: div}"></div>
+        <div class="about-us34">
+            <span>About us</span>
+        </div>
+    </div>
+
+    <div class="infor-web row">
+        <div class="col-lg-6">
+            <div class="infor-web1">
+                <img src="/images/icon/2.2.png" alt="">
+            </div>
+        </div>
+        <div class="col-lg-6 d-flex align-items-center">
+            <div class="information-of-website16">
+                <p>
+                    Stranger Bookstore is an online book-selling website where you can find thousands of books from different genres.
+                    With a friendly and easy-to-use interface, Stranger Bookstore offers a great online book-shopping experience for readers.
+                </p>
+                <p>
+                    With a founding team passionate about books, Stranger Bookstore always wants to bring convenience and diversity to the reading community.
+                    Having invested a lot of time and effort, Stranger Bookstore built a high-quality online book-shopping platform.
+                </p>
+                <p>
+                    At Stranger Bookstore, you can easily search and buy the latest titles, classics, textbooks, and many other genres.
+                    You will receive advice and recommendations of books that suit your interests, helping you discover more new works worth reading.
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="quote row">
+        <div class="col-lg-6 d-flex align-items-center">
+            <div class="quote-1-meaning">
+                <p>"Books not only help us understand the world better but also aid in a deeper understanding of ourselves."</p>
+                <i class="float-end"> - Andre Maurois - </i>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="quote1">
+                <img src="/images/icon/1.jpg" alt="">
+            </div>
+        </div>
+    </div>
+    <div class="infor-team row">
+        <div class="col-lg-6">
+            <div class="infor-team1">
+                <img src="/images/icon/team1.jpg" alt="">
+            </div>
+        </div>
+        <div class="col-lg-6 d-flex align-items-center">
+            <div class="information-of-team">
+                <p>
+                    Welcome to our passionate and creative team at "Stranger Bookstore"!
+                    Here, we are proud to introduce our team of multi-talented, enthusiastic and committed to bringing you the best book shopping experience.
+                </p>
+                <p>
+                    Our team is not only experts in technology and web development, but also passionate about reading culture and creativity.
+                    With this combination, we are building not only a regular book selling website but also an interactive space where our team shows passion and enthusiasm for every book page.
+                </p>
+                <p>
+                    We are committed to constantly working to bring you the best online book shopping experience.
+                    Join us in exploring the online reading space with innovation and passion from our team!
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div th:replace="~{User-view/fragment/footer.html :: div}"></div>
+</div>
+<th:block th:replace="~{User-view/style/user-scr.html::html}"></th:block>
+</body>
+</html>
