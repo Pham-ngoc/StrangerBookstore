@@ -50,13 +50,35 @@ public class CustomerService {
         return customerRepository.save(customer);
     }
 
-    public Customer update(Integer id, Customer Customer) {
-        Customer model = customerRepository.findById(id).get();
-        model.setCustomerName(Customer.getCustomerName());
-        model.setPhoneNumber(Customer.getPhoneNumber());
-        model.setEmail(Customer.getEmail());
-        return customerRepository.save(model);
+    public Customer update(Integer id, Customer customer) {
+        Optional<Customer> customerOptional = customerRepository.findById(id);
+
+        if (customerOptional.isPresent()) {
+            Customer existingCustomer = customerOptional.get();
+
+            // Update common fields
+            existingCustomer.setCustomerName(customer.getCustomerName());
+            existingCustomer.setPhoneNumber(customer.getPhoneNumber());
+            existingCustomer.setEmail(customer.getEmail());
+
+            // Update roles if different
+            if (!existingCustomer.getRoles().equals(customer.getRoles())) {
+                Optional<Roles> rolesOptional = roleRepository.findById(customer.getRoles().getRoleId());
+
+                if (rolesOptional.isPresent()) {
+                    Roles roles = rolesOptional.get();
+                    existingCustomer.setRoles(roles);
+                } else {
+                    return null; // Handle the case when roles are not found
+                }
+            }
+
+            return customerRepository.save(existingCustomer);
+        } else {
+            return null; // Handle the case when customer is not found
+        }
     }
+
 
     public void delete(Integer id) {
         customerRepository.deleteById(id);

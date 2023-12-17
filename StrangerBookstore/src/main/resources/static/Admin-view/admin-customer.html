@@ -70,16 +70,14 @@
                                 </div>
                                 <div class="row form-group">
                                     <div class="col col-md-3">
-                                        <label for="select" class=" form-control-label">Role</label>
+                                        <label for="roleId" class=" form-control-label">Role</label>
                                     </div>
                                     <div class="col-12 col-md-9">
-                                        <select name="select" id="select" class="form-control" ng-model="form.roleId">
-                                            <option ng-repeat="item in list" ng-value="item.roles ? item.roles.roleId : null">
-                                                {{item.roles ? item.roles.roleName : 'Unknown Role'}}
-                                            </option>
+                                        <select name="select" id="roleId" class="form-control" ng-model="form.roles"
+                                                ng-options="s as s.roleName for s in roles track by s.roleId">
                                         </select>
-
                                     </div>
+
                                 </div>
                                 <div class="row form-group">
                                     <div class="col col-md-3">
@@ -244,13 +242,10 @@
                             </div>
                             <div class="row form-group">
                                 <div class="col col-md-3">
-                                    <label for="select" class=" form-control-label">Role</label>
+                                    <label for="select1" class=" form-control-label">Role</label>
                                 </div>
                                 <div class="col-12 col-md-9">
-                                    <select name="select" id="select1" class="form-control" ng-model="form.roleId">
-                                        <option ng-repeat="item in list" ng-value="item.roles ? item.roles.roleId : null">
-                                            {{item.roles ? item.roles.roleName : 'Unknown Role'}}
-                                        </option>
+                                    <select name="select" id="select1" class="form-control" ng-model="form.roles" ng-options="item.roles as item.roles.roleName for item in list">
                                     </select>
                                 </div>
                             </div>

@@ -1,7 +1,9 @@
 package com.StrangerBookstore.controller.AdminController;
 import com.StrangerBookstore.model.Categories;
 import com.StrangerBookstore.model.Customer;
+import com.StrangerBookstore.model.Roles;
 import com.StrangerBookstore.repository.CustomerRepository;
+import com.StrangerBookstore.repository.RoleRepository;
 import com.StrangerBookstore.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -31,6 +33,9 @@ public class AdminCustomerController {
 
     @Autowired
     CustomerRepository customerRepository;
+
+    @Autowired
+    RoleRepository roleRepository;
 
     public static String UPLOAD_DIRECTORY = System.getProperty("user.dir") + "/StrangerBookstore/src/main/resources/static/images";
     @GetMapping("/customer")
@@ -66,5 +71,11 @@ public class AdminCustomerController {
     public void deletecustomer(@PathVariable("id") Integer id) {
         service.delete(id);
     }
+
+    @GetMapping("/roles")
+    public ResponseEntity<List<Roles>> role(Model model){
+        return ResponseEntity.ok(roleRepository.findAll());
+    }
+
 }
 
