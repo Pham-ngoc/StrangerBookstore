@@ -60,7 +60,5 @@ public class OrderService {
         }
     }
 
-    public void delete(Integer id) {
-        orderRepository.deleteById(id);
-    }
+
 }

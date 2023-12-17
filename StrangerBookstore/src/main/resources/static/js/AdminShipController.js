@@ -1,8 +1,6 @@
  app.controller("AdminShipController", function ($scope, $http) {
  var shipUrl = 'http://localhost:8080/admin/shipInformation';
- var orderUrl = 'http://localhost:8080/admin/order';
- var customerUrl = 'http://localhost:8080/admin/customer';
- var statusOrderUrl = 'http://localhost:8080/admin/status';
+
 
     $scope.list = [];
     $scope.form = {};
@@ -18,29 +16,7 @@
                     console.error("Error fetching categories:", error);
                 });
 
-    $http.get(orderUrl)
-            .then(function (response) {
-                $scope.order = response.data;
-            })
-            .catch(function (error) {
-                console.error("Error fetching categories:", error);
-            });
 
-    $http.get(customerUrl)
-                .then(function (response) {
-                    $scope.customer = response.data;
-                })
-                .catch(function (error) {
-                    console.error("Error fetching categories:", error);
-                });
-
-    $http.get(statusOrderUrl)
-                .then(function (response) {
-                    $scope.statusOrders = response.data;
-                })
-                .catch(function (error) {
-                    console.error("Error fetching categories:", error);
-                });
 
     $scope.updateShip = function () {
             // Sử dụng dữ liệu từ $scope.form để thực hiện cập nhật

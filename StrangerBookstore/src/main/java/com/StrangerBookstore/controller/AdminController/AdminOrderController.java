@@ -48,8 +48,5 @@ public class AdminOrderController {
         }
     }
 
-    @DeleteMapping("/order/{id}")
-    public void delete(@PathVariable("id") Integer id) {
-        orderService.delete(id);
-    }
+
 }

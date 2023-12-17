@@ -42,7 +42,7 @@
                     });
             };
 
-//
+
     $scope.editOrders = function (item) {
                 // Gán dữ liệu từ hàng đã click vào biến $scope.form
                 $scope.form.orderId = item.orderId;
@@ -57,27 +57,8 @@
                 $scope.form.paymentMethod = item.paymentMethod;
                 $scope.form.totalAmount = item.totalAmount;
                 $scope.isEditing = true;
-                console.log('StatusOrders value:', item.statusOrders);
-                console.log('StatusOrders value when editing:', item.statusOrders);
-                console.log('StatusOrders ID when editing:', item.statusOrders.statusId);
-                console.log('StatusOrders Name when editing:', item.statusOrders.statusName);
             };
 
-    $scope.deleteOrders = function (orderId) {
-              $http.delete(orderUrl + '/' + orderId)
-                  .then(function (response) {
-                      console.log('Order deleted successfully:', response.data);
-
-                      // Cập nhật danh sách đơn hàng sau khi xóa
-                      $scope.list = $scope.list.filter(function (order) {
-                          return order.orderId !== orderId;
-                      });
-                      return $scope.resetForm();
-                  })
-                  .catch(function (error) {
-                      console.error('Error deleting order:', error);
-                  });
-          };
 
 
 

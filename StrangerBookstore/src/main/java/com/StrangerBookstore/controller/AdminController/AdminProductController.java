@@ -46,7 +46,6 @@ public class AdminProductController {
         return ResponseEntity.ok(createProduct);
     }
 
-
     @PutMapping("/product/{id}")
     public ResponseEntity<Products> update(@PathVariable("id") Integer id, @RequestBody Products product) {
         Products updatedProduct = service.update(id, product);
@@ -56,7 +55,6 @@ public class AdminProductController {
             return ResponseEntity.notFound().build();
         }
     }
-
 
     @DeleteMapping("/product/{id}")
     public void delete(@PathVariable("id") Integer id) {

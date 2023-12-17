@@ -74,7 +74,6 @@
                                     <div class="col-12 col-md-9">
                                         <input type="text" id="quantityInStock " name="text-input" placeholder="Quantity in Stock"
                                                class="form-control"  ng-model="form.quantityInStock">
-                                        <!-- <small class="form-text text-muted">This is a help text</small>-->
                                     </div>
                                 </div>
                                 <div class="row form-group">
@@ -84,7 +83,6 @@
                                     <div class="col-12 col-md-9">
                                         <input type="text" id="isbn" name="text-input" placeholder="ISBN"
                                                class="form-control"  ng-model="form.isbn">
-                                        <!-- <small class="form-text text-muted">This is a help text</small>-->
                                     </div>
                                 </div>
                                 <div class="row form-group">
@@ -103,7 +101,6 @@
                                     <div class="col-12 col-md-9">
                                         <input type="text" id="price" name="text-input" placeholder="Price"
                                                class="form-control"  ng-model="form.price">
-                                        <!-- <small class="form-text text-muted">This is a help text</small>-->
                                     </div>
                                 </div>
                                 <div class="row form-group">
@@ -111,18 +108,9 @@
                                         <label for="categoryId" class=" form-control-label">Category</label>
                                     </div>
                                     <div class="col-12 col-md-9">
-<!--                                        <select name="select" id="categoryId " class="form-control"  ng-model="form.categories.categoryId">-->
-<!--                                            <option ng-repeat="c in categories" value="c.categoryId" >{{c.categoryName}}</option>-->
-<!--                                        </select>-->
-<!--                                        <select name="select" id="categoryId " class="form-control"  ng-model="form.categories">-->
-<!--                                            <option ng-repeat="c in categories" value="{{c.categoryId}}">{{c.categoryName}}</option>-->
-<!--                                        </select>-->
                                         <select name="select" id="categoryId" class="form-control" ng-model="form.categories"
                                                 ng-options="c as c.categoryName for c in categories track by c.categoryId">
                                         </select>
-<!--                                        <select name="select" id="categoryId " class="form-control" ng-model="form.categories">-->
-<!--                                            <option ng-repeat="c in categories" value="{{c}}">{{c.categoryName}}</option>-->
-<!--                                        </select>-->
                                     </div>
                                 </div>
                                 <div class="row form-group">
@@ -136,9 +124,6 @@
                                         <!-- Hiển thị tên tệp đã chọn -->
                                         <span ng-if="form.product_img">{{form.product_img}}</span>
                                     </div>
-<!--                                    <div class="alert alert-success" ng-show="successMessage" role="alert">-->
-<!--                                        {{ successMessage }}-->
-<!--                                    </div>-->
                                 </div>
                                 <div class="card-footer">
                                     <button type="button" class="btn btn-primary btn-sm" ng-click="createProduct(); updateFileName();" >
