@@ -73,7 +73,7 @@ public class ProfileController {
 
     @PostMapping("/updateProfile")
     public ResponseEntity<String> updateProfile(@ModelAttribute Profile profile,
-                                                @RequestParam("file") MultipartFile file) {
+                                                @RequestParam(value = "file", required = false) MultipartFile file) {
         Customer customer = (Customer) session.getAttribute("loggingCustomer");
         // Xử lý dữ liệu từ profile
         customer.setCustomerName(profile.getName());
@@ -244,7 +244,7 @@ public class ProfileController {
         if(wishlist == null){
             wishlist = new Wishlist();
             wishlist.setCustomer(customer);
-            wishlist.setProducts(products);
+            wishlist.setProduct(products);
         } else {
             return ResponseEntity.ok("The Product Already Exists In The Wishlist!");
         }

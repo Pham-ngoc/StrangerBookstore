@@ -16,13 +16,13 @@ public class Cart {
     @GenericGenerator(name = "native", strategy = "native")
     private int cartId;
 
-    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST, targetEntity = Customer.class)
+    @ManyToOne(fetch = FetchType.LAZY, optional = true)
     @JoinColumn(name="customer_id", referencedColumnName = "customerId", nullable = true)
     private Customer customer;
 
-    @ManyToOne(fetch = FetchType.EAGER, optional = true)
+    @ManyToOne(fetch = FetchType.LAZY, optional = true)
     @JoinColumn(name="product_id", referencedColumnName = "productId", nullable = true)
-    private Product product;
+    private Products product;
 
     private int quantity;
 

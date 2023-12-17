@@ -110,40 +110,6 @@
     </div>
 <th:block th:replace="~{User-view/style/user-scr.html::html}"></th:block>
 <script>
-    function updatePrices() {
-        // Lấy mảng các phần tử có lớp là "minPrice"
-        var minPriceElements = document.getElementsByClassName("minPrice");
-
-        // Lấy giá trị th:value từ phần tử đầu tiên có lớp "minPrice"
-        var minPrice = minPriceElements[0].getAttribute("value");
-
-        // Lấy mảng các phần tử có lớp là "maxPrice"
-        var maxPriceElements = document.getElementsByClassName("maxPrice");
-
-        // Lấy giá trị th:value từ phần tử đầu tiên có lớp "maxPrice"
-        var maxPrice = maxPriceElements[0].getAttribute("value");
-
-        console.log("minPrice: " + minPrice);
-        console.log("maxPrice: " + maxPrice);
-
-        var currentPageNumber = window.location.href.match(/\/shop\/(\d+)/)[1];
-        console.log(currentPageNumber)
-        $.ajax({
-            type: "GET",
-            url: "/getByPrice",
-            data: {
-                page: currentPageNumber,
-                minPrice: minPrice,
-                maxPrice: maxPrice
-            },
-            success: function(response) {
-
-            },
-            error: function(error) {
-                console.error("Error: " + error);
-            }
-        });
-    };
 
 </script>
 </body>

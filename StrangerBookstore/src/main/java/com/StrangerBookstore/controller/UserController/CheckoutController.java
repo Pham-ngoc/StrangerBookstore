@@ -75,15 +75,15 @@ public class CheckoutController {
             if(orders.getOrderId() > 0) {
                 listCart.forEach(cart -> {
                     OrderDetail orderDetails = new OrderDetail();
-                    orderDetails.setOrders(orders);
-                    orderDetails.setProducts(cart.getProducts());
+                    orderDetails.setOrder(orders);
+                    orderDetails.setProduct(cart.getProduct());
                     orderDetails.setQuantity(cart.getQuantity());
-                    orderDetails.setAmount(cart.getQuantity() * cart.getProducts().getPrice());
+                    orderDetails.setAmount(cart.getQuantity() * cart.getProduct().getPrice());
                     orderDetails.setCreateBy(customer.getEmail());
                     orderDetails.setCreateAt(LocalDateTime.now());
                     ShipInfor shipInfor = new ShipInfor();
                     shipInfor.setAddress(address);
-                    shipInfor.setOrders(orders);
+                    shipInfor.setOrder(orders);
                     shipInforRepository.save(shipInfor);
                     orderDetailRepository.save(orderDetails);
                     cartRepository.delete(cart);

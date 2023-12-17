@@ -21,9 +21,9 @@ public class ShipInfor {
     @JoinColumn(name="address_id", referencedColumnName = "addressId", nullable = true)
     private Address address;
 
-    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST, targetEntity = Order.class)
+    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST, targetEntity = Orders.class)
     @JoinColumn(name="order_id", referencedColumnName = "orderId", nullable = true)
-    private Order order;
+    private Orders order;
 
     private String status;
 

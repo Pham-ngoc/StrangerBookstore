@@ -69,9 +69,9 @@ public class LoginController {
             return "redirect:/forget-password";
         }
         if(customerService.updatePassword(customer)){
-            String emailFrom = "nganvps24932@fpt.edu.vn";
+            String emailFrom = "strangerbookstorecontact@gmail.com";
             String emailTo = email;
-            mailService.sendEmail(customer, emailFrom,emailTo);
+            mailService.sendEmail(customer, emailFrom, emailTo);
 //            String emailUpdate = messageSource.getMessage("emailUpdate",null, LocaleContextHolder.getLocale());
             red.addFlashAttribute("emailUpdate", "Please check your email to get  your new Password");
             return "redirect:/forget-password";

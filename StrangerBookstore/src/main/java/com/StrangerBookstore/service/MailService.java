@@ -17,7 +17,7 @@ public class MailService {
         MimeMessage message = sender.createMimeMessage();
         // Sử dụng Helper để thiết lập các thông tin cần thiết cho message
         MimeMessageHelper helper = new MimeMessageHelper(message, true, "utf-8");
-        String subject  = "Fresh shop - Recovery password /n ";
+        String subject  = "Stranger Bookstore - Recovery password /n ";
         String content = "<html>"
                 + "<head>"
                 + "<style>"

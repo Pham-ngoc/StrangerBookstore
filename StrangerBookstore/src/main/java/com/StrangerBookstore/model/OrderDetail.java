@@ -14,15 +14,15 @@ public class OrderDetail extends BaseEntity{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
     @GenericGenerator(name = "native", strategy = "native")
-    private int orderDetailId;
+    private int orderDetailsId;
 
     @ManyToOne(fetch = FetchType.EAGER, optional = true)
     @JoinColumn(name = "order_id", referencedColumnName = "orderId", nullable = true)
-    private Order order;
+    private Orders order;
 
     @ManyToOne(fetch = FetchType.EAGER, optional = true)
     @JoinColumn(name = "product_id", referencedColumnName = "productId", nullable = true)
-    private Product product;
+    private Products product;
 
     private int quantity;
 
@@ -34,7 +34,7 @@ public class OrderDetail extends BaseEntity{
         if (o == null || getClass() != o.getClass()) return false;
         if (!super.equals(o)) return false;
         OrderDetail orderDetail = (OrderDetail) o;
-        return orderDetailId == orderDetail.orderDetailId
+        return orderDetailsId == orderDetail.orderDetailsId
                 && Objects.equals(order, orderDetail.order)
                 && Objects.equals(product, orderDetail.product)
                 && Objects.equals(quantity, orderDetail.quantity)
@@ -43,6 +43,6 @@ public class OrderDetail extends BaseEntity{
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), orderDetailId, order, product, quantity, amount);
+        return Objects.hash(super.hashCode(), orderDetailsId, order, product, quantity, amount);
     }
 }

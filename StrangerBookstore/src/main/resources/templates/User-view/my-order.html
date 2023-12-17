@@ -38,19 +38,19 @@
             <div class="group-container">
                 <div class="customer-order-list" th:if="${listOrderDetail != null && totalPages > 0}" th:each="oDetail : ${listOrderDetail}" th:id="${oDetail.orderDetailsId}">
                     <div class="customer-order-status-order">
-                        <span>Order Status: </span><span th:text="${oDetail.orders.statusOrders.statusName}"></span>
+                        <span>Order Status: </span><span th:text="${oDetail.order.statusOrders.statusName}"></span>
                     </div>
                     <hr class="customer-order-hr">
                     <div class="customer-order-product-list row">
                         <div class="customer-order-pic col-lg-2">
-                            <img th:src="@{'/product_img/'+${oDetail.products.product_img}}" th:alt="${oDetail.products.productName}">
+                            <img th:src="@{'/product_img/'+${oDetail.product.product_img}}" th:alt="${oDetail.product.productName}">
                         </div>
                         <div class="customer-order-name-qty col-lg-6">
-                            <p class="customer-order-name" th:text="${oDetail.products.productName}"></p>
+                            <p class="customer-order-name" th:text="${oDetail.product.productName}"></p>
                             <p class="customer-order-qty" th:text="${oDetail.quantity}"></p>
                         </div>
                         <div class="customer-order-price col-lg-2">
-                            <span th:text="${#numbers.formatDecimal(oDetail.products.price, 0, 'COMMA', 0 , 'POINT')} + ' đ'"></span>
+                            <span th:text="${#numbers.formatDecimal(oDetail.product.price, 0, 'COMMA', 0 , 'POINT')} + ' đ'"></span>
                         </div>
                         <div class="customer-order-total col-lg-2">
                             <span th:text="${#numbers.formatDecimal(oDetail.amount, 0, 'COMMA', 0 , 'POINT')} + ' đ'"></span>
@@ -68,12 +68,11 @@
                         </div>
                         <div class="customer-order-order-detail row">
                             <a class="customer-order-repurchase col-lg-8"
-                               th:onclick="'addToCart(\'' + ${oDetail.products.productId} + '\')'"
-                                th:if="${oDetail.orders.statusOrders.statusName == 'Hoàn thành'}">
+                               th:onclick="'addToCart(\'' + ${oDetail.product.productId} + '\')'"
+                                th:if="${oDetail.order.statusOrders.statusName == 'Hoàn thành'}">
                                 Repurchase
                             </a>
                             <a th:href="@{/getOrderDetail(orderDetailId=${oDetail.orderDetailsId})}"
-                               th:if="${oDetail.orders.statusOrders.statusName == 'Hoàn thành'}"
                                class="customer-order-detail col-lg-4">
                                 See Order Detail
                             </a>

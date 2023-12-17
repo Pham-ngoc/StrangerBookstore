@@ -1,32 +1,25 @@
 package com.StrangerBookstore.service;
 
-<<<<<<< HEAD
+
 
 import com.StrangerBookstore.model.Categories;
 import com.StrangerBookstore.model.Products;
 import com.StrangerBookstore.repository.CategoryRepository;
 import com.StrangerBookstore.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
+import org.springframework.core.io.ResourceLoader;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
-@Service
-public class ProductService {
-=======
-import com.StrangerBookstore.model.Products;
-import com.StrangerBookstore.repository.ProductRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.io.ResourceLoader;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
+
+
 import org.springframework.data.domain.Sort;
-import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -37,12 +30,10 @@ import java.nio.file.Paths;
 @Service
 public class ProductService {
 
->>>>>>> main
     @Autowired
     ProductRepository productRepository;
 
     @Autowired
-<<<<<<< HEAD
     CategoryRepository categoryRepository;
     public List<Products> findAll() {
         return productRepository.findAll();
@@ -94,15 +85,7 @@ public Products update(Integer id, Products product) {
     }
 
 
-}
-=======
     ResourceLoader resourceLoader;
-
-    private static Pageable getPageable(int pageNumber){
-        int pageShow = 5;
-        Pageable pageable = PageRequest.of(pageNumber - 1, pageShow, Sort.by("productName").descending());
-        return pageable;
-    }
 
     private static Pageable getPageableShop(int pageNumber){
         int pageShow = 12;
@@ -115,12 +98,6 @@ public Products update(Integer id, Products product) {
         Page<Products> pageProduct = productRepository.findAllProduct(pageable);
         return pageProduct;
     }
-
-//    public Page<Products> findAllProduct(int pageNumber){
-//        Pageable pageable = getPageable(pageNumber);
-//        Page<Products> pageProduct = productRepository.findAllProduct(pageable);
-//        return pageProduct;
-//    }
 
     public Page<Products> findAllByCateID(int pageNumber, int cateID){
         Pageable pageable = getPageableShop(pageNumber);
@@ -161,4 +138,3 @@ public Products update(Integer id, Products product) {
         return filename;
     }
 }
->>>>>>> main

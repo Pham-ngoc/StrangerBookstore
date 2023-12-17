@@ -46,6 +46,8 @@ public class OrderController {
     ReviewsRepository reviewsRepository;
 
     @Autowired
+    AddressRepository addressRepository;
+    @Autowired
     HttpSession session;
 
     @GetMapping("/myOrder/{page}")
@@ -95,10 +97,11 @@ public class OrderController {
     public String orderDetail(Model model, @RequestParam("orderDetailId") int orderDetailId){
         List<StatusOrders> listStatus = statusOrderRepository.findAll();
         int ordersId = orderDetailRepository.findOrdersByOrderDetailId(orderDetailId);
-        ShipInfor shipInfor = shipInforRepository.findByOrderId(ordersId);
+        int addressShipInfor = shipInforRepository.findAddressByOrderId(ordersId);
+        Address address = addressRepository.findByAddressId(addressShipInfor);
         OrderDetail orderDetail = orderDetailRepository.findAllByOrderDetailId(orderDetailId);
         model.addAttribute("listStatus", listStatus);
-        model.addAttribute("shipInfor", shipInfor);
+        model.addAttribute("shipInfor", address);
         model.addAttribute("orderDetail", orderDetail);
         return "User-view/my-order-detail.html";
     }

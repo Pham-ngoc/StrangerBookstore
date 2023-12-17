@@ -31,19 +31,19 @@
         <div class="col-lg-9">
             <div class="profile-personal-information-child">
                 <div class="product-wishlist" th:if="${totalPages > 0}">
-                    <div class="row" th:each="wishlist : ${listWishlist}" th:id="'product-' + ${wishlist.products.productId}">
+                    <div class="row" th:each="wishlist : ${listWishlist}" th:id="'product-' + ${wishlist.product.productId}">
                         <div class="col-md-2">
-                            <img th:src="@{'/product_img/'+${wishlist.products.product_img}}" th:alt="${wishlist.products.productName}">
+                            <img th:src="@{'/product_img/'+${wishlist.product.product_img}}" th:alt="${wishlist.product.productName}">
                         </div>
                         <div class="col-md-5">
-                            <p th:text="${wishlist.products.productName}"></p>
-                            <p th:text="${#numbers.formatDecimal(wishlist.products.price, 0, 'COMMA', 0 , 'POINT')} + ' đ'"></p>
+                            <p th:text="${wishlist.product.productName}"></p>
+                            <p th:text="${#numbers.formatDecimal(wishlist.product.price, 0, 'COMMA', 0 , 'POINT')} + ' đ'"></p>
                         </div>
                         <div class="col-md-3">
-                            <a type="button" class="edit btn" th:onclick="'addToCart(\'' + ${wishlist.products.productId} + '\')'">Add to cart</a>
+                            <a type="button" class="edit btn" th:onclick="'addToCart(\'' + ${wishlist.product.productId} + '\')'">Add to cart</a>
                         </div>
                         <div class="col-md-2">
-                            <a type="button" class="delete3 btn" th:onclick="'deleteWishlist(\'' + ${wishlist.products.productId} + '\')'">Delete</a>
+                            <a type="button" class="delete3 btn" th:onclick="'deleteWishlist(\'' + ${wishlist.product.productId} + '\')'">Delete</a>
                         </div>
                         <hr class="wishlist-hr">
                     </div>

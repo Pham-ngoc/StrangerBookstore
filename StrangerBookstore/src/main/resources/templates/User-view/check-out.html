@@ -18,21 +18,21 @@
             <div class="col-lg-7">
                 <div class="check-out-item" th:if="${sizeListCart > 0}">
                     <span class="my-order">MY ORDER</span>
-                    <div class="infor-product-order row" th:each="checkout : ${listCart}" th:id="${checkout.products.productId}">
+                    <div class="infor-product-order row" th:each="checkout : ${listCart}" th:id="${checkout.product.productId}">
                         <div class="pic-qty-order col-lg-6 row">
                             <div class="pic-order col-lg-4">
-                                <img th:src="@{'/product_img/'+${checkout.products.product_img}}"  alt="${checkout.products.productName}">
+                                <img th:src="@{'/product_img/'+${checkout.product.product_img}}"  alt="${checkout.product.productName}">
                             </div>
                             <div class="name-qty-order col-lg-8">
-                                <p class="name-order" th:text="${checkout.products.productName}"></p>
+                                <p class="name-order" th:text="${checkout.product.productName}"></p>
                                 <p class="qty-order" th:text="'Quantity: '+${checkout.quantity}">Qty</p>
                             </div>
                         </div>
                         <div class="price-order col-lg-3">
-                            <p class="price" th:text="${#numbers.formatDecimal(checkout.products.price, 0, 'COMMA', 0 , 'POINT')} + ' đ'"></p>
+                            <p class="price" th:text="${#numbers.formatDecimal(checkout.product.price, 0, 'COMMA', 0 , 'POINT')} + ' đ'"></p>
                         </div>
                         <div class="total-order col-lg-3">
-                            <p class="total" th:text="${#numbers.formatDecimal(checkout.quantity * checkout.products.price, 0, 'COMMA', 0 , 'POINT')} + ' đ'">Total</p>
+                            <p class="total" th:text="${#numbers.formatDecimal(checkout.quantity * checkout.product.price, 0, 'COMMA', 0 , 'POINT')} + ' đ'">Total</p>
                         </div>
                         <hr class="hr-order">
                     </div>

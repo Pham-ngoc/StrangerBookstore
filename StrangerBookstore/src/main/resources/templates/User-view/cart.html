@@ -41,21 +41,21 @@
                                 Total
                             </div>
                         </div>
-                        <div class="body-table-cart-product row" th:each="cart : ${cartProducts}" th:id="'product-' + ${cart.products.productId}">
+                        <div class="body-table-cart-product row" th:each="cart : ${cartProducts}" th:id="'product-' + ${cart.product.productId}">
                             <div class="infor-cart-product col-lg-5 row">
                                 <div class="pic col-lg-4">
-                                    <img th:src="@{'/product_img/'+${cart.products.product_img}}"  alt="${cart.products.productName}">
+                                    <img th:src="@{'/product_img/'+${cart.product.product_img}}"  alt="${cart.product.productName}">
                                 </div>
                                 <div class="name-book col-lg-8">
-                                    <p class="name" th:text="${cart.products.productName}"></p>
+                                    <p class="name" th:text="${cart.product.productName}"></p>
                                 </div>
                             </div>
                             <div class="price-product col-lg-1">
-                                <span th:text="${#numbers.formatDecimal(cart.products.price, 0, 'COMMA', 0 , 'POINT')}"></span><span>đ</span>
+                                <span th:text="${#numbers.formatDecimal(cart.product.price, 0, 'COMMA', 0 , 'POINT')}"></span><span>đ</span>
                             </div>
                             <div class="quantity-product col-lg-2">
                                 <div class="quantity-control" data-quantity="">
-                                    <button class="quantity-btn" th:onclick="'decreaseQuantity(\'' + ${cart.products.productId} + '\')'">
+                                    <button class="quantity-btn" th:onclick="'decreaseQuantity(\'' + ${cart.product.productId} + '\')'">
                                         <svg viewBox="0 0 409.6 409.6">
                                             <g>
                                                 <g>
@@ -64,8 +64,8 @@
                                             </g>
                                         </svg>
                                     </button>
-                                    <span type="number" th:id="'quantity-' + ${cart.products.productId}" th:text="${cart.quantity}" class="quantity-input" name="quantity"></span>
-                                    <button class="quantity-btn" th:onclick="'increaseQuantity(\'' + ${cart.products.productId} + '\')'">
+                                    <span type="number" th:id="'quantity-' + ${cart.product.productId}" th:text="${cart.quantity}" class="quantity-input" name="quantity"></span>
+                                    <button class="quantity-btn" th:onclick="'increaseQuantity(\'' + ${cart.product.productId} + '\')'">
                                         <svg viewBox="0 0 426.66667 426.66667">
                                             <path d="m405.332031 192h-170.664062v-170.667969c0-11.773437-9.558594-21.332031-21.335938-21.332031-11.773437 0-21.332031 9.558594-21.332031 21.332031v170.667969h-170.667969c-11.773437 0-21.332031 9.558594-21.332031 21.332031 0 11.777344 9.558594 21.335938 21.332031 21.335938h170.667969v170.664062c0 11.777344 9.558594 21.335938 21.332031 21.335938 11.777344 0 21.335938-9.558594 21.335938-21.335938v-170.664062h170.664062c11.777344 0 21.335938-9.558594 21.335938-21.335938 0-11.773437-9.558594-21.332031-21.335938-21.332031zm0 0" />
                                         </svg>
@@ -73,10 +73,10 @@
                                 </div>
                             </div>
                             <div class="total-product col-lg-2">
-                                <span th:id="'amount-' + ${cart.products.productId}" th:text="${#numbers.formatDecimal(cart.products.price * cart.quantity, 0, 'COMMA', 0 , 'POINT')}"></span><span>đ</span>
+                                <span th:id="'amount-' + ${cart.product.productId}" th:text="${#numbers.formatDecimal(cart.product.price * cart.quantity, 0, 'COMMA', 0 , 'POINT')}"></span><span>đ</span>
                             </div>
                             <div class="delete-product col-lg-1">
-                                <a type="button" th:onclick="'deleteItemInCard(\'' + ${cart.products.productId} + '\')'"><i class="fa fa-close"></i></a>
+                                <a type="button" th:onclick="'deleteItemInCard(\'' + ${cart.product.productId} + '\')'"><i class="fa fa-close"></i></a>
                             </div>
                             <hr class="cart-hr">
                         </div>

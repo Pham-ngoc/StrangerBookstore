@@ -12,7 +12,7 @@ import java.util.Objects;
 @Entity
 @Setter
 @Getter
-public class Product extends BaseEntity{
+public class Products extends BaseEntity{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
     @GenericGenerator(name = "native", strategy = "native")
@@ -36,8 +36,12 @@ public class Product extends BaseEntity{
     @NotBlank(message = "Quantity In Stock must not be blank")
     private String quantityInStock;
 
+    private double price;
+
     @NotBlank(message = "Description must not be blank")
     private String description;
+
+    private String product_img;
 
     @NotBlank(message = "Category must not be blank")
     @ManyToOne(fetch = FetchType.EAGER, optional = true)
@@ -49,7 +53,7 @@ public class Product extends BaseEntity{
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         if (!super.equals(o)) return false;
-        Product product = (Product) o;
+        Products product = (Products) o;
         return productId == product.productId
                 && Objects.equals(productName, product.productName)
                 && Objects.equals(author, product.author)
@@ -58,6 +62,7 @@ public class Product extends BaseEntity{
                 && Objects.equals(condition, product.condition)
                 && Objects.equals(quantityInStock, product.quantityInStock)
                 && Objects.equals(description, product.description)
+                && Objects.equals(price, product.price)
                 && Objects.equals(categories, product.categories);
 
     }

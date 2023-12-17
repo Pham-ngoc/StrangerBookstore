@@ -14,15 +14,15 @@ import java.util.List;
 @Repository
 public interface OrderDetailRepository extends JpaRepository<OrderDetail, Integer> {
 
-    @Query("select od from OrderDetail od where od.orders.orderId = ?1")
+    @Query("select od from OrderDetail od where od.order.orderId = ?1")
     Page<OrderDetail> findByOrderId(Pageable pageable, int orderId);
 
-    @Query("select od from OrderDetail od where od.orders.orderId = ?1 and od.orders.statusOrders.statusId = ?2")
+    @Query("select od from OrderDetail od where od.order.orderId = ?1 and od.order.statusOrders.statusId = ?2")
     Page<OrderDetail> findByOrderIdAndStatus(Pageable pageable, int orderId, int statusId);
 
-    @Query("SELECT od.orders.orderId FROM OrderDetail od where od.orderDetailsId = ?1 ")
+    @Query("SELECT od.order.orderId FROM OrderDetail od where od.orderDetailsId = ?1 ")
     int findOrdersByOrderDetailId(int orderDetailsId);
 
-    @Query("SELECT od FROM OrderDetail od where od.orderDetailsId = ?1 ")
+    @Query("SELECT od FROM OrderDetail od where od.orderDetailsId = ?1")
     OrderDetail findAllByOrderDetailId(int orderDetailsId);
 }

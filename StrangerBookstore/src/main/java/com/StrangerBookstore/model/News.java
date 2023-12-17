@@ -20,7 +20,7 @@ public class News extends BaseEntity{
     private int newsId;
     private String newsTitle;
     private String newsContent;
-    private String newPicture;
+    private String newsPicture;
 
     @Override
     public boolean equals(Object o) {
@@ -31,11 +31,11 @@ public class News extends BaseEntity{
         return newsId == news.newsId
                 && Objects.equals(newsTitle, news.newsTitle)
                 && Objects.equals(newsContent, news.newsContent)
-                && Objects.equals(newPicture, news.newPicture);
+                && Objects.equals(newsPicture, news.newsPicture);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), newsId, newsTitle, newsContent, newPicture);
+        return Objects.hash(super.hashCode(), newsId, newsTitle, newsContent, newsPicture);
     }
 }

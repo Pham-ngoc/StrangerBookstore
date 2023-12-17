@@ -60,7 +60,7 @@ public class CartController {
         if (cartItem == null) {
             cartItem = new Cart();
             cartItem.setCustomer(customer);
-            cartItem.setProducts(products);
+            cartItem.setProduct(products);
             cartItem.setQuantity(1);
         } else{
             cartItem.setQuantity(cartItem.getQuantity() + 1);
