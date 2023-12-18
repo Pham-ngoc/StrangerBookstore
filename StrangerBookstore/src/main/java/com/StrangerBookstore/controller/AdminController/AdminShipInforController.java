@@ -2,12 +2,15 @@ package com.StrangerBookstore.controller.AdminController;
 
 import ch.qos.logback.core.model.Model;
 
+import com.StrangerBookstore.model.Orders;
 import com.StrangerBookstore.model.ShipInfor;
+
 
 import com.StrangerBookstore.repository.ShipInforRepository;
 import com.StrangerBookstore.service.ShipService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -22,10 +25,10 @@ public class AdminShipInforController {
     ShipService shipService;
 
     @Autowired
-    ShipInforRepository shipInforRepository;
+    ShipInforRepository shipReponsitory;
     @GetMapping("/shipInformation")
     public ResponseEntity<List<ShipInfor>> ship(Model model){
-        return ResponseEntity.ok(shipInforRepository.shipFindAll());
+        return ResponseEntity.ok(shipReponsitory.shipFindAll());
     }
 
 //    @PutMapping("/shipInformation/{id}")

@@ -1,125 +1,124 @@
-        <div class="main-content">
-            <div class="section__content section__content--p30">
-                <div class="container-fluid">
-                    <!--TABLE-->
-                    <div class="row">
-                        <div class="col-md-12">
-                            <!-- DATA TABLE -->
-                            <h3 class="title-5 m-b-35">Review Product Table</h3>
-                            <div class="table-data__tool">
-                                <div class="table-data__tool-left">
-                                    <div class="row form-group">
-                                        <div class="col col-md-10">
-                                            <input type="text" id="search" name="text-input" placeholder="Search"
-                                                   class="form-control">
-                                        </div>
-                                        <div class="col-12 col-md-2 mt-1">
-                                            <button type="submit" class="btn btn-primary btn-sm">
-                                                Search
-                                            </button>
-                                        </div>
-                                    </div>
+<div class="main-content" ng-controller="AdminReviewController">
+    <div class="section__content section__content--p30">
+        <div class="container-fluid">
+            <!--TABLE-->
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- DATA TABLE -->
+                    <h3 class="title-5 m-b-35">Review Product Table</h3>
+                    <div class="table-data__tool">
+                        <div class="table-data__tool-left">
+                            <div class="row form-group">
+                                <div class="col col-md-10">
+                                    <input type="text" id="search" name="text-input" placeholder="Search"
+                                           class="form-control" ng-model="searchKeyword">
+                                </div>
+                                <div class="col-12 col-md-2 mt-1">
+                                    <button type="submit" class="btn btn-primary btn-sm" ng-click="searchReviews()" name="search">
+                                        Search
+                                    </button>
                                 </div>
                             </div>
-                            <div class="table-responsive table-responsive-data2">
-                                <table class="table table-data2">
-                                    <thead>
-                                    <tr>
-                                        <th>Review ID</th>
-                                        <th>Product Name</th>
-                                        <th>Customer Email</th>
-                                        <th>Review Content</th>
-                                        <th>Star for Product</th>
-                                        <th></th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <tr class="tr-shadow">
-                                        <td>Lori Lynch</td>
-                                        <td>Lori Lynch</td>
-                                        <td>Lori Lynch</td>
-                                        <td>Lori Lynch</td>
-                                        <td>Lori Lynch</td>
-                                        <td>
-                                            <div class="table-data-feature">
-                                                <button class="item" data-toggle="modal" data-target="#scrollmodal" data-placement="top" title="Edit">
-                                                    <i class="zmdi zmdi-edit"></i>
-                                                </button>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr class="spacer"></tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                            <!-- END DATA TABLE -->
                         </div>
                     </div>
+                    <div class="table-responsive table-responsive-data2">
+                        <table class="table table-data2">
+                            <thead>
+                            <tr>
+                                <th>Review ID</th>
+                                <th>Product Name</th>
+                                <th>Customer Email</th>
+                                <th>Review Content</th>
+                                <th>Star for Product</th>
+                                <th></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr class="tr-shadow" ng-repeat="item in list">
+                                <td>{{item.reviewsId}}</td>
+                                <td>{{item.product.productName}}</td>
+                                <td>{{item.customer.email}}</td>
+                                <td>{{item.reviewContent}}</td>
+                                <td>{{item.starForProduct}}</td>
+                                <td>
+                                    <div class="table-data-feature">
+                                        <button class="item" data-toggle="modal" data-target="#scrollmodal" data-placement="top" title="Edit" ng-click="editReviews(item)">
+                                            <i class="zmdi zmdi-edit"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="spacer"></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- END DATA TABLE -->
                 </div>
             </div>
         </div>
-        <!-- modal scroll -->
-        <div class="modal fade" id="scrollmodal" tabindex="-1" role="dialog" aria-labelledby="scrollmodalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-lg" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="scrollmodalLabel">Review Product</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="card-body card-block">
-                            <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
-                                <div class="row form-group">
-                                    <div class="col col-md-3">
-                                        <label for="reviewId" class=" form-control-label">Review ID</label>
-                                    </div>
-                                    <div class="col-12 col-md-9">
-                                        <input type="text" id="reviewId" name="disabled-input" disabled="" class="form-control">
-                                    </div>
+    </div>
+    <div class="modal fade" id="scrollmodal" tabindex="-1" role="dialog" aria-labelledby="scrollmodalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="scrollmodalLabel">Review Product</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="card-body card-block">
+                        <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
+                            <div class="row form-group">
+                                <div class="col col-md-3">
+                                    <label for="reviewId" class=" form-control-label">Review ID</label>
                                 </div>
-                                <div class="row form-group">
-                                    <div class="col col-md-3">
-                                        <label for="productName" class=" form-control-label">Product Name</label>
-                                    </div>
-                                    <div class="col-12 col-md-9">
-                                        <input type="text" id="productName" name="disabled-input" disabled="" class="form-control">
-                                    </div>
+                                <div class="col-12 col-md-9">
+                                    <input type="text" id="reviewId" name="disabled-input" disabled="" class="form-control" ng-model="form.reviewsId">
                                 </div>
-                                <div class="row form-group">
-                                    <div class="col col-md-3">
-                                        <label for="customerName" class=" form-control-label">Customer Email</label>
-                                    </div>
-                                    <div class="col-12 col-md-9">
-                                        <input type="text" id="customerName" name="disabled-input" disabled="" class="form-control">
-                                    </div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col col-md-3">
+                                    <label for="productName" class=" form-control-label">Product Name</label>
                                 </div>
+                                <div class="col-12 col-md-9">
+                                    <input type="text" id="productName" name="disabled-input" disabled="" class="form-control" ng-model="form.product.productName">
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col col-md-3">
+                                    <label for="customerName" class=" form-control-label">Customer Email</label>
+                                </div>
+                                <div class="col-12 col-md-9">
+                                    <input type="text" id="customerName" name="disabled-input" disabled="" class="form-control" ng-model="form.customer.email">
+                                </div>
+                            </div>
 
-                                <div class="row form-group">
-                                    <div class="col col-md-3">
-                                        <label for="description" class=" form-control-label">Review Content</label>
-                                    </div>
-                                    <div class="col-12 col-md-9">
+                            <div class="row form-group">
+                                <div class="col col-md-3">
+                                    <label for="description" class=" form-control-label">Review Content</label>
+                                </div>
+                                <div class="col-12 col-md-9">
                                             <textarea name="textarea-input" id="description" rows="9"
-                                                      placeholder="Review Content..." class="form-control" disabled></textarea>
-                                    </div>
+                                                      placeholder="Review Content..." class="form-control" disabled ng-model="form.reviewContent"></textarea>
                                 </div>
-                                <div class="row form-group">
-                                    <div class="col col-md-3">
-                                        <label for="starForProduct" class=" form-control-label">Star for Product</label>
-                                    </div>
-                                    <div class="col-12 col-md-9">
-                                        <input type="text" id="starForProduct" name="disabled-input" disabled="" class="form-control">
-                                    </div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col col-md-3">
+                                    <label for="starForProduct" class=" form-control-label">Star for Product</label>
                                 </div>
+                                <div class="col-12 col-md-9">
+                                    <input type="text" id="starForProduct" name="disabled-input" disabled="" class="form-control" ng-model="form.starForProduct">
+                                </div>
+                            </div>
 
-                            </form>
-                        </div>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- end modal scroll -->
     </div>
 </div>
+<!-- modal scroll -->
+
+<!-- end modal scroll -->

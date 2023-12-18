@@ -1,16 +1,75 @@
 package com.StrangerBookstore.controller.AdminController;
 
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import com.StrangerBookstore.model.Categories;
+import com.StrangerBookstore.model.Customer;
 
-@Controller
+import com.StrangerBookstore.repository.CategoryRepository;
+
+import com.StrangerBookstore.service.CategoryService;
+import jakarta.servlet.http.HttpSession;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
+
+import java.time.LocalDateTime;
+import java.util.Collections;
+import java.util.List;
+import java.util.Optional;
+
+
+@RestController
+@CrossOrigin("*")
 @RequestMapping("/admin")
 public class AdminCategoriesController {
+    @Autowired
+    CategoryService service;
+
+    @Autowired
+    CategoryRepository categoriesRepository;
+
+    @Autowired
+    HttpSession session;
+
 
     @GetMapping("/categories")
-    public String categories(Model model){
-        return "Admin-view/admin-categories.html";
+    public ResponseEntity<List<Categories>> categories(Model model){
+        return ResponseEntity.ok(categoriesRepository.findAll());
     }
+
+    @GetMapping("/categories/{id}")
+    public String getfindone(@PathVariable("id") Integer id)
+    {
+        Categories category = service.findbyId(id);
+        return category.getCategoryName();
+    }
+
+    @PostMapping("/categories")
+    public ResponseEntity<Categories> create(@RequestBody Categories categories) {
+        Categories createdCategory = service.create(categories);
+        return ResponseEntity.ok(createdCategory);
+    }
+
+    @PutMapping("/categories/{id}")
+    public ResponseEntity<Categories> updateCategory(@PathVariable("id") Integer id, @RequestBody Categories category) {
+        if(service. findbyId (id) == null) {
+            return ResponseEntity.notFound().build();
+        } else {
+            service.update(id, category);
+        }
+        return ResponseEntity.ok(category);
+    }
+
+
+    @DeleteMapping("/categories/{id}")
+    public void deletecategory(@PathVariable("id") Integer id) {
+        service.delete(id);
+    }
+
+    @GetMapping("/categories/sreach")
+    public ResponseEntity<List<?>> sreachcategoryname(@RequestParam(value = "query", required = false) String query){
+        return ResponseEntity.ok(service.sreachCategories(query));
+    }
+
 }
+

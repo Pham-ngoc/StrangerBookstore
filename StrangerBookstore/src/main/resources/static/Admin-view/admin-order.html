@@ -1,124 +1,126 @@
 <!DOCTYPE html>
-        <div class="main-content" ng-controller="AdminOrderController">
-            <div class="section__content section__content--p30">
-                <div class="container-fluid">
-                    <!--FORM-->
-                    <div class="card">
-                        <div class="card-header">
-                            <strong>Order</strong> Form
+<div class="main-content" ng-controller="AdminOrderController">
+    <div class="section__content section__content--p30">
+        <div class="container-fluid">
+            <!--FORM-->
+            <div class="card">
+                <div class="card-header">
+                    <strong>Order</strong> Form
+                </div>
+                <div class="card-body card-block">
+                    <form action="" method="put" enctype="multipart/form-data" class="form-horizontal">
+                        <div class="row form-group">
+                            <div class="col col-md-3">
+                                <label for="orderID" class=" form-control-label">Order ID</label>
+                            </div>
+                            <div class="col-12 col-md-9">
+                                <input type="text" id="orderID" name="disabled-input" disabled="" class="form-control" ng-model="form.orderId">
+                            </div>
                         </div>
-                        <div class="card-body card-block">
-                            <form action="" method="put" enctype="multipart/form-data" class="form-horizontal">
-                                <div class="row form-group">
-                                    <div class="col col-md-3">
-                                        <label for="orderID" class=" form-control-label">Order ID</label>
-                                    </div>
-                                    <div class="col-12 col-md-9">
-                                        <input type="text" id="orderID" name="disabled-input" disabled="" class="form-control" ng-model="form.orderId">
-                                    </div>
-                                </div>
-                                <div class="row form-group">
-                                    <div class="col col-md-3">
-                                        <label for="customerName" class=" form-control-label">Customer Email</label>
-                                    </div>
-                                    <div class="col-12 col-md-9">
-                                        <input type="text" id="customerName" name="disabled-input" disabled="" class="form-control" ng-model="form.customer.email">
-                                    </div>
-                                </div>
-                                <div class="row form-group">
-                                    <div class="col col-md-3">
-                                        <label for="statusId" class=" form-control-label">Status Order</label>
-                                    </div>
-                                    <div class="col-12 col-md-9">
-                                        <select name="select" id="statusId" class="form-control" ng-model="form.statusOrders"
-                                                ng-options="s as s.statusName for s in status track by s.statusId">
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="row form-group">
-                                    <div class="col col-md-3">
-                                        <label for="paymentMethod" class=" form-control-label">Payment Method</label>
-                                    </div>
-                                    <div class="col-12 col-md-9">
-                                        <input type="text" id="paymentMethod" name="disabled-input" disabled="" class="form-control" ng-model="form.paymentMethod">
-                                    </div>
-                                </div>
-                                <div class="row form-group">
-                                    <div class="col col-md-3">
-                                        <label for="totalAmount" class=" form-control-label">Total Amount</label>
-                                    </div>
-                                    <div class="col-12 col-md-9">
-                                        <input type="text" id="totalAmount" name="disabled-input" disabled="" class="form-control" ng-model="form.totalAmount">
-                                    </div>
-                                </div>
-                            </form>
+                        <div class="row form-group">
+                            <div class="col col-md-3">
+                                <label for="customerName" class=" form-control-label">Customer Email</label>
+                            </div>
+                            <div class="col-12 col-md-9">
+                                <input type="text" id="customerName" name="disabled-input" disabled="" class="form-control" ng-model="form.customer.email">
+                            </div>
                         </div>
-                        <div class="card-footer">
-                            <button type="submit" class="btn btn-primary btn-sm" ng-click="updateOrders()">
-                                Update
-                            </button>
+                        <div class="row form-group">
+                            <div class="col col-md-3">
+                                <label for="statusId" class=" form-control-label">Status Order</label>
+                            </div>
+                            <div class="col-12 col-md-9">
+                                <select name="select" id="statusId" class="form-control" ng-model="form.statusOrders"
+                                        ng-options="s as s.statusName for s in status track by s.statusId">
+                                </select>
+                            </div>
                         </div>
-                    </div>
-                    <!--TABLE-->
-                    <div class="row">
-                        <div class="col-md-12">
-                            <!-- DATA TABLE -->
-                            <h3 class="title-5 m-b-35">Order Table</h3>
-                            <div class="table-data__tool">
-                                <div class="table-data__tool-left">
-                                    <div class="row form-group">
-                                        <div class="col col-md-10">
-                                            <input type="text" id="search" name="text-input" placeholder="Search"
-                                                   class="form-control" ng-model="searchKeyword">
-                                        </div>
-                                        <div class="col-12 col-md-2 mt-1">
-                                            <button type="submit" class="btn btn-primary btn-sm" ng-click="searchOrders()">
-                                                Search
-                                            </button>
-                                        </div>
-                                    </div>
+                        <div class="row form-group">
+                            <div class="col col-md-3">
+                                <label for="paymentMethod" class=" form-control-label">Payment Method</label>
+                            </div>
+                            <div class="col-12 col-md-9">
+                                <input type="text" id="paymentMethod" name="disabled-input" disabled="" class="form-control" ng-model="form.paymentMethod">
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <div class="col col-md-3">
+                                <label for="totalAmount" class=" form-control-label">Total Amount</label>
+                            </div>
+                            <div class="col-12 col-md-9">
+                                <input type="text" id="totalAmount" name="disabled-input" disabled="" class="form-control" ng-model="form.totalAmount">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="card-footer">
+                    <button type="submit" class="btn btn-primary btn-sm" name="update" ng-click="updateOrders()">
+                        Update
+                    </button>
+                </div>
+            </div>
+            <!--TABLE-->
+            <div class="row">
+                <div class="col-md-12">
+                    <!-- DATA TABLE -->
+                    <h3 class="title-5 m-b-35">Order Table</h3>
+                    <div class="table-data__tool">
+                        <div class="table-data__tool-left">
+                            <div class="row form-group">
+                                <div class="col col-md-10">
+                                    <input type="text" id="search" name="text-input" placeholder="Search"
+                                           class="form-control" ng-model="searchKeyword">
+                                </div>
+                                <div class="col-12 col-md-2 mt-1">
+                                    <button type="submit" class="btn btn-primary btn-sm" ng-click="searchOrders()" name="search">
+                                        Search
+                                    </button>
                                 </div>
                             </div>
-                            <div class="table-responsive">
-                                <table class="table table-data2">
-                                    <thead>
-                                    <tr>
-                                        <th>Order ID</th>
-                                        <th>Customer Email</th>
-                                        <th>Status</th>
-                                        <th>Payment Method</th>
-                                        <th>Total Amount</th>
-                                        <th></th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr class="tr-shadow"  ng-repeat="item in list">
-                                            <td> <span>{{item.orderId}} </span></td>
-                                            <td>{{item.customer.email}}</td>
-                                            <td>{{item.statusOrders.statusName}}</td>
-                                            <td>{{item.paymentMethod}}</td>
-                                            <td>{{item.totalAmount}}</td>
-                                            <td>
-                                                <div class="table-data-feature">
-                                                    <button class="item" data-toggle="tooltip" data-placement="top" title="Edit" ng-click="editOrders(item)">
-                                                        <i class="zmdi zmdi-edit"></i>
-                                                    </button>
-
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    <tr class="spacer"></tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                            <!-- END DATA TABLE -->
-
                         </div>
                     </div>
+                    <div class="table-responsive">
+                        <table class="table table-data2">
+                            <thead>
+                            <tr>
+                                <th>Order ID</th>
+                                <th>Customer Email</th>
+                                <th>Status</th>
+                                <th>Payment Method</th>
+                                <th>Total Amount</th>
+                                <th></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr class="tr-shadow"  ng-repeat="item in list">
+                                <td> <span>{{item.orderId}} </span></td>
+                                <td>{{item.customer.email}}</td>
+                                <td>{{item.statusOrders.statusName}}</td>
+                                <td>{{item.paymentMethod}}</td>
+                                <td>{{item.totalAmount}}</td>
+                                <td>
+                                    <div class="table-data-feature">
+                                        <button class="item" data-toggle="tooltip" data-placement="top" title="Edit" id="edit" ng-click="editOrders(item)">
+                                            <i class="zmdi zmdi-edit"></i>
+                                        </button>
+                                        <button class="item" data-toggle="tooltip" data-placement="top" title="Delete" ng-click="deleteOrders(item.orderId)">
+                                            <i class="zmdi zmdi-delete"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="spacer"></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- END DATA TABLE -->
+
                 </div>
             </div>
         </div>
     </div>
+</div>
+</div>
 </div>
 
 </body>

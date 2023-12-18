@@ -25,4 +25,5 @@ public interface ShipInforRepository extends JpaRepository<ShipInfor, Integer> {
     @Modifying
     @Query("UPDATE ShipInfor s SET s.status = :status, s.note = :note WHERE s.shipId = :shipId")
     void updateShip(@Param("shipId") int shipId, @Param("status") String status, @Param("note") String note);
+
 }

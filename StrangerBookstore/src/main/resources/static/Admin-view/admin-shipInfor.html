@@ -72,7 +72,7 @@
                             </div>
                             <div class="col-12 col-md-9">
                                             <textarea name="textarea-input" id="addressDetail" rows="4"
-                                            placeholder="Address Detail..." class="form-control" disabled ng-model="form.address.addressDetail"></textarea>
+                                                      placeholder="Address Detail..." class="form-control" disabled ng-model="form.address.addressDetail"></textarea>
                             </div>
                         </div>
                         <div class="row form-group">
@@ -108,7 +108,7 @@
                     </form>
                 </div>
                 <div class="card-footer">
-                    <button type="submit" class="btn btn-primary btn-sm" ng-click="updateShip()">
+                    <button type="submit" class="btn btn-primary btn-sm" name="update" ng-click="updateShip()">
                         Update
                     </button>
                 </div>
@@ -126,7 +126,7 @@
                                            class="form-control" ng-model="searchKeyword">
                                 </div>
                                 <div class="col-12 col-md-2 mt-1">
-                                    <button type="submit" class="btn btn-primary btn-sm" ng-click="searchShip()">
+                                    <button type="submit" class="btn btn-primary btn-sm" ng-click="searchShip()" name="search">
                                         Search
                                     </button>
                                 </div>
@@ -154,7 +154,7 @@
                                 <td>{{item.note}}</td>
                                 <td>
                                     <div class="table-data-feature">
-                                        <button class="item" data-placement="top" title="Edit" ng-click="editShip(item)">
+                                        <button class="item" data-placement="top" title="Edit" id="edit" ng-click="editShip(item)">
                                             <i class="zmdi zmdi-edit"></i>
                                         </button>
                                     </div>

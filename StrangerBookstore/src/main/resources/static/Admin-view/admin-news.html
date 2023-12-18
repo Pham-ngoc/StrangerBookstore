@@ -33,16 +33,16 @@
                                 <label for="textarea-input" class=" form-control-label">News Content</label>
                             </div>
                             <div class="col-12 col-md-9">
-                                            <textarea name="textarea-input" id="textarea-input" rows="9"
-                                                      placeholder="News Content..." class="form-control" ng-model="form.newsContent"></textarea>
+                                            <textarea  id="textarea-input" rows="9"
+                                                       placeholder="News Content..." class="form-control" ng-model="form.newsContent"></textarea>
                             </div>
                         </div>
                         <div class="row form-group">
                             <div class="col col-md-3">
                                 <label for="file-input" class=" form-control-label">Picture</label>
                             </div>
-                            <div class="col-12 col-md-6">
-                                <input type="file" id="file-input" name="file-input"
+                            <div class="col-12 col-md-6" id="file-upload">
+                                <input type="file" id="file-input"
                                        class="form-control-file" ng-model="form.newsPicture" >
                             </div>
                             <div class="col-12 col-md-3">
@@ -51,10 +51,10 @@
                             </div>
                         </div>
                         <div class="card-footer">
-                            <button ng-click="createNews(); updateFileName();" type="submit" class="btn btn-primary btn-sm">
+                            <button ng-click="createNews(); updateFileName();" type="submit" class="btn btn-primary btn-sm" name="create">
                                 Create
                             </button>
-                            <button type="submit" class="btn btn-primary btn-sm" ng-click="updateNews(); updateFileName();">
+                            <button type="submit" class="btn btn-primary btn-sm" name="update" ng-click="updateNews(); updateFileName();">
                                 Update
                             </button>
                             <button type="submit" class="btn btn-primary btn-sm" ng-click="resetForm($event)">
@@ -80,7 +80,7 @@
 
                                 </div>
                                 <div class="col-12 col-md-2 mt-1">
-                                    <button type="submit" class="btn btn-primary btn-sm" ng-click="searchNews()">
+                                    <button type="submit" class="btn btn-primary btn-sm" ng-click="searchNews()" name="search">
                                         Search
                                     </button>
 
@@ -107,10 +107,10 @@
                                 <td>{{item.newsPicture}}</td>
                                 <td>
                                     <div class="table-data-feature">
-                                        <button class="item" data-toggle="tooltip" data-placement="top" title="Edit" ng-click="editNews(item)">
+                                        <button class="item" data-toggle="tooltip" data-placement="top" name="edit" title="Edit" ng-click="editNews(item)">
                                             <i class="zmdi zmdi-edit"></i>
                                         </button>
-                                        <button class="item" data-toggle="tooltip" data-placement="top" title="Delete" ng-click="deleteNews($event, item)">
+                                        <button class="item" data-toggle="tooltip" data-placement="top" title="Delete" name="delete" ng-click="deleteNews($event, item)">
                                             <i class="zmdi zmdi-delete"></i>
                                         </button>
                                     </div>

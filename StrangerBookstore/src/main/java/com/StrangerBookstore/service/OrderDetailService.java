@@ -11,6 +11,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class OrderDetailService {
 
@@ -20,6 +22,9 @@ public class OrderDetailService {
     @Autowired
     OrderDetailRepository orderDetailRepository;
 
+    public List<OrderDetail> findAll() {
+        return orderDetailRepository.findAll();
+    }
     private static Pageable getPageable(int pageNumber){
         int pageShow = 5;
         Pageable pageable = PageRequest.of(pageNumber - 1, pageShow, Sort.by("orderDetailsId").descending());

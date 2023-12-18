@@ -16,11 +16,11 @@ public class Orders extends BaseEntity{
     @GenericGenerator(name = "native", strategy = "native")
     private int orderId;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = true)
+    @ManyToOne(fetch = FetchType.EAGER, optional = true)
     @JoinColumn(name = "customer_id", referencedColumnName = "customerId", nullable = true)
     private Customer customer;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = true)
+    @ManyToOne(fetch = FetchType.EAGER, optional = true)
     @JoinColumn(name = "status_id", referencedColumnName = "statusId", nullable = true)
     private StatusOrders statusOrders;
 

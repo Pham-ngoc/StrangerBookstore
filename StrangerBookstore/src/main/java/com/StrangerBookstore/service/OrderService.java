@@ -3,6 +3,7 @@ package com.StrangerBookstore.service;
 import com.StrangerBookstore.model.*;
 import com.StrangerBookstore.repository.CustomerRepository;
 import com.StrangerBookstore.repository.OrdersRepository;
+import com.StrangerBookstore.repository.OrdersRepository;
 import com.StrangerBookstore.repository.StatusOrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,7 +16,7 @@ import java.util.Optional;
 public class OrderService {
 
     @Autowired
-    OrdersRepository ordersRepository;
+    OrdersRepository orderRepository;
 
     @Autowired
     CustomerRepository customerRepository;
@@ -25,11 +26,11 @@ public class OrderService {
 
     public List<Orders> findAll() {
 
-        return ordersRepository.findAll();
+        return orderRepository.findAll();
     }
 
     public Orders update(Integer id, Orders order) {
-        Optional<Orders> existingOrdersOptional = ordersRepository.findById(id);
+        Optional<Orders> existingOrdersOptional = orderRepository.findById(id);
         if (existingOrdersOptional.isPresent()) {
             Orders existingOrders = existingOrdersOptional.get();
 
@@ -54,11 +55,13 @@ public class OrderService {
             }
             existingOrders.setPaymentMethod(order.getPaymentMethod());
             existingOrders.setTotalAmount(order.getTotalAmount());
-            return ordersRepository.save(existingOrders);
+            return orderRepository.save(existingOrders);
         } else {
             return null;
         }
     }
 
-
+    public void delete(Integer id) {
+        orderRepository.deleteById(id);
+    }
 }

@@ -1,12 +1,12 @@
 package com.StrangerBookstore.repository;
 
+
 import com.StrangerBookstore.model.Products;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
+
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
@@ -15,6 +15,8 @@ import java.util.List;
 
 @Repository
 public interface ProductRepository extends JpaRepository<Products, Integer> {
+    @Query("SELECT o FROM Products o")
+    List<Products> productFindAll();
 
     @Query("select p from Products p")
     Page<Products> findAllProduct(Pageable pageable);

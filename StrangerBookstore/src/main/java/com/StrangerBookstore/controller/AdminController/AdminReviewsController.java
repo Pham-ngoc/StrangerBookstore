@@ -1,16 +1,32 @@
 package com.StrangerBookstore.controller.AdminController;
 
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 
-@Controller
+import com.StrangerBookstore.model.ProductReviews;
+import com.StrangerBookstore.repository.ProductReviewsReposity;
+import com.StrangerBookstore.service.ProductReviewsService;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import org.springframework.http.ResponseEntity;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+
+@RestController
+@CrossOrigin("*")
 @RequestMapping("/admin")
 public class AdminReviewsController {
+    @Autowired
+    ProductReviewsService reviewsService;
+
+    @Autowired
+    ProductReviewsReposity productReviewsReposity;
 
     @GetMapping("/reviews")
-    public String reviews(Model model){
-        return "Admin-view/admin-reviews.html";
+    public ResponseEntity<List<ProductReviews>> reviews(Model model){
+        return ResponseEntity.ok(productReviewsReposity.findAll());
     }
+
+
 }

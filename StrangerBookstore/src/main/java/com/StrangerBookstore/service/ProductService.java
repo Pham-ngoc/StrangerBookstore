@@ -43,6 +43,11 @@ public class ProductService {
         return productRepository.findById(id);
     }
 
+//    public Products create(Products Product) {
+//
+//        return productRepository.save(Product);
+//    }
+
     public ResponseEntity<Products> create(Products product) throws Exception{
         if (product == null){
             return null;
@@ -50,35 +55,66 @@ public class ProductService {
         return ResponseEntity.ok(productRepository.save(product));
     }
 
-public Products update(Integer id, Products product) {
-    Optional<Products> existingProductOptional = productRepository.findById(id);
-    if (existingProductOptional.isPresent()) {
-        Products existingProduct = existingProductOptional.get();
 
-        // Cập nhật các trường thông tin khác
-        existingProduct.setProductName(product.getProductName());
-        existingProduct.setAuthor(product.getAuthor());
-        existingProduct.setPublisher(product.getPublisher());
-        existingProduct.setLanguage(product.getLanguage());
-        existingProduct.setCondition(product.getCondition());
-        existingProduct.setQuantityInStock(product.getQuantityInStock());
-        existingProduct.setDescription(product.getDescription());
-        existingProduct.setPrice(product.getPrice());
-        existingProduct.setProduct_img(product.getProduct_img());
-        if (!existingProduct.getCategories().equals(product.getCategories())) {
-            Optional<Categories> categoryOptional = categoryRepository.findById(product.getCategories().getCategoryId());
-            if (categoryOptional.isPresent()) {
-                existingProduct.setCategories(categoryOptional.get());
-            } else {
-                return null;
+
+
+//    public Products update(Integer id, Products product) {
+//        // Kiểm tra xem tin tức có tồn tại không
+//        Optional<Products> existingProductOptional = productRepository.findById(id);
+//        if (existingProductOptional.isPresent()) {
+//            Products existingProduct = existingProductOptional.get();
+//            // Cập nhật các trường tin tức
+//            existingProduct.setProductName(product.getProductName());
+//            existingProduct.setAuthor(product.getAuthor());
+//            existingProduct.setPublisher(product.getPublisher());
+//            existingProduct.setLanguage(product.getLanguage());
+//            existingProduct.setCondition(product.getCondition());
+//            existingProduct.setQuantityInStock(product.getQuantityInStock());
+//            existingProduct.setDescription(product.getDescription());
+//            existingProduct.setPrice(product.getPrice());
+//            existingProduct.setCategories(product.getCategories());
+//            existingProduct.setProduct_img(product.getProduct_img());
+//            // Lưu tin tức đã cập nhật vào cơ sở dữ liệu
+//            return productRepository.save(existingProduct);
+//        } else {
+//            // Nếu không tìm thấy tin tức, bạn có thể xử lý hoặc trả về null hoặc thông báo lỗi tùy thuộc vào yêu cầu của bạn
+//            return null;
+//        }
+//    }
+
+
+    public Products update(Integer id, Products product) {
+        Optional<Products> existingProductOptional = productRepository.findById(id);
+        if (existingProductOptional.isPresent()) {
+            Products existingProduct = existingProductOptional.get();
+
+            // Cập nhật các trường thông tin khác
+            existingProduct.setProductName(product.getProductName());
+            existingProduct.setAuthor(product.getAuthor());
+            existingProduct.setPublisher(product.getPublisher());
+            existingProduct.setLanguage(product.getLanguage());
+            existingProduct.setCondition(product.getCondition());
+            existingProduct.setQuantityInStock(product.getQuantityInStock());
+            existingProduct.setDescription(product.getDescription());
+            existingProduct.setPrice(product.getPrice());
+            existingProduct.setProduct_img(product.getProduct_img());
+            if (!existingProduct.getCategories().equals(product.getCategories())) {
+                Optional<Categories> categoryOptional = categoryRepository.findById(product.getCategories().getCategoryId());
+                if (categoryOptional.isPresent()) {
+                    existingProduct.setCategories(categoryOptional.get());
+                } else {
+                    return null;
+                }
             }
-        }
 
-        return productRepository.save(existingProduct);
-    } else {
-        return null;
+            return productRepository.save(existingProduct);
+        } else {
+            return null;
+        }
     }
-}
+
+
+
 
     public void delete(Integer id) {
         productRepository.deleteById(id);
