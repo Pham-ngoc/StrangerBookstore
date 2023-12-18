@@ -43,7 +43,7 @@ app.controller("AdminOrderDetailController", function ($scope, $http, $timeout,$
             $scope.displayedItems = $scope.items = $scope.items.filter(function (orderDetail) {
                 return orderDetail.orderDetailsId.toString().includes($scope.searchKeyword) ||
                     orderDetail.order.orderId.toString().includes($scope.searchKeyword) ||
-                    orderDetail.product.productName.toLowerCase().includes($scope.searchKeyword.toLowerCase())||
+                    orderDetail.product.productName?.toLowerCase().includes($scope.searchKeyword.toLowerCase())||
                     orderDetail.quantity.toString().includes($scope.searchKeyword)||
                     orderDetail.amount.toString().includes($scope.searchKeyword);
             });

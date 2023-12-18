@@ -1,4 +1,4 @@
-app.controller("AdminShipController", function ($scope, $http) {
+app.controller("AdminShipController", function ($scope, $http,$window) {
     var shipUrl = 'http://localhost:8080/admin/shipInformation';
     var orderUrl = 'http://localhost:8080/admin/order';
     var customerUrl = 'http://localhost:8080/admin/customer';
@@ -136,6 +136,7 @@ app.controller("AdminShipController", function ($scope, $http) {
             $http.get(shipUrl)
                 .then(function (response) {
                     $scope.list = response.data;
+                    $window.location.reload();
                 })
                 .catch(function (error) {
                     console.error("Error fetching products:", error);
@@ -143,11 +144,11 @@ app.controller("AdminShipController", function ($scope, $http) {
         } else {
             // Ngược lại, lọc theo từ khóa tìm kiếm
             $scope.displayedItems = $scope.list = $scope.list.filter(function (shipInfor) {
-                return shipInfor.shipId.toString().includes($scope.searchKeyword) ||
-                    shipInfor.order.orderId.toString().includes($scope.searchKeyword) ||
-                    shipInfor.address.addressDetail.toLowerCase().includes($scope.searchKeyword.toLowerCase()) ||
-                    shipInfor.status.toLowerCase().includes($scope.searchKeyword.toLowerCase()) ||
-                    shipInfor.note.toLowerCase().includes($scope.searchKeyword.toLowerCase());
+                return shipInfor.shipId?.toString().includes($scope.searchKeyword) ||
+                    shipInfor.order.orderId?.toString().includes($scope.searchKeyword) ||
+                    shipInfor.address.addressDetail?.toLowerCase().includes($scope.searchKeyword.toLowerCase()) ||
+                    shipInfor.status?.toLowerCase().includes($scope.searchKeyword.toLowerCase()) ||
+                    shipInfor.note?.toLowerCase().includes($scope.searchKeyword.toLowerCase());
 
             });
         }

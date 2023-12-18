@@ -52,12 +52,13 @@ app.controller("AdminContactController", function ($scope, $route, $timeout, $ht
                         showConfirmButton: false,
                         timer: 1500
                 });
-                $scope.resetForm();
+
                 $scope.load();
 
             })
             .catch(function (error) {
                 console.error('Error updating news:', error);
+                alert("Update fail");
             });
     };
 

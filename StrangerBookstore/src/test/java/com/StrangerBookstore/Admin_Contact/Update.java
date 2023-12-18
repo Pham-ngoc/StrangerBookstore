@@ -20,14 +20,14 @@ public class Update {
         WebDriver driver=new ChromeDriver(options);
         driver.get(url);
         driver.get(url2);
-        driver.findElement(By.name("username")).sendKeys("ductaitruongcr7@gmail.com");
-        driver.findElement(By.name("password")).sendKeys("1310");
+        driver.findElement(By.name("username")).sendKeys("admin@gmail.com");
+        driver.findElement(By.name("password")).sendKeys("admin");
         driver.findElement(By.name("login")).sendKeys(Keys.ENTER);
         driver.get(url3);
 //
         driver.get(url4);
-//        driver.findElement(By.id("edit")).sendKeys(Keys.ENTER);
-        driver.findElement(By.cssSelector("#edit")).sendKeys(Keys.ENTER);
+        driver.findElement(By.id("edit")).sendKeys(Keys.ENTER);
+//        driver.findElement(By.cssSelector("#edit")).sendKeys(Keys.ENTER);
 //        driver.findElement(By.xpath("/html/body/div/div/ng-view/div/div/div/div[2]/div/div[2]/table/tbody/tr[1]/td[3]/div/button[1]")).sendKeys(Keys.ENTER);
 
         driver.findElement(By.name("textarea-input")).clear();

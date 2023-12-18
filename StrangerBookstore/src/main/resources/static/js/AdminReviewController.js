@@ -65,11 +65,11 @@ app.controller("AdminReviewController", function ($scope, $http) {
         } else {
             // Ngược lại, lọc theo từ khóa tìm kiếm
             $scope.displayedItems = $scope.list = $scope.list.filter(function (productReviews) {
-                return productReviews.reviewsId.toString().includes($scope.searchKeyword) ||
-                    productReviews.product.productName.toLowerCase().includes($scope.searchKeyword.toLowerCase()) ||
-                    productReviews.customer.email.toLowerCase().includes($scope.searchKeyword.toLowerCase()) ||
-                    productReviews.reviewContent.toLowerCase().includes($scope.searchKeyword.toLowerCase()) ||
-                    productReviews.starForProduct.toString().includes($scope.searchKeyword);
+                return productReviews.reviewsId?.toString().includes($scope.searchKeyword) ||
+                    productReviews.product.productName?.toLowerCase().includes($scope.searchKeyword.toLowerCase()) ||
+                    productReviews.customer.email?.toLowerCase().includes($scope.searchKeyword.toLowerCase()) ||
+                    productReviews.reviewContent?.toLowerCase().includes($scope.searchKeyword.toLowerCase()) ||
+                    productReviews.starForProduct?.toString().includes($scope.searchKeyword);
 
             });
         }

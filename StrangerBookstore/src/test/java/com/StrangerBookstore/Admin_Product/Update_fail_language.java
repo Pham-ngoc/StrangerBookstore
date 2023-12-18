@@ -28,7 +28,7 @@ public class Update_fail_language {
         driver.get(url3);
         driver.get(url4);
 //        driver.findElement(By.id("edit")).sendKeys(Keys.ENTER);
-        driver.findElement(By.xpath("/html/body/div/div/ng-view/div/div/div/div[2]/div[2]/table/tbody/tr[1]/td[12]/div/button[1]"))
+        driver.findElement(By.xpath("/html/body/div/div/ng-view/div/div/div/div[2]/div[2]/table/tbody/tr[1]/td[11]/div/button[1]"))
                 .sendKeys(Keys.ENTER);
 //        driver.findElement(By.cssSelector("#edit")).sendKeys(Keys.ENTER);
 

@@ -112,9 +112,9 @@ app.controller("AdminOrderController", function ($scope, $http, $window) {
         } else {
             // Ngược lại, lọc theo từ khóa tìm kiếm
             $scope.displayedItems = $scope.list = $scope.list.filter(function (order) {
-                return order.orderId.toString().includes($scope.searchKeyword) ||
-                    order.customer.email.toLowerCase().includes($scope.searchKeyword.toLowerCase()) ||
-                    order.statusOrders.statusName.toLowerCase().includes($scope.searchKeyword.toLowerCase()) ||
+                return order.orderId?.toString().includes($scope.searchKeyword) ||
+                    order.customer.email?.toLowerCase().includes($scope.searchKeyword.toLowerCase()) ||
+                    order.statusOrders.statusName?.toLowerCase().includes($scope.searchKeyword.toLowerCase()) ||
                     order.paymentMethod.toString().includes($scope.searchKeyword) ||
                     order.totalAmount.toString().includes($scope.searchKeyword);
 

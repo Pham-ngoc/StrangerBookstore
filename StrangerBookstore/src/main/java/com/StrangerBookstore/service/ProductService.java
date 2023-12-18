@@ -95,6 +95,7 @@ public class ProductService {
             existingProduct.setLanguage(product.getLanguage());
             existingProduct.setCondition(product.getCondition());
             existingProduct.setQuantityInStock(product.getQuantityInStock());
+            existingProduct.setIsbn(product.getIsbn());
             existingProduct.setDescription(product.getDescription());
             existingProduct.setPrice(product.getPrice());
             existingProduct.setProduct_img(product.getProduct_img());
