@@ -50,21 +50,21 @@
                                 <span ng-if="form.newsPicture">{{form.newsPicture}}</span>
                             </div>
                         </div>
-                        <div class="card-footer">
-                            <button ng-click="createNews(); updateFileName();" type="submit" class="btn btn-primary btn-sm" name="create">
-                                Create
-                            </button>
-                            <button type="submit" class="btn btn-primary btn-sm" name="update" ng-click="updateNews(); updateFileName();">
-                                Update
-                            </button>
-                            <button type="submit" class="btn btn-primary btn-sm" ng-click="resetForm($event)">
-                                Reset
-                            </button>
-                            <button type="reset" class="btn btn-danger btn-sm" ng-click="deleteNews($event)">
-                                Delete
-                            </button>
-                        </div>
                     </form>
+                    <div class="card-footer">
+                        <button ng-click="createNews(); updateFileName();" type="submit" class="btn btn-primary btn-sm" name="create">
+                            Create
+                        </button>
+                        <button type="submit" class="btn btn-primary btn-sm" name="update" ng-click="updateNews(); updateFileName();">
+                            Update
+                        </button>
+                        <button type="submit" class="btn btn-primary btn-sm" ng-click="resetForm($event)">
+                            Reset
+                        </button>
+                        <button type="reset" class="btn btn-danger btn-sm" ng-click="deleteNews($event)">
+                            Delete
+                        </button>
+                    </div>
                 </div>
             </div>
             <!--TABLE-->
