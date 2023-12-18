@@ -9,45 +9,64 @@ app.controller("AdminShipController", function ($scope, $http) {
     $scope.searchKeyword = '';
     $scope.isEditing = false;
 
-    $http.get(shipUrl)
-        .then(response=> {
-            $scope.list = response.data;
-            console.log(response.data);
-        })
-        .catch(function (error) {
-            console.error("Error fetching categories:", error);
-        });
+    $scope.pageSize = 5; // Số lượng mục trên mỗi trang
+    $scope.currentPage = 1; // Trang hiện tại
 
-    $http.get(orderUrl)
-        .then(function (response) {
-            $scope.order = response.data;
-        })
-        .catch(function (error) {
-            console.error("Error fetching categories:", error);
-        });
+    // Hàm để tính số lượng trang
+    $scope.numberOfPages = function () {
+        return Math.ceil($scope.list.length / $scope.pageSize);
+    };
 
-    $http.get(customerUrl)
-        .then(function (response) {
-            $scope.customer = response.data;
-        })
-        .catch(function (error) {
-            console.error("Error fetching categories:", error);
-        });
+    // Hàm để load dữ liệu theo trang
+    $scope.loadPage = function (page) {
+        var start = (page - 1) * $scope.pageSize;
+        var end = start + $scope.pageSize;
+        $scope.displayedItems = $scope.list.slice(start, end);
+    };
 
-    $http.get(statusOrderUrl)
-        .then(function (response) {
-            $scope.statusOrders = response.data;
-        })
-        .catch(function (error) {
-            console.error("Error fetching categories:", error);
-        });
+    $scope.load = function(){
+        $http.get(shipUrl)
+            .then(response=> {
+                $scope.list = response.data;
+                console.log(response.data);
+                $scope.loadPage($scope.currentPage);
+            })
+            .catch(function (error) {
+                console.error("Error fetching categories:", error);
+            });
+
+        $http.get(orderUrl)
+            .then(function (response) {
+                $scope.order = response.data;
+            })
+            .catch(function (error) {
+                console.error("Error fetching categories:", error);
+            });
+
+        $http.get(customerUrl)
+            .then(function (response) {
+                $scope.customer = response.data;
+            })
+            .catch(function (error) {
+                console.error("Error fetching categories:", error);
+            });
+
+        $http.get(statusOrderUrl)
+            .then(function (response) {
+                $scope.statusOrders = response.data;
+            })
+            .catch(function (error) {
+                console.error("Error fetching categories:", error);
+            });
+    }
+
+    $scope.load();
 
     $scope.updateShip = function () {
         // Sử dụng dữ liệu từ $scope.form để thực hiện cập nhật
         $http.put(shipUrl + '/' + $scope.form.shipId, $scope.form)
             .then(function (response) {
                 console.log('Ship updated successfully:', response.data);
-                alert("Update Successfully");
                 // Cập nhật danh sách vận chuyển sau khi cập nhật
                 $scope.list = $scope.list.map(function (ship) {
                     if (ship.shipId === $scope.form.shipId) {
@@ -55,9 +74,15 @@ app.controller("AdminShipController", function ($scope, $http) {
                     }
                     return ship;
                 });
-
-                // Đặt lại giá trị của $scope.form về trạng thái ban đầu
-                $scope.resetForm();
+                Swal.fire({
+                        position: "center",
+                        icon: "success",
+                        title: "Ship updated successfully!",
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                    $scope.resetForm();
+                    $scope.load();
             })
             .catch(function (error) {
                 console.error('Error updating ship:', error);
@@ -117,7 +142,7 @@ app.controller("AdminShipController", function ($scope, $http) {
                 });
         } else {
             // Ngược lại, lọc theo từ khóa tìm kiếm
-            $scope.list = $scope.list.filter(function (shipInfor) {
+            $scope.displayedItems = $scope.list = $scope.list.filter(function (shipInfor) {
                 return shipInfor.shipId.toString().includes($scope.searchKeyword) ||
                     shipInfor.order.orderId.toString().includes($scope.searchKeyword) ||
                     shipInfor.address.addressDetail.toLowerCase().includes($scope.searchKeyword.toLowerCase()) ||

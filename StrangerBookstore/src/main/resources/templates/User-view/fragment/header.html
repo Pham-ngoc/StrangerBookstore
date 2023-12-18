@@ -45,7 +45,7 @@
                     </div>
                 </div>
                 <hr>
-                <div sec:authorize="hasRole('ROLE_USER')" class="customer-list">
+                <div class="customer-list">
                     <a th:href=@{/profile/personal} class="content-account">
                         Profile
                     </a>
@@ -55,12 +55,7 @@
                     <a th:href="@{/profile/wishlist/1}" class="content-account">
                         Wish list
                     </a>
-                    <a th:href="@{/logout}" class="content-account">
-                        Log out
-                    </a>
-                </div>
-                <div sec:authorize="hasRole('ROLE_ADMIN')" class="customer-list">
-                    <a th:href="@{/}" class="content-account">
+                    <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/}" class="content-account">
                         Admin Manage
                     </a>
                     <a th:href="@{/logout}" class="content-account">
@@ -73,7 +68,7 @@
         <div class="ioncart-outline-icon">
             <a th:if="${session.loggingCustomer != null}" th:href="@{/cart}" >
                 <img alt="" src="/public/ioncartoutline.svg"/>
-                <span class="badge" style="position:absolute; top:-10px; color:var(--color-lightgray); font-size:14px; background: var(--color-dimgray);" th:id="itemInCart" th:text="${session.itemInCart}"></span>
+                <span class="badge" style="position:absolute; top:-10px; color:var(--color-dimgray); font-size:14px;" th:id="itemInCart" th:text="${session.itemInCart}"></span>
             </a>
         </div>
 

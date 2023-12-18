@@ -5,21 +5,48 @@ app.controller("AdminCategoriesController", function ($scope, $route, $timeout, 
     $scope.list = [];
     $scope.form = { };
     $scope.isEditing = false;
-    $http
-        .get(url)
-        .then(response => {
-            $scope.list = response.data;
-            console.log(response.data);
-        })
-        .catch(function (error) {
-            console.error("Error fetching categories:", error);
+
+    // Thêm các biến cho phân trang
+        $scope.pageSize = 5; // Số lượng mục trên mỗi trang
+        $scope.currentPage = 1; // Trang hiện tại
+
+        // Hàm để tính số lượng trang
+        $scope.numberOfPages = function () {
+            return Math.ceil($scope.list.length / $scope.pageSize);
+        };
+
+        // Hàm để load dữ liệu theo trang
+        $scope.loadPage = function (page) {
+            var start = (page - 1) * $scope.pageSize;
+            var end = start + $scope.pageSize;
+            $scope.displayedItems = $scope.list.slice(start, end);
+        };
+
+    $scope.load = function(){
+        $http.get(url).then(response => {
+           $scope.list = response.data;
+           console.log(response.data);
+           $scope.loadPage($scope.currentPage);
+        }).catch(function (error) {
+           console.error("Error fetching categories:", error);
         });
+    }
+
+    $scope.load();
+
     $scope.createCategory = function() {
         $http.post(url, $scope.form)
             .then(function(response) {
                 console.log('News created successfully:', response.data);
-                alert("Create successfully");
-
+                Swal.fire({
+                    position: "center",
+                    icon: "success",
+                    title: "Category created successfully!",
+                    showConfirmButton: true,
+                    timer: 150000
+                });
+                $scope.resetForm();
+                $scope.load();
             })
             .catch(function(error) {
                 console.error("Lỗi khi tạo mới danh mục:", error);
@@ -30,13 +57,21 @@ app.controller("AdminCategoriesController", function ($scope, $route, $timeout, 
         $http.put(url + '/' + $scope.form.categoryId, $scope.form)
             .then(function (response) {
                 console.log('News updated successfully:', response.data);
-                alert("Update successfully");
+                Swal.fire({
+                    position: "center",
+                    icon: "success",
+                    title: "Category updated successfully!",
+                    showConfirmButton: true,
+                    timer: 150000
+                });
                 $scope.list = $scope.list.map(function (news) {
                     if (news.categoryId === $scope.form.categoryId) {
                         return $scope.form;
                     }
                     return news;
                 });
+                $scope.resetForm();
+                $scope.load();
             })
             .catch(function (error) {
                 console.error('Error updating news:', error);
@@ -56,8 +91,15 @@ app.controller("AdminCategoriesController", function ($scope, $route, $timeout, 
                     $scope.list = $scope.list.filter(function (news) {
                         return news.categoryId !== item.categoryId;
                     });
-                    alert("Delete successfully");
+                    Swal.fire({
+                        position: "center",
+                        icon: "success",
+                        title: "Category deleted successfully!",
+                        showConfirmButton: true,
+                        timer: 150000
+                    });
                     $scope.resetForm();
+                    $scope.load();
                 })
                 .catch(function(error) {
                     console.error("Error deleting category:", error);
@@ -75,9 +117,15 @@ app.controller("AdminCategoriesController", function ($scope, $route, $timeout, 
                     $scope.list = $scope.list.filter(function (news) {
                         return news.categoryId !== $scope.form.categoryId;
                     });
-
-
+                    Swal.fire({
+                         position: "center",
+                         icon: "success",
+                         title: "Category deleted successfully!",
+                         showConfirmButton: true,
+                         timer: 150000
+                    });
                     $scope.resetForm();
+                    $scope.load();
                 })
                 .catch(function (error) {
                     console.error('Error deleting news:', error);

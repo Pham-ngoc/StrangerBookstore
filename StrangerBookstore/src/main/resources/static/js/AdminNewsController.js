@@ -6,22 +6,45 @@ app.controller("AdminNewsController", function ($scope, $http) {
     $scope.filteredNews = [];
     $scope.isEditing = false;
 
-    $http
-        .get(newsUrl)
-        .then(response=> {
+    // Thêm các biến cho phân trang
+        $scope.pageSize = 5; // Số lượng mục trên mỗi trang
+        $scope.currentPage = 1; // Trang hiện tại
+
+        // Hàm để tính số lượng trang
+        $scope.numberOfPages = function () {
+            return Math.ceil($scope.list.length / $scope.pageSize);
+        };
+
+        // Hàm để load dữ liệu theo trang
+        $scope.loadPage = function (page) {
+            var start = (page - 1) * $scope.pageSize;
+            var end = start + $scope.pageSize;
+            $scope.displayedItems = $scope.list.slice(start, end);
+        };
+
+    $scope.load = function(){
+        $http.get(newsUrl).then(response=> {
             $scope.list = response.data;
+            $scope.loadPage($scope.currentPage);
             console.log(response.data);
-        })
-        .catch(function (error) {
+        }).catch(function (error) {
             console.error("Error fetching categories:", error);
         });
+    }
 
     $scope.createNews = function () {
         $http.post(newsUrl, $scope.form)
             .then(function (response) {
                 console.log('News created successfully:', response.data);
-//                    console.log($scope.form.newsPicture);
-                alert("More Success");
+                Swal.fire({
+                     position: "center",
+                     icon: "success",
+                     title: "News created successfully!",
+                     showConfirmButton: false,
+                     timer: 1500
+                });
+                $scope.resetForm();
+                $scope.load();
             })
             .catch(function (error) {
                 console.error('Error creating news:', error);
@@ -33,10 +56,17 @@ app.controller("AdminNewsController", function ($scope, $http) {
         // Gửi yêu cầu PUT tới server để cập nhật tin tức
         $http.put(newsUrl + '/' + $scope.form.newsId, $scope.form)
             .then(function (response) {
-                alert("Update Successfull");
                 console.log('News updated successfully:', response.data);
                 // Cập nhật danh sách tin tức sau khi cập nhật
-                alert("Update Successfull");
+                Swal.fire({
+                   position: "center",
+                   icon: "success",
+                   title: "News updated successfully!",
+                   showConfirmButton: false,
+                   timer: 1500
+                });
+                $scope.resetForm();
+                $scope.load();
                 $scope.list = $scope.list.map(function (news) {
                     if (news.newsId === $scope.form.newsId) {
                         return $scope.form;
@@ -80,9 +110,15 @@ app.controller("AdminNewsController", function ($scope, $http) {
                         return news.newsId !== item.newsId;
 
                     });
-                    alert("Delete Successfull");
-                    // Đặt lại giá trị của $scope.form về trạng thái ban đầu
+                    Swal.fire({
+                        position: "center",
+                        icon: "success",
+                        title: "News deleted successfully!",
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
                     $scope.resetForm();
+                    $scope.load();
                 })
                 .catch(function (error) {
                     console.error('Error deleting news:', error);
@@ -104,8 +140,15 @@ app.controller("AdminNewsController", function ($scope, $http) {
 
                         return news.newsId !== $scope.form.newsId;
                     });
-                    // Đặt lại giá trị của $scope.form về trạng thái ban đầu
+                    Swal.fire({
+                        position: "center",
+                        icon: "success",
+                        title: "News deleted successfully!",
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
                     $scope.resetForm();
+                    $scope.load();
                 })
                 .catch(function (error) {
                     console.error('Error deleting news:', error);
@@ -151,7 +194,7 @@ app.controller("AdminNewsController", function ($scope, $http) {
                 });
         } else {
             // Ngược lại, lọc theo từ khóa tìm kiếm
-            $scope.list = $scope.list.filter(function (news) {
+            $scope.displayedItems = $scope.list = $scope.list.filter(function (news) {
                 return news.newsId.toString().includes($scope.searchKeyword) ||
                     news.newsTitle.toLowerCase().includes($scope.searchKeyword.toLowerCase()) ||
                     news.newsContent.toLowerCase().includes($scope.searchKeyword.toLowerCase())||

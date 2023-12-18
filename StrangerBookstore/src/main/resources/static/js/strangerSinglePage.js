@@ -3,7 +3,7 @@ app.config(function($routeProvider){
     $routeProvider
     .when("/admin", {
         templateUrl : "Admin-view/admin-dashboard.html",
-//        controller: "AdminHomeController"
+        controller: "AdminHomeController"
     })
     .when("/admin/product",{
         templateUrl: "Admin-view/admin-product.html",

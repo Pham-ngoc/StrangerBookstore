@@ -5,15 +5,36 @@ app.controller("AdminReviewController", function ($scope, $http) {
     $scope.searchKeyword = '';
     $scope.isEditing = false;
 
-    $http
+    // Thêm các biến cho phân trang
+    $scope.pageSize = 5; // Số lượng mục trên mỗi trang
+    $scope.currentPage = 1; // Trang hiện tại
+
+    // Hàm để tính số lượng trang
+    $scope.numberOfPages = function () {
+        return Math.ceil($scope.list.length / $scope.pageSize);
+    };
+
+    // Hàm để load dữ liệu theo trang
+    $scope.loadPage = function (page) {
+        var start = (page - 1) * $scope.pageSize;
+        var end = start + $scope.pageSize;
+        $scope.displayedItems = $scope.list.slice(start, end);
+    };
+
+    $scope.load = function(){
+        $http
         .get(reviewsUrl)
         .then(response=> {
             $scope.list = response.data;
+            $scope.loadPage($scope.currentPage);
             console.log(response.data);
         })
         .catch(function (error) {
             console.error("Error fetching categories:", error);
         });
+    }
+
+    $scope.load();
 
     $scope.editReviews = function (item) {
         // Gán dữ liệu từ hàng đã click vào biến $scope.form
@@ -43,7 +64,7 @@ app.controller("AdminReviewController", function ($scope, $http) {
                 });
         } else {
             // Ngược lại, lọc theo từ khóa tìm kiếm
-            $scope.list = $scope.list.filter(function (productReviews) {
+            $scope.displayedItems = $scope.list = $scope.list.filter(function (productReviews) {
                 return productReviews.reviewsId.toString().includes($scope.searchKeyword) ||
                     productReviews.product.productName.toLowerCase().includes($scope.searchKeyword.toLowerCase()) ||
                     productReviews.customer.email.toLowerCase().includes($scope.searchKeyword.toLowerCase()) ||

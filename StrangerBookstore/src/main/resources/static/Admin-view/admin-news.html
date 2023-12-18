@@ -92,7 +92,6 @@
                         <table class="table table-data2">
                             <thead>
                             <tr>
-                                <th>News ID</th>
                                 <th>News Title</th>
                                 <th>New Content</th>
                                 <th>Picture</th>
@@ -100,8 +99,7 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tr class="tr-shadow" ng-repeat="item in list">
-                                <td>{{item.newsId}}</td>
+                            <tr class="tr-shadow" ng-repeat="item in displayedItems">
                                 <td>{{item.newsTitle}}</td>
                                 <td>{{item.newsContent}}</td>
                                 <td>{{item.newsPicture}}</td>
@@ -119,6 +117,11 @@
                             <tr class="spacer"></tr>
                             </tbody>
                         </table>
+                        <div class="pagination" style="margin: 30px;display: flex;align-items: center;justify-content: center;">
+                            <button style="margin: 0 10px;" ng-disabled="currentPage == 1" ng-click="currentPage=currentPage-1; loadPage(currentPage)">Previous </button>
+                            <span> Page {{currentPage}} of {{numberOfPages()}} </span>
+                            <button style="margin: 0 10px;" ng-disabled="currentPage == numberOfPages()" ng-click="currentPage=currentPage+1; loadPage(currentPage)">Next</button>
+                        </div>
                     </div>
                     <!-- END DATA TABLE -->
                 </div>

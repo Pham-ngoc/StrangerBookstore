@@ -4,15 +4,36 @@ app.controller("AdminContactController", function ($scope, $route, $timeout, $ht
     $scope.form = { };
     $scope.isEditing = false;
 
+    // Thêm các biến cho phân trang
+    $scope.pageSize = 5; // Số lượng mục trên mỗi trang
+    $scope.currentPage = 1; // Trang hiện tại
+
+    // Hàm để tính số lượng trang
+    $scope.numberOfPages = function () {
+        return Math.ceil($scope.list.length / $scope.pageSize);
+    };
+
+    // Hàm để load dữ liệu theo trang
+    $scope.loadPage = function (page) {
+        var start = (page - 1) * $scope.pageSize;
+        var end = start + $scope.pageSize;
+        $scope.displayedItems = $scope.list.slice(start, end);
+    };
+
+    $scope.load = function(){
     $http
-        .get(url)
-        .then(response => {
-            $scope.list = response.data;
-            console.log(response.data);
-        })
-        .catch(function (error) {
-            console.error("Error fetching categories:", error);
-        });
+            .get(url)
+            .then(response => {
+                $scope.list = response.data;
+                $scope.loadPage($scope.currentPage);
+                console.log(response.data);
+            })
+            .catch(function (error) {
+                console.error("Error fetching categories:", error);
+            });
+    }
+
+    $scope.load();
 
     $scope.updatecontact = function () {
         $http.put(url + '/' + $scope.form.contactId, $scope.form)
@@ -24,11 +45,25 @@ app.controller("AdminContactController", function ($scope, $route, $timeout, $ht
                     }
                     return news;
                 });
+                Swal.fire({
+                        position: "center",
+                        icon: "success",
+                        title: "Contact updated successfully!",
+                        showConfirmButton: false,
+                        timer: 1500
+                });
+                $scope.resetForm();
+                $scope.load();
+
             })
             .catch(function (error) {
                 console.error('Error updating news:', error);
             });
     };
+
+    $scope.resetFrom = function (){
+        $scope.form = {};
+    }
 
     $scope.editcontact = function (item) {
         $scope.form.contactId = item.contactId ;

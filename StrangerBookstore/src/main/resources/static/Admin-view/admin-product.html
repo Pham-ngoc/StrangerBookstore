@@ -140,21 +140,21 @@
                             <!--                                        {{ successMessage }}-->
                             <!--                                    </div>-->
                         </div>
-                        <div class="card-footer">
-                            <button type="button" class="btn btn-primary btn-sm" name="create" ng-click="createProduct(); updateFileName();" >
-                                Create
-                            </button>
-                            <button type="submit" class="btn btn-primary btn-sm" name="update" ng-click="updateProduct(); updateFileName();">
-                                Update
-                            </button>
-                            <button type="submit" class="btn btn-primary btn-sm" ng-click="resetForm()">
-                                Reset
-                            </button>
-                            <button type="reset" class="btn btn-danger btn-sm"  name="delete" ng-click="deleteProduct($event)">
-                                Delete
-                            </button>
-                        </div>
                     </form>
+                    <div class="card-footer">
+                        <button type="button" class="btn btn-primary btn-sm" name="create" ng-click="createProduct(); updateFileName();" >
+                            Create
+                        </button>
+                        <button type="submit" class="btn btn-primary btn-sm" name="update" ng-click="updateProduct(); updateFileName();">
+                            Update
+                        </button>
+                        <button type="submit" class="btn btn-primary btn-sm" ng-click="resetForm()">
+                            Reset
+                        </button>
+                        <button type="reset" class="btn btn-danger btn-sm"  name="delete" ng-click="deleteProduct($event)">
+                            Delete
+                        </button>
+                    </div>
                 </div>
 
             </div>
@@ -183,7 +183,6 @@
                     <table class="table table-data2">
                         <thead>
                         <tr>
-                            <th>Product ID</th>
                             <th>Product Name</th>
                             <th>Author</th>
                             <th>Publisher</th>
@@ -198,8 +197,7 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr class="tr-shadow"  ng-repeat="item in list" >
-                            <td> <span>{{item.productId}} </span></td>
+                        <tr class="tr-shadow"  ng-repeat="item in displayedItems" >
                             <td>{{item.productName}}</td>
                             <td>{{item.author}}</td>
                             <td>{{item.publisher}}</td>
@@ -224,6 +222,11 @@
                         <tr class="spacer"></tr>
                         </tbody>
                     </table>
+                    <div class="pagination" style="margin: 30px;display: flex;align-items: center;justify-content: center;">
+                        <button style="margin: 0 10px;" ng-disabled="currentPage == 1" ng-click="currentPage=currentPage-1; loadPage(currentPage)">Previous </button>
+                        <span> Page {{currentPage}} of {{numberOfPages()}} </span>
+                        <button style="margin: 0 10px;" ng-disabled="currentPage == numberOfPages()" ng-click="currentPage=currentPage+1; loadPage(currentPage)">Next</button>
+                    </div>
                 </div>
                 <!-- END DATA TABLE -->
             </div>

@@ -7,36 +7,63 @@ app.controller("AdminOrderController", function ($scope, $http, $window) {
     $scope.isEditing = false;
     $scope.status = [];
 
-    $http.get(orderUrl).then(response=> {
-        $scope.list = response.data;
-//                    console.log(response.data);
-        console.log('Order data:', $scope.list);
-    })
-        .catch(function (error) {
-            console.error("Error fetching categories:", error);
-        });
+    // Thêm các biến cho phân trang
+    $scope.pageSize = 5; // Số lượng mục trên mỗi trang
+    $scope.currentPage = 1; // Trang hiện tại
 
-    $http.get(statusOrderUrl).then(response => {
-        $scope.status = response.data;
-        console.log('Status data:', $scope.status);
-    })
-        .catch(function (error) {
-            console.error("Error fetching status:", error);
-        });
+    // Hàm để tính số lượng trang
+    $scope.numberOfPages = function () {
+        return Math.ceil($scope.list.length / $scope.pageSize);
+    };
+
+    // Hàm để load dữ liệu theo trang
+    $scope.loadPage = function (page) {
+        var start = (page - 1) * $scope.pageSize;
+        var end = start + $scope.pageSize;
+        $scope.displayedItems = $scope.list.slice(start, end);
+    };
+
+    $scope.load = function(){
+        $http.get(orderUrl).then(response=> {
+                $scope.list = response.data;
+                $scope.loadPage($scope.currentPage);
+                console.log('Order data:', $scope.list);
+            })
+                .catch(function (error) {
+                    console.error("Error fetching categories:", error);
+                });
+
+            $http.get(statusOrderUrl).then(response => {
+                $scope.status = response.data;
+                console.log('Status data:', $scope.status);
+            })
+                .catch(function (error) {
+                    console.error("Error fetching status:", error);
+                });
+    }
+
+    $scope.load();
 
 
     $scope.updateOrders = function () {
         $http.put(orderUrl + '/' + $scope.form.orderId, $scope.form)
             .then(function (response) {
                 console.log('Updated successfully:', response.data);
-                alert("Update successfully");
+                Swal.fire({
+                   position: "center",
+                   icon: "success",
+                   title: "Order updated successfully!",
+                   showConfirmButton: false,
+                   timer: 1500
+                });
                 // Cập nhật danh sách sản phẩm sau khi cập nhật
                 $scope.list = $scope.list.map(function (order) {
                     if (order.orderId === $scope.form.orderId) {
                         return $scope.form;
                     }
 
-                    $window.location.reload();
+                $scope.load();
+                 $scope.resetForm
                 });
             })
             .catch(function (error) {
@@ -66,25 +93,6 @@ app.controller("AdminOrderController", function ($scope, $http, $window) {
         console.log('StatusOrders Name when editing:', item.statusOrders.statusName);
     };
 
-    $scope.deleteOrders = function (orderId) {
-        $http.delete(orderUrl + '/' + orderId)
-            .then(function (response) {
-                console.log('Order deleted successfully:', response.data);
-                alert("Delete successfully");
-                // Cập nhật danh sách đơn hàng sau khi xóa
-                $scope.list = $scope.list.filter(function (order) {
-                    return order.orderId !== orderId;
-                });
-                return $scope.resetForm();
-            })
-            .catch(function (error) {
-                console.error('Error deleting order:', error);
-                alert("Delete fail");
-            });
-    };
-
-
-
     $scope.resetForm = function () {
         $scope.form = {};
         $scope.isEditing = false;
@@ -103,7 +111,7 @@ app.controller("AdminOrderController", function ($scope, $http, $window) {
                 });
         } else {
             // Ngược lại, lọc theo từ khóa tìm kiếm
-            $scope.list = $scope.list.filter(function (order) {
+            $scope.displayedItems = $scope.list = $scope.list.filter(function (order) {
                 return order.orderId.toString().includes($scope.searchKeyword) ||
                     order.customer.email.toLowerCase().includes($scope.searchKeyword.toLowerCase()) ||
                     order.statusOrders.statusName.toLowerCase().includes($scope.searchKeyword.toLowerCase()) ||

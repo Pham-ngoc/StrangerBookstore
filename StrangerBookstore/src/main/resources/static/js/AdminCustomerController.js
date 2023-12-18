@@ -95,7 +95,8 @@ app.controller("AdminCustomerController", function ($scope, $http, $window) {
                         showConfirmButton: false,
                         timer: 1500
                     });
-                    $scope.resetForm();
+                    $scope.resetform();
+                    $scope.load();
                 })
                 .catch(function(error) {
                     console.error("Error deleting category:", error);
@@ -128,6 +129,7 @@ app.controller("AdminCustomerController", function ($scope, $http, $window) {
                         timer: 1500
                     });
                     $scope.resetform();
+                    $scope.load();
                 })
                 .catch(function (error) {
                     console.error('Error deleting news:', error);

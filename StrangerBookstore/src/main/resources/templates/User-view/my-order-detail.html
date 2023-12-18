@@ -106,7 +106,7 @@
                 <div class="modal-body">
                     <div class="review-infor-book row">
                         <div class="review-pic col-lg-3">
-                            <img th:src="@{'/product_img/'+${orderDetail.product.product_img}}" th:alt="${orderDetail.products.productName}">
+                            <img th:src="@{'/product_img/'+${orderDetail.product.product_img}}" th:alt="${orderDetail.product.productName}">
                         </div>
                         <div class="review-name-star col-7">
                             <p class="review-name" th:text="${orderDetail.product.productName}"></p>

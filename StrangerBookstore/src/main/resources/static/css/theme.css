@@ -4544,6 +4544,11 @@ section {
     padding-right: 10px;
     border: none;
     text-align: justify;
+    max-height: 100px;
+    max-width: 200px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 
 .table-data2.table tbody td.desc {
