@@ -10,6 +10,20 @@ app.controller("AdminProductController", function ($scope, $http, $window, $time
 
 
 
+    $scope.pageSize = 3; // Số lượng mục trên mỗi trang
+    $scope.currentPage = 1; // Trang hiện tại
+
+    // Hàm để tính số lượng trang
+    $scope.numberOfPages = function () {
+        return Math.ceil($scope.list.length / $scope.pageSize);
+    };
+
+    // Hàm để load dữ liệu theo trang
+    $scope.loadPage = function (page) {
+        var start = (page - 1) * $scope.pageSize;
+        var end = start + $scope.pageSize;
+        $scope.displayedItems = $scope.list.slice(start, end);
+    };
     // Fetch danh sách sản phẩm và danh mục từ server khi trang được load
     $http.get(productUrl)
         .then(function (response) {

@@ -26,7 +26,7 @@ public class delete_blank {
         driver.get(url3);
 //
         driver.get(url4);
-//        driver.findElement(By.id("edit")).sendKeys(Keys.ENTER);
+        driver.findElement(By.id("edit")).sendKeys(Keys.ENTER);
 //        driver.findElement(By.cssSelector("#edit")).sendKeys(Keys.ENTER);
 //        driver.findElement(By.xpath("//*[@id=\"edit\"]")).sendKeys(Keys.ENTER);
 

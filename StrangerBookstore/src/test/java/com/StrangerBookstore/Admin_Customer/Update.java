@@ -20,16 +20,18 @@ public class Update {
         WebDriver driver=new ChromeDriver(options);
         driver.get(url);
         driver.get(url2);
-        driver.findElement(By.name("username")).sendKeys("admin@gmail.com");
-        driver.findElement(By.name("password")).sendKeys("admin");
+        driver.findElement(By.name("username")).sendKeys("ductaitruongcr7@gmail.com");
+        driver.findElement(By.name("password")).sendKeys("1310");
         driver.findElement(By.name("login")).sendKeys(Keys.ENTER);
         driver.get(url3);
 //
         driver.get(url4);
-//        driver.findElement(By.id("edit")).sendKeys(Keys.ENTER);
-        driver.findElement(By.cssSelector("#edit")).sendKeys(Keys.ENTER);
+        driver.findElement(By.id("edit")).sendKeys(Keys.ENTER);
+//        driver.findElement(By.cssSelector("#edit")).sendKeys(Keys.ENTER);
 //        driver.findElement(By.xpath("//*[@id=\"edit\"]")).sendKeys(Keys.ENTER);
-        driver.findElement(By.id("fullName")).sendKeys("administration");
+        driver.findElement(By.id("phoneNumber")).sendKeys("09873746345");
+        driver.findElement(By.xpath("//div[@id='upload']//div[@id='file-upload']//input[@id='file-input']"))
+                .sendKeys(System.getProperty("user.dir") + "/src/main/resources/static/img/avata.jpg");
         driver.findElement(By.name("update")).sendKeys(Keys.ENTER);
     }
 

@@ -5,6 +5,8 @@ import com.StrangerBookstore.model.Products;
 import com.StrangerBookstore.model.Roles;
 import com.StrangerBookstore.repository.CustomerRepository;
 import com.StrangerBookstore.repository.RoleRepository;
+
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ResourceLoader;
 import org.springframework.http.ResponseEntity;
@@ -17,6 +19,8 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.time.LocalDateTime;
+import java.util.Optional;
+import java.util.List;
 
 @Service
 public class CustomerService {
@@ -34,19 +38,36 @@ public class CustomerService {
 
     public boolean createNewCustomer(Customer customer) {
         boolean isCreate = false;
-            Roles roles = roleRepository.getByRoleName("USER");
-            System.out.println(roles);
-            customer.setRoles(roles);
-            customer.setStatus("Open");
-            customer.setPassword(passwordEncoder.encode(customer.getPassword()));
-            customer.setCreateAt(LocalDateTime.now());
-            customer.setCreateBy("anonymousUser");
-            customer.setPicture("account1.jpg");
-            Customer createCustomer = customerRepository.save(customer);
-            if (createCustomer != null && createCustomer.getCustomerId() >= 0) {
-                isCreate = true;
-            }
+        Roles roles = roleRepository.getByRoleName("USER");
+        System.out.println(roles);
+        customer.setRoles(roles);
+        customer.setStatus("Open");
+        customer.setPassword(passwordEncoder.encode(customer.getPassword()));
+        customer.setCreateAt(LocalDateTime.now());
+        customer.setCreateBy("anonymousUser");
+        customer.setPicture("account1.jpg");
+        Customer createCustomer = customerRepository.save(customer);
+        if (createCustomer != null && createCustomer.getCustomerId() >= 0) {
+            isCreate = true;
+        }
         return isCreate;
+    }
+    public List<Customer> findAll() {
+        return customerRepository.findAll();
+    }
+
+    public Optional<Customer> findById(Integer id){
+        return customerRepository.findById(id);
+    }
+
+    public Customer create(Customer customer) {
+        Roles roles = roleRepository.findByRoleId(customer.getRoles().getRoleId());
+        customer.setStatus("Open");
+        System.out.println(customer.getPassword());
+        customer.setRoles(roles);
+        customer.setPassword(passwordEncoder.encode(customer.getPassword()));
+        customer.setPicture(customer.getPicture());
+        return customerRepository.save(customer);
     }
 
     public boolean updatePassword(Customer customer){
@@ -62,7 +83,9 @@ public class CustomerService {
         return isUpdated;
     }
 
-
+    public void delete(Integer id) {
+        customerRepository.deleteById(id);
+    }
     public String getImageName(@RequestParam("customer_pic") MultipartFile file) {
         String filename = "";
         try {
@@ -76,7 +99,7 @@ public class CustomerService {
             filename = file.getOriginalFilename();
             Path filePath = Paths.get(uploadRootPath, filename);
             Files.write(filePath, file.getBytes());
-            // Kiểm tra định dạng của tệp
+
             boolean isImage = Files.probeContentType(filePath).startsWith("image");
             return filename;
         } catch (Exception e) {
