@@ -24,10 +24,10 @@ public class create {
         driver.findElement(By.name("password")).sendKeys("admin");
         driver.findElement(By.name("login")).sendKeys(Keys.ENTER);
         driver.get(url3);
-//
         driver.get(url4);
-        driver.findElement(By.id("categoryName")).sendKeys("giày sandal");
+        driver.findElement(By.id("categoryName")).sendKeys("quần áo");
         driver.findElement(By.name("create")).sendKeys(Keys.ENTER);
+
 
 
     }

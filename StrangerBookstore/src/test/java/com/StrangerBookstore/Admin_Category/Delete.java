@@ -20,8 +20,8 @@ public class Delete {
         WebDriver driver=new ChromeDriver(options);
         driver.get(url);
         driver.get(url2);
-        driver.findElement(By.name("username")).sendKeys("ductaitruongcr7@gmail.com");
-        driver.findElement(By.name("password")).sendKeys("1310");
+        driver.findElement(By.name("username")).sendKeys("admin@gmail.com");
+        driver.findElement(By.name("password")).sendKeys("admin");
         driver.findElement(By.name("login")).sendKeys(Keys.ENTER);
         driver.get(url3);
 //
