@@ -1,5 +1,7 @@
 package com.StrangerBookstore.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Getter;
@@ -29,8 +31,10 @@ public class Customer extends BaseEntity{
     @Transient
     private String passwordConfirm;
 
+
     @NotBlank(message = "Phone Number must not be blank")
     private String phoneNumber;
+
 
     @NotBlank(message = "Email must not be blank")
     private String email;
@@ -39,13 +43,14 @@ public class Customer extends BaseEntity{
     @Transient
     private String emailConfirm;
 
+
     @NotBlank(message = "Status must not be blank")
     private String status;
 
     @NotBlank(message = "Picture must not be blank")
     private String picture;
 
-    @NotBlank(message = "Role must not be blank")
+
     @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST, targetEntity = Roles.class)
     @JoinColumn(name="role_id", referencedColumnName = "roleId", nullable = true)
     private Roles roles;
@@ -72,4 +77,5 @@ public class Customer extends BaseEntity{
     public int hashCode() {
         return Objects.hash(super.hashCode(), customerId, customerName, phoneNumber, email, emailConfirm, password, passwordConfirm, status, picture, roles);
     }
+
 }

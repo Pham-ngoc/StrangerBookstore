@@ -8,6 +8,7 @@ import com.StrangerBookstore.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.ui.Model;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.*;
@@ -37,6 +38,10 @@ public class AdminCustomerController {
     @Autowired
     RoleRepository roleRepository;
 
+    @Autowired
+    PasswordEncoder passwordEncoder;
+
+
     public static String UPLOAD_DIRECTORY = System.getProperty("user.dir") + "/StrangerBookstore/src/main/resources/static/images";
     @GetMapping("/customer")
     public ResponseEntity<List<Customer>> categories(Model model){
@@ -45,30 +50,33 @@ public class AdminCustomerController {
 
     @GetMapping("/customer/{id}")
     public ResponseEntity<Customer> getcustomer(@PathVariable Integer id) {
-        Optional<Customer> customerOptional = service.findbyId(id);
+        Optional<Customer> customerOptional = service.findById(id);
         return customerOptional.map(category -> new ResponseEntity<>(category, HttpStatus.OK))
                 .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
+
     @PostMapping("/customer")
     public ResponseEntity<Customer> create(@RequestBody Customer customer)  {
-        Customer createdCustormer = service.create(customer);
-        return ResponseEntity.ok(createdCustormer);
+//        System.out.println(customer.getPicture());
+        Customer createdCustomer = service.create(customer);
+        return ResponseEntity.ok(createdCustomer);
     }
 
     @PutMapping("/customer/{id}")
-    public ResponseEntity<Customer> updatecustomer(@PathVariable("id") Integer id, @RequestBody Customer Customer) {
-        if(service. findbyId (id) == null) {
+    public ResponseEntity<Customer> updatecustomer(@PathVariable("id") int id, @RequestBody Customer Customer) {
+        if(service.findById(id).isEmpty()) {
             return ResponseEntity.notFound().build();
         } else {
-            service.update(id, Customer);
+            System.out.println(Customer.getPicture());
+            customerRepository.save(Customer);
         }
         return ResponseEntity.ok(Customer);
     }
 
 
     @DeleteMapping("/customer/{id}")
-    public void deletecustomer(@PathVariable("id") Integer id) {
+    public void deletecustomer(@PathVariable("id") int id) {
         service.delete(id);
     }
 
