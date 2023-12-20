@@ -32,6 +32,8 @@ app.controller("AdminNewsController", function ($scope, $http) {
         });
     }
 
+    $scope.load();
+
     $scope.createNews = function () {
         $http.post(newsUrl, $scope.form)
             .then(function (response) {
@@ -48,7 +50,10 @@ app.controller("AdminNewsController", function ($scope, $http) {
             })
             .catch(function (error) {
                 console.error('Error creating news:', error);
-                alert("Must fill in all required information");
+                    Swal.fire({
+                        icon: "error",
+                        title: "News created failed!"
+                    });
             });
     };
 
@@ -78,7 +83,10 @@ app.controller("AdminNewsController", function ($scope, $http) {
             })
             .catch(function (error) {
                 console.error('Error updating news:', error);
-                alert("Update Fail")
+                Swal.fire({
+                        icon: "error",
+                        title: "News updated failed!"
+                    });
             });
     };
 
@@ -122,7 +130,10 @@ app.controller("AdminNewsController", function ($scope, $http) {
                 })
                 .catch(function (error) {
                     console.error('Error deleting news:', error);
-                    alert("Delete Fail");
+                    Swal.fire({
+                        icon: "error",
+                        title: "News deleted failed!"
+                    });
                 });
         } else {
             // Xử lý delete 1: Gửi yêu cầu DELETE tới server dựa trên $scope.form.newsId
@@ -152,7 +163,10 @@ app.controller("AdminNewsController", function ($scope, $http) {
                 })
                 .catch(function (error) {
                     console.error('Error deleting news:', error);
-
+                    Swal.fire({
+                        icon: "error",
+                        title: "News deleted failed!"
+                    });
                 });
         }
     };

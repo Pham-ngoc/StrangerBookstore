@@ -50,7 +50,11 @@ app.controller("AdminCategoriesController", function ($scope, $route, $timeout, 
             })
             .catch(function(error) {
                 console.error("Lỗi khi tạo mới danh mục:", error);
-                alert("Create successfully");
+//                alert("Create successfully");
+            Swal.fire({
+                    icon: "error",
+                    title: "Category created failed!"
+                });
             });
     };
     $scope.updatecategory = function () {
@@ -75,9 +79,12 @@ app.controller("AdminCategoriesController", function ($scope, $route, $timeout, 
             })
             .catch(function (error) {
                 console.error('Error updating news:', error);
-                alert("Update fail");
-            });
-    };
+                Swal.fire({
+                        icon: "error",
+                        title: "Category updated failed!"
+                    });
+                });
+            };
 
     $scope.deleteCategory = function(event, item) {
 
@@ -107,7 +114,10 @@ app.controller("AdminCategoriesController", function ($scope, $route, $timeout, 
         }else{
             if (!$scope.form.categoryId) {
                 console.error('Cannot delete. No newsId specified.');
-                alert("Delete fail");
+                Swal.fire({
+                        icon: "error",
+                        title: "Category deleted failed!"
+                    });
                 return;
             }
 
@@ -129,6 +139,10 @@ app.controller("AdminCategoriesController", function ($scope, $route, $timeout, 
                 })
                 .catch(function (error) {
                     console.error('Error deleting news:', error);
+                        Swal.fire({
+                            icon: "error",
+                            title: "Category deleted failed!"
+                        });
                 });
         }
     };

@@ -67,7 +67,10 @@ app.controller("AdminProductController", function ($scope, $http, $window, $time
             })
             .catch(function (error) {
                console.error('Error creating product:', error);
-               alert("Create fail")
+                Swal.fire({
+                        icon: "error",
+                        title: "Product created failed!"
+                    });
             });
     };
 

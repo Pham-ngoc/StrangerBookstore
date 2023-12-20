@@ -15,60 +15,27 @@
         </div>
     </div>
 
-    <div class="news-page row">
+    <div class="news-page row" th:each="list : ${list}">
         <div class="news-image col-lg-6">
             <a th:href="@{/news-detail}">
-                <img src="/images/icon/news.jpg">
+                <img th:src="@{'/new_img/'+${list.newsPicture}}" th:alt="${list.newsTitle}">
             </a>
         </div>
         <div class="col-lg-6">
-            <a th:href="@{/news-detail}" class="news-title">News Title</a>
-            <p class="new-summary">News Summary</p>
-        </div>
-        <hr class="news-hr">
-    </div>
-    <div class="news-page row">
-        <div class="news-image col-lg-6">
-            <a th:href="@{/news-detail}">
-                <img src="/images/icon/news.jpg">
-            </a>
-        </div>
-        <div class="col-lg-6">
-            <a th:href="@{/news-detail}" class="news-title">News Title</a>
-            <p class="new-summary">News Summary</p>
-        </div>
-        <hr class="news-hr">
-    </div>
-    <div class="news-page row">
-        <div class="news-image col-lg-6">
-            <a th:href="@{/news-detail}">
-                <img src="/images/icon/news.jpg">
-            </a>
-        </div>
-        <div class="col-lg-6">
-            <a th:href="@{/news-detail}" class="news-title">News Title</a>
-            <p class="new-summary">News Summary</p>
-        </div>
-        <hr class="news-hr">
-    </div>
-    <div class="news-page row">
-        <div class="news-image col-lg-6">
-            <a th:href="@{/news-detail}">
-                <img src="/images/icon/news.jpg">
-            </a>
-        </div>
-        <div class="col-lg-6">
-            <a th:href="@{/news-detail}" class="news-title">News Title</a>
-            <p class="new-summary">News Summary</p>
+            <a th:href="@{/news-detail}" class="news-title" th:text="${list.newsTitle}"></a>
+            <p class="new-summary" th:text="${list.newsContent}"></p>
         </div>
         <hr class="news-hr">
     </div>
 
-    <div class="pagination">
-        <a href="#" class="page-button">1</a>
-        <a href="#" class="page-button">2</a>
-        <a href="#" class="page-button">3</a>
-    </div>
+
+
+
+<!--    <div class="pagination">-->
+<!--        <a href="#" class="page-button">1</a>-->
+<!--        <a href="#" class="page-button">2</a>-->
+<!--        <a href="#" class="page-button">3</a>-->
+<!--    </div>-->
 
     <div th:replace="~{User-view/fragment/footer.html :: div}"></div>
 </div>

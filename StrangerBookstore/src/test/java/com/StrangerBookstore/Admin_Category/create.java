@@ -10,7 +10,7 @@ public class create {
 
     @Test
     public void create_success(){
-        System.setProperty("webdriver.chrome.driver","D:\\HK7\\StrangerBookstore\\chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver","D:\\Document\\Du an tot nghiep\\DATT\\GitHub\\StrangerBookstore\\chromedriver.exe");
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--remote-allow-origins=*");
         String url="http://localhost:8080/home";

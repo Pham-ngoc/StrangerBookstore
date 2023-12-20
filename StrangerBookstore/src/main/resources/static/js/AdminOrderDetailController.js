@@ -5,7 +5,7 @@ app.controller("AdminOrderDetailController", function ($scope, $http, $timeout,$
     $scope.searchKeyword='';
 
     // Thêm các biến cho phân trang
-        $scope.pageSize = 3; // Số lượng mục trên mỗi trang
+        $scope.pageSize = 5; // Số lượng mục trên mỗi trang
         $scope.currentPage = 1; // Trang hiện tại
 
         // Hàm để tính số lượng trang
@@ -34,6 +34,7 @@ app.controller("AdminOrderDetailController", function ($scope, $http, $timeout,$
             $http.get(url)
                 .then(function (response) {
                     $scope.items = response.data;
+                    $scope.load();
                 })
                 .catch(function (error) {
                     console.error("Error fetching news:", error);

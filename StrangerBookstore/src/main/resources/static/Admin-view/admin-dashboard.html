@@ -7,7 +7,7 @@
         <div class="row">
           <div class="col-md-6 col-lg-3">
             <div class="statistic__item">
-              <h2 class="number">10,368</h2>
+              <h2 class="number">{{account}}</h2>
               <span class="desc">members online</span>
               <div class="icon">
                 <i class="zmdi zmdi-account-o"></i>
@@ -16,7 +16,7 @@
           </div>
           <div class="col-md-6 col-lg-3">
             <div class="statistic__item">
-              <h2 class="number">388,688</h2>
+<!--              <h2 class="number">388,688</h2>-->
               <span class="desc">items sold</span>
               <div class="icon">
                 <i class="zmdi zmdi-shopping-cart"></i>
@@ -25,7 +25,7 @@
           </div>
           <div class="col-md-6 col-lg-3">
             <div class="statistic__item">
-              <h2 class="number">1,086</h2>
+<!--              <h2 class="number">1,086</h2>-->
               <span class="desc">this week</span>
               <div class="icon">
                 <i class="zmdi zmdi-calendar-note"></i>
@@ -34,7 +34,7 @@
           </div>
           <div class="col-md-6 col-lg-3">
             <div class="statistic__item">
-              <h2 class="number">$1,060,386</h2>
+<!--              <h2 class="number">$1,060,386</h2>-->
               <span class="desc">total earnings</span>
               <div class="icon">
                 <i class="zmdi zmdi-money"></i>
@@ -53,52 +53,29 @@
         <div class="row">
           <div class="col-md-12">
             <!-- DATA TABLE -->
-            <h3 class="title-5 m-b-35">data table</h3>
+            <h3 class="title-5 m-b-35">account report</h3>
             <div class="table-responsive">
               <table class="table table-data2">
                 <thead>
                 <tr>
-                  <th>name</th>
-                  <th>email</th>
-                  <th>description</th>
-                  <th>date</th>
-                  <th>status</th>
-                  <th>price</th>
+                  <th>Date</th>
+                  <th>Count</th>
                   <th></th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr class="tr-shadow">
-                  <td>Lori Lynch</td>
-                  <td>
-                    <span class="block-email">lori@example.com</span>
-                  </td>
-                  <td class="desc">Samsung S8 Black</td>
-                  <td>2018-09-27 02:12</td>
-                  <td>
-                    <span class="status--process">Processed</span>
-                  </td>
-                  <td>$679.00</td>
-                  <td>
-                    <div class="table-data-feature">
-                      <button class="item" data-toggle="tooltip" data-placement="top" title="Send">
-                        <i class="zmdi zmdi-mail-send"></i>
-                      </button>
-                      <button class="item" data-toggle="tooltip" data-placement="top" title="Edit">
-                        <i class="zmdi zmdi-edit"></i>
-                      </button>
-                      <button class="item" data-toggle="tooltip" data-placement="top" title="Delete">
-                        <i class="zmdi zmdi-delete"></i>
-                      </button>
-                      <button class="item" data-toggle="tooltip" data-placement="top" title="More">
-                        <i class="zmdi zmdi-more"></i>
-                      </button>
-                    </div>
-                  </td>
+                <tr class="tr-shadow" ng-repeat="item in displayedItems">
+                  <td>{{item.date}}</td>
+                  <td>{{item.count}}</td>
                 </tr>
                 <tr class="spacer"></tr>
                 </tbody>
               </table>
+              <div class="pagination" style="margin: 30px;display: flex;align-items: center;justify-content: center;">
+                <button style="margin: 0 10px;" ng-disabled="currentPage == 1" ng-click="currentPage=currentPage-1; loadPage(currentPage)">Previous </button>
+                <span> Page {{currentPage}} of {{numberOfPages()}} </span>
+                <button style="margin: 0 10px;" ng-disabled="currentPage == numberOfPages()" ng-click="currentPage=currentPage+1; loadPage(currentPage)">Next</button>
+              </div>
             </div>
             <!-- END DATA TABLE -->
           </div>

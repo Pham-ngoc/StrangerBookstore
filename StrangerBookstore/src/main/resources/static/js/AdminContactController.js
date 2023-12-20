@@ -58,8 +58,11 @@ app.controller("AdminContactController", function ($scope, $route, $timeout, $ht
             })
             .catch(function (error) {
                 console.error('Error updating news:', error);
-                alert("Update fail");
-            });
+                Swal.fire({
+                        icon: "error",
+                        title: "Contact updated failed!"
+                    });
+                });
     };
 
     $scope.resetFrom = function (){

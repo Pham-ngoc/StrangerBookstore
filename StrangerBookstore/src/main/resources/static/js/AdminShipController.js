@@ -117,10 +117,6 @@ app.controller("AdminShipController", function ($scope, $http,$window) {
                 recipientFullName: item.address.recipientFullName,
                 recipientPhoneNumber: item.address.recipientPhoneNumber,
                 addressDetail: item.address.addressDetail,
-//                            addressType: item.address.addressType,
-//                            customer: {
-//                                customerId: item.address.customer.customerId
-//                            }
             },
             status: item.status,
             note: item.note
@@ -136,7 +132,7 @@ app.controller("AdminShipController", function ($scope, $http,$window) {
             $http.get(shipUrl)
                 .then(function (response) {
                     $scope.list = response.data;
-                    $window.location.reload();
+                    $scope.load();
                 })
                 .catch(function (error) {
                     console.error("Error fetching products:", error);
